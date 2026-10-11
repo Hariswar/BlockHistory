@@ -9,13 +9,22 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+import os
 from enum import Enum
 from pathlib import Path
 
 import anthropic
 from pydantic import BaseModel, Field
 
-MODEL = "claude-opus-5-5"
+from blockhistory import costs
+
+# This paid reader only sees tiles the free first pass (Tesseract + an open-source vision
+# model) couldn't read. Haiku by default; Sonnet only for tiles Haiku is unsure about.
+# Override in .env (BLOCKHISTORY_MODEL / BLOCKHISTORY_EFFORT); see docs/budget.md.
+DEFAULT_MODEL = "claude-haiku-5-5"
+DEFAULT_EFFORT = "medium"
+# Models that accept server-side refusal fallbacks (Haiku 5.5 has none).
+FALLBACK_MODELS = {"claude-sonnet-5-5"}
 # Bump whenever SYSTEM_PROMPT or the schema changes so the cache doesn't serve stale output.
 PROMPT_VERSION = "v0"
 CACHE_DIR = Path(__file__).resolve().parents[2] / "data" / "cache" / "map_reader"
@@ -88,28 +97,39 @@ class TileExtraction(BaseModel):
     illegible_notes: list[str] = Field(description="Text you could see but not read confidently")
 
 
-def _cache_key(image_bytes: bytes) -> str:
+def _cache_key(image_bytes: bytes, model: str, effort: str) -> str:
     h = hashlib.sha256()
-    h.update(f"{MODEL}|{PROMPT_VERSION}|".encode())
+    h.update(f"{model}|{effort}|{PROMPT_VERSION}|".encode())
     h.update(image_bytes)
     return h.hexdigest()[:32]
 
 
-def read_tile(tile_path: Path, client: anthropic.Anthropic | None = None) -> dict:
-    """Extract buildings from one tile. Returns {extraction, usage, model, cached}."""
+def read_tile(
+    tile_path: Path,
+    client: anthropic.Anthropic | None = None,
+    model: str | None = None,
+    effort: str | None = None,
+) -> dict:
+    """Extract buildings from one tile. Returns {extraction, usage, usd, model, cached}."""
+    # Read at call time so values from .env (loaded by the calling script) apply.
+    model = model or os.environ.get("BLOCKHISTORY_MODEL") or DEFAULT_MODEL
+    effort = effort or os.environ.get("BLOCKHISTORY_EFFORT") or DEFAULT_EFFORT
     image_bytes = tile_path.read_bytes()
-    cache_path = CACHE_DIR / f"{_cache_key(image_bytes)}.json"
+    cache_path = CACHE_DIR / f"{_cache_key(image_bytes, model, effort)}.json"
     if cache_path.exists():
         return {**json.loads(cache_path.read_text()), "cached": True}
 
+    costs.check_budget()
     client = client or anthropic.Anthropic()
-    response = client.beta.messages.parse(
-        model=MODEL,
-        max_tokens=16000,
-        output_config={"effort": "high"},
+    extra = {}
+    if model in FALLBACK_MODELS:
         # On a safety-classifier false positive, let the API re-run on a fallback model.
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
+        extra = {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
+    response = client.beta.messages.parse(
+        model=model,
+        max_tokens=16000,
+        output_config={"effort": effort},
+        **extra,
         system=SYSTEM_PROMPT,
         messages=[
             {
@@ -129,6 +149,9 @@ def read_tile(tile_path: Path, client: anthropic.Anthropic | None = None) -> dic
         ],
         output_format=TileExtraction,
     )
+    usd = costs.record(
+        model, response.usage.input_tokens, response.usage.output_tokens, what=tile_path.name
+    )
     if response.stop_reason == "refusal":
         raise RuntimeError(f"Model declined tile {tile_path.name}: {response.stop_details}")
     if response.parsed_output is None:
@@ -137,11 +160,13 @@ def read_tile(tile_path: Path, client: anthropic.Anthropic | None = None) -> dic
     result = {
         "tile": tile_path.name,
         "model": response.model,
+        "effort": effort,
         "prompt_version": PROMPT_VERSION,
         "usage": {
             "input_tokens": response.usage.input_tokens,
             "output_tokens": response.usage.output_tokens,
         },
+        "usd": round(usd, 6),
         "extraction": response.parsed_output.model_dump(mode="json"),
     }
     CACHE_DIR.mkdir(parents=True, exist_ok=True)

@@ -1,22 +1,23 @@
 {
-  "sheet_id": "04849_1948-0002",
-  "edition": "1948-06",
+  "sheet_id": "04858_12_1938-0053",
+  "edition": "1938",
   "labeled_by": "",
   "labeled_on": "",
-  "scope": "whole sheet | tile <name>",
+  "scope": "whole sheet | tile <name> | specific-use labels only",
   "buildings": [
     {
-      "label": "DRY CLE",
-      "use": "dry cleaner",
-      "street_number": null,
-      "street_name": "E 7th St",
-      "construction": "concrete_block",
-      "stories": null,
-      "has_gasoline_tank": false,
+      "label": "FILL'G STA. / BATTERY SERV.",
+      "use": "filling station and battery service",
+      "street_number": "7106",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "has_gasoline_tank": true,
       "partial": false,
-      "confidence": "medium",
-      "position": "tile r2_c1, top-right, next to ref #57",
-      "notes": "Label partly covered; confirm on full-res sheet"
+      "confidence": "high",
+      "position": "tile r2_c1",
+      "contamination_relevance": "high",
+      "notes": "2 G.T.S at the corner of E Blow"
     }
   ],
   "notes": ""

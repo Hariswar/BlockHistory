@@ -56,3 +56,13 @@ def test_tile_sheet_writes_index(tmp_path):
     assert len(paths) == len(index["tiles"]) == 6  # 3 cols x 2 rows
     assert index["sheet_size"] == [2000, 1500]
     assert all(Image.open(p).size == (1024, 1024) for p in paths)
+
+
+def test_list_sheets_handles_index_pages(monkeypatch):
+    service = "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g04858191612:04858_12_1916-ind1"
+    item = json.loads(json.dumps(ITEM_JSON))
+    item["resources"][0]["files"][0][0]["url"] = f"{IIIF}/{service}/full/pct:12.5/0/default.jpg"
+    monkeypatch.setattr(loc, "_get_json", lambda url, params=None: item)
+    (sheet,) = loc.list_sheets("sanborn04858_015")
+    assert sheet.sheet_id == "04858_12_1916-ind1"
+    assert sheet.sheet_number is None

@@ -1,0 +1,39 @@
+{
+  "sheet_id": "04858_10_1903-0014",
+  "edition": "1903",
+  "volume": "St. Louis Vol. 10",
+  "labeled_by": "Claude (draft, needs human check)",
+  "labeled_on": "2026-10-10",
+  "scope": "Week 2 draft: every footprint with a specific use label (not bare D/S/F), plus fuel, oil and boiler/engine rooms. Plain dwellings, stores and unlabeled sheds are not listed. Groups of identical footprints (e.g. a row of KILNs) are one entry with the count in notes.",
+  "buildings": [
+    {
+      "label": "DAIRY",
+      "use": "dairy barn",
+      "street_number": "5423",
+      "street_name": "Bischoff Ave",
+      "construction": "frame",
+      "stories": "1\u00bd",
+      "has_gasoline_tank": false,
+      "partial": false,
+      "confidence": "medium",
+      "position": "tile r3_c3",
+      "contamination_relevance": "low",
+      "notes": "Crossed box = stable; '5423' printed on Bischoff margin"
+    },
+    {
+      "label": "COW SHED",
+      "use": "cow shed",
+      "street_number": null,
+      "street_name": null,
+      "construction": "frame",
+      "stories": "1",
+      "has_gasoline_tank": false,
+      "partial": false,
+      "confidence": "high",
+      "position": "tile r3_c2",
+      "contamination_relevance": "low",
+      "notes": "Block 4041"
+    }
+  ],
+  "notes": "Mostly vacant in 1903: blocks 4042, 4043 empty, scattered frame dwellings along Daggett/Edwards and Macklind. Other feature: a POND in block 4041 near Wilson & Bischoff, possibly a flooded clay pit next to the Sanders brickworks (sheet 15). Good test of 'no false positives' on a sparse sheet."
+}

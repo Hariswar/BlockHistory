@@ -1,0 +1,266 @@
+{
+  "editions": [
+    {
+      "item_id": "sanborn04858_002",
+      "date": "1904",
+      "url": "https://www.loc.gov/item/sanborn04858_002/",
+      "sheet_count": 23,
+      "sheets": [
+        {
+          "sheet_id": "04858_1904-titl",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": null,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-titl",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-titl.jp2",
+          "width": 6437,
+          "height": 7677,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0000",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 0,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0000",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0000.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0001",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0001.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0002",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0002.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0003",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 3,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0003",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0003.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0004",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 4,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0004",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0004.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0005",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 5,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0005",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0005.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0006",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 6,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0006",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0006.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0007",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 7,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0007",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0007.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0008",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 8,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0008",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0008.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0009",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 9,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0009",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0009.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0010",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 10,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0010",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0010.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0011",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 11,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0011",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0011.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0012",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 12,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0012",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0012.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0013",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 13,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0013",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0013.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0014",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 14,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0014",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0014.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0015",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 15,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0015",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0015.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0016",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 16,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0016",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0016.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0017",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 17,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0017",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0017.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0018",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 18,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0018",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0018.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0019",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 19,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0019",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0019.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0020",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 20,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0020",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0020.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        },
+        {
+          "sheet_id": "04858_1904-0021",
+          "item_id": "sanborn04858_002",
+          "edition_date": "1904",
+          "sheet_number": 21,
+          "service": "service:gmd:gmd416m:g4164m:g4164sm:g4164sm_g048581904:04858_1904-0021",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164sm/g4164sm_g048581904/04858_1904-0021.jp2",
+          "width": 6507,
+          "height": 7678,
+          "item_url": "https://www.loc.gov/item/sanborn04858_002/"
+        }
+      ]
+    }
+  ],
+  "name": "1904 World's Fair (Louisiana Purchase Exposition), St. Louis"
+}
