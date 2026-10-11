@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets
+.env
+
+# Downloaded map sheets, tiles, and model-result cache (large; regenerate via scripts)
+data/*
+!data/.gitkeep
+
+# Node / Next.js
+node_modules/
+web/.next/
+web/out/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

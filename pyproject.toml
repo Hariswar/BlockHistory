@@ -1,0 +1,27 @@
+[project]
+name = "blockhistory"
+version = "0.0.1"
+description = "Multi-agent system that reads historical Sanborn fire insurance maps to surface land-use and contamination history for any address."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31",
+    "pillow>=10.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+# Added as each phase needs them (geo libs need GDAL installed system-wide: `brew install gdal`).
+geo = ["geopandas>=1.0", "rasterio>=1.3", "psycopg[binary]>=3.1"]
+vision = ["anthropic>=0.40", "opencv-python>=4.9"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["blockhistory*"]
+
+[tool.ruff]
+line-length = 100
