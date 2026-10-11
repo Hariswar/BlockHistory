@@ -1,0 +1,23 @@
+{
+  "sheet_id": "04849_1948-0002",
+  "edition": "1948-06",
+  "labeled_by": "",
+  "labeled_on": "",
+  "scope": "whole sheet | tile <name>",
+  "buildings": [
+    {
+      "label": "DRY CLE",
+      "use": "dry cleaner",
+      "street_number": null,
+      "street_name": "E 7th St",
+      "construction": "concrete_block",
+      "stories": null,
+      "has_gasoline_tank": false,
+      "partial": false,
+      "confidence": "medium",
+      "position": "tile r2_c1, top-right, next to ref #57",
+      "notes": "Label partly covered; confirm on full-res sheet"
+    }
+  ],
+  "notes": ""
+}

@@ -102,9 +102,9 @@ Sheets processed · precision/recall · verifier accuracy gain · cost per sheet
 ## First 7 days
 - [x] Day 1: GitHub repo with README mission
 - [x] Day 1: Progress log and decision log
-- [ ] Day 2: Confirm your city has 2+ map years in the LoC Sanborn collection
-- [ ] Day 3: Pick one neighborhood, save its sheet URLs
-- [ ] Day 4: Read the Sanborn key; note symbols for gas stations, dry cleaners, factories
+- [x] Day 2: Confirm your city has 2+ map years in the LoC Sanborn collection
+- [x] Day 3: Pick one neighborhood, save its sheet URLs
+- [x] Day 4: Read the Sanborn key; note symbols for gas stations, dry cleaners, factories
 - [ ] Day 5: Manually annotate 2 sheets
-- [ ] Day 6: Script to download one sheet via loc.gov API
+- [x] Day 6: Script to download one sheet via loc.gov API
 - [ ] Day 7: Send one tile to a vision model; note what it got wrong

@@ -1,0 +1,549 @@
+{
+  "city": "Rolla",
+  "state": "Missouri",
+  "study_area": {
+    "name": "Rolla (whole mapped area: downtown Pine St corridor, Frisco railroad, MSM campus edge, Holloway/Bishop additions)",
+    "why": "Rolla is small: each edition is only 1-9 sheets, so the whole town is the 'neighborhood'.",
+    "editions": [
+      "1924-12",
+      "1933-06",
+      "1948-06"
+    ],
+    "phase1_edition": "1948-06",
+    "sheet_count": 21
+  },
+  "editions": [
+    {
+      "item_id": "sanborn04849_001",
+      "date": "1884-04",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_001/",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "sheet_id": "04849_1884-0001",
+          "item_id": "sanborn04849_001",
+          "edition_date": "1884-04",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491884:04849_1884-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491884/04849_1884-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_001/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_002",
+      "date": "1893-06",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_002/",
+      "sheet_count": 2,
+      "sheets": [
+        {
+          "sheet_id": "04849_1893-0001",
+          "item_id": "sanborn04849_002",
+          "edition_date": "1893-06",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491893:04849_1893-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491893/04849_1893-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_002/"
+        },
+        {
+          "sheet_id": "04849_1893-0002",
+          "item_id": "sanborn04849_002",
+          "edition_date": "1893-06",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491893:04849_1893-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491893/04849_1893-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_002/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_003",
+      "date": "1897-08",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_003/",
+      "sheet_count": 2,
+      "sheets": [
+        {
+          "sheet_id": "04849_1897-0001",
+          "item_id": "sanborn04849_003",
+          "edition_date": "1897-08",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491897:04849_1897-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491897/04849_1897-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_003/"
+        },
+        {
+          "sheet_id": "04849_1897-0002",
+          "item_id": "sanborn04849_003",
+          "edition_date": "1897-08",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491897:04849_1897-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491897/04849_1897-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_003/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_004",
+      "date": "1905-09",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_004/",
+      "sheet_count": 4,
+      "sheets": [
+        {
+          "sheet_id": "04849_1905-0001",
+          "item_id": "sanborn04849_004",
+          "edition_date": "1905-09",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491905:04849_1905-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491905/04849_1905-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_004/"
+        },
+        {
+          "sheet_id": "04849_1905-0002",
+          "item_id": "sanborn04849_004",
+          "edition_date": "1905-09",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491905:04849_1905-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491905/04849_1905-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_004/"
+        },
+        {
+          "sheet_id": "04849_1905-0003",
+          "item_id": "sanborn04849_004",
+          "edition_date": "1905-09",
+          "sheet_number": 3,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491905:04849_1905-0003",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491905/04849_1905-0003.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_004/"
+        },
+        {
+          "sheet_id": "04849_1905-0004",
+          "item_id": "sanborn04849_004",
+          "edition_date": "1905-09",
+          "sheet_number": 4,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491905:04849_1905-0004",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491905/04849_1905-0004.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_004/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_005",
+      "date": "1910-11",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_005/",
+      "sheet_count": 5,
+      "sheets": [
+        {
+          "sheet_id": "04849_1910-0001",
+          "item_id": "sanborn04849_005",
+          "edition_date": "1910-11",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491910:04849_1910-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491910/04849_1910-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_005/"
+        },
+        {
+          "sheet_id": "04849_1910-0002",
+          "item_id": "sanborn04849_005",
+          "edition_date": "1910-11",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491910:04849_1910-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491910/04849_1910-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_005/"
+        },
+        {
+          "sheet_id": "04849_1910-0003",
+          "item_id": "sanborn04849_005",
+          "edition_date": "1910-11",
+          "sheet_number": 3,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491910:04849_1910-0003",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491910/04849_1910-0003.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_005/"
+        },
+        {
+          "sheet_id": "04849_1910-0004",
+          "item_id": "sanborn04849_005",
+          "edition_date": "1910-11",
+          "sheet_number": 4,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491910:04849_1910-0004",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491910/04849_1910-0004.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_005/"
+        },
+        {
+          "sheet_id": "04849_1910-0005",
+          "item_id": "sanborn04849_005",
+          "edition_date": "1910-11",
+          "sheet_number": 5,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491910:04849_1910-0005",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491910/04849_1910-0005.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_005/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_006",
+      "date": "1917-06",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_006/",
+      "sheet_count": 6,
+      "sheets": [
+        {
+          "sheet_id": "04849_1917-0001",
+          "item_id": "sanborn04849_006",
+          "edition_date": "1917-06",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491917:04849_1917-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491917/04849_1917-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_006/"
+        },
+        {
+          "sheet_id": "04849_1917-0002",
+          "item_id": "sanborn04849_006",
+          "edition_date": "1917-06",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491917:04849_1917-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491917/04849_1917-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_006/"
+        },
+        {
+          "sheet_id": "04849_1917-0003",
+          "item_id": "sanborn04849_006",
+          "edition_date": "1917-06",
+          "sheet_number": 3,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491917:04849_1917-0003",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491917/04849_1917-0003.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_006/"
+        },
+        {
+          "sheet_id": "04849_1917-0004",
+          "item_id": "sanborn04849_006",
+          "edition_date": "1917-06",
+          "sheet_number": 4,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491917:04849_1917-0004",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491917/04849_1917-0004.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_006/"
+        },
+        {
+          "sheet_id": "04849_1917-0005",
+          "item_id": "sanborn04849_006",
+          "edition_date": "1917-06",
+          "sheet_number": 5,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491917:04849_1917-0005",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491917/04849_1917-0005.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_006/"
+        },
+        {
+          "sheet_id": "04849_1917-0006",
+          "item_id": "sanborn04849_006",
+          "edition_date": "1917-06",
+          "sheet_number": 6,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491917:04849_1917-0006",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491917/04849_1917-0006.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_006/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_007",
+      "date": "1924-12",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_007/",
+      "sheet_count": 9,
+      "sheets": [
+        {
+          "sheet_id": "04849_1924-0001",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0002",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0003",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 3,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0003",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0003.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0004",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 4,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0004",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0004.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0005",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 5,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0005",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0005.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0006",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 6,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0006",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0006.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0007",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 7,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0007",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0007.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0008",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 8,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0008",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0008.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        },
+        {
+          "sheet_id": "04849_1924-0009",
+          "item_id": "sanborn04849_007",
+          "edition_date": "1924-12",
+          "sheet_number": 9,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491924:04849_1924-0009",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491924/04849_1924-0009.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_007/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_008",
+      "date": "1933-06",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_008/",
+      "sheet_count": 5,
+      "sheets": [
+        {
+          "sheet_id": "04849_1933-0001",
+          "item_id": "sanborn04849_008",
+          "edition_date": "1933-06",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491933:04849_1933-0001",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491933/04849_1933-0001.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_008/"
+        },
+        {
+          "sheet_id": "04849_1933-0002",
+          "item_id": "sanborn04849_008",
+          "edition_date": "1933-06",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491933:04849_1933-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491933/04849_1933-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_008/"
+        },
+        {
+          "sheet_id": "04849_1933-0003",
+          "item_id": "sanborn04849_008",
+          "edition_date": "1933-06",
+          "sheet_number": 3,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491933:04849_1933-0003",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491933/04849_1933-0003.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_008/"
+        },
+        {
+          "sheet_id": "04849_1933-0004",
+          "item_id": "sanborn04849_008",
+          "edition_date": "1933-06",
+          "sheet_number": 4,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491933:04849_1933-0004",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491933/04849_1933-0004.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_008/"
+        },
+        {
+          "sheet_id": "04849_1933-0005",
+          "item_id": "sanborn04849_008",
+          "edition_date": "1933-06",
+          "sheet_number": 5,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491933:04849_1933-0005",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491933/04849_1933-0005.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_008/"
+        }
+      ]
+    },
+    {
+      "item_id": "sanborn04849_009",
+      "date": "1948-06",
+      "title": "Sanborn Fire Insurance Map from Rolla, Phelps County, Missouri.",
+      "url": "http://www.loc.gov/item/sanborn04849_009/",
+      "sheet_count": 7,
+      "sheets": [
+        {
+          "sheet_id": "04849_1948-0001a",
+          "item_id": "sanborn04849_009",
+          "edition_date": "1948-06",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491948:04849_1948-0001a",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491948/04849_1948-0001a.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_009/"
+        },
+        {
+          "sheet_id": "04849_1948-0001b",
+          "item_id": "sanborn04849_009",
+          "edition_date": "1948-06",
+          "sheet_number": 1,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491948:04849_1948-0001b",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491948/04849_1948-0001b.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_009/"
+        },
+        {
+          "sheet_id": "04849_1948-0002",
+          "item_id": "sanborn04849_009",
+          "edition_date": "1948-06",
+          "sheet_number": 2,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491948:04849_1948-0002",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491948/04849_1948-0002.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_009/"
+        },
+        {
+          "sheet_id": "04849_1948-0003",
+          "item_id": "sanborn04849_009",
+          "edition_date": "1948-06",
+          "sheet_number": 3,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491948:04849_1948-0003",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491948/04849_1948-0003.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_009/"
+        },
+        {
+          "sheet_id": "04849_1948-0004",
+          "item_id": "sanborn04849_009",
+          "edition_date": "1948-06",
+          "sheet_number": 4,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491948:04849_1948-0004",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491948/04849_1948-0004.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_009/"
+        },
+        {
+          "sheet_id": "04849_1948-0005",
+          "item_id": "sanborn04849_009",
+          "edition_date": "1948-06",
+          "sheet_number": 5,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491948:04849_1948-0005",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491948/04849_1948-0005.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_009/"
+        },
+        {
+          "sheet_id": "04849_1948-0006",
+          "item_id": "sanborn04849_009",
+          "edition_date": "1948-06",
+          "sheet_number": 6,
+          "service": "service:gmd:gmd416m:g4164m:g4164rm:g4164rm_g048491948:04849_1948-0006",
+          "jp2_url": "https://tile.loc.gov/storage-services/service/gmd/gmd416m/g4164m/g4164rm/g4164rm_g048491948/04849_1948-0006.jp2",
+          "width": 6450,
+          "height": 7650,
+          "item_url": "https://www.loc.gov/item/sanborn04849_009/"
+        }
+      ]
+    }
+  ]
+}
