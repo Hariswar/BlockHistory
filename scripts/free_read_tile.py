@@ -23,19 +23,46 @@ def _norm(text: str) -> str:
     return re.sub(r"[^A-Z0-9]", "", text.upper())
 
 
+def tank_count(b: dict) -> int:
+    """Gas tanks for one entry: label files use gasoline_tank_count; older ones a bool."""
+    return int(b.get("gasoline_tank_count", b.get("has_gasoline_tank", False)))
+
+
 def expected_labels(tile: Path) -> list[dict]:
-    """Hand-labeled buildings whose position is this tile (empty if the sheet isn't labeled)."""
+    """Hand-labeled buildings in this tile: `position` or an optional `tile` field names it.
+
+    Entries positioned by city block ("block 3012") can't be matched to a tile.
+    """
     sheet_id, row, col = tile.stem.rsplit("_", 2)
     path = LABELS / f"{sheet_id}.json"
     if not path.exists():
         return []
     doc = json.loads(path.read_text())
-    return [b for b in doc["buildings"] if b["position"] == f"tile {row}_{col}"]
+    want = f"tile {row}_{col}"
+    return [b for b in doc["buildings"] if want in (b.get("position"), f"tile {b.get('tile')}")]
 
 
 def label_words(label: str) -> list[str]:
     # 'GRINDING 1ST / DRYING 2 & 3RD' -> ['GRINDING', 'DRYING'] (words with 3+ letters)
     return [w for w in (_norm(t) for t in label.split()) if sum(c.isalpha() for c in w) >= 3]
+
+
+def report(expected: list[dict], found: set[str], gas_tanks: int | None = None) -> None:
+    """Print which hand-labeled buildings a reader found, by matching label words."""
+    for b in expected:
+        ws = label_words(b["label"])
+        # Exact word, or a 4+ letter fragment of it ("MACH" for "MACHS"); 3-letter
+        # fragments like "LAY" matched too much by accident.
+        hit = [w for w in ws if any(w == f or (len(f) >= 4 and f in w) for f in found)]
+        mark = "found" if hit else "MISSED"
+        print(f"   [{mark:6}] {b['label']}  ({b['contamination_relevance']})")
+    if gas_tanks is not None:
+        sites = sum(tank_count(b) > 0 for b in expected)
+        symbols = sum(tank_count(b) for b in expected)
+        print(
+            f"   gas tanks: hand labels have {sites} site(s) with {symbols} G.T. symbol(s); "
+            f"reader marked {gas_tanks} building(s) with a tank"
+        )
 
 
 def main() -> None:
@@ -51,15 +78,14 @@ def main() -> None:
 
     print(f"== Tesseract: {len(words)} words")
     print("   " + ", ".join(f"{w['text']} ({w['confidence']})" for w in words))
+    if not expected:
+        print(
+            "\n(No hand labels with this tile's position. Labels positioned by block can't be"
+            ' matched to a tile; add a "tile" field to compare.)'
+        )
     if expected:
         print(f"\n== Hand labels in this tile: {len(expected)}")
-        for b in expected:
-            ws = label_words(b["label"])
-            # Exact word, or a 4+ letter fragment of it ("MACH" for "MACHS"); 3-letter
-            # fragments like "LAY" matched too much by accident.
-            hit = [w for w in ws if any(w == f or (len(f) >= 4 and f in w) for f in found)]
-            mark = "found" if hit else "MISSED"
-            print(f"   [{mark:6}] {b['label']}  ({b['contamination_relevance']})")
+        report(expected, found)
 
     if args.vision:
         from blockhistory.map_reader.free_vision import read_tile_free
@@ -75,6 +101,19 @@ def main() -> None:
             print(f"   {b['label']:<28} {b['use']:<24} {addr:<20} {b['confidence']}")
         if ext["illegible_notes"]:
             print(f"   illegible: {ext['illegible_notes']}")
+        if result.get("truncated"):
+            print(
+                f"   WARNING: reply was cut off ({result.get('done_reason')}); "
+                "only complete entries kept"
+            )
+        if result.get("duplicates_removed"):
+            print(f"   WARNING: removed {result['duplicates_removed']} repeated entries")
+        if expected:
+            print("\n== Vision model vs hand labels")
+            vision_words = {
+                w for b in ext["buildings"] for w in label_words(f"{b['label']} {b['use']}")
+            }
+            report(expected, vision_words, sum(b["has_gasoline_tank"] for b in ext["buildings"]))
 
 
 if __name__ == "__main__":

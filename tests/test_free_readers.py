@@ -73,3 +73,28 @@ def test_free_vision_calls_ollama_and_caches(tmp_path, monkeypatch):
     assert first["extraction"]["buildings"][0]["label"] == "OIL HO."
     (cached_file,) = (tmp_path / "cache").glob("*.json")
     assert jsonlib.loads(cached_file.read_text())["model"] == "qwen2.5vl:7b"
+
+
+def test_salvage_keeps_complete_buildings_from_cut_off_reply():
+    b = {
+        "label": "FILL'G STA.",
+        "use": "filling station",
+        "street_number": "6226",
+        "street_name": "S Broadway",
+        "construction": "brick",
+        "stories": "1",
+        "has_gasoline_tank": True,
+        "partial": False,
+        "confidence": "high",
+        "position": "bottom left",
+    }
+    other = {**b, "label": "COAL YARD", "use": "coal yard", "has_gasoline_tank": False}
+    whole = jsonlib.dumps({"streets": ["S Broadway"], "buildings": [b, b, other]})
+    # Cut off mid-way through a fourth entry, like the first Colab run.
+    cut = whole[:-2] + ', {"label": "JUNK YARD", "use": "junk", "has_gas'
+
+    extraction, dupes = free_vision._salvage(cut)
+    assert [x.label for x in extraction.buildings] == ["FILL'G STA.", "COAL YARD"]
+    assert dupes == 1
+    assert extraction.streets == ["S Broadway"]
+    assert free_vision._salvage("not json at all {")[0].buildings == []

@@ -22,7 +22,7 @@ TILES = Path("data/tiles")
 TILES_PER_AREA = 1480  # Carondelet: 1938 + 1950 editions, 74 sheets each x 20 tiles
 # Carondelet 1938 tiles with the high-priority finds: filling stations with G.T.S, a bulk
 # oil station, an oil house, the Laclede Gas coke plant (tar, benzol, ammonia tanks).
-DEFAULT_TILES = ["04858_12_1938-0050_r3_c0", "04858_12_1938-0053_r2_c1", "04858_12_1938-0074_r2_c1"]
+DEFAULT_TILES = ["04858_12_1938-0050_r3_c2", "04858_12_1938-0050_r3_c0", "04858_12_1938-0050_r1_c2"]
 
 
 def _norm(text: str) -> str:
@@ -33,7 +33,8 @@ def _expected(tile_name: str) -> list[dict]:
     sheet_id, row, col = tile_name.rsplit("_", 2)
     tile = f"{row}_{col}"
     doc = json.loads((LABELS / f"{sheet_id}.json").read_text())
-    return [b for b in doc["buildings"] if b["position"] == f"tile {tile}"]
+    want = f"tile {tile}"
+    return [b for b in doc["buildings"] if want in (b.get("position"), f"tile {b.get('tile')}")]
 
 
 def _score(expected: list[dict], found: list[dict]) -> tuple[int, int, int, int]:
@@ -47,7 +48,9 @@ def _score(expected: list[dict], found: list[dict]) -> tuple[int, int, int, int]
             for part in (_norm(p) for p in e["label"].split("/"))
         )
     )
-    gt_expected = sum(e["has_gasoline_tank"] for e in expected)
+    gt_expected = sum(
+        int(e.get("gasoline_tank_count", e.get("has_gasoline_tank", 0))) > 0 for e in expected
+    )
     gt_found = min(gt_expected, sum(b["has_gasoline_tank"] for b in found))
     return hits, len(expected), gt_found, gt_expected
 
