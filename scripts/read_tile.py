@@ -35,7 +35,7 @@ def main() -> None:
     print(f"streets: {', '.join(ext['streets'])}\n")
     for b in ext["buildings"]:
         addr = " ".join(x for x in (b["street_number"], b["street_name"]) if x) or "?"
-        flags = (" [G.T.]" if b["has_gasoline_tank"] else "") + (
+        flags = (f" [G.T. x{b['gasoline_tank_count']}]" if b["gasoline_tank_count"] else "") + (
             " [partial]" if b["partial"] else ""
         )
         print(

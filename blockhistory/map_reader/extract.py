@@ -18,40 +18,57 @@ from pydantic import BaseModel, Field
 
 from blockhistory import costs
 
-# This paid reader only sees tiles the free first pass (Tesseract + an open-source vision
-# model) couldn't read. Haiku by default; Sonnet only for tiles Haiku is unsure about.
-# Override in .env (BLOCKHISTORY_MODEL / BLOCKHISTORY_EFFORT); see docs/budget.md.
+# Main map reader (Day 7: Haiku found 9 of 10 hand labels and 3 of 3 gas-tank sites; the
+# free vision model found 3 and 0). Haiku by default; Sonnet only for tiles Haiku is
+# unsure about. Override in .env (BLOCKHISTORY_MODEL / BLOCKHISTORY_EFFORT).
 DEFAULT_MODEL = "claude-haiku-5-5"
-DEFAULT_EFFORT = "medium"
+DEFAULT_EFFORT = "low"  # medium scored worse at ~2x cost on the Day 7 tiles
 # Models that accept server-side refusal fallbacks (Haiku 5.5 has none).
 FALLBACK_MODELS = {"claude-sonnet-5-5"}
 # Bump whenever SYSTEM_PROMPT or the schema changes so the cache doesn't serve stale output.
-PROMPT_VERSION = "v0"
+PROMPT_VERSION = "v1"
 CACHE_DIR = Path(__file__).resolve().parents[2] / "data" / "cache" / "map_reader"
 
 SYSTEM_PROMPT = """\
 You read crops of Sanborn fire insurance maps (US, 1880s-1950s) and transcribe what is \
-printed on them. Your output feeds a tool that warns residents about historical land uses \
-that sometimes left soil contamination, so record only what is actually on the map and \
-say when you are unsure.
+printed on them. Your output feeds a tool that tells residents about past land uses that \
+sometimes left soil contamination, so record only what is actually on the map and say \
+when you are unsure.
 
 How to read the map:
-- Building color = construction: pink/red brick, yellow frame (wood), blue stone or \
-concrete block ("C.B."), gray iron or metal-clad, brown fireproof. Brick with a yellow \
-stripe is brick veneer.
+- Building color = construction: pink/red brick, yellow frame (wood), blue concrete block \
+("C.B.") or concrete, gray iron or metal-clad, olive/brown fireproof. Brick with a yellow \
+edge is brick veneer.
 - Letters inside a footprint give the use: D dwelling, S store, F flat, A auto house \
-(private garage). Longer labels name the business ("DRUGS", "REST.", "FILL'G STA.", \
-"DRY CLEANING", "AUTO REPAIRING", "TIN SHOP", "BULK OIL DEPOT").
+(private garage). Longer labels name the business: "FILL'G STA.", "BULK OIL STA.", \
+"OIL HO.", "DRY CLEANING", "AUTO REP'G", "TIN SHOP", "FOUNDRY", or a company name with a \
+line like "MFG. STEEL CASTINGS".
 - Small numbers in a footprint corner are stories (e.g. "2", "1B" = 1 story + basement).
-- Street numbers run along the street edge of each lot; current numbers are printed \
-outside, and older numbers sometimes appear in parentheses.
-- A small circle labeled "G.T." is a gasoline tank (often underground). Oil tanks, \
-pumps ("P"), and "GAS" also matter.
+- Common abbreviations: FR. = frame, BR. = brick, IR. = iron, CONC. = concrete, \
+FOUND. = foundation, STGE = storage, W. HO. = warehouse, HO. = house, MFG. = \
+manufacturing, GASOL. = gasoline, FILL'G STA. = filling station. "FR. FOUND." means a \
+frame building on a foundation, not a foundry; "BR. CORE OVEN" is a brick core oven.
+- Gasoline tanks: a small circle marked "G.T." (or "G.T.S" with 2-3 circles) is drawn at \
+the curb or yard beside the building it serves, usually a filling station, garage or oil \
+station. Count the circles and give the count to that one building only, never to its \
+neighbors. Above-ground tanks are labeled in words ("IR. TANKS 8' ABV. GRD.").
+- Addresses: house numbers are printed along the street edge of each lot, and belong to \
+the street that edge faces. Follow the street line to find that street's name; it may be \
+printed far from the building, and a nearby side street is usually not the right one. \
+Numbers nearest the building are current; numbers in parentheses or further out are old.
+- Not addresses: large bold numbers in the middle of a block (e.g. "3009") are city block \
+numbers; circled numbers are ground elevations; big numbers at the sheet edge refer to \
+other sheets.
 - Thin pasted-over patches are later revisions; read the top layer.
 
 Rules:
-- One entry per labeled building footprint. Skip unlabeled outbuildings unless they \
-carry a use label or G.T./tank symbol.
+- List buildings and sites that have a specific use label (a business, factory, \
+institution, yard, or tank). Do not list footprints marked only D, S, F, or A; do list \
+any footprint with a G.T. symbol, whatever its label.
+- A plant drawn as many labeled parts (boiler room, foundry, pattern shop) can be one \
+entry per labeled part.
+- Construction notes ("CONC. FL.", "STEEL RF.", "WOOD POSTS") describe a building; they \
+are not buildings. Put them in that building's entry, not a new one.
 - Copy label text verbatim, including abbreviations; put your expansion in `use`.
 - Never invent an address. If no street number is legible for a building, leave it null.
 - A building cut off by the tile edge is still listed; set `partial` true.
@@ -82,7 +99,9 @@ class Building(BaseModel):
     street_name: str | None = Field(description="Street the number fronts on, or null")
     construction: Construction
     stories: str | None = Field(description="Story marking as printed, e.g. '2', '1B', or null")
-    has_gasoline_tank: bool = Field(description="A G.T. / gasoline or oil tank symbol is attached")
+    gasoline_tank_count: int = Field(
+        description="Number of G.T. circles drawn for this building (0 if none)"
+    )
     partial: bool = Field(description="Footprint is cut off by the tile edge")
     confidence: Confidence
     position: str = Field(description="Rough location in the tile, e.g. 'top-left'")

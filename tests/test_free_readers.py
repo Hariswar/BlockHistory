@@ -39,7 +39,7 @@ def test_free_vision_calls_ollama_and_caches(tmp_path, monkeypatch):
                 "street_name": None,
                 "construction": "frame",
                 "stories": "1",
-                "has_gasoline_tank": False,
+                "gasoline_tank_count": 0,
                 "partial": False,
                 "confidence": "medium",
                 "position": "center",
@@ -83,12 +83,12 @@ def test_salvage_keeps_complete_buildings_from_cut_off_reply():
         "street_name": "S Broadway",
         "construction": "brick",
         "stories": "1",
-        "has_gasoline_tank": True,
+        "gasoline_tank_count": 2,
         "partial": False,
         "confidence": "high",
         "position": "bottom left",
     }
-    other = {**b, "label": "COAL YARD", "use": "coal yard", "has_gasoline_tank": False}
+    other = {**b, "label": "COAL YARD", "use": "coal yard", "gasoline_tank_count": 0}
     whole = jsonlib.dumps({"streets": ["S Broadway"], "buildings": [b, b, other]})
     # Cut off mid-way through a fourth entry, like the first Colab run.
     cut = whole[:-2] + ', {"label": "JUNK YARD", "use": "junk", "has_gas'

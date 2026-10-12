@@ -95,7 +95,9 @@ def main() -> None:
             vision_words = {
                 w for b in ext["buildings"] for w in label_words(f"{b['label']} {b['use']}")
             }
-            report(expected, vision_words, sum(b["has_gasoline_tank"] for b in ext["buildings"]))
+            report(
+                expected, vision_words, sum(b["gasoline_tank_count"] > 0 for b in ext["buildings"])
+            )
 
 
 if __name__ == "__main__":
