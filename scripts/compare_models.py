@@ -9,13 +9,13 @@ that the model also found. The full precision/recall eval comes in week 7.
 
 import argparse
 import json
-import re
 from pathlib import Path
 
 from dotenv import load_dotenv
 
 from blockhistory import costs
 from blockhistory.map_reader.extract import read_tile
+from blockhistory.map_reader.scoring import is_found, label_words, tank_count
 
 LABELS = Path("evals/labels")
 TILES = Path("data/tiles")
@@ -23,10 +23,6 @@ TILES_PER_AREA = 1480  # Carondelet: 1938 + 1950 editions, 74 sheets each x 20 t
 # Carondelet 1938 tiles with the high-priority finds: filling stations with G.T.S, a bulk
 # oil station, an oil house, the Laclede Gas coke plant (tar, benzol, ammonia tanks).
 DEFAULT_TILES = ["04858_12_1938-0050_r3_c2", "04858_12_1938-0050_r3_c0", "04858_12_1938-0050_r1_c2"]
-
-
-def _norm(text: str) -> str:
-    return re.sub(r"[^A-Z0-9]", "", text.upper())
 
 
 def _expected(tile_name: str) -> list[dict]:
@@ -38,19 +34,9 @@ def _expected(tile_name: str) -> list[dict]:
 
 
 def _score(expected: list[dict], found: list[dict]) -> tuple[int, int, int, int]:
-    found_labels = [_norm(b["label"]) for b in found]
-    hits = sum(
-        1
-        for e in expected
-        # Hand labels like "OFF. / LODGE HALL 2ND" match if any part was found.
-        if any(
-            part and any(part in f or f in part for f in found_labels if f)
-            for part in (_norm(p) for p in e["label"].split("/"))
-        )
-    )
-    gt_expected = sum(
-        int(e.get("gasoline_tank_count", e.get("has_gasoline_tank", 0))) > 0 for e in expected
-    )
+    found_words = {w for b in found for w in label_words(f"{b['label']} {b['use']}")}
+    hits = sum(is_found(e["label"], found_words) for e in expected)
+    gt_expected = sum(tank_count(e) > 0 for e in expected)
     gt_found = min(gt_expected, sum(b["has_gasoline_tank"] for b in found))
     return hits, len(expected), gt_found, gt_expected
 

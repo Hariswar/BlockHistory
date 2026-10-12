@@ -9,23 +9,14 @@ Colab GPU with OLLAMA_HOST set to its URL (docs/free-models.md).
 
 import argparse
 import json
-import re
 from pathlib import Path
 
 from dotenv import load_dotenv
 
 from blockhistory.map_reader.ocr import read_tile_ocr
+from blockhistory.map_reader.scoring import is_found, label_words, norm, tank_count
 
 LABELS = Path("evals/labels")
-
-
-def _norm(text: str) -> str:
-    return re.sub(r"[^A-Z0-9]", "", text.upper())
-
-
-def tank_count(b: dict) -> int:
-    """Gas tanks for one entry: label files use gasoline_tank_count; older ones a bool."""
-    return int(b.get("gasoline_tank_count", b.get("has_gasoline_tank", False)))
 
 
 def expected_labels(tile: Path) -> list[dict]:
@@ -42,26 +33,10 @@ def expected_labels(tile: Path) -> list[dict]:
     return [b for b in doc["buildings"] if want in (b.get("position"), f"tile {b.get('tile')}")]
 
 
-# Words that appear in many company names, so matching on them alone proves nothing
-# (the first Colab run "found" SEMI-STEEL CASTING CO. MFG. because the ice plant's name
-# also had MFG).
-GENERIC_WORDS = {"MFG", "THE", "AND", "SUPPLY", "BLDG", "STGE", "STA", "STEEL", "PLANT"}
-
-
-def label_words(label: str) -> list[str]:
-    # 'GRINDING 1ST / DRYING 2 & 3RD' -> ['GRINDING', 'DRYING'] (words with 3+ letters)
-    words = (_norm(t) for t in label.split())
-    return [w for w in words if sum(c.isalpha() for c in w) >= 3 and w not in GENERIC_WORDS]
-
-
 def report(expected: list[dict], found: set[str], gas_tanks: int | None = None) -> None:
     """Print which hand-labeled buildings a reader found, by matching label words."""
     for b in expected:
-        ws = label_words(b["label"])
-        # Exact word, or a 4+ letter fragment of it ("MACH" for "MACHS"); 3-letter
-        # fragments like "LAY" matched too much by accident.
-        hit = [w for w in ws if any(w == f or (len(f) >= 4 and f in w) for f in found)]
-        mark = "found" if hit else "MISSED"
+        mark = "found" if is_found(b["label"], found) else "MISSED"
         print(f"   [{mark:6}] {b['label']}  ({b['contamination_relevance']})")
     if gas_tanks is not None:
         sites = sum(tank_count(b) > 0 for b in expected)
@@ -81,7 +56,7 @@ def main() -> None:
 
     expected = expected_labels(args.tile)
     words = read_tile_ocr(args.tile)
-    found = {_norm(w["text"]) for w in words}
+    found = {norm(w["text"]) for w in words}
 
     print(f"== Tesseract: {len(words)} words")
     print("   " + ", ".join(f"{w['text']} ({w['confidence']})" for w in words))
