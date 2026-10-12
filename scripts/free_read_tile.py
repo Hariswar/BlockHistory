@@ -42,9 +42,16 @@ def expected_labels(tile: Path) -> list[dict]:
     return [b for b in doc["buildings"] if want in (b.get("position"), f"tile {b.get('tile')}")]
 
 
+# Words that appear in many company names, so matching on them alone proves nothing
+# (the first Colab run "found" SEMI-STEEL CASTING CO. MFG. because the ice plant's name
+# also had MFG).
+GENERIC_WORDS = {"MFG", "THE", "AND", "SUPPLY", "BLDG", "STGE", "STA", "STEEL", "PLANT"}
+
+
 def label_words(label: str) -> list[str]:
     # 'GRINDING 1ST / DRYING 2 & 3RD' -> ['GRINDING', 'DRYING'] (words with 3+ letters)
-    return [w for w in (_norm(t) for t in label.split()) if sum(c.isalpha() for c in w) >= 3]
+    words = (_norm(t) for t in label.split())
+    return [w for w in words if sum(c.isalpha() for c in w) >= 3 and w not in GENERIC_WORDS]
 
 
 def report(expected: list[dict], found: set[str], gas_tanks: int | None = None) -> None:
