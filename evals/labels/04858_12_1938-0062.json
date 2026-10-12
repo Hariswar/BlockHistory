@@ -2,51 +2,47 @@
   "sheet_id": "04858_12_1938-0062",
   "edition": "1938",
   "volume": "St. Louis Vol. 12",
-  "labeled_by": "Claude (draft, needs human check)",
-  "labeled_on": "2026-10-10",
-  "scope": "Week 2 draft: every footprint with a specific use label (not bare D/S/F/A), plus every G.T./tank, oil house and fuel label. Plain dwellings, stores, flats and private auto houses are not listed. Groups (a row of coke ovens, a field of tanks) are one entry.",
+  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 62, image 04858_12_1938-0062",
+  "labeled_by": "Claude draft from the LOC sheet image; spot-checked and approved by Baburaj, 2026-10-11",
+  "labeled_on": "2026-10-11",
+  "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+  "definitions": {
+    "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+    "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+    "map_notes": "Only what is printed on the sheet.",
+    "interpretation": "Inference, not a map fact; never scored."
+  },
+  "sheet_layout": "S Broadway on the left, then Water St and the M.P. R.R. along Vulcan St on the right; E Steins at top, E Primm at bottom. Mostly dwellings, flats, stores and private auto houses.",
+  "false_positive_test": "No G.T. symbols, oil houses or fuel tanks anywhere on this sheet. A model that reports gasoline tanks here is wrong.",
+  "out_of_scope_seen": [
+    "PRIV. GARAGE CAP'Y 12 CARS with BOILER RM., 116 E Courtois (vehicle storage, no fuel or service marked)",
+    "UNDERTAKER / CHAPEL with garage for 5 cars, 7814-7816 S Broadway",
+    "W. HO. (warehouse) with auto house, rear of 7800-7802 Water St"
+  ],
+  "total_gasoline_tanks": 0,
   "buildings": [
     {
       "label": "SIGN PAINT'G",
-      "use": "sign painting",
+      "use": "sign painting shop",
       "street_number": "7728",
       "street_name": "S Broadway",
       "construction": "brick",
       "stories": "2",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c0",
+      "position": "block 3117",
+      "map_notes": "28 ft; wood floor. Corner of E Courtois.",
+      "interpretation": "Paints and solvents possible.",
       "contamination_relevance": "medium",
-      "notes": ""
-    },
-    {
-      "label": "PRIV. GARAGE CAP'Y 12 CARS / BOILER RM.",
-      "use": "private garage",
-      "street_number": "116",
-      "street_name": "E Courtois",
-      "construction": "brick",
-      "stories": "1",
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "high",
-      "position": "tile r3_c1",
-      "contamination_relevance": "medium",
-      "notes": "With a 3-car garage behind"
-    },
-    {
-      "label": "UNDERTAKER / CHAPEL",
-      "use": "funeral home",
-      "street_number": "7814-7816",
-      "street_name": "S Broadway",
-      "construction": "brick",
-      "stories": "2",
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "high",
-      "position": "tile r3_c0",
-      "contamination_relevance": "low",
-      "notes": "Garage for 5 cars inside. Embalming fluids (formaldehyde)"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "TIN SHOP",
@@ -55,69 +51,95 @@
       "street_name": "S Broadway",
       "construction": "brick",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r4_c0",
+      "position": "block 3128",
+      "map_notes": "14 ft; wood floor. Corner of E Primm.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": "Corner of E Primm"
-    },
-    {
-      "label": "STEEL STGE",
-      "use": "steel storage",
-      "street_number": null,
-      "street_name": "Water St",
-      "construction": "metal",
-      "stories": "1",
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "high",
-      "position": "tile r4_c2",
-      "contamination_relevance": "low",
-      "notes": ""
-    },
-    {
-      "label": "W. HO.",
-      "use": "warehouse",
-      "street_number": null,
-      "street_name": "Water St",
-      "construction": "frame",
-      "stories": "1",
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "medium",
-      "position": "tile r3_c2",
-      "contamination_relevance": "low",
-      "notes": ""
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "CHESTER IRON & FOUNDRY CO. STRUCTURAL IRON WORKS",
       "use": "structural iron works",
       "street_number": "218-224",
       "street_name": "E Courtois",
-      "construction": "brick",
+      "construction": "brick (woodworking frame)",
       "stories": "1-2",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r3_c2",
+      "position": "block 3127",
+      "map_notes": "Mutual risk. Shop 18 ft, earth floor, pilastered walls, steel trusses; pattern shop on 2nd floor; office (2 stories, 28 ft) at 224. Woodworking building behind: frame, 1 story, 12 ft, concrete floor. No watchman. Heat: stoves. Power: electric.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": "Pattern shop 2nd, woodworking, office"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "CORE OVENS (NOT USED) / FOUNDRY (NOT USED) / CUPOLA",
+      "label": "FOUNDRY (NOT USED) / CORE OVENS (NOT USED) / CUPOLA",
       "use": "idle foundry",
-      "street_number": null,
-      "street_name": null,
-      "construction": "brick",
+      "street_number": "(7821-7823 frontage)",
+      "street_name": "Vulcan St side",
+      "construction": "brick (core ovens fireproof; cupola house metal)",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r4_c2",
+      "position": "block 3127",
+      "map_notes": "Part of the Chester Iron & Foundry lot, south of the woodworking building. Foundry 14 ft, earth floor raised 7 ft, wood posts, marked NOT USED. Two fireproof core ovens marked NOT USED. Cupola in a 1-story metal house, 16 ft.",
+      "interpretation": "Idle foundry: foundry sand, slag and metals possible.",
       "contamination_relevance": "high",
-      "notes": "Chester Iron & Foundry"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "STEEL STGE.",
+      "use": "steel storage",
+      "street_number": "7820",
+      "street_name": "Water St",
+      "construction": "metal",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3127",
+      "map_notes": "1-story metal building.",
+      "interpretation": "",
+      "contamination_relevance": "low",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     }
   ],
-  "notes": "Mostly residential (dwellings, flats, private auto houses) between S. Broadway and Vulcan, with stores along Broadway. A good test of 'no false positives': most footprints are plain D/F/S/A. Industry is the Chester Iron & Foundry (part idle) and small shops."
+  "verification": {
+    "status": "human_verified",
+    "method": "Claude read every block of the full-resolution image; Baburaj spot-checked the sign painting shop, tin shop, Chester Iron & Foundry, the idle foundry, and the absence of G.T. symbols against the map, and approved the file.",
+    "date": "2026-10-11"
+  }
 }

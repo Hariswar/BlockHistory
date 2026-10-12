@@ -2,205 +2,438 @@
   "sheet_id": "04858_12_1938-0074",
   "edition": "1938",
   "volume": "St. Louis Vol. 12",
-  "labeled_by": "Claude (draft, needs human check)",
-  "labeled_on": "2026-10-10",
-  "scope": "Week 2 draft: every footprint with a specific use label (not bare D/S/F/A), plus every G.T./tank, oil house and fuel label. Plain dwellings, stores, flats and private auto houses are not listed. Groups (a row of coke ovens, a field of tanks) are one entry.",
+  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 74, image 04858_12_1938-0074",
+  "labeled_by": "Claude draft from the LOC sheet image; spot-checked and approved by Baburaj, 2026-10-11",
+  "labeled_on": "2026-10-11",
+  "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+  "definitions": {
+    "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+    "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+    "map_notes": "Only what is printed on the sheet.",
+    "interpretation": "Inference, not a map fact; never scored."
+  },
+  "sheet_layout": "Laclede Gas coke & by-products plant fills the left two-thirds, between the River Des Peres (left) and E Catalan; rail yard and coal/coke piles to the south by the Mississippi. Dwellings on Reilly Av and E Espenschied at top right. Scale 100 ft to an inch.",
+  "plant_note": "Watchman, central station service. Heat: steam. Power: steam & electric. Fuel: coal, coke & gas. Water from the Mississippi River (Worthington centrifugal pump, 1,500 gpm).",
+  "false_positive_test": "No G.T. symbols on this sheet. GASOMETER and GAS PRODUCER refer to manufactured (coal) gas, not gasoline; a model that counts them as gasoline tanks is wrong.",
+  "out_of_scope_seen": [
+    "Dwellings and auto houses on Reilly Av and E Espenschied",
+    "Small plant supply, rod and pipe sheds",
+    "Plant office near the coke pile (638)"
+  ],
+  "total_gasoline_tanks": 0,
   "buildings": [
     {
       "label": "GASOMETER CAP'Y 1 MILLION CU. FT.",
       "use": "gas holder",
       "street_number": null,
       "street_name": null,
-      "construction": "metal",
+      "construction": null,
       "stories": null,
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "gas holder",
+          "count": 1,
+          "capacity_cu_ft": 1000000
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r0_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Large round gas holder, capacity 1 million cubic feet, north end of the plant. A gasometer stores manufactured gas, not gasoline.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "GAS PUMPING STA.",
+      "label": "GAS PUMPING STA. / MIXING RM. / CHEM. LAB / SWITCH RM.",
       "use": "gas pumping station",
-      "street_number": null,
-      "street_name": null,
+      "street_number": "318-322",
+      "street_name": "E Catalan",
       "construction": "brick",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r0_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Concrete floor, concrete slab roof on steel trusses, 18 ft. Mixing room and small chemical lab / switch room beside it. Numbers 318-322 printed on the adjacent street frontage.",
+      "interpretation": "",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. With MIXING RM., CHEM. LAB, SWITCH RM."
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "OIL GAS PURIFIERS / IR. PURIFIERS ELEV. 12' ON STEEL FR.",
       "use": "gas purifiers",
       "street_number": null,
       "street_name": null,
-      "construction": "metal",
+      "construction": null,
       "stories": null,
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "oil gas purifiers",
+          "count": 3
+        },
+        {
+          "type": "iron purifier boxes",
+          "count": 2
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r1_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 3 round oil gas purifiers; 2 iron purifier boxes elevated 12 ft on a steel frame, on a concrete platform on steel frame.",
+      "interpretation": "Spent purifier oxide (cyanide, sulfur) waste possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. Purifier boxes: spent oxide (cyanide, sulfur) waste"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "PURIFICATION & BOOSTER PUMPS / ENG. RM. / CONC. TAR TANK",
-      "use": "gas purification and booster pumps, tar tank",
+      "use": "gas purification and booster pumps",
       "street_number": null,
       "street_name": null,
       "construction": "brick",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "concrete tar tank",
+          "count": 1
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r1_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Concrete floor, concrete slab roof on steel trusses, pilastered walls; 18 ft and 15 ft. Engine room and booster. Concrete tar tank alongside.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. Plus PURIFYING HO., STEEL PROCESSING TK. 50' HIGH, AERATING TOWER 60' HIGH"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "PURIFYING HO.",
+      "use": "purifying house",
+      "street_number": null,
+      "street_name": null,
+      "construction": "metal (steel frame, asbestos walls)",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 15 ft; earth floor; raised 4 ft.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "STEEL PROCESSING TK. / AERATING TOWER",
+      "use": "gas processing tank and aerating tower",
+      "street_number": null,
+      "street_name": null,
+      "construction": null,
+      "stories": null,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "steel processing tank",
+          "count": 1,
+          "height_ft": 50
+        },
+        {
+          "type": "aerating tower",
+          "count": 1,
+          "height_ft": 60
+        }
+      ],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Steel processing tank 50 ft high; aerating tower 60 ft high.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "GAS PRODUCER HO.",
       "use": "gas producer house",
       "street_number": null,
       "street_name": null,
-      "construction": "brick",
-      "stories": "4-6",
-      "has_gasoline_tank": false,
+      "construction": "brick (steel frame and floors, concrete slab roof, 12 in. brick curtain walls)",
+      "stories": "3-6",
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "gas holder",
+          "count": 1
+        },
+        {
+          "type": "cooler",
+          "count": 1,
+          "height_ft": 70
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r1_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 70 ft and 35 ft high; iron raised 4 ft inside. Small gasometer on a steel platform and a cooler 70 ft high stand just north of it.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "STEEL AMMONIA LIQUOR TKS. / STEEL TAR SEPARATOR TK. / STEEL TAR TKS",
-      "use": "ammonia liquor and coal-tar tanks",
+      "label": "GASOMETER",
+      "use": "gas holder",
       "street_number": null,
       "street_name": null,
-      "construction": "metal",
+      "construction": null,
       "stories": null,
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "gas holder",
+          "count": 1
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Third gas holder, near the water treating plant.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. Coal tar: PAHs, benzene"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "NAPTHALINE STGE / OIL TK.",
-      "use": "naphthalene storage and oil tank",
+      "label": "NAPTHALINE STGE. / OIL TK.",
+      "use": "naphthalene storage",
       "street_number": null,
       "street_name": null,
-      "construction": "fireproof",
+      "construction": "fireproof (concrete floor and roof, brick walls)",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "oil tank",
+          "count": 1
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Map spells it NAPTHALINE. Oil tank beside it.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "STEEL BENZOL WASHERS 60' HIGH / ACID STGE TKS / OIL HO.",
-      "use": "benzol washers, acid tanks, oil house",
+      "label": "STEEL AMMONIA LIQUOR TKS. / STEEL TAR SEPARATOR TK. / STEEL TAR TKS. / STEEL BENZOL WASHERS / STEEL COOL'G TOWERS / ACID STGE. TKS.",
+      "use": "by-product tank field",
       "street_number": null,
       "street_name": null,
-      "construction": "metal",
+      "construction": null,
       "stories": null,
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "ammonia liquor tanks",
+          "count": 2
+        },
+        {
+          "type": "tar separator tank",
+          "count": 1
+        },
+        {
+          "type": "tar tanks",
+          "count": 2
+        },
+        {
+          "type": "oil tanks",
+          "count": 2
+        },
+        {
+          "type": "benzol washers",
+          "count": 3,
+          "height_ft": 60
+        },
+        {
+          "type": "cooling towers",
+          "count": 2,
+          "height_ft": 70
+        },
+        {
+          "type": "acid storage tanks",
+          "count": 2
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Between the naphthalene storage and the oil house: 2 steel ammonia liquor tanks, 1 steel tar separator tank, 2 steel tar tanks, a condenser with 2 oil tanks, 3 steel benzol washers 60 ft high, 2 steel cooling towers 70 ft high, 2 acid storage tanks.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "STEEL BENZOL & SOLVENT TKS.",
-      "use": "benzol (benzene) and solvent tank farm",
+      "label": "OIL HO.",
+      "use": "oil house",
       "street_number": null,
       "street_name": null,
-      "construction": "metal",
-      "stories": null,
-      "has_gasoline_tank": false,
+      "construction": "fireproof (except exposed steel in roof)",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c0",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Concrete floor and roof.",
+      "interpretation": "",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. ~20 tanks. Benzene"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "BENZOL PLANT / 2 STILLS",
-      "use": "benzol distillation plant",
-      "street_number": null,
-      "street_name": null,
-      "construction": "brick",
-      "stories": "2",
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c0",
-      "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
-    },
-    {
-      "label": "COOLING PONDS",
-      "use": "cooling ponds",
-      "street_number": null,
-      "street_name": null,
-      "construction": "unknown",
-      "stories": null,
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c0",
-      "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. By River Des Peres"
-    },
-    {
-      "label": "BY-PRODUCTS BLDG / SULPHATE STGE / PUMP RM.",
+      "label": "BY-PRODUCTS BLDG. / SULPHATE STGE. / PUMP RM.",
       "use": "coke by-products building",
       "street_number": null,
       "street_name": null,
       "construction": "brick",
       "stories": "1-2",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 32 ft; concrete floor, steel trusses, pilastered walls; 4 engines; raised 4 ft; concrete mezzanine. Sulphate storage (35 ft, steel posts) at the west end; pump room (1 story + basement) at the east end.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. 4 ENGS."
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "BLR. RM. / ENG. RM. / IR. COAL CONVEYER HO.",
       "use": "boiler and engine room",
       "street_number": null,
       "street_name": null,
-      "construction": "brick",
+      "construction": "brick (coal conveyer house metal)",
       "stories": "2",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 32 ft; iron raised 4 ft; transformer on 1st floor. Iron coal conveyer house rises 20 ft above the roof. Plant fuel: coal, coke & gas.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. Fuel: coal, coke & gas"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "STEEL GAS COOLING TKS / STEEL TAR TANKS IN CONC. PIT",
+      "label": "STEEL GAS COOLING TKS. / STEEL TAR TANKS IN CONC. PIT",
       "use": "gas cooling and tar tanks",
       "street_number": null,
       "street_name": null,
-      "construction": "metal",
+      "construction": null,
       "stories": null,
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "gas cooling tanks",
+          "count": 6
+        },
+        {
+          "type": "tar tanks in concrete pit",
+          "count": 2
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 6 steel gas cooling tanks; 2 steel tar tanks in a concrete pit.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "WATER TREATING PLANT",
@@ -208,98 +441,313 @@
       "street_number": null,
       "street_name": null,
       "construction": "brick",
-      "stories": "1",
-      "has_gasoline_tank": false,
+      "stories": "1-2",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "medium",
-      "position": "tile r2_c0",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 32 ft and 16 ft; concrete floor, concrete slab roof on steel beams. Iron chimney beside it.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "BL. SM. & MACH. SHOP / LOCKERS & SUPPLIES",
+      "label": "LOCKERS & SUPPLIES / OFF.",
+      "use": "lockers, supplies and office",
+      "street_number": "(500)",
+      "street_name": "E Catalan",
+      "construction": "fireproof (built 1937)",
+      "stories": "2",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 24 ft; concrete floors and roof, false concrete slab roof on steel trusses, pilastered brick walls.",
+      "interpretation": "",
+      "contamination_relevance": "low",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "BL. SM. & MACH. SHOP",
       "use": "blacksmith and machine shop",
       "street_number": null,
       "street_name": "E Catalan",
       "construction": "brick",
-      "stories": "1-2",
-      "has_gasoline_tank": false,
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 20 ft; concrete floor, tile roof, steel posts and trusses, pilastered walls, wood mezzanines.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "CHEM. LAB / OFF.",
+      "label": "CHEM. LAB. / OFF.",
       "use": "chemical lab and office",
-      "street_number": "526",
+      "street_number": "526-530",
       "street_name": "E Catalan",
       "construction": "brick",
-      "stories": "1",
-      "has_gasoline_tank": false,
+      "stories": "1 + basement",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "medium",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 16 ft; brick floor.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "56 COKE OVENS / 9 COKE OVENS / PUSHER TRACK",
       "use": "coke oven batteries",
       "street_number": null,
       "street_name": null,
-      "construction": "brick",
-      "stories": null,
-      "has_gasoline_tank": false,
+      "construction": "brick (coal bin building metal)",
+      "stories": "1 (coal bin building 3-5)",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Battery of 56 coke ovens and a separate battery of 9, on steel & concrete platforms with a pusher track. Between them, a 3-5 story metal building (65 ft and 88 ft) fed by a conveyer, and lockers.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. "
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "QUENCHING STA. / COKE WHARF / BREAKER MILL / SCREEN HO.",
-      "use": "coke quenching, handling and screening",
+      "label": "EXPERIMENTAL BLDG.",
+      "use": "experimental building",
+      "street_number": "608",
+      "street_name": "E Catalan",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 15 ft; concrete floor, concrete slab roof on steel trusses. East end of the coke ovens.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "QUENCHING STA. / PUMP HO. / COOLING RESERVOIR",
+      "use": "coke quenching station",
+      "street_number": null,
+      "street_name": null,
+      "construction": "brick walls, no roof",
+      "stories": null,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Quenching station with brick walls 40 ft high and no roof; water tank (W.T.), 1-story brick pump house, cooling reservoir.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "COKE WHARF / BREAKER MILL / SCREEN HO. / LOADING / CALCIUM CHLORIDE TK.",
+      "use": "coke handling, screening and loading",
       "street_number": null,
       "street_name": null,
       "construction": "metal",
-      "stories": null,
-      "has_gasoline_tank": false,
+      "stories": "1-5",
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "calcium chloride tank",
+          "count": 1
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Coke wharf; inclined conveyers with transformer house under conveyer; head houses elevated 65-75 ft on steel frame; breaker mill (3-5 stories, 45-65 ft); screen house (1-4 stories, 72 ft); two loading buildings; calcium chloride tank.",
+      "interpretation": "Coke fines and dust possible.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. Also CALCIUM CHLORIDE TK."
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "BENZOL PLANT",
+      "use": "benzol distillation plant",
+      "street_number": null,
+      "street_name": null,
+      "construction": "brick",
+      "stories": "1-2",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 32 ft; concrete floor, pilastered walls, concrete and steel mezzanines. 3 stills: 1 still in the west half, 2 stills in the east half.",
+      "interpretation": "Benzene possible; not documented on the map.",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "STEEL BENZOL & SOLVENT TKS.",
+      "use": "benzol and solvent tank field",
+      "street_number": null,
+      "street_name": null,
+      "construction": null,
+      "stories": null,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "benzol and solvent tanks",
+          "count": 23
+        }
+      ],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 23 tanks drawn: an upper row of 1 round + 4 rectangular, a main row of 13 rectangular, and an end group of 4 rectangular + 1 round.",
+      "interpretation": "Benzene and solvents possible; not documented on the map.",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "COOLING PONDS / GAS METER HO.",
+      "use": "cooling ponds and gas meter house",
+      "street_number": null,
+      "street_name": null,
+      "construction": "brick (meter house)",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3248/3249",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. Two cooling pond basins beside the River Des Peres; gas meter house (8 ft, concrete floor, iron roof) and frame supplies sheds at the west corner.",
+      "interpretation": "Manufactured-gas / coke by-product use: coal tar, PAHs, benzene, cyanide and ammonia possible; not documented on the map.",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "COAL PILE / COKE PILE",
       "use": "coal and coke storage piles",
       "street_number": null,
       "street_name": null,
-      "construction": "unknown",
+      "construction": null,
       "stories": null,
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r4_c1",
+      "position": "block 3266/3267",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 3 coal piles (one north of the by-products area, two south of the tracks) and 2 coke piles, between the rail yard and the Mississippi.",
+      "interpretation": "Coal and coke fines possible.",
       "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. 2 coal piles, 2 coke piles between the tracks and the Mississippi"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "GASOMETER",
-      "use": "gas holders (2 more)",
+      "label": "ST. LOUIS SHIP BUILDING & STEEL CO. / BLR. HO. (NOT USED)",
+      "use": "shipyard boiler house (not used)",
       "street_number": null,
       "street_name": null,
       "construction": "metal",
-      "stories": null,
-      "has_gasoline_tank": false,
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r1_c0",
-      "contamination_relevance": "high",
-      "notes": "Laclede Gas Light Co. coke & by-products plant. One near the gas producer house, one near the water treating plant"
+      "position": "south of block 3266",
+      "map_notes": "Laclede Gas Light Co. coke & by-products plant. 16 ft; earth floor; marked not used. Shipyard crane ways run to the river; the map says 'for report see sheet 67'.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     }
   ],
-  "notes": "Laclede Gas Light Co. coke and by-products plant at the mouth of the River Des Peres: a manufactured-gas/coke plant with tar, benzol, naphthalene, ammonia, and oil storage. Sheet note: fuel coal, coke & gas; water from the Mississippi. The single most significant contamination site in the sample. Houses on E Espenschied / Reilly (top right) are within a block."
+  "verification": {
+    "status": "human_verified",
+    "method": "Claude read every entry from the full-resolution image; Baburaj spot-checked the 1-million cu ft gasometer, the benzol plant stills, the 23 benzol and solvent tanks, the coke oven batteries and the experimental building against the map, and approved the file.",
+    "date": "2026-10-11"
+  }
 }

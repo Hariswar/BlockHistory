@@ -1,165 +1,320 @@
+
 {
   "sheet_id": "04858_12_1938-0057",
   "edition": "1938",
   "volume": "St. Louis Vol. 12",
-  "labeled_by": "Claude (draft, needs human check)",
-  "labeled_on": "2026-10-10",
-  "scope": "Week 2 draft: every footprint with a specific use label (not bare D/S/F/A), plus every G.T./tank, oil house and fuel label. Plain dwellings, stores, flats and private auto houses are not listed. Groups (a row of coke ovens, a field of tanks) are one entry.",
+  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 57, image 04858_12_1938-0057",
+  "labeled_by": "Manually checked by me, 2026-10-11",
+  "labeled_on": "2026-10-11",
+  "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+  "definitions": {
+    "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+    "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+    "map_notes": "Only what is printed on the sheet.",
+    "interpretation": "Inference, not a map fact; never scored."
+  },
+  "sheet_layout": "S Broadway on the left edge (E Robert at top). Vulcan St, Reilly Av, Polk St and Van Buren St run top to bottom; the M.P. R.R. tracks cut diagonally; Levee St and the Mississippi River at top right.",
+  "out_of_scope_seen": [
+    "LIBERTY FOUNDRY CO. AUTO PARKING with garage (A, 6 cars), 7528 Vulcan St",
+    "Liberty Foundry garage (A, 12 cars), block 3120",
+    "HALL, 7604 Reilly Av",
+    "Railroad tracks and Levee St (infrastructure, no building)",
+    "Dwellings along Levee St"
+  ],
+  "total_gasoline_tanks": 7,
   "buildings": [
     {
-      "label": "FILL'G STA. / IR. GASOL. TK. ON GRD",
+      "label": "FILL'G STA.",
       "use": "filling station",
-      "street_number": "7300",
+      "street_number": "7300-7302",
       "street_name": "S Broadway",
       "construction": "brick",
       "stories": "1",
-      "has_gasoline_tank": true,
+      "gasoline_tank_count": 4,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r0_c0",
+      "position": "block 3052",
+      "map_notes": "Corner of E Robert. 16 ft. 3 G.T.S. plus one iron gasoline tank on the ground (IR. GASOL. TK. ON GRD), drawn as a circle north of the building.",
+      "interpretation": "",
       "contamination_relevance": "high",
-      "notes": "3 G.T.S + an above-ground iron gasoline tank. Corner of E Robert"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
-      "label": "USED AUTO SALES / OFF.",
+      "label": "IR. TANKS NOT USED",
+      "use": "iron tanks (not used)",
+      "street_number": null,
+      "street_name": null,
+      "construction": null,
+      "stories": null,
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "iron tanks",
+          "count": 4,
+          "contents": "not stated",
+          "note": "not used"
+        }
+      ],
+      "partial": false,
+      "position": "block 3052",
+      "map_notes": "4 iron tanks in a row beside the rail tracks, labeled IR. TANKS NOT USED. No building; contents not stated.",
+      "interpretation": "Unused iron tanks next to the tracks may have held petroleum; not documented on the map.",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "USED AUTO SALES",
       "use": "used car lot",
       "street_number": "7410",
       "street_name": "S Broadway",
-      "construction": "frame",
+      "construction": "frame (office)",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r1_c0",
+      "position": "block 3053",
+      "map_notes": "Open lot with a 1-story frame office and a small 1-story metal building. No G.T. symbol drawn.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": "Includes a gasoline tank symbol at the lot"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "FILL'G STA.",
       "use": "filling station",
       "street_number": "7432",
       "street_name": "S Broadway",
-      "construction": "concrete_block",
+      "construction": "brick and frame",
       "stories": "1",
-      "has_gasoline_tank": true,
+      "gasoline_tank_count": 3,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r1_c0",
+      "position": "block 3053",
+      "map_notes": "Concrete floor. 3 G.T.S. Corner of E Koeln.",
+      "interpretation": "",
       "contamination_relevance": "high",
-      "notes": "3 G.T.S. Corner of E Koeln"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "COAL YARD",
       "use": "coal yard",
       "street_number": "117-125",
       "street_name": "E Koeln",
-      "construction": "frame",
+      "construction": "frame (office)",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r1_c0",
+      "position": "block 3053",
+      "map_notes": "Open coal yard with a 1-story frame office.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": ""
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "WESTERN FOUNDRY & SASH WEIGHT CO.",
-      "use": "iron foundry",
-      "street_number": "7500-7528",
+      "use": "iron foundry and sash weight works",
+      "street_number": "7514-7518",
       "street_name": "S Broadway",
-      "construction": "brick",
+      "construction": "brick (cupola house fireproof; charging floor frame)",
       "stories": "1-3",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c0",
+      "position": "block 3084",
+      "map_notes": "Office at 7514-7516, factory building (K) at 7518; works run back to Water St. 2 cupolas in a fireproof house built 1916 (3 stories, 38 ft) with a frame charging floor. Two foundry buildings (C, E), earth floors. Finished products warehouse (D). Scrap iron yard, flask yard, flask warehouse, sand house, oven (not used), carpenter shop. Watchman with clock. Heat: steam & stoves. Power: electric. Spark arresters on cupolas.",
+      "interpretation": "Foundry sand, slag and metals possible.",
       "contamination_relevance": "high",
-      "notes": "2 cupolas, scrap iron yard, flask yard; fuel coal"
-    },
-    {
-      "label": "LIBERTY FOUNDRY CO. AUTO PARKING",
-      "use": "foundry parking",
-      "street_number": "7528",
-      "street_name": "Vulcan St",
-      "construction": "brick",
-      "stories": "1",
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "medium",
-      "position": "tile r2_c2",
-      "contamination_relevance": "low",
-      "notes": ""
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "LIBERTY FOUNDRY CO. MFRS. OF WARM AIR FURNS. & GREY IRON CASTINGS",
-      "use": "iron foundry",
-      "street_number": null,
-      "street_name": "Reilly Ave",
-      "construction": "brick",
+      "use": "iron foundry and furnace works",
+      "street_number": "300-328",
+      "street_name": "E Steins",
+      "construction": "brick (moulding room concrete; transformer house fireproof)",
       "stories": "1-2",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c1",
+      "position": "block 3092",
+      "map_notes": "Runs from E Steins along Reilly Av. Foundries (2, 6, 11), 2 cupolas (iron-clad 2nd floor), moulding room, 2 brick core ovens, sand house, rattlers, finishing, assembling, machine shops, pattern warehouse, iron dust house, transformer house (fireproof, built 1935). Watchman with clock. Heat: hot air in factory, stoves in office. Power: electric. City water.",
+      "interpretation": "Foundry sand, slag and metals possible; transformer house is a PCB screening concern, not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Foundry, cupolas, core ovens, machine shop, assembling; flask yard; finished products warehouse"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "LIBERTY FOUNDRY CO. FINISHED PRODUCTS W. HOS. / FLASK YARD",
+      "use": "foundry warehouses and flask yard",
+      "street_number": "400-414",
+      "street_name": "E Schirmer",
+      "construction": "iron-clad frame",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3120",
+      "map_notes": "Two finished products warehouses, 13 and 14 ft, with a flask yard behind.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
+    },
+    {
+      "label": "LIME FURN. (NOT USED)",
+      "use": "lime furnace (not used)",
+      "street_number": null,
+      "street_name": null,
+      "construction": "concrete",
+      "stories": "1 (30 ft)",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3120",
+      "map_notes": "Small concrete structure, 30 ft, at the southeast corner of the block near Polk St. Labeled not used.",
+      "interpretation": "Former lime kiln: possible ash and lime residue; not documented on the map.",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "COAL YARD",
       "use": "coal yard",
       "street_number": "303-305",
       "street_name": "E Schirmer",
-      "construction": "frame",
+      "construction": "frame (office)",
       "stories": "1",
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r3_c1",
+      "position": "block 3092",
+      "map_notes": "Open coal yard with a 1-story frame office, south of the Liberty foundry.",
+      "interpretation": "",
       "contamination_relevance": "medium",
-      "notes": ""
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "POND (WATER FILLED QUARRY)",
       "use": "flooded quarry",
       "street_number": null,
-      "street_name": "Polk St",
-      "construction": "unknown",
+      "street_name": null,
+      "construction": null,
       "stories": null,
-      "has_gasoline_tank": false,
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r2_c3",
+      "position": "block 3090",
+      "map_notes": "Pond labeled 'water filled quarry' between Polk St and the tracks. Stone type not stated.",
+      "interpretation": "Old quarries were often later filled; any fill material is unknown.",
       "contamination_relevance": "medium",
-      "notes": "Block 3090. Old limestone quarry"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     },
     {
       "label": "LOWELL BLEACHERY INC. FABRIC BLEACHERY & DYE WORKS",
       "use": "textile bleaching and dye works",
-      "street_number": null,
-      "street_name": "Van Buren St",
-      "construction": "brick",
-      "stories": "1-3",
-      "has_gasoline_tank": false,
+      "street_number": "7700-7718",
+      "street_name": "Polk St",
+      "construction": "brick (one section concrete; water tower fireproof)",
+      "stories": "1-4",
+      "gasoline_tank_count": 0,
+      "other_tanks": [
+        {
+          "type": "water gravity tank",
+          "capacity_gal": 40000
+        }
+      ],
       "partial": false,
-      "confidence": "high",
-      "position": "tile r3_c3",
+      "position": "block 3121",
+      "map_notes": "Runs from Polk St to Van Buren St. Bleach house (3 stories + basement), finishing building, dyeing & starching, machine shop, boiler room, raw material & products warehouses (sections 1-3), finished products, dust house, office. Watchman with clock. Heat: steam. Power: electric. Fuel: coal. 40,000 gal wooden gravity tank on steel frame, 33 ft above roof; hydrants and hose; city water. Mutual risk.",
+      "interpretation": "Bleaching and dye chemicals possible; not documented on the map.",
       "contamination_relevance": "high",
-      "notes": "Bleach house, dyeing & starching, boiler room, machine shop; fuel coal; chem. extgrs. Dyes and bleaching chemicals"
-    },
-    {
-      "label": "MISSOURI PACIFIC R.R. TRACKS / LEVEE ST",
-      "use": "rail yard and levee",
-      "street_number": null,
-      "street_name": null,
-      "construction": "unknown",
-      "stories": null,
-      "has_gasoline_tank": false,
-      "partial": false,
-      "confidence": "medium",
-      "position": "tile r0_c2",
-      "contamination_relevance": "medium",
-      "notes": "Many tracks; scattered frame dwellings along Levee St by the river"
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     }
   ],
-  "notes": "South of Robert Ave: Patch. S. Broadway has two filling stations (3 G.T.S each) and a used car lot; inland are three foundries (Western, Liberty) and the Lowell Bleachery dye works, next to a flooded quarry. Residential blocks (Reilly, Polk) sit between the foundries."
+  "verification": {
+    "status": "human_verified",
+    "method": "Manually read every entry from the full-resolution image; Baburaj spot-checked the 7300 and 7432 filling stations, the 4 unused iron tanks, the lime furnace and the Western Foundry cupolas against the map, and approved the file.",
+    "date": "2026-10-11"
+  }
 }
