@@ -116,8 +116,14 @@ class TileExtraction(BaseModel):
     illegible_notes: list[str] = Field(description="Text you could see but not read confidently")
 
 
+# What batch.py needs from a reader: SCHEMA, SYSTEM_PROMPT, PROMPT_VERSION, MAX_TOKENS,
+# EST_TOKENS, resolve(), cache_path(), messages_for() and save_result().
+SCHEMA = TileExtraction
 USER_TEXT = "Transcribe every labeled building in this tile."
 MAX_TOKENS = 16000
+# Measured on the Day 7 tiles with prompt v1 at low effort: ~3,900 input and ~1,700 output
+# tokens per tile. Used only to refuse a batch that could break the budget.
+EST_TOKENS = (3_900, 2_500)
 
 
 def _cache_key(image_bytes: bytes, model: str, effort: str) -> str:

@@ -1,0 +1,200 @@
+{
+  "sheet_id": "04858_12_1938-0056",
+  "edition": "1938",
+  "volume": "St. Louis Vol. 12",
+  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 56, image 04858_12_1938-0056",
+  "labeled_by": "Claude draft from the LOC sheet image, 2026-10-13; NOT yet checked by Baburaj",
+  "labeled_on": "2026-10-13",
+  "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+  "definitions": {
+    "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+    "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+    "map_notes": "Only what is printed on the sheet.",
+    "interpretation": "Inference, not a map fact; never scored."
+  },
+  "sheet_layout": "Robert Av at top, then Upton, Koeln Av and Steins (bottom); Minnesota Av on the left, Pennsylvania Av in the middle, S Broadway on the right.",
+  "out_of_scope_seen": [
+    "CLUB RMS., 7300 Pennsylvania Av",
+    "BICYCLE REP. CONC. FL., 217 Koeln Av",
+    "FURNE REP. / MDSE. W. HO. & A, block 3054",
+    "BAKE HO. CONC. FL. BR. OVEN, rear of 7513 S Broadway",
+    "IR. POSTS METAL LATH & PLASTER PARTNS.: a construction note on stores 7517-7523 S Broadway, not a use",
+    "(ASB. CL.) dwelling, 7412 Minnesota Av: asbestos-cement siding, a building material, not a use"
+  ],
+  "total_gasoline_tanks": 2,
+  "verification": {
+    "status": "draft",
+    "method": "Claude read every block of the full-resolution image. To approve: check each entry and the G.T. counts against the map, then set status to human_verified.",
+    "date": ""
+  },
+  "buildings": [
+    {
+      "label": "AUTO. REP.",
+      "use": "auto repair shop",
+      "street_number": "116",
+      "street_name": "E Robert Av",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 1,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3055",
+      "map_notes": "CONC. FL. One G.T. circle inside the lot at the south-east corner.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "AUTO. SALES & SERVICE",
+      "use": "auto dealer and service garage",
+      "street_number": "7313-7315",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 1,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3055",
+      "map_notes": "CONC. FL., STEEL POSTS & BEAMS, three RAISED 4' platforms. One G.T. at the rear (west) wall.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "AUTO. REP.",
+      "use": "auto repair shop",
+      "street_number": "217",
+      "street_name": "Upton",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3056",
+      "map_notes": "WOOD FL. Rear of 7318 Minnesota Av.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "COAL YARD / COAL & A",
+      "use": "coal yard with coal shed and auto house",
+      "street_number": "7417-7419",
+      "street_name": "S Broadway",
+      "construction": "frame",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3054",
+      "map_notes": "",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "AUTO. REP.",
+      "use": "auto repair shop",
+      "street_number": "7421",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3054",
+      "map_notes": "CONC. FL. 1ST.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "AUTO REP.",
+      "use": "auto repair shop",
+      "street_number": "122-126",
+      "street_name": "Koeln Av",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3083",
+      "map_notes": "EARTH & CONC. FL. Rear of 7500 Pennsylvania Av.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "BL. SM.",
+      "use": "blacksmith shop",
+      "street_number": "213-215",
+      "street_name": "Steins",
+      "construction": "frame",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3082",
+      "map_notes": "EARTH FL., WOOD POSTS.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    }
+  ]
+}

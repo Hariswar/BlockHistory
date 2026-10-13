@@ -1,0 +1,125 @@
+{
+  "sheet_id": "04858_12_1938-0061",
+  "edition": "1938",
+  "volume": "St. Louis Vol. 12",
+  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 61, image 04858_12_1938-0061",
+  "labeled_by": "Claude draft from the LOC sheet image, 2026-10-13; NOT yet checked by Baburaj",
+  "labeled_on": "2026-10-13",
+  "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+  "definitions": {
+    "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+    "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+    "map_notes": "Only what is printed on the sheet.",
+    "interpretation": "Inference, not a map fact; never scored."
+  },
+  "sheet_layout": "Steins at top, then Schirmer, Courtois and Primm (bottom); Minnesota Av on the left, Pennsylvania Av and Commercial Alley in the middle, S Broadway on the right. Park in block 3116.",
+  "out_of_scope_seen": [
+    "HALL 2.3, 7801 S Broadway",
+    "W. HO. and 10' STGE., block 3095",
+    "Auto houses for 3 and 4 cars"
+  ],
+  "total_gasoline_tanks": 3,
+  "verification": {
+    "status": "draft",
+    "method": "Claude read every block of the full-resolution image. To approve: check each entry and the G.T. counts against the map, then set status to human_verified.",
+    "date": ""
+  },
+  "buildings": [
+    {
+      "label": "FILLING STA.",
+      "use": "filling station",
+      "street_number": "7827-7829",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 3,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3129",
+      "map_notes": "Corner of E Primm (101 E Primm). CONC. FL. G.T. on the north-east, G.T.S (2 circles) on the west.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "PRIV. GARAGE CAP'Y 10 TRUCKS",
+      "use": "truck garage",
+      "street_number": "111",
+      "street_name": "E Primm",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3129",
+      "map_notes": "On Commercial Alley. HEAT: HOT AIR DUCTS, CONC. FL., PILASTD WALLS. No G.T. drawn.",
+      "interpretation": "Fleet truck garage; fuel and oil use likely even without a drawn tank.",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "H. E. RAPP LUMBER CO.",
+      "use": "lumber yard",
+      "street_number": "200",
+      "street_name": "Pennsylvania Av",
+      "construction": "frame",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3115",
+      "map_notes": "Corner of Schirmer. LUMBER sheds, WOOD POSTS, OFF.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "CARPR.",
+      "use": "carpenter shop",
+      "street_number": "113",
+      "street_name": "E Schirmer",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3095",
+      "map_notes": "CONC. FL., STEEL BEAMS, two RAISED 3' platforms.",
+      "interpretation": "",
+      "contamination_relevance": "low",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    }
+  ]
+}

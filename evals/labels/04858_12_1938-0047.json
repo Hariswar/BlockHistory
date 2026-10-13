@@ -1,0 +1,223 @@
+{
+  "sheet_id": "04858_12_1938-0047",
+  "edition": "1938",
+  "volume": "St. Louis Vol. 12",
+  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 47, image 04858_12_1938-0047",
+  "labeled_by": "Claude draft from the LOC sheet image, 2026-10-13; NOT yet checked by Baburaj",
+  "labeled_on": "2026-10-13",
+  "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+  "definitions": {
+    "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+    "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+    "map_notes": "Only what is printed on the sheet.",
+    "interpretation": "Inference, not a map fact; never scored."
+  },
+  "sheet_layout": "Michigan Av at top, then Minnesota Av, Pennsylvania Av and S Broadway (bottom); Kraus on the left, Haven in the middle, Mott on the right.",
+  "out_of_scope_seen": [
+    "BEVERAGE CASE W. HO., 6727 Pennsylvania Av block (rear)",
+    "BAKE HO. NOT USED, rear of 6600 Michigan Av",
+    "APTS. 5 FAMILIES, Kraus side of block 3002",
+    "A. 6 CARS, 6630 Michigan Av block",
+    "(ASB. CL.) dwelling, Minnesota Av: asbestos-cement siding, a building material, not a use"
+  ],
+  "total_gasoline_tanks": 6,
+  "verification": {
+    "status": "draft",
+    "method": "Claude read every block of the full-resolution image. To approve: check each entry and the G.T. counts against the map, then set status to human_verified.",
+    "date": ""
+  },
+  "buildings": [
+    {
+      "label": "FILL'G STA.",
+      "use": "filling station",
+      "street_number": "6633",
+      "street_name": "Pennsylvania Av",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 3,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 2980",
+      "map_notes": "Corner of Haven. CONC. FL. 3 G.T.S circles north-west of the building.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "FILL'G STA.",
+      "use": "filling station",
+      "street_number": "6601",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 3,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 2979",
+      "map_notes": "Corner of E Mott. CONC. FL. G.T.S: 2 circles on the west side, 1 on the east.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "AUTO. PARTS / AUTO. WRECKING",
+      "use": "auto parts and auto wrecking yard",
+      "street_number": "6631-6633",
+      "street_name": "S Broadway",
+      "construction": "frame",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 2979",
+      "map_notes": "Long frame AUTO. PARTS sheds along the alley; open AUTO. WRECKING yard behind.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "PAINT SPRAYING & BENZOL WASHING / PAINT STGE. (CONC.)",
+      "use": "paint spraying and benzol washing shop",
+      "street_number": null,
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3006",
+      "map_notes": "Small building on the alley behind 6723-6725 S Broadway; CONC. FL. Concrete paint storage beside it.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "PRTG. & BINDING",
+      "use": "printing and binding plant",
+      "street_number": "6727",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "2",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3006",
+      "map_notes": "Corner of Kraus. CONC. FL. 1ST, PILASTD. WALLS. Two automatic sprinkler (AS) marks.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "TIN SHOP",
+      "use": "tin shop",
+      "street_number": "6725",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "2",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3006",
+      "map_notes": "",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "JUNK",
+      "use": "junk shop",
+      "street_number": "6711",
+      "street_name": "S Broadway",
+      "construction": "frame",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3006",
+      "map_notes": "BR. 1ST note on the side wall.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "CARNIVAL MAINTENANCE SHOP & A.",
+      "use": "carnival equipment repair shop and auto house",
+      "street_number": "6611",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 2979",
+      "map_notes": "Rear of the lot, on the alley.",
+      "interpretation": "Equipment repair; may have used fuel and solvents.",
+      "contamination_relevance": "low",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    }
+  ]
+}

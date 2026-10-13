@@ -1,8 +1,8 @@
 """Combine one sheet's tile results into a single list of findings.
 
 Tiles overlap by >=128 px, so a building near a tile edge is often read twice. Entries
-with the same label (and the same street number, when both have one) on neighboring
-tiles are merged. Each finding also records whether Tesseract saw the label's words in
+with the same label (and the same street number, when both have one) on tiles that share
+an edge are merged. Each finding also records whether Tesseract saw the label's words in
 one of its tiles: a free, independent check that the label is really printed there.
 """
 
@@ -41,17 +41,17 @@ def _tile_rc(tile_name: str) -> tuple[int, int]:
 def _same(a: dict, b: dict) -> bool:
     if norm(a["label"]) != norm(b["label"]):
         return False
-    # Merge only when both have the same number or both have none. A numbered and an
-    # unnumbered read of the same label can be two different sites (sheet 47 has two
-    # FILL'G STA.: one at 6601, one unnumbered), and a lost site is worse than a duplicate.
     na, nb = a.get("street_number"), b.get("street_number")
-    if bool(na) != bool(nb) or (na and nb and norm(na) != norm(nb)):
+    if na and nb and norm(na) != norm(nb):
         return False
-    return any(
-        abs(r1 - r2) <= 1 and abs(c1 - c2) <= 1
-        for r1, c1 in map(_tile_rc, a["tiles"])
-        for r2, c2 in map(_tile_rc, b["tiles"])
-    )
+    ta, tb = set(map(_tile_rc, a["tiles"])), set(map(_tile_rc, b["tiles"]))
+    # Two entries from one tile are two buildings (sheet 53 has a TIN SHOP at 7120 and an
+    # unnumbered one behind it). Across tiles, merge only over a shared edge: a building
+    # in a corner overlap shows on all four tiles, so a diagonal-only pair is two sites
+    # (sheet 47's FILL'G STA. at 6601 and the unnumbered one; sheet 57's two COAL YARDs).
+    if ta & tb:
+        return False
+    return any(abs(r1 - r2) + abs(c1 - c2) == 1 for r1, c1 in ta for r2, c2 in tb)
 
 
 def merge_sheet(

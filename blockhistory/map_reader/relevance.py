@@ -16,22 +16,27 @@ HIGH = [
     r"FOUNDRY|CUPOLA|CASTING|BLAST FURN|PIG IRON|SMELT|MELTING",
     r"COKE|TAR |TAR$|BENZOL|NAPTHALINE|NAPHTHALENE|GASOMETER|GAS WKS|GAS PLANT|PURIF",
     r"GAS (PUMPING|PRODUCER|METER|PROCESSING)|TIN FOIL",
-    r"BATTERY|CHEM(ICAL)? (WKS|WORKS|CO)|SOLVENT|ACID",
+    r"BATTERY|CHEM(ICAL)?\.? (WKS|WORKS|CO)|SOLVENT|ACID|SULPHUR|SULFUR",
 ]
 MEDIUM = [
     r"TIN SH|TIN SHOP|MACH(INE)? SH|BL\.? ?SM|BLACKSMITH|WELD|PLATING|METAL|IRON W(OR)?KS|STEEL W(OR)?KS",
-    r"PAINT|PRINT|SIGN|PHOTO|VARNISH",
+    r"PAINT|\bPRINT(?!ED)|\bPRT'?G\b|\bSIGN\b|PHOTO|VARNISH",
     r"COAL|JUNK|WRECK|SCRAP",
     r"LUMBER|WOODW|SASH|PLANING",
     r"ICE (PLANT|MFG)|AMMONIA|SUB(STATION)?\b|ELEC\.? SUB|TRANSF",
     r"BOILER|BLR|ENG(INE)? (RM|HO)|LOCOMOTIVE|ROUNDHOUSE|QUARRY|POND",
+    r"SHIP ?(BUILDING|YARD)|CONTRACTOR",
 ]
 
 
 def relevance(label: str, use: str = "") -> str:
     # A bare "A" is a private auto house (a home garage), not a commercial garage.
-    if re.fullmatch(r"\s*A\.?\s*", label):
+    # So is a capacity note on one ("3 CARS", "A. 4-CARS", a bare "5").
+    if re.fullmatch(r"\s*A\.?\s*", label) or re.fullmatch(
+        r"(A\.?\s*)?(\w{1,2}[- ]?)?CARS?\.?|\d+", label.strip().upper()
+    ):
         return "low"
+    label = re.sub(r"PRIV(ATE|\.)? GARAGE", "", label.upper())
     text = f" {label} | {use} ".upper().replace("PRIVATE GARAGE", "").replace("AUTO HOUSE", "")
     # "FR. FOUND." is a frame building on a foundation; readers sometimes call it a "frame
     # foundry" or add "(not a foundry)". Only a label that itself says FOUNDRY counts.

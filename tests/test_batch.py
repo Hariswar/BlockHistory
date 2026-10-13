@@ -149,15 +149,18 @@ def test_merge_sheet_joins_overlap_duplicates(env, monkeypatch):
     assert merged["tiles_missing"] == [tiles[2].name]
 
 
-def test_merge_keeps_numbered_and_unnumbered_sites_apart(env, monkeypatch):
+@pytest.mark.parametrize("pair, expected", [((0, 1), 1), ((1, 2), 2)])
+def test_merge_numbered_with_unnumbered_only_across_an_edge(env, monkeypatch, pair, expected):
+    # r0_c0 / r0_c1 share an edge: same site, one read missed the number (sheets 49, 56, 61).
+    # r0_c1 / r1_c0 are diagonal: kept apart, like sheet 47's two filling stations.
     tiles = env
     monkeypatch.setattr(sheets, "read_tile_ocr", lambda t: [])
     numbered = _extraction("FILL'G STA.", 3)
     unnumbered = _extraction("FILL'G STA.", 3)
     unnumbered["buildings"][0]["street_number"] = None
-    for t, ext in zip(tiles[:2], (numbered, unnumbered)):
+    for i, ext in zip(pair, (numbered, unnumbered)):
         extract.save_result(
-            t,
+            tiles[i],
             "claude-haiku-5-5",
             "low",
             "claude-haiku-5-5",
@@ -166,4 +169,22 @@ def test_merge_keeps_numbered_and_unnumbered_sites_apart(env, monkeypatch):
             extract.TileExtraction.model_validate(ext),
         )
     merged = sheets.merge_sheet(tiles[0].parent)
-    assert len(merged["findings"]) == 2
+    assert len(merged["findings"]) == expected
+
+
+def test_merge_keeps_two_same_label_entries_from_one_tile(env, monkeypatch):
+    # Sheet 53: a TIN SHOP at 7120 and an unnumbered one behind it, read from one tile.
+    tiles = env
+    monkeypatch.setattr(sheets, "read_tile_ocr", lambda t: [])
+    ext = _extraction("TIN SHOP")
+    ext["buildings"].append({**ext["buildings"][0], "street_number": None})
+    extract.save_result(
+        tiles[0],
+        "claude-haiku-5-5",
+        "low",
+        "claude-haiku-5-5",
+        1,
+        1,
+        extract.TileExtraction.model_validate(ext),
+    )
+    assert len(sheets.merge_sheet(tiles[0].parent)["findings"]) == 2

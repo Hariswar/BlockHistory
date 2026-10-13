@@ -1,0 +1,151 @@
+{
+  "sheet_id": "04858_12_1938-0049",
+  "edition": "1938",
+  "volume": "St. Louis Vol. 12",
+  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 49, image 04858_12_1938-0049",
+  "labeled_by": "Claude draft from the LOC sheet image, 2026-10-13; NOT yet checked by Baburaj",
+  "labeled_on": "2026-10-13",
+  "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+  "definitions": {
+    "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+    "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+    "map_notes": "Only what is printed on the sheet.",
+    "interpretation": "Inference, not a map fact; never scored."
+  },
+  "sheet_layout": "Michigan Av at top, then Minnesota Av, Pennsylvania Av and S Broadway (bottom); Quincy on the left, Loughborough Av in the middle, Kraus on the right. Mostly dwellings, flats and auto houses.",
+  "out_of_scope_seen": [
+    "CARONDELET BRANCH PUBLIC LIBRARY, 6800 Michigan Av",
+    "LODGE HALL, 6816-6818 Michigan Av",
+    "BAKE HO. CONC. FL. IR. OVEN, 6828 Michigan Av",
+    "VAC. (large, CONC. FL., IR. COLS. & BEAMS, RAISED 4'), 6801-6807 S Broadway",
+    "Auto houses for 3 and 4 cars"
+  ],
+  "total_gasoline_tanks": 0,
+  "verification": {
+    "status": "draft",
+    "method": "Claude read every block of the full-resolution image. To approve: check each entry and the G.T. counts against the map, then set status to human_verified.",
+    "date": ""
+  },
+  "buildings": [
+    {
+      "label": "AUTO. REP.",
+      "use": "auto repair shop",
+      "street_number": "317",
+      "street_name": "Loughborough Av",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3001",
+      "map_notes": "CONC. FL. Rear of 6830 Michigan Av, facing Loughborough.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "AUTO. REP.",
+      "use": "auto repair shop",
+      "street_number": "6811-6813",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3005",
+      "map_notes": "Label written diagonally. 2 SAWTOOTH SKYTS, CONC. FL.",
+      "interpretation": "",
+      "contamination_relevance": "high",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "DISPLAY CASE FACTY. / CARPR. / TIN SHOP",
+      "use": "display case factory, carpentry and tin shop",
+      "street_number": "6919",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "2",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3013",
+      "map_notes": "Long building through the lot; BR. 2ND.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "MACH. SHOP",
+      "use": "machine shop",
+      "street_number": "6804R",
+      "street_name": "Minnesota Av",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3004",
+      "map_notes": "Small rear building.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    },
+    {
+      "label": "PLUMB'G",
+      "use": "plumbing shop",
+      "street_number": "6819",
+      "street_name": "S Broadway",
+      "construction": "brick",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "block 3005",
+      "map_notes": "",
+      "interpretation": "",
+      "contamination_relevance": "low",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": [
+        "construction",
+        "stories"
+      ]
+    }
+  ]
+}

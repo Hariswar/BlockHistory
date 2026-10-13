@@ -21,6 +21,7 @@ from urllib3.util.retry import Retry
 COLLECTION_URL = "https://www.loc.gov/collections/sanborn-maps/"
 ITEM_URL = "https://www.loc.gov/item/{item_id}/"
 IIIF_URL = "https://tile.loc.gov/image-services/iiif/{service}/full/{size}/0/default.jpg"
+REGION_URL = "https://tile.loc.gov/image-services/iiif/{service}/{region}/full/0/default.jpg"
 
 # loc.gov rate-limits aggressive clients; stay well under it.
 REQUEST_DELAY_S = 1.0
@@ -28,11 +29,11 @@ USER_AGENT = "BlockHistory/0.0.1 (+https://github.com/Hariswar/BlockHistory)"
 
 _session = requests.Session()
 _session.headers["User-Agent"] = USER_AGENT
-# tile.loc.gov returns 503/429 under load; back off 5, 10, 20, 40, 80 s before giving up.
+# tile.loc.gov returns 503/429 (and Cloudflare 52x) under load; back off 5, 10, 20, 40, 80 s before giving up.
 _retry = Retry(
     total=5,
     backoff_factor=5,
-    status_forcelist=(429, 500, 502, 503, 504),
+    status_forcelist=(429, 500, 502, 503, 504, 520, 522, 524),
     respect_retry_after_header=True,
 )
 _session.mount("https://", HTTPAdapter(max_retries=_retry))
@@ -124,11 +125,28 @@ def download_sheet(sheet: Sheet, out_dir: Path, pct: int = 50) -> Path:
     if img_path.exists() and meta_path.exists():
         return img_path
 
+    img_path.write_bytes(_get_image(sheet.image_url(pct), sheet.sheet_id))
+    meta = {**asdict(sheet), "downloaded_pct": pct, "image_url": sheet.image_url(pct)}
+    meta_path.write_text(json.dumps(meta, indent=2) + "\n")
+    return img_path
+
+
+def download_region(service: str, box: tuple[int, int, int, int], out_path: Path) -> Path:
+    """Save one full-resolution region (x, y, w, h in full-res pixels) of a sheet."""
+    if not out_path.exists():
+        x, y, w, h = box
+        url = REGION_URL.format(service=service, region=f"{x},{y},{w},{h}")
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_bytes(_get_image(url, out_path.name))
+    return out_path
+
+
+def _get_image(url: str, name: str) -> bytes:
     # The adapter retries refused requests; this loop also retries connections that drop
     # partway through the image body, which tile.loc.gov does under load.
     for attempt in range(4):
         try:
-            resp = _session.get(sheet.image_url(pct), timeout=300)
+            resp = _session.get(url, timeout=300)
             resp.raise_for_status()
             break
         except (requests.exceptions.ChunkedEncodingError, requests.exceptions.ConnectionError):
@@ -137,11 +155,6 @@ def download_sheet(sheet: Sheet, out_dir: Path, pct: int = 50) -> Path:
             time.sleep(10 * 2**attempt)
     # A busy server sometimes answers 200 with an HTML error page instead of the image.
     if not resp.headers.get("content-type", "").startswith("image/"):
-        raise RuntimeError(
-            f"{sheet.sheet_id}: expected an image, got {resp.headers.get('content-type')}"
-        )
-    img_path.write_bytes(resp.content)
-    meta = {**asdict(sheet), "downloaded_pct": pct, "image_url": sheet.image_url(pct)}
-    meta_path.write_text(json.dumps(meta, indent=2) + "\n")
+        raise RuntimeError(f"{name}: expected an image, got {resp.headers.get('content-type')}")
     time.sleep(REQUEST_DELAY_S)
-    return img_path
+    return resp.content

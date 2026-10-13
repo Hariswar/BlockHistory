@@ -247,7 +247,7 @@
       "needs_human_check": []
     },
     {
-      "label": "COAL DEALERS EQUIPMENT YARD",
+      "label": "COAL DEALERS EQUIPMENT YARD / GASOL. ENG. / A. 18 TRUCKS",
       "use": "truck yard and garage",
       "street_number": null,
       "street_name": null,
@@ -692,5 +692,6 @@
     "status": "human_verified",
     "method": "Manually read every entry from the full-resolution image; spot-checked the Tin Shop, a filling station, the bulk oil station, the Semi-Steel tank and the cement elevator against the map, and approved the file.",
     "date": "2026-10-11"
-  }
+  },
+  "notes": "2026-10-13: the coal dealers' yard label now lists GASOL. ENG. and A. 18 TRUCKS (already in its map_notes) so the eval can match a reader that names the building instead of the yard."
 }

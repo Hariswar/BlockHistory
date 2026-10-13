@@ -1,11 +1,16 @@
 """Read whole sheets with Haiku through the Batch API (half price).
 
     python scripts/run_batch.py submit carondelet 1938 50 53 57 62 74 47 49 56 61 67
+    python scripts/run_batch.py submit carondelet 1938 50 53 --tanks
     python scripts/run_batch.py status <batch_id>
     python scripts/run_batch.py collect <batch_id> [--wait]
 
 Tiles already read (cached) are skipped, so re-submitting never pays twice. Collected
 results land in the same cache read_tile.py uses; then run sheet_report.py.
+
+--tanks runs the gas-tank second pass instead: it needs the first pass to be collected,
+downloads the tiles with a fuel or vehicle finding at full resolution (4 crops each), and
+counts tank circles there. evaluate.py and sheet_report.py use the counts when present.
 """
 
 import argparse
@@ -15,7 +20,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from blockhistory import costs
-from blockhistory.map_reader import batch
+from blockhistory.map_reader import batch, tanks
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -43,6 +48,7 @@ def main() -> None:
     s.add_argument("--model")
     s.add_argument("--effort")
     s.add_argument("--dry-run", action="store_true", help="show the estimate, send nothing")
+    s.add_argument("--tanks", action="store_true", help="gas-tank second pass")
     for name in ("status", "collect"):
         c = sub.add_parser(name)
         c.add_argument("batch_id")
@@ -53,13 +59,24 @@ def main() -> None:
 
     if args.cmd == "submit":
         tiles = sheet_tiles(args.area, args.edition, args.sheets)
-        model, effort = batch.extract.resolve(args.model, args.effort)
-        todo = [t for t in tiles if not batch.extract.cache_path(t, model, effort).exists()]
-        est = batch.estimate_usd(len(todo), model)
-        print(f"{len(tiles)} tiles, {len(todo)} not read yet; {model}/{effort}; est. ${est:.3f}")
+        reader = tanks if args.tanks else batch.extract
+        model, effort = reader.resolve(args.model, args.effort)
+        if args.tanks:
+            picked = [
+                t for d in sorted({t.parent for t in tiles}) for t in tanks.candidate_tiles(d)
+            ]
+            print(f"{len(picked)} of {len(tiles)} tiles have a fuel or vehicle finding")
+            if args.dry_run:  # estimate without downloading the full-resolution crops
+                est = batch.estimate_usd(4 * len(picked), model, reader)
+                print(f"up to {4 * len(picked)} crops; {model}/{effort}; est. ${est:.3f}")
+                return
+            tiles = [c for t in picked for c in tanks.crops_for(t)]
+        todo = [t for t in tiles if not reader.cache_path(t, model, effort).exists()]
+        est = batch.estimate_usd(len(todo), model, reader)
+        print(f"{len(tiles)} images, {len(todo)} not read yet; {model}/{effort}; est. ${est:.3f}")
         if args.dry_run:
             return
-        m = batch.submit(tiles, model, effort)
+        m = batch.submit(tiles, model, effort, reader=reader)
         if m["batch_id"]:
             print(f"submitted batch {m['batch_id']}")
             print(f"next: python scripts/run_batch.py collect {m['batch_id']} --wait")

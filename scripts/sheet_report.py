@@ -11,6 +11,7 @@ import json
 from datetime import date
 from pathlib import Path
 
+from blockhistory.map_reader import tanks
 from blockhistory.map_reader.scoring import is_found, label_words, tank_count
 from blockhistory.map_reader.sheets import merge_sheet
 
@@ -41,6 +42,12 @@ def addr(f: dict) -> str:
 def write_report(area: str, edition: str, sheet: int) -> dict:
     tile_dir = next((ROOT / "data" / "tiles" / area / edition).glob(f"*-{sheet:04d}"))
     merged = merge_sheet(tile_dir)
+    tank_info = tanks.apply(merged["findings"], tile_dir)  # no-op if the tank pass hasn't run
+    merged["usd"] += tank_info["usd"]
+    order = {"high": 0, "medium": 1, "low": 2}
+    merged["findings"].sort(
+        key=lambda f: (order[f["relevance"]], -f["gasoline_tank_count"], f["label"])
+    )
     sid = merged["sheet_id"]
     results_dir = ROOT / "data" / "results" / area / edition
     results_dir.mkdir(parents=True, exist_ok=True)
