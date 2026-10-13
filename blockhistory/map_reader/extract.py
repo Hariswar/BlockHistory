@@ -116,11 +116,80 @@ class TileExtraction(BaseModel):
     illegible_notes: list[str] = Field(description="Text you could see but not read confidently")
 
 
+USER_TEXT = "Transcribe every labeled building in this tile."
+MAX_TOKENS = 16000
+
+
 def _cache_key(image_bytes: bytes, model: str, effort: str) -> str:
     h = hashlib.sha256()
     h.update(f"{model}|{effort}|{PROMPT_VERSION}|".encode())
     h.update(image_bytes)
     return h.hexdigest()[:32]
+
+
+def resolve(model: str | None = None, effort: str | None = None) -> tuple[str, str]:
+    """Model and effort from arguments, then .env, then defaults (read at call time)."""
+    model = model or os.environ.get("BLOCKHISTORY_MODEL") or DEFAULT_MODEL
+    effort = effort or os.environ.get("BLOCKHISTORY_EFFORT") or DEFAULT_EFFORT
+    return model, effort
+
+
+def cache_path(tile_path: Path, model: str, effort: str) -> Path:
+    return CACHE_DIR / f"{_cache_key(tile_path.read_bytes(), model, effort)}.json"
+
+
+def load_cached(
+    tile_path: Path, model: str | None = None, effort: str | None = None
+) -> dict | None:
+    path = cache_path(tile_path, *resolve(model, effort))
+    return {**json.loads(path.read_text()), "cached": True} if path.exists() else None
+
+
+def messages_for(image_bytes: bytes) -> list[dict]:
+    return [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image",
+                    "source": {
+                        "type": "base64",
+                        "media_type": "image/jpeg",
+                        "data": base64.standard_b64encode(image_bytes).decode(),
+                    },
+                },
+                {"type": "text", "text": USER_TEXT},
+            ],
+        }
+    ]
+
+
+def save_result(
+    tile_path: Path,
+    model: str,
+    effort: str,
+    served_model: str,
+    input_tokens: int,
+    output_tokens: int,
+    extraction: TileExtraction,
+    batch: bool = False,
+) -> dict:
+    """Record the spend and cache one tile's result. Shared by single and batch reads."""
+    usd = costs.record(model, input_tokens, output_tokens, what=tile_path.name, batch=batch)
+    result = {
+        "tile": tile_path.name,
+        "model": served_model,
+        "effort": effort,
+        "prompt_version": PROMPT_VERSION,
+        "batch": batch,
+        "usage": {"input_tokens": input_tokens, "output_tokens": output_tokens},
+        "usd": round(usd, 6),
+        "extraction": extraction.model_dump(mode="json"),
+    }
+    path = cache_path(tile_path, model, effort)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(result, indent=2) + "\n")
+    return result
 
 
 def read_tile(
@@ -130,13 +199,10 @@ def read_tile(
     effort: str | None = None,
 ) -> dict:
     """Extract buildings from one tile. Returns {extraction, usage, usd, model, cached}."""
-    # Read at call time so values from .env (loaded by the calling script) apply.
-    model = model or os.environ.get("BLOCKHISTORY_MODEL") or DEFAULT_MODEL
-    effort = effort or os.environ.get("BLOCKHISTORY_EFFORT") or DEFAULT_EFFORT
-    image_bytes = tile_path.read_bytes()
-    cache_path = CACHE_DIR / f"{_cache_key(image_bytes, model, effort)}.json"
-    if cache_path.exists():
-        return {**json.loads(cache_path.read_text()), "cached": True}
+    model, effort = resolve(model, effort)
+    cached = load_cached(tile_path, model, effort)
+    if cached:
+        return cached
 
     costs.check_budget()
     client = client or anthropic.Anthropic()
@@ -146,48 +212,31 @@ def read_tile(
         extra = {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
     response = client.beta.messages.parse(
         model=model,
-        max_tokens=16000,
+        max_tokens=MAX_TOKENS,
         output_config={"effort": effort},
         **extra,
         system=SYSTEM_PROMPT,
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "image",
-                        "source": {
-                            "type": "base64",
-                            "media_type": "image/jpeg",
-                            "data": base64.standard_b64encode(image_bytes).decode(),
-                        },
-                    },
-                    {"type": "text", "text": "Transcribe every labeled building in this tile."},
-                ],
-            }
-        ],
+        messages=messages_for(tile_path.read_bytes()),
         output_format=TileExtraction,
     )
-    usd = costs.record(
-        model, response.usage.input_tokens, response.usage.output_tokens, what=tile_path.name
-    )
     if response.stop_reason == "refusal":
+        costs.record(
+            model, response.usage.input_tokens, response.usage.output_tokens, what=tile_path.name
+        )
         raise RuntimeError(f"Model declined tile {tile_path.name}: {response.stop_details}")
     if response.parsed_output is None:
+        costs.record(
+            model, response.usage.input_tokens, response.usage.output_tokens, what=tile_path.name
+        )
         raise RuntimeError(f"No parseable output for {tile_path.name} ({response.stop_reason})")
 
-    result = {
-        "tile": tile_path.name,
-        "model": response.model,
-        "effort": effort,
-        "prompt_version": PROMPT_VERSION,
-        "usage": {
-            "input_tokens": response.usage.input_tokens,
-            "output_tokens": response.usage.output_tokens,
-        },
-        "usd": round(usd, 6),
-        "extraction": response.parsed_output.model_dump(mode="json"),
-    }
-    CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    cache_path.write_text(json.dumps(result, indent=2) + "\n")
+    result = save_result(
+        tile_path,
+        model,
+        effort,
+        response.model,
+        response.usage.input_tokens,
+        response.usage.output_tokens,
+        response.parsed_output,
+    )
     return {**result, "cached": False}
