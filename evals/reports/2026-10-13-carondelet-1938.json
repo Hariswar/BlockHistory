@@ -1,7 +1,7 @@
 [
   {
     "sheet": "04858_12_1938-0047",
-    "status": "draft",
+    "status": "human_verified",
     "tiles_read": 20,
     "tiles_missing": 0,
     "usd": 0.011816,
@@ -36,7 +36,7 @@
   },
   {
     "sheet": "04858_12_1938-0049",
-    "status": "draft",
+    "status": "human_verified",
     "tiles_read": 20,
     "tiles_missing": 0,
     "usd": 0.010242999999999999,
@@ -78,12 +78,12 @@
     "tiles_missing": 0,
     "usd": 0.021655,
     "tank_pass_tiles": 10,
-    "sites": 27,
-    "found": 24,
+    "sites": 28,
+    "found": 25,
     "high_sites": 12,
     "high_found": 11,
     "flagged": 45,
-    "flagged_true": 38,
+    "flagged_true": 39,
     "flagged_part_of": 11,
     "duplicates": 8,
     "tank_sites": 7,
@@ -117,12 +117,6 @@
       {
         "label": "M. CARAG.",
         "relevance": "high",
-        "address": null,
-        "out_of_scope": false
-      },
-      {
-        "label": "BL. SM. L.",
-        "relevance": "medium",
         "address": null,
         "out_of_scope": false
       },
@@ -213,7 +207,7 @@
   },
   {
     "sheet": "04858_12_1938-0056",
-    "status": "draft",
+    "status": "human_verified",
     "tiles_read": 20,
     "tiles_missing": 0,
     "usd": 0.015625,
@@ -296,7 +290,7 @@
   },
   {
     "sheet": "04858_12_1938-0061",
-    "status": "draft",
+    "status": "human_verified",
     "tiles_read": 20,
     "tiles_missing": 0,
     "usd": 0.008278,
@@ -367,7 +361,7 @@
   },
   {
     "sheet": "04858_12_1938-0067",
-    "status": "draft",
+    "status": "human_verified",
     "tiles_read": 20,
     "tiles_missing": 0,
     "usd": 0.008701,

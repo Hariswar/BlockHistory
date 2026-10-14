@@ -3,7 +3,7 @@
   "edition": "1938",
   "volume": "St. Louis Vol. 12",
   "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 49, image 04858_12_1938-0049",
-  "labeled_by": "Claude draft from the LOC sheet image, 2026-10-13; NOT yet checked by Baburaj",
+  "labeled_by": "Claude draft from the LOC sheet image; checked by Baburaj; re-read block by block by Claude, 2026-10-13",
   "labeled_on": "2026-10-13",
   "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
   "definitions": {
@@ -22,9 +22,9 @@
   ],
   "total_gasoline_tanks": 0,
   "verification": {
-    "status": "draft",
-    "method": "Claude read every block of the full-resolution image. To approve: check each entry and the G.T. counts against the map, then set status to human_verified.",
-    "date": ""
+    "status": "human_verified",
+    "method": "Baburaj checked the draft. Claude then re-read every block of the sheet in 9 overlapping sections, confirmed each G.T. count on full-resolution crops, and filled in construction and stories.",
+    "date": "2026-10-13"
   },
   "buildings": [
     {
@@ -44,12 +44,11 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "AUTO. REP.",
@@ -68,12 +67,11 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "DISPLAY CASE FACTY. / CARPR. / TIN SHOP",
@@ -92,12 +90,11 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "MACH. SHOP",
@@ -116,12 +113,11 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "PLUMB'G",
@@ -140,12 +136,11 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     }
   ]
 }

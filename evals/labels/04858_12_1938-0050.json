@@ -686,6 +686,29 @@
         "street_number"
       ],
       "needs_human_check": []
+    },
+    {
+      "label": "BL. SM.",
+      "use": "blacksmith shop",
+      "street_number": "107-111",
+      "street_name": "E Soper",
+      "construction": "frame",
+      "stories": "1",
+      "gasoline_tank_count": 0,
+      "other_tanks": [],
+      "partial": false,
+      "position": "tile r0_c1",
+      "map_notes": "North side of E Soper, east of S Broadway (block 2976). 1 story, 14 ft. Marked lot 'L.'; the M. CARPR. (carpenter shop, 1½ stories) next to it is lot 'M.'.",
+      "interpretation": "",
+      "contamination_relevance": "medium",
+      "checked_against_map": [
+        "label",
+        "street_number",
+        "construction",
+        "stories",
+        "gasoline_tank_count"
+      ],
+      "needs_human_check": []
     }
   ],
   "verification": {
@@ -693,5 +716,5 @@
     "method": "Manually read every entry from the full-resolution image; spot-checked the Tin Shop, a filling station, the bulk oil station, the Semi-Steel tank and the cement elevator against the map, and approved the file.",
     "date": "2026-10-11"
   },
-  "notes": "2026-10-13: the coal dealers' yard label now lists GASOL. ENG. and A. 18 TRUCKS (already in its map_notes) so the eval can match a reader that names the building instead of the yard."
+  "notes": "2026-10-13: the coal dealers' yard label now lists GASOL. ENG. and A. 18 TRUCKS (already in its map_notes) so the eval can match a reader that names the building instead of the yard. 2026-10-13: added BL. SM. (blacksmith) at 107-111 E Soper, approved by Baburaj after the spot check found it missing."
 }

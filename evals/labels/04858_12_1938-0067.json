@@ -3,7 +3,7 @@
   "edition": "1938",
   "volume": "St. Louis Vol. 12",
   "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 67, image 04858_12_1938-0067",
-  "labeled_by": "Claude draft from the LOC sheet image, 2026-10-13; NOT yet checked by Baburaj",
+  "labeled_by": "Claude draft from the LOC sheet image; checked by Baburaj; re-read block by block by Claude, 2026-10-13",
   "labeled_on": "2026-10-13",
   "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
   "definitions": {
@@ -16,17 +16,18 @@
   "out_of_scope_seen": [
     "Dwellings on Vulcan St, Reilly Av, E Marceau and Van Buren",
     "Frame dwellings on frame foundations (FR. FOUND'N) east of the tracks",
-    "(ASB. CL.) OFF.: asbestos-clad office of the shipyard, a building material, not a use"
+    "(ASB. CL.) OFF.: asbestos-clad office of the shipyard, a building material, not a use",
+    "IRON MOLASSES TANK (NOT USED) and two VAC. buildings, block 3152"
   ],
   "total_gasoline_tanks": 0,
   "verification": {
-    "status": "draft",
-    "method": "Claude read every block of the full-resolution image. To approve: check each entry and the G.T. counts against the map, then set status to human_verified.",
-    "date": ""
+    "status": "human_verified",
+    "method": "Baburaj checked the draft. Claude then re-read every block of the sheet in 9 overlapping sections, confirmed each G.T. count on full-resolution crops, and filled in construction and stories.",
+    "date": "2026-10-13"
   },
   "buildings": [
     {
-      "label": "ST. LOUIS SULPHUR & CHEM. CO. / SULPHUR MILL / SACKING",
+      "label": "ST. LOUIS SULPHUR & CHEM. CO. / SULPHUR MILL / SACKING / ORE W. HO.",
       "use": "sulphur mill and chemical works",
       "street_number": "300",
       "street_name": "E Primm",
@@ -36,76 +37,71 @@
       "other_tanks": [],
       "partial": false,
       "position": "block 3150",
-      "map_notes": "Corner of Vulcan St. SACKING bldg (CONC. FL., STEEL FR.), SULPHUR MILL, ST'GE, FURN. HO., OFF. Watchman with clock; heat: stove; power: elec.",
+      "map_notes": "Corner of E Primm (300) and Vulcan St (7900; not opened here). SACKING bldg (16 ft, CONC. FL., STEEL FR., IR. RF., BR. curtain walls), SULPHUR MILL (2 stories: BR. 1ST, IR. 2ND, 35 ft), ST'GE (iron clad), FURN. HO., OFF., and an ORE W. HO. across the rail spur. Watchman with clock; heat: stove in off.; power: elec.",
       "interpretation": "",
       "contamination_relevance": "high",
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "EAGLE IRON WORKS",
       "use": "iron works factory",
       "street_number": "8105-8109",
       "street_name": "Polk",
-      "construction": "fire-proof",
+      "construction": "metal",
       "stories": "1",
       "gasoline_tank_count": 0,
       "other_tanks": [],
       "partial": false,
       "position": "block 3187",
-      "map_notes": "FACTY. BLDG.; no watchman, heat: stove in off., power: elec. Rail spur to the building. IRON W. HO. nearby.",
+      "map_notes": "Iron-clad FACTY. BLDG.; no watchman, heat: stove in off., power: elec. Fire-proof OFF. at 8105-8109 Polk. Rail spur to the building; IRON W. HO. south of it.",
       "interpretation": "",
       "contamination_relevance": "medium",
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "MISSOURI PACIFIC R.R. CO. GRAIN ELEVATOR / BOILER HO.",
       "use": "grain elevator (Continental Grain Co.) with boiler house",
       "street_number": null,
       "street_name": "E Primm",
-      "construction": "fire-proof",
-      "stories": "",
+      "construction": "fireproof",
+      "stories": null,
       "gasoline_tank_count": 0,
-      "other_tanks": [
-        "IRON MOLASSES TANK (NOT USED), block 3152"
-      ],
+      "other_tanks": [],
       "partial": false,
       "position": "block 3153",
-      "map_notes": "GRAIN TKS. 102' HIGH; capacity 4,000,000 bu. BOILER HO. BUILT 1930. Inset continues it.",
+      "map_notes": "GRAIN TKS. 102' HIGH (round bins), elevator with DRIERS, LOADING, conveyer house to a DISTRIBUTOR on the river; capacity 4,000,000 bu. The BOILER HO. BUILT 1930 and a DUST HO. are in the inset (lower left) by E Primm and Van Buren; the 1930 building on the main map is a fire-proof STGE.",
       "interpretation": "",
       "contamination_relevance": "medium",
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "CONTRACTOR'S YARD",
       "use": "contractor's yard",
       "street_number": null,
       "street_name": null,
-      "construction": "",
-      "stories": "",
+      "construction": "unknown",
+      "stories": null,
       "gasoline_tank_count": 0,
       "other_tanks": [],
       "partial": false,
@@ -116,12 +112,11 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "PAINT W. HO.",
@@ -140,20 +135,19 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     },
     {
       "label": "ST. LOUIS SHIP BUILDING & STEEL CO. / SHIP YARDS",
       "use": "shipyard",
       "street_number": null,
       "street_name": null,
-      "construction": "",
-      "stories": "",
+      "construction": "unknown",
+      "stories": null,
       "gasoline_tank_count": 0,
       "other_tanks": [],
       "partial": false,
@@ -164,12 +158,11 @@
       "checked_against_map": [
         "label",
         "street_number",
+        "construction",
+        "stories",
         "gasoline_tank_count"
       ],
-      "needs_human_check": [
-        "construction",
-        "stories"
-      ]
+      "needs_human_check": []
     }
   ],
   "notes": "520 E Marceau is a flat (F.). The week 4-5 reader reported a DRY CLEANING there; nothing like it is printed on the sheet."
