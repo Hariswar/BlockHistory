@@ -1,0 +1,26 @@
+#CRS: EPSG:4326
+#NAME 0 Michigan Av & Kraus
+#NAME 1 Michigan Av & Haven
+#NAME 2 Michigan Av & Mott
+#NAME 3 Minnesota Av & Kraus
+#NAME 4 Minnesota Av & Haven
+#NAME 5 Minnesota Av & Mott
+#NAME 6 Pennsylvania Av & Kraus
+#NAME 7 Pennsylvania Av & Haven
+#NAME 8 Pennsylvania Av & Mott
+#NAME 9 S. Broadway & Kraus
+#NAME 10 S. Broadway & Haven
+#NAME 11 S. Broadway & Mott
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2542039,38.5551354,448.0,-339.0,1,0,0,0
+-90.2533916,38.5558445,1537.0,-340.0,1,0,0,0
+-90.2524839,38.5566450,2645.0,-341.0,1,0,0,0
+-90.2532746,38.5545091,427.0,-1406.0,1,0,0,0
+-90.2524524,38.5552133,1476.5,-1411.0,1,0,0,0
+-90.2515413,38.5560263,2647.0,-1415.0,1,0,0,0
+-90.2523106,38.5538749,457.5,-2482.5,1,0,0,0
+-90.2515157,38.5545839,1509.0,-2485.5,1,0,0,0
+-90.2505859,38.5553917,2661.0,-2487.5,1,0,0,0
+-90.2513739,38.5532234,483.5,-3578.5,1,0,0,0
+-90.2505559,38.5539439,1539.5,-3580.5,1,0,0,0
+-90.2496406,38.5547493,2714.5,-3582.5,1,0,0,0

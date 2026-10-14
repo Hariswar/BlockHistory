@@ -68,3 +68,40 @@ def read_tile_ocr(tile_path: Path, min_confidence: int = MIN_CONFIDENCE) -> list
             if key not in best or conf > best[key]["confidence"]:
                 best[key] = {"text": text, "confidence": round(conf), "rotation": rotation}
     return sorted(best.values(), key=lambda w: -w["confidence"])
+
+
+def read_tile_boxes(tile_path: Path, min_confidence: int = MIN_CONFIDENCE) -> list[dict]:
+    """Like read_tile_ocr, but every word with its box in tile pixels: [{text, confidence,
+    x, y, w, h}]. Boxes from the rotated reads are turned back to the tile's orientation."""
+    if shutil.which("tesseract") is None:
+        raise RuntimeError("tesseract not found; install it with `brew install tesseract`")
+    base = _prepare(tile_path)
+    bw, bh = base.size
+    words = []
+    for rotation in ROTATIONS:
+        image = base.rotate(rotation, expand=True) if rotation else base
+        for row in _tesseract_tsv(image):
+            text = (row.get("text") or "").strip()
+            conf = float(row.get("conf") or -1)
+            if conf < min_confidence or sum(c.isalpha() for c in text) < 3:
+                continue
+            left, top = int(row["left"]), int(row["top"])
+            w, h = int(row["width"]), int(row["height"])
+            # Map the box's corners back: PIL's rotate(90) sends (x, y) to (y, W - x).
+            if rotation == 90:
+                x0, y0, x1, y1 = bw - (top + h), left, bw - top, left + w
+            elif rotation == 270:
+                x0, y0, x1, y1 = top, bh - (left + w), top + h, bh - left
+            else:
+                x0, y0, x1, y1 = left, top, left + w, top + h
+            words.append(
+                {
+                    "text": text,
+                    "confidence": round(conf),
+                    "x": x0 / UPSCALE,
+                    "y": y0 / UPSCALE,
+                    "w": (x1 - x0) / UPSCALE,
+                    "h": (y1 - y0) / UPSCALE,
+                }
+            )
+    return words

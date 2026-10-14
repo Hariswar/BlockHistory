@@ -8,6 +8,7 @@
 Tiles already read (cached) are skipped, so re-submitting never pays twice. Collected
 results land in the same cache read_tile.py uses; then run sheet_report.py.
 
+--points asks where each flagged finding is on its tile (for georef_sheet.py locate).
 --tanks runs the gas-tank second pass instead: it needs the first pass to be collected,
 downloads the tiles with a fuel or vehicle finding at full resolution (4 crops each), and
 counts tank circles there. evaluate.py and sheet_report.py use the counts when present.
@@ -20,7 +21,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from blockhistory import costs
-from blockhistory.map_reader import batch, tanks
+from blockhistory.map_reader import batch, points, tanks
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -49,6 +50,7 @@ def main() -> None:
     s.add_argument("--effort")
     s.add_argument("--dry-run", action="store_true", help="show the estimate, send nothing")
     s.add_argument("--tanks", action="store_true", help="gas-tank second pass")
+    s.add_argument("--points", action="store_true", help="pixel locations of flagged findings")
     for name in ("status", "collect"):
         c = sub.add_parser(name)
         c.add_argument("batch_id")
@@ -59,8 +61,12 @@ def main() -> None:
 
     if args.cmd == "submit":
         tiles = sheet_tiles(args.area, args.edition, args.sheets)
-        reader = tanks if args.tanks else batch.extract
+        reader = tanks if args.tanks else points if args.points else batch.extract
         model, effort = reader.resolve(args.model, args.effort)
+        if args.points:
+            tiles = [
+                t for d in sorted({t.parent for t in tiles}) for t in points.candidate_tiles(d)
+            ]
         if args.tanks:
             picked = [
                 t for d in sorted({t.parent for t in tiles}) for t in tanks.candidate_tiles(d)

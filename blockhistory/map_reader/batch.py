@@ -4,7 +4,7 @@ submit() sends every tile that isn't already cached and writes a manifest to
 data/batches/<batch_id>.json. collect() fetches the results and stores each one in the
 same cache as read_tile(), so everything downstream treats batch and single reads alike.
 `reader` is the module that defines the prompt and schema: `extract` (the map reader,
-the default) or `tanks` (the gas-tank second pass).
+the default), `tanks` (the gas-tank second pass) or `points` (pixel locations).
 """
 
 from __future__ import annotations
@@ -38,7 +38,12 @@ def _request(tile: Path, model: str, effort: str, reader: ModuleType = extract) 
             model=model,
             max_tokens=reader.MAX_TOKENS,
             system=reader.SYSTEM_PROMPT,
-            messages=reader.messages_for(tile.read_bytes()),
+            # Readers whose prompt depends on the tile (points) build their own messages.
+            messages=(
+                reader.request_messages(tile)
+                if hasattr(reader, "request_messages")
+                else reader.messages_for(tile.read_bytes())
+            ),
             output_config={
                 "effort": effort,
                 "format": {
