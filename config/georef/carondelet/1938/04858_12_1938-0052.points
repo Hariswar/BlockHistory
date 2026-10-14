@@ -1,0 +1,26 @@
+#CRS: EPSG:4326
+#NAME 0 Quincy & Michigan
+#NAME 1 Quincy & Minnesota
+#NAME 2 Quincy & Pennsylvania
+#NAME 3 Blow & Michigan
+#NAME 4 Blow & Minnesota
+#NAME 5 Blow & Pennsylvania
+#NAME 6 Nagel & Michigan
+#NAME 7 Nagel & Minnesota
+#NAME 8 Nagel & Pennsylvania
+#NAME 9 Robert & Michigan
+#NAME 10 Robert & Minnesota
+#NAME 11 Robert & Pennsylvania
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2558730,38.5536779,757.0,-460.0,1,0,0,0
+-90.2549369,38.5530591,1834.0,-432.0,1,0,0,0
+-90.2539722,38.5524135,2905.0,-405.0,1,0,0,0
+-90.2566992,38.5529585,755.0,-1528.0,1,0,0,0
+-90.2557523,38.5523418,1836.0,-1497.0,1,0,0,0
+-90.2547838,38.5516997,2908.0,-1464.0,1,0,0,0
+-90.2575280,38.5522411,755.0,-2588.0,1,0,0,0
+-90.2565758,38.5516055,1839.0,-2558.0,1,0,0,0
+-90.2556129,38.5509720,2914.0,-2525.0,1,0,0,0
+-90.2583514,38.5515237,760.0,-3658.0,1,0,0,0
+-90.2573912,38.5508881,1843.0,-3621.0,1,0,0,0
+-90.2564220,38.5502589,2917.0,-3581.0,1,0,0,0

@@ -14,6 +14,14 @@
     python scripts/georef_sheet.py validate carondelet 1938 56
 
 A sheet needs at least 3 control points; 6+ spread over the sheet is better.
+A sheet with two separately drawn panels gets one set of points per panel:
+
+    python scripts/georef_sheet.py gcps carondelet 1938 74 --outline 0,0,2230,3898 "..."
+    python scripts/georef_sheet.py gcps carondelet 1938 74 --panel inset --outline 2230,0,3201,3898 "..."
+
+--outline takes a box (x0,y0,x1,y1) or a polygon ("x,y x,y x,y ..."), in sheet pixels.
+--similarity fits shift + scale + rotation only, for a panel whose points are all on one
+street (see blockhistory/georef/transform.py).
 """
 
 import argparse
@@ -27,7 +35,11 @@ from blockhistory.georef.transform import (
     GCP,
     Affine,
     distance_m,
+    in_outline,
     leave_one_out,
+    parse_outline,
+    read_model,
+    read_outline,
     read_points,
     write_points,
 )
@@ -42,8 +54,20 @@ def sheet_dir(area: str, edition: str, n: int) -> Path:
     return next((ROOT / "data" / "tiles" / area / edition).glob(f"*-{n:04d}"))
 
 
-def points_path(area: str, edition: str, sheet_id: str) -> Path:
-    return ROOT / "config" / "georef" / area / edition / f"{sheet_id}.points"
+def points_path(area: str, edition: str, sheet_id: str, panel: str | None = None) -> Path:
+    name = f"{sheet_id}.{panel}" if panel else sheet_id
+    return ROOT / "config" / "georef" / area / edition / f"{name}.points"
+
+
+def panel_files(area: str, edition: str, sheet_id: str) -> list[Path]:
+    """The sheet's .points files: the main one plus any <sheet>.<panel>.points."""
+    folder = ROOT / "config" / "georef" / area / edition
+    return sorted(folder.glob(f"{sheet_id}.points")) + sorted(folder.glob(f"{sheet_id}.*.points"))
+
+
+def panel_id(path: Path) -> str:
+    """04858_12_1938-0074 for the main panel, 04858_12_1938-0074.inset for another."""
+    return path.name.removesuffix(".points")
 
 
 def cmd_gcps(args) -> None:
@@ -58,16 +82,21 @@ def cmd_gcps(args) -> None:
             raise SystemExit(f"{a} & {b}: {len(hits)} intersections in OpenStreetMap; pick another")
         (lat, lon) = hits[0]
         gcps.append(GCP(px, py, lat, lon, f"{a} & {b}"))
-    path = points_path(args.area, args.edition, sid)
-    write_points(path, gcps)
+    path = points_path(args.area, args.edition, sid, args.panel)
+    outline = parse_outline(args.outline) if args.outline else None
+    model = "similarity" if args.similarity else "affine"
+    if path.exists():  # re-measuring points keeps the panel's outline and model
+        outline = outline or read_outline(path)
+        model = "similarity" if args.similarity else read_model(path)
+    write_points(path, gcps, outline, model)
     print(f"{len(gcps)} points -> {path.relative_to(ROOT)}")
-    report(gcps)
+    report(gcps, model)
 
 
-def report(gcps: list[GCP]) -> Affine:
-    t = Affine(gcps)
-    print(f"scale {t.meters_per_pixel() * 3.281:.3f} ft/px")
-    loo = leave_one_out(gcps)
+def report(gcps: list[GCP], model: str = "affine") -> Affine:
+    t = Affine(gcps, model)
+    print(f"scale {t.meters_per_pixel() * 3.281:.3f} ft/px ({model})")
+    loo = leave_one_out(gcps, model)
     for g, err in zip([g for g in gcps if g.enabled], loo):
         flag = "  <- check this point" if err > 8 else ""
         print(
@@ -77,31 +106,44 @@ def report(gcps: list[GCP]) -> Affine:
     return t
 
 
-def load_transform(area: str, edition: str, sheet_id: str) -> Affine:
-    path = points_path(area, edition, sheet_id)
-    if not path.exists():
+def load_panels(area: str, edition: str, sheet_id: str) -> list[tuple[str, list | None, Affine]]:
+    """(panel id, pixel outline or None, transform) for each panel; outlined panels first."""
+    files = panel_files(area, edition, sheet_id)
+    if not files:
+        path = points_path(area, edition, sheet_id)
         raise SystemExit(f"{sheet_id}: no control points yet ({path.relative_to(ROOT)})")
-    return Affine(read_points(path))
+    panels = [(panel_id(p), read_outline(p), Affine(read_points(p), read_model(p))) for p in files]
+    return sorted(panels, key=lambda p: p[1] is None)
 
 
 def located_findings(area: str, edition: str, n: int, use_ocr: bool) -> tuple[str, list[dict]]:
+    """Merged findings with lat/lon; each carries its "panel". Findings outside every panel
+    (in a margin, or in a panel not georeferenced yet) are left out."""
     tile_dir = sheet_dir(area, edition, n)
-    t = load_transform(area, edition, tile_dir.name)
+    panels = load_panels(area, edition, tile_dir.name)
     merged = merge_sheet(tile_dir)
     tanks.apply(merged["findings"], tile_dir)
-    mpp = t.meters_per_pixel()
+    located = []
     for f in merged["findings"]:
         p = sheet_point(f, tile_dir, use_ocr=use_ocr)
+        panel = next((pl for pl in panels if in_outline(pl[1], p["px"], p["py"])), None)
+        if panel is None:
+            continue
+        pid, _, t = panel
+        f["panel"] = pid
         f["lat"], f["lon"] = (round(v, 7) for v in t.to_latlon(p["px"], p["py"]))
         f["sheet_px"] = [round(p["px"]), round(p["py"])]
         f["location_method"] = p["method"]
-        f["uncertainty_m"] = round(p["uncertainty_px"] * mpp)
-    return tile_dir.name, merged["findings"]
+        f["uncertainty_m"] = round(p["uncertainty_px"] * t.meters_per_pixel())
+        located.append(f)
+    return tile_dir.name, located
 
 
 def cmd_fit(args) -> None:
     sid = sheet_dir(args.area, args.edition, args.sheet).name
-    report(read_points(points_path(args.area, args.edition, sid)))
+    for path in panel_files(args.area, args.edition, sid):
+        print(f"{panel_id(path)}  outline {read_outline(path) or 'whole sheet'}")
+        report(read_points(path), read_model(path))
 
 
 def cmd_locate(args) -> None:
@@ -117,7 +159,7 @@ def cmd_locate(args) -> None:
                         "label", "use", "street_number", "relevance", "gasoline_tank_count",
                         "confidence", "location_method", "uncertainty_m", "tiles", "source",
                     )
-                } | {"sheet": sid},
+                } | {"sheet": f["panel"]},
             }
             for f in findings
         ]  # fmt: skip
@@ -171,6 +213,9 @@ def main() -> None:
     g = sub.add_parser("gcps")
     g.add_argument("area"), g.add_argument("edition"), g.add_argument("sheet", type=int)
     g.add_argument("points", nargs="+", help='"Street A/Street B@x,y" on the 50%% sheet image')
+    g.add_argument("--panel", help="name of a second panel on the sheet, e.g. inset")
+    g.add_argument("--outline", help='the panel in sheet pixels: "x0,y0,x1,y1" or "x,y x,y ..."')
+    g.add_argument("--similarity", action="store_true", help="no shear: for points on one street")
     f = sub.add_parser("fit")
     f.add_argument("area"), f.add_argument("edition"), f.add_argument("sheet", type=int)
     for name in ("locate", "validate"):

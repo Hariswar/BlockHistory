@@ -1,0 +1,20 @@
+#CRS: EPSG:4326
+#NAME 0 Steins & Alabama
+#NAME 1 Steins & Vermont
+#NAME 2 Steins & Virginia
+#NAME 3 Schirmer & Alabama
+#NAME 4 Schirmer & Vermont
+#NAME 5 Schirmer & Virginia
+#NAME 6 Courtois & Alabama
+#NAME 7 Courtois & Vermont
+#NAME 8 Primm & Alabama
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2638049,38.5511133,497.0,-540.0,1,0,0,0
+-90.2628119,38.5505168,1568.0,-431.0,1,0,0,0
+-90.2618168,38.5499358,2636.0,-330.0,1,0,0,0
+-90.2646439,38.5503721,488.0,-1590.0,1,0,0,0
+-90.2636598,38.5498096,1565.0,-1491.0,1,0,0,0
+-90.2626299,38.5492195,2633.0,-1398.0,1,0,0,0
+-90.2654619,38.5496547,486.0,-2655.0,1,0,0,0
+-90.2644641,38.5490757,1562.0,-2553.0,1,0,0,0
+-90.2662854,38.5489310,486.0,-3700.0,1,0,0,0

@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#NAME 0 Elwood & Michigan
+#NAME 1 Wilmington & Michigan
+#NAME 2 Fillmore & Michigan (east jog)
+#NAME 3 Fillmore & Michigan (west jog)
+#NAME 4 Bowen & Michigan
+#NAME 5 Fillmore & Virginia
+#NAME 6 Bowen & Virginia
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2466803,38.5615037,2210.0,-425.0,1,0,0,0
+-90.2472420,38.5610335,2216.0,-1112.0,1,0,0,0
+-90.2475294,38.5607998,2219.0,-1456.0,1,0,0,0
+-90.2479325,38.5604791,2222.0,-1975.0,1,0,0,0
+-90.2491381,38.5594944,2226.0,-3490.0,1,0,0,0
+-90.2494899,38.5613196,585.0,-2258.0,1,0,0,0
+-90.2504580,38.5601909,872.0,-3735.0,1,0,0,0

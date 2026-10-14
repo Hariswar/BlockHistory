@@ -1,0 +1,18 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#OUTLINE 1245,0 3191,0 3191,3898 1245,3898
+#NAME 0 Holly Hills & S. Broadway
+#NAME 1 Soper & S. Broadway
+#NAME 2 Mott & S. Broadway
+#NAME 3 Haven & S. Broadway
+#NAME 4 Kraus & S. Broadway
+#NAME 5 Loughborough & S. Broadway
+#NAME 6 Quincy & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2480056,38.5561872,1481.0,-346.0,1,0,0,0
+-90.2488225,38.5554730,1478.0,-870.0,1,0,0,0
+-90.2496406,38.5547493,1474.0,-1397.0,1,0,0,0
+-90.2505559,38.5539439,1472.0,-1989.0,1,0,0,0
+-90.2513739,38.5532234,1467.0,-2521.0,1,0,0,0
+-90.2521967,38.5524918,1466.0,-3060.0,1,0,0,0
+-90.2530215,38.5517718,1465.0,-3580.0,1,0,0,0

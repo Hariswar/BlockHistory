@@ -1,0 +1,18 @@
+#CRS: EPSG:4326
+#NAME 0 Holly Hills & Vermont
+#NAME 1 Holly Hills & Virginia
+#NAME 2 Mott & Vermont
+#NAME 3 Mott & Virginia
+#NAME 4 Mott & Michigan
+#NAME 5 Haven & Vermont
+#NAME 6 Haven & Virginia (east piece)
+#NAME 7 Haven & Michigan
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2528847,38.5589591,600.0,-409.0,1,0,0,0
+-90.2519325,38.5584536,1588.0,-263.0,1,0,0,0
+-90.2542473,38.5578265,540.0,-2114.0,1,0,0,0
+-90.2534569,38.5572877,1465.0,-2088.0,1,0,0,0
+-90.2524839,38.5566450,2532.0,-2055.0,1,0,0,0
+-90.2554328,38.5567904,540.0,-3644.0,1,0,0,0
+-90.2543631,38.5564901,1455.0,-3259.0,1,0,0,0
+-90.2533916,38.5558445,2527.0,-3229.0,1,0,0,0

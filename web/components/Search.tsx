@@ -127,8 +127,8 @@ export default function Search() {
         )}
         {!result && (
           <p className="small">
-            The outlined areas on the map are the parts of Carondelet processed so far (two 1938
-            map sheets along S. Broadway). More are being added.
+            The outlined areas on the map are the parts of Carondelet processed so far. More are
+            being added.
           </p>
         )}
       </div>
@@ -139,15 +139,16 @@ export default function Search() {
 function Summary({ result }: { result: Result }) {
   const { findings, coveredBy, radiusM, point } = result;
   const years = [...new Set(coveredBy.map((s) => s.year))].join(" and ");
-  const sheets = coveredBy.map((s) => `sheet ${s.sheetNumber}`).join(", ");
+  // A sheet with two panels covers as two rows; name it once.
+  const sheets = [...new Set(coveredBy.map((s) => `sheet ${s.sheetNumber}`))].join(", ");
   return (
     <section className="summary" aria-live="polite">
       {coveredBy.length === 0 ? (
         <>
           <h2>We haven&apos;t processed the maps for this address yet</h2>
           <p>
-            So far BlockHistory covers two 1938 map sheets in Carondelet (the outlined areas on the
-            map). This says nothing either way about this property.
+            So far BlockHistory covers part of Carondelet on the 1938 map (the outlined areas on
+            the map). This says nothing either way about this property.
           </p>
         </>
       ) : findings.length === 0 ? (

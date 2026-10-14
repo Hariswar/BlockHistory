@@ -19,7 +19,7 @@ import sqlite3
 from pathlib import Path
 
 from blockhistory.explain import category, explanation
-from blockhistory.georef.transform import M_PER_DEG, Affine, leave_one_out, read_points
+from blockhistory.georef.transform import M_PER_DEG, Affine, leave_one_out
 from blockhistory.map_reader.relevance import relevance
 from blockhistory.map_reader.scoring import label_words, norm
 
@@ -127,24 +127,38 @@ def _dedupe(findings: list[dict]) -> list[dict]:
     return kept
 
 
+def clear_sheet(con: sqlite3.Connection, sheet_id: str) -> None:
+    """Remove a sheet and all its panels (before reloading it)."""
+    ids = [sheet_id, f"{sheet_id}.%"]
+    con.execute("DELETE FROM findings WHERE sheet_id = ? OR sheet_id LIKE ?", ids)
+    con.execute("DELETE FROM sheets WHERE sheet_id = ? OR sheet_id LIKE ?", ids)
+
+
 def load_sheet(
-    con: sqlite3.Connection, area: str, edition: str, sheet_id: str, findings: list[dict]
+    con: sqlite3.Connection,
+    area: str,
+    edition: str,
+    panel_id: str,
+    findings: list[dict],
+    t: Affine,
+    outline: list[tuple[float, float]] | None = None,
 ) -> int:
-    """Replace one sheet's rows. `findings` are located (lat/lon) merged findings."""
+    """Replace one sheet's (or panel's) rows. `findings` are located merged findings; `t`
+    is the panel's transform and `outline` its pixel outline (None = the whole sheet)."""
+    sheet_id = panel_id.split(".")[0]
     meta = json.loads((ROOT / "data" / "sheets" / area / edition / f"{sheet_id}.json").read_text())
-    gcps = read_points(ROOT / "config" / "georef" / area / edition / f"{sheet_id}.points")
-    t = Affine(gcps)
-    loo = sorted(leave_one_out(gcps))
+    loo = sorted(leave_one_out(t.gcps, t.model))
     index = json.loads(
         (ROOT / "data" / "tiles" / area / edition / sheet_id / "tiles.json").read_text()
     )
     w, h = index["sheet_size"]
-    ring = [t.to_latlon(x, y) for x, y in ((0, 0), (w, 0), (w, h), (0, h), (0, 0))]
-    con.execute("DELETE FROM findings WHERE sheet_id = ?", (sheet_id,))
+    outline = outline or [(0, 0), (w, 0), (w, h), (0, h)]
+    ring = [t.to_latlon(x, y) for x, y in [*outline, outline[0]]]
+    con.execute("DELETE FROM findings WHERE sheet_id = ?", (panel_id,))
     con.execute(
         "INSERT OR REPLACE INTO sheets VALUES (?,?,?,?,?,?,?,?,?,?,?)",
         (
-            sheet_id,
+            panel_id,
             area,
             edition,
             meta.get("sheet_number"),
@@ -171,7 +185,7 @@ def load_sheet(
             " location_method, location_uncertainty_m, sheet_px, sheet_py)"
             " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (
-                sheet_id,
+                panel_id,
                 edition,
                 f["label"],
                 f["use"],

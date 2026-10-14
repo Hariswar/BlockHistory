@@ -3,9 +3,16 @@
 A GCP pairs a pixel on the 50% sheet image (data/sheets/...) with the same spot today,
 usually a street intersection. GCPs live in config/georef/<area>/<edition>/<sheet>.points
 in QGIS's georeferencer format, so they can be made or fixed by hand in QGIS too.
+A few sheets hold two separately drawn panels (an inset, or a strip from another part of
+town); each panel gets its own file, <sheet>.<panel>.points, with an "#OUTLINE x,y x,y ..."
+line: the panel's outline in sheet pixels. The main panel's file can have one too, to
+leave out an inset that isn't georeferenced yet.
 
 The fit is affine (shift, scale, rotation, shear) in a local flat projection around the
 sheet; one Sanborn sheet covers well under 2 km, so the flat-earth error is negligible.
+A "#MODEL similarity" line fits shift, one scale and rotation instead: Sanborn sheets are
+drawn to scale with no shear (the affine fits agree to ~2%), and a similarity can be fit
+from points along one street, as on a narrow panel where every crossing is on S. Broadway.
 Leave-one-out error (refit without each point, measure how far off it lands) is the
 honest accuracy number: plain residuals shrink as points are added even when they're bad.
 """
@@ -54,8 +61,52 @@ def read_points(path: Path) -> list[GCP]:
     return gcps
 
 
-def write_points(path: Path, gcps: list[GCP]) -> None:
+Outline = list[tuple[float, float]]
+
+
+def read_outline(path: Path) -> Outline | None:
+    """The panel's outline in sheet pixels from an "#OUTLINE" line, or None (whole sheet)."""
+    for line in path.read_text().splitlines():
+        if line.startswith("#OUTLINE "):
+            return [tuple(float(v) for v in xy.split(",")) for xy in line[9:].split()]
+    return None
+
+
+def parse_outline(text: str) -> Outline:
+    """ "x,y x,y ..." -> [(x, y), ...]; "x0,y0,x1,y1" is a box."""
+    nums = [float(v) for v in text.replace(" ", ",").split(",") if v]
+    if len(nums) == 4 and " " not in text.strip():
+        x0, y0, x1, y1 = nums
+        return [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+    return list(zip(nums[::2], nums[1::2]))
+
+
+def in_outline(outline: Outline | None, px: float, py: float) -> bool:
+    if outline is None:
+        return True
+    inside = False
+    for (x1, y1), (x2, y2) in zip(outline, outline[1:] + outline[:1]):
+        if (y1 > py) != (y2 > py) and px < x1 + (py - y1) * (x2 - x1) / (y2 - y1):
+            inside = not inside
+    return inside
+
+
+def read_model(path: Path) -> str:
+    """ "affine" (the default) or "similarity", from a "#MODEL" line."""
+    for line in path.read_text().splitlines():
+        if line.startswith("#MODEL "):
+            return line[7:].strip()
+    return "affine"
+
+
+def write_points(
+    path: Path, gcps: list[GCP], outline: Outline | None = None, model: str = "affine"
+) -> None:
     lines = ["#CRS: EPSG:4326"]
+    if model != "affine":
+        lines.append(f"#MODEL {model}")
+    if outline:
+        lines.append("#OUTLINE " + " ".join(f"{x:g},{y:g}" for x, y in outline))
     lines += [f"#NAME {i} {g.name}" for i, g in enumerate(gcps) if g.name]
     lines.append(HEADER)
     lines += [
@@ -63,6 +114,23 @@ def write_points(path: Path, gcps: list[GCP]) -> None:
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines) + "\n")
+
+
+MIN_POINTS = {"affine": 3, "similarity": 2}
+
+
+def _similarity(pts: list[GCP], east: list[float], north: list[float]) -> tuple[list, list]:
+    """Least-squares shift + scale + rotation. Pixel rows run down while north runs up, so
+    the map is mirrored: east = a*px + b*py + c, north = b*px - a*py + d."""
+    n = len(pts)
+    mx, my = sum(g.px for g in pts) / n, sum(g.py for g in pts) / n
+    me, mn = sum(east) / n, sum(north) / n
+    xs = [(g.px - mx, g.py - my) for g in pts]
+    es, ns = [v - me for v in east], [v - mn for v in north]
+    s = sum(x * x + y * y for x, y in xs)
+    a = sum(x * e - y * nn for (x, y), e, nn in zip(xs, es, ns)) / s
+    b = sum(y * e + x * nn for (x, y), e, nn in zip(xs, es, ns)) / s
+    return [a, b, me - a * mx - b * my], [b, -a, mn - b * mx + a * my]
 
 
 def _solve3(a: list[list[float]], b: list[float]) -> list[float]:
@@ -81,19 +149,23 @@ def _solve3(a: list[list[float]], b: list[float]) -> list[float]:
 
 
 class Affine:
-    def __init__(self, gcps: list[GCP]):
+    def __init__(self, gcps: list[GCP], model: str = "affine"):
         pts = [g for g in gcps if g.enabled]
-        if len(pts) < 3:
-            raise ValueError("need at least 3 enabled GCPs")
+        if len(pts) < MIN_POINTS[model]:
+            raise ValueError(f"need at least {MIN_POINTS[model]} enabled GCPs for {model}")
+        self.model = model
         self.lat0 = sum(g.lat for g in pts) / len(pts)
         self.lon0 = sum(g.lon for g in pts) / len(pts)
         self.kx = M_PER_DEG * math.cos(math.radians(self.lat0))
-        xs = [(g.px, g.py, 1.0) for g in pts]
-        ata = [[sum(x[i] * x[j] for x in xs) for j in range(3)] for i in range(3)]
         east = [(g.lon - self.lon0) * self.kx for g in pts]
         north = [(g.lat - self.lat0) * M_PER_DEG for g in pts]
-        self.e = _solve3(ata, [sum(x[i] * v for x, v in zip(xs, east)) for i in range(3)])
-        self.n = _solve3(ata, [sum(x[i] * v for x, v in zip(xs, north)) for i in range(3)])
+        if model == "similarity":
+            self.e, self.n = _similarity(pts, east, north)
+        else:
+            xs = [(g.px, g.py, 1.0) for g in pts]
+            ata = [[sum(x[i] * x[j] for x in xs) for j in range(3)] for i in range(3)]
+            self.e = _solve3(ata, [sum(x[i] * v for x, v in zip(xs, east)) for i in range(3)])
+            self.n = _solve3(ata, [sum(x[i] * v for x, v in zip(xs, north)) for i in range(3)])
         self.gcps = pts
 
     def to_meters(self, px: float, py: float) -> tuple[float, float]:
@@ -117,11 +189,12 @@ def distance_m(a: tuple[float, float], b: tuple[float, float]) -> float:
     return math.hypot((a[0] - b[0]) * M_PER_DEG, (a[1] - b[1]) * kx)
 
 
-def leave_one_out(gcps: list[GCP]) -> list[float]:
+def leave_one_out(gcps: list[GCP], model: str = "affine") -> list[float]:
     """For each enabled GCP: error (m) when the transform is fit without it."""
     pts = [g for g in gcps if g.enabled]
     out = []
     for i, g in enumerate(pts):
         rest = pts[:i] + pts[i + 1 :]
-        out.append(Affine(rest).error_m(g) if len(rest) >= 3 else float("nan"))
+        ok = len(rest) >= MIN_POINTS[model]
+        out.append(Affine(rest, model).error_m(g) if ok else float("nan"))
     return out

@@ -1,0 +1,22 @@
+#CRS: EPSG:4326
+#NAME 0 Pennsylvania & Marceau
+#NAME 1 Pennsylvania & Hurck
+#NAME 2 Pennsylvania & Davis
+#NAME 3 S. Broadway & Marceau
+#NAME 4 S. Broadway & Hurck
+#NAME 5 S. Broadway & Davis
+#NAME 6 Water & Marceau
+#NAME 7 Water & Davis
+#NAME 8 Vulcan & Marceau
+#NAME 9 Vulcan & Davis
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2653776,38.5423846,1050.0,-300.0,1,0,0,0
+-90.2645757,38.5430869,2078.0,-321.0,1,0,0,0
+-90.2638017,38.5437762,3071.0,-337.0,1,0,0,0
+-90.2643980,38.5417493,1047.0,-1398.0,1,0,0,0
+-90.2636028,38.5424468,2067.0,-1420.0,1,0,0,0
+-90.2628223,38.5431302,3071.0,-1438.0,1,0,0,0
+-90.2634221,38.5411041,1042.0,-2503.0,1,0,0,0
+-90.2618396,38.5424761,3082.0,-2536.0,1,0,0,0
+-90.2624619,38.5404831,1039.0,-3587.0,1,0,0,0
+-90.2608935,38.5418604,3073.0,-3610.0,1,0,0,0

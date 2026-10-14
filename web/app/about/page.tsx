@@ -15,8 +15,9 @@ export default function About() {
       <ul>
         <li>One map year: 1938 (Sanborn St. Louis Vol. 12).</li>
         <li>
-          Two map sheets so far (47 and 56, along S. Broadway between Kraus and Steins). All 74
-          sheets of the volume have been read; the others go on the map as they are matched to
+          17 map sheets so far, the ones with the most flagged sites: much of Carondelet between
+          Iron St. and the River des Peres, with gaps (the outlined areas on the map). All 74 sheets
+          of the volume have been read; the others go on the map as they are matched to
           today&apos;s streets.
         </li>
         <li>No records yet for the years after 1938. The 1950 update is next.</li>
@@ -31,7 +32,7 @@ export default function About() {
         </li>
         <li>
           Each sheet is matched to today&apos;s streets using intersections from OpenStreetMap
-          (typically within 1–3 m).
+          (typically within 1–4 m).
         </li>
         <li>People check the findings against the map; each result says whether it was checked.</li>
       </ol>
