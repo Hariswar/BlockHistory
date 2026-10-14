@@ -54,11 +54,19 @@ CATEGORIES = [
         "Foundries and metal shops could leave metals such as lead, and foundry sand, in the soil.",
     ),
     (
-        "chemicals, paint and printing",
-        r"CHEM|SULPHUR|SULFUR|ACID|SOLVENT|PAINT|VARNISH|PRINT|PRTG|SIGN",
+        "chemicals",
+        r"CHEM|SULPHUR|SULFUR|ACID|SOLVENT",
         (
-            "Chemical, paint and printing businesses used solvents, inks and pigments, some of "
-            "which contained lead."
+            "Chemical plants made, stored or used acids and other industrial chemicals; spills "
+            "and waste could reach the soil and groundwater."
+        ),
+    ),
+    (
+        "paint and printing",
+        r"PAINT|VARNISH|PRINT|PRTG|SIGN",
+        (
+            "Paint and printing shops used solvents, inks and pigments, some of which contained "
+            "lead."
         ),
     ),
     (

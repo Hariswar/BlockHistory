@@ -78,9 +78,13 @@ def test_explanations_follow_the_safety_rules():
     assert category("GASOL. ENG.", "gasoline engine house")[0] == "fuel"
     assert category("DRY CLEANING", "dry cleaner")[0] == "dry cleaning"
     assert category("AUTO. REP.", "auto repair")[0] == "auto"
-    assert (
-        category("ST. LOUIS SULPHUR & CHEM. CO.", "chemical works")[0]
-        == "chemicals, paint and printing"
+    assert category("ST. LOUIS SULPHUR & CHEM. CO.", "chemical works")[0] == "chemicals"
+    assert category("4E MISC STGE ACID TANK", "storage with acid tank")[0] == "chemicals"
+    assert category("PAINT SHOP", "paint shop")[0] == "paint and printing"
+    assert "chemicals" in explanation(
+        {"label": "MONSANTO CHEMICAL CO.", "use": "chemical plant"}, "1938"
+    ) and "inks" not in explanation(
+        {"label": "MONSANTO CHEMICAL CO.", "use": "chemical plant"}, "1938"
     )
 
 
