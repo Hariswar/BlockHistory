@@ -215,11 +215,24 @@ function FindingCard({
           {f.hasGasolineTanks && <span className="tag high">Gasoline tanks on the map</span>}
           {f.reviewStatus === "checked_ok" ? (
             <span className="tag checked">Checked against the map by a person</span>
+          ) : f.reviewStatus === "partly_checked" ? (
+            <span className="tag">Partly checked by a person</span>
           ) : (
             <span className="tag">Not yet checked by a person</span>
           )}
         </div>
         <p style={{ margin: "6px 0" }}>{f.explanation}</p>
+        {f.alsoPrinted.length > 0 && (
+          <p className="small" style={{ margin: "4px 0" }}>
+            Same kind of use, also printed within 40 m:{" "}
+            {f.alsoPrinted.map((l) => `“${l}”`).join(", ")}.
+          </p>
+        )}
+        {f.cutOff && (
+          <p className="small" style={{ margin: "4px 0" }}>
+            The label is partly cut off or hard to read on the scan. Check the map image.
+          </p>
+        )}
         {f.reviewStatus !== "checked_ok" && (
           <p className="small" style={{ margin: "4px 0" }}>
             Read from the map scan by an AI model{f.readerConfidence ? ` (${f.readerConfidence} confidence)` : ""};

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { search } from "@/lib/data";
 import { geocode } from "@/lib/geocode";
-import { present, presentSheet } from "@/lib/present";
+import { groupSites, present, presentSheet } from "@/lib/present";
 
 export const runtime = "nodejs";
 const RADIUS_M = 100;
@@ -42,6 +42,6 @@ export async function GET(req: Request) {
     point,
     radiusM: RADIUS_M,
     coveredBy: coveredBy.map(presentSheet),
-    findings: findings.map(present),
+    findings: groupSites(findings.map(present)),
   });
 }

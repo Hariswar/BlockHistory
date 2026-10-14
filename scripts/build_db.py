@@ -4,7 +4,9 @@
     python scripts/build_db.py carondelet 1938 --export   # + data/export/load_postgis.sql
 
 A sheet is included when config/georef/<area>/<edition>/<sheet>.points exists (a sheet
-with two panels has a row per panel). Re-running replaces each sheet's rows. Free: uses only cached results (the first OCR read of a tile
+with two panels has a row per panel). Hand fixes in config/corrections/<area>-<edition>.json
+(hide, set, add; see blockhistory/db/corrections.py) are applied first. Re-running replaces
+each sheet's rows. Free: uses only cached results (the first OCR read of a tile
 runs Tesseract locally).
 """
 
@@ -15,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from georef_sheet import load_panels, located_findings
 
-from blockhistory.db import store
+from blockhistory.db import corrections, store
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -31,10 +33,15 @@ def main() -> None:
     points = sorted((ROOT / "config" / "georef" / args.area / args.edition).glob("*.points"))
     if not points:
         raise SystemExit("no georeferenced sheets yet (see scripts/georef_sheet.py)")
+    fixes = corrections.load(args.area, args.edition)
     for n in sorted({int(p.name.split(".")[0].rsplit("-", 1)[1]) for p in points}):
         sid, findings = located_findings(args.area, args.edition, n, use_ocr=True)
+        panels = load_panels(args.area, args.edition, sid)
+        findings, problems = corrections.apply(findings, fixes, n, panels)
+        for p in problems:
+            print(f"  ! sheet {n} correction {p}")
         store.clear_sheet(con, sid)
-        for pid, outline, t in load_panels(args.area, args.edition, sid):
+        for pid, outline, t in panels:
             mine = [f for f in findings if f["panel"] == pid]
             rows = store.load_sheet(con, args.area, args.edition, pid, mine, t, outline)
             print(f"{pid}: {rows} sites ({len(mine)} findings before merging repeats)")

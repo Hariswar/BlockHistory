@@ -1,0 +1,240 @@
+{
+ "about": "Fixes from checking every unreviewed shown listing against the full-resolution scan (Claude, 2026-10-14). Applied by scripts/build_db.py. A finding is matched by sheet, printed label and the nearest position within 150 px of 'near' (50% image pixels). These are machine-assisted checks, not a person's spot check: listings stay 'not yet checked by a person'.",
+ "hide": [
+  {
+   "sheet": 22,
+   "label": "FILL'G STA.",
+   "near": [
+    512,
+    512
+   ],
+   "why": "Repeat of the filling station at 1226 (6300 S. Grand), placed 25 m away in an empty yard."
+  },
+  {
+   "sheet": 22,
+   "label": "FILL'G STA.",
+   "near": [
+    2221,
+    3474
+   ],
+   "why": "Repeat read of the FILLING STA. at 725 (same building)."
+  },
+  {
+   "sheet": 23,
+   "label": "FILL'G STA.",
+   "near": [
+    2456,
+    1418
+   ],
+   "why": "Not a business: the street name FILLMORE read as FILL'G STA."
+  },
+  {
+   "sheet": 24,
+   "label": "FILL'G STA.",
+   "near": [
+    2656,
+    2447
+   ],
+   "why": "Repeat read of the FILLING STA. at 6103-6105 (same building)."
+  },
+  {
+   "sheet": 24,
+   "label": "UNDRY CO.",
+   "near": [
+    2231,
+    3001
+   ],
+   "why": "Cut-off end of REEDER & RICHTER PATTERN & FOUNDRY CO., already listed as FOUNDRY."
+  },
+  {
+   "sheet": 47,
+   "label": "FILL'G STA.",
+   "near": [
+    1234,
+    2668
+   ],
+   "why": "Placed in a yard at 6708 with no station; the sheet's filling stations are listed and checked."
+  },
+  {
+   "sheet": 58,
+   "label": "4E MISCL STGE",
+   "near": [
+    2251,
+    3026
+   ],
+   "why": "Repeat read of 4E MISC'L STGE / ACID TANK (same building)."
+  },
+  {
+   "sheet": 58,
+   "label": "A R BBL & CAN STGE",
+   "near": [
+    2617,
+    2267
+   ],
+   "why": "Auto house and barrel and can storage of the bulk oil station, not an auto repair; the bulk oil station and oil house are listed."
+  },
+  {
+   "sheet": 58,
+   "label": "METAL MIXING",
+   "near": [
+    1751,
+    2641
+   ],
+   "why": "Repeat read of METAL MIXING (same building)."
+  },
+  {
+   "sheet": 58,
+   "label": "DRY CLEANING",
+   "near": [
+    2382,
+    3079
+   ],
+   "why": "Not on the map: no dry cleaner on this tile (low-confidence read)."
+  },
+  {
+   "sheet": 60,
+   "label": "GARAGE",
+   "near": [
+    900,
+    1578
+   ],
+   "why": "Repeat of the 20-car GARAGE at 7702-7710, placed on the store next door."
+  },
+  {
+   "sheet": 60,
+   "label": "GARAGE",
+   "near": [
+    1056,
+    1618
+   ],
+   "why": "Repeat of the 20-car GARAGE at 7702-7710, placed on the store next door."
+  },
+  {
+   "sheet": 60,
+   "label": "MISCL. STGE-2 A.-1ST.-3 CARS",
+   "near": [
+    2041,
+    898
+   ],
+   "why": "Private auto house (3 cars) under miscellaneous storage, not a commercial garage."
+  },
+  {
+   "sheet": 60,
+   "label": "GARAGE CAP'Y. 20 CARS CONC. FL. WOOD POSTS",
+   "near": [
+    952,
+    2259
+   ],
+   "why": "Placed on a private 3-car auto house; the 20-car garage is listed."
+  },
+  {
+   "sheet": 60,
+   "label": "G A R",
+   "near": [
+    1545,
+    2308
+   ],
+   "why": "Cut-off repeat of the 12-car GARAGE at 7726 Michigan."
+  }
+ ],
+ "set": [
+  {
+   "sheet": 53,
+   "label": "PRINT SHOP",
+   "near": [
+    425,
+    968
+   ],
+   "use": "paint shop",
+   "why": "The map says PAINT SHOP, not PRINT SHOP.",
+   "new_label": "PAINT SHOP"
+  },
+  {
+   "sheet": 53,
+   "label": "PRINTS",
+   "near": [
+    1426,
+    497
+   ],
+   "use": "paints (store or warehouse)",
+   "why": "The map says PAINTS, next to HARDW. W. HO.",
+   "new_label": "PAINTS"
+  },
+  {
+   "sheet": 50,
+   "label": "ST. LOUIS PUBLIC SERVICE CO. ELEC. SUB-STA.",
+   "near": [
+    1594,
+    3372
+   ],
+   "gasoline_tank_count": 0,
+   "why": "The tanks belong to the filling station at 6930 S. Broadway, not the substation."
+  },
+  {
+   "sheet": 72,
+   "label": "FILLG. STA.",
+   "near": [
+    2861,
+    1057
+   ],
+   "sheet_px": [
+    2961,
+    757
+   ],
+   "why": "FILL'G STA. with AUTO GREASING and TIRE SERVICE is 30 m north of where it was placed."
+  }
+ ],
+ "add": [
+  {
+   "sheet": 58,
+   "label": "MONSANTO CHEMICAL CO. CARONDELET CHEMICAL WKS.",
+   "use": "chemical plant",
+   "sheet_px": [
+    2200,
+    3000
+   ],
+   "why": "Plant name printed across the buildings; the reader listed only its parts."
+  },
+  {
+   "sheet": 50,
+   "label": "THE JOHNSTON TIN FOIL & METAL CO. MFG. METAL FOIL",
+   "use": "metal foil factory",
+   "sheet_px": [
+    290,
+    1950
+   ],
+   "why": "Plant name printed across the buildings; missed by the reader.",
+   "panel": "north"
+  },
+  {
+   "sheet": 50,
+   "label": "MISSISSIPPI VALLEY IRON CO. PIG IRON PLANT (NOT IN OPERATION)",
+   "use": "pig iron plant with blast furnace (not in operation)",
+   "sheet_px": [
+    1990,
+    560
+   ],
+   "why": "Plant name; the reader listed the blast furnace only."
+  },
+  {
+   "sheet": 74,
+   "label": "LACLEDE GAS LIGHT CO. COKE & BY-PRODUCTS PLANT",
+   "use": "coke and gas by-products plant",
+   "sheet_px": [
+    820,
+    1400
+   ],
+   "why": "Plant name; the reader listed its buildings only."
+  },
+  {
+   "sheet": 74,
+   "label": "ST. LOUIS SHIP BUILDING & STEEL CO.",
+   "use": "shipyard",
+   "sheet_px": [
+    1850,
+    2850
+   ],
+   "why": "Shipyard printed along the riverbank; missed by the reader."
+  }
+ ]
+}

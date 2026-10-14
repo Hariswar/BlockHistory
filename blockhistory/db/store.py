@@ -106,7 +106,14 @@ def _tiles_key(tiles: list[str]) -> str:
 
 def _dedupe(findings: list[dict]) -> list[dict]:
     """One row per site: same label words within DUPLICATE_M meters are one finding."""
-    rank = {"point pass": 0, "ocr": 1, "tile overlap": 2, "position words": 3, "tile center": 4}
+    rank = {
+        "hand-placed": -1,
+        "point pass": 0,
+        "ocr": 1,
+        "tile overlap": 2,
+        "position words": 3,
+        "tile center": 4,
+    }
     kept: list[dict] = []
     for f in sorted(findings, key=lambda f: rank.get(f["location_method"], 9)):
         words = set(label_words(f["label"]))

@@ -276,3 +276,22 @@ Georeferenced the busiest sheets, picked by flagged-site count, the careful way:
 - **Spot-check lists** written for the 9 new sheets without one: 84 high rows to tick.
 
 **Next:** load the new export into Supabase, tick the new sheets' high rows, then launch (week 12).
+
+## Listing cleanup (Oct 14, 2026)
+A read-through of all 198 shown listings found three problems, now fixed:
+- **Construction notes shown as uses (13 listings).** "(ASB. CL.)" (asbestos siding) was read as "asbestos cleaning" and flagged high; "CONC.", "CONC. FL.", "BR. 7ST.", "IR. CL.", "SC. GL." and similar were flagged too. A label made only of building-material words is now low (`construction_note()` in `relevance.py`), and a "4 cars garage" in the description no longer makes an undertaker's chapel a commercial garage. Eval: precision 88% -> **91%**, recall unchanged at 87%.
+- **Repeat reads and plant parts as separate cards.** The website now groups the same kind of use within 40 m into one card, titled by its clearest read, listing the other printed labels ("Same kind of use, also printed within 40 m"). It says "checked" only if every part was checked, else "partly checked". Example: 6800 S Broadway's bulk oil station, filling station and oil house are one card.
+- **Cut-off labels.** A label the reader marked as cut off or unclear is never a card's title when a clearer read is in the group; on its own, the card says to check the map image.
+
+Shown listings: 185 (59 high unreviewed, 72 high checked, 54 medium), before grouping.
+
+## Every unchecked listing checked against the scan (Oct 14, 2026)
+All 113 shown listings that no one had checked (59 high, 54 medium) were compared with a full-resolution crop of the Library of Congress scan centered where the site places them. Fixes go in `config/corrections/carondelet-1938.json`, applied by `build_db.py` (`blockhistory/db/corrections.py`):
+- **Hidden (15):** 3 not on the map (a "FILL'G STA." that was the street name FILLMORE, a low-confidence "DRY CLEANING" with no dry cleaner on the tile, a station placed in an empty yard on sheet 47), 2 private auto houses read as garages, 1 auto house read as auto repair, and 9 repeat reads of a site already listed.
+- **Fixed (4):** "PRINT SHOP" and "PRINTS" are PAINT SHOP and PAINTS on the map; the gas tanks on the St. Louis Public Service substation belong to the station next door; a sheet 72 filling station moved 30 m to where it is printed.
+- **Added (5): plant names the reader skipped** (it read their buildings but not the big lettering): Monsanto Chemical Co. (Carondelet Chemical Wks.), Johnston Tin Foil & Metal Co., Mississippi Valley Iron Co. pig iron plant, Laclede Gas Light Co. coke and by-products plant, St. Louis Ship Building & Steel Co. On the website a company name now titles its group's card.
+- The construction-note rule also catches "…PLASTER PARTS".
+- The other ~90 were right. About 8 are placed 10–30 m from their label (inside the 100 m search either way).
+- These are machine-assisted checks, so the listings still say "not yet checked by a person".
+
+Shown listings: 176. Production build of the website passes. Tests: 79.

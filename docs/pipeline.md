@@ -85,6 +85,7 @@ Human-verified and draft label files are reported separately. A draft becomes ve
 ```
 - Loads every sheet that has a `.points` file into `data/blockhistory.sqlite`: one row per site (repeat reads within 15 m merged), with relevance, a plain-language explanation, review status from the spot-check ticks (rows ticked **wrong** are kept but never shown), and the sheet's outline on today's map.
 - `--export` also writes `data/export/load_postgis.sql` for Supabase.
+- Hand fixes in `config/corrections/<area>-<edition>.json` are applied first: `hide` (not on the map, a repeat, a private garage), `set` (`new_label`, `use`, `gasoline_tank_count`, or `sheet_px` to move it) and `add` (a site the reader missed, such as a plant name printed across its buildings). Each entry names the sheet, the label as read and its position (`near`, 50% image pixels), plus a `why`. The build prints any entry that no longer matches.
 
 **Supabase** (the site's database once keys are set):
 1. Supabase dashboard → SQL Editor → paste and run `blockhistory/db/schema_postgis.sql` (once; safe to re-run). It turns on PostGIS, creates the tables with read-only row-level security, and the functions `findings_near(at_lat, at_lon, radius_m)`, `sheets_covering(at_lat, at_lon)` and `sheets_list()`.

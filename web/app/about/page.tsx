@@ -47,7 +47,7 @@ export default function About() {
           </tr>
           <tr>
             <th>Flags that are real sites</th>
-            <td>88%</td>
+            <td>91%</td>
           </tr>
           <tr>
             <th>Gasoline-tank sites found</th>

@@ -118,7 +118,7 @@ Checkpoint: Carondelet searchable across 1938 and 1950, published accuracy, know
 4. Always end with a practical next step (soil test, state environmental agency, local health department).
 5. Separate "confirmed in an official contamination database" from "historical land use only."
 
-Other safeguards: About & limitations page stating which years are covered, not-an-ESA disclaimer, easy error reporting, no personal data about owners/residents, professor review of wording (~month 5).
+Other safeguards: About & limitations page stating which years are covered, not-an-ESA disclaimer, easy error reporting, no personal data about owners/residents, wording checked against the safety rules (tests in `tests/test_db.py`).
 
 ## Risks and fallbacks
 | Risk | Fallback |
