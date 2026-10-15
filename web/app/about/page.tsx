@@ -79,7 +79,8 @@ export default function About() {
         BlockHistory shows land uses from public historical maps. It doesn&apos;t show or collect
         anything about the people who own or live in a property, and it doesn&apos;t store the
         addresses you search. To find an address on the map, the search is sent to the US Census
-        Bureau&apos;s free address lookup.
+        Bureau&apos;s free address lookup. Visits are counted with Umami, which uses no cookies and
+        doesn&apos;t identify you; it records how many searches found something, never the address.
       </p>
 
       <h2>Mistakes</h2>

@@ -295,3 +295,9 @@ All 113 shown listings that no one had checked (59 high, 54 medium) were compare
 - These are machine-assisted checks, so the listings still say "not yet checked by a person".
 
 Shown listings: 176. Production build of the website passes. Tests: 79.
+
+## Week 12 (Oct 14, 2026): launched
+- **Live at https://block-history.vercel.app/** (Vercel free tier, reading Supabase with the public key). Checked on the live site: searches inside and outside the covered area, the About page, Library of Congress map close-ups, desktop and phone (light and dark), no console errors, and neither Supabase value appears in the page or its scripts.
+- Chemical plants now have their own explanation (they had shared the paint and printing sentence).
+- **Analytics ready, off until an ID is set:** Umami Cloud (no cookies) counts visits and searches by outcome (found / nothing flagged / not covered / address not found). Search URLs carry the address, so query strings are excluded from page views and the address is never sent. The About page says so.
+- **Left for Phase 1:** first 25 strangers. The README waits until the end of the project.

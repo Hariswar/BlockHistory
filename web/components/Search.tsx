@@ -13,6 +13,14 @@ type Result = {
 };
 
 const EXAMPLES = ["7313 S Broadway", "6601 S Broadway", "7421 Pennsylvania Ave"];
+
+// Count searches by outcome only; the address never leaves for analytics.
+function track(outcome: string, sites = 0) {
+  (window as { umami?: { track: (e: string, d: object) => void } }).umami?.track("search", {
+    outcome,
+    sites,
+  });
+}
 const REPORT_URL = "https://github.com/Hariswar/BlockHistory/issues/new";
 
 export default function Search() {
@@ -49,8 +57,11 @@ export default function Search() {
       if (!res.ok) {
         setResult(null);
         setError(data.error ?? "Something went wrong.");
+        track(res.status === 404 ? "address not found" : "error");
       } else {
         setResult(data);
+        const covered = data.coveredBy.length > 0;
+        track(!covered ? "not covered" : data.findings.length ? "found" : "none", data.findings.length);
       }
     } catch {
       setError("Couldn't reach the server. Check your connection and try again.");

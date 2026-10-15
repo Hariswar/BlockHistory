@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,6 +10,9 @@ export const metadata: Metadata = {
 };
 
 const REPORT_URL = "https://github.com/Hariswar/BlockHistory/issues/new";
+// Visitor counts (Umami Cloud: no cookies). Off unless the site ID is set. Query strings are
+// left out of page views because a search URL holds the address (?q=...).
+const UMAMI_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -43,6 +47,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </p>
           </div>
         </footer>
+        {UMAMI_ID && (
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id={UMAMI_ID}
+            data-exclude-search="true"
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );
