@@ -301,3 +301,10 @@ Shown listings: 176. Production build of the website passes. Tests: 79.
 - Chemical plants now have their own explanation (they had shared the paint and printing sentence).
 - **Analytics ready, off until an ID is set:** Umami Cloud (no cookies) counts visits and searches by outcome (found / nothing flagged / not covered / address not found). Search URLs carry the address, so query strings are excluded from page views and the address is never sent. The About page says so.
 - **Left for Phase 1:** first 25 strangers. The README waits until the end of the project.
+
+## Phase 1 done: 25 users (Oct 18, 2026)
+Reached 25 people outside the project. Their feedback was about layout, so it was fixed before Phase 2:
+- **"Expand the map, too much white space":** the map now fills the page width before a search and about 60% of it after, staying in view while the list scrolls; the summary moved beside the map so the map starts right under the search box; the heading area is tighter.
+- **"Add a legend on the map":** a key in the map's top-left corner (often / sometimes linked, the searched address, the 100 m area, the covered area).
+- **"About & limits is too long":** split into two tabs, **About** (what, how, accuracy as three stat tiles) and **Limits & privacy**. The disclaimer stays in the footer of every page.
+Checked at desktop and phone width, light and dark, with no console errors; production build passes.

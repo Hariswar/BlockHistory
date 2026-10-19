@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import MapLegend from "./MapLegend";
 import MapView, { type Coverage } from "./MapView";
 import type { PublicFinding } from "@/lib/present";
 
@@ -107,9 +108,7 @@ export default function Search() {
         </div>
       )}
 
-      {result && <Summary result={result} />}
-
-      <div className="results">
+      <div className={`results${result ? "" : " empty"}`}>
         <div className="map">
           <MapView
             coverage={coverage}
@@ -122,19 +121,25 @@ export default function Search() {
               document.getElementById(`f-${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
             }}
           />
+          <MapLegend searched={!!result} />
         </div>
-        {result && result.findings.length > 0 && (
-          <ol className="cards">
-            {result.findings.map((f, i) => (
-              <FindingCard
-                key={f.id}
-                f={f}
-                n={i + 1}
-                active={active === f.id}
-                onFocus={() => setActive(f.id)}
-              />
-            ))}
-          </ol>
+        {result && (
+          <div className="side">
+            <Summary result={result} />
+            {result.findings.length > 0 && (
+              <ol className="cards">
+                {result.findings.map((f, i) => (
+                  <FindingCard
+                    key={f.id}
+                    f={f}
+                    n={i + 1}
+                    active={active === f.id}
+                    onFocus={() => setActive(f.id)}
+                  />
+                ))}
+              </ol>
+            )}
+          </div>
         )}
         {!result && (
           <p className="small">
