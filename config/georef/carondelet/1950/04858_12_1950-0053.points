@@ -1,0 +1,18 @@
+#CRS: EPSG:4326
+#NAME 0 Quincy & Pennsylvania
+#NAME 1 Quincy & S. Broadway
+#NAME 2 Blow & Pennsylvania
+#NAME 3 Blow & S. Broadway
+#NAME 4 Nagel & Pennsylvania
+#NAME 5 Nagel & S. Broadway
+#NAME 6 Robert & Pennsylvania
+#NAME 7 Robert & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2539722,38.5524135,244.0,-425.0,1,0,0,0
+-90.2530215,38.5517718,1329.0,-409.0,1,0,0,0
+-90.2547838,38.5516997,242.0,-1438.0,1,0,0,0
+-90.2538362,38.5510513,1325.0,-1448.0,1,0,0,0
+-90.2556129,38.5509720,230.0,-2532.0,1,0,0,0
+-90.2546496,38.5503344,1323.0,-2518.0,1,0,0,0
+-90.2564220,38.5502589,225.6,-3584.1,1,0,0,0
+-90.2554717,38.5496102,1329.0,-3570.0,1,0,0,0

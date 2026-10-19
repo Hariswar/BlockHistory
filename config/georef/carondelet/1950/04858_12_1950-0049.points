@@ -1,0 +1,26 @@
+#CRS: EPSG:4326
+#NAME 0 Michigan & Quincy
+#NAME 1 Michigan & Loughborough
+#NAME 2 Michigan & Kraus
+#NAME 3 Minnesota & Quincy
+#NAME 4 Minnesota & Loughborough
+#NAME 5 Minnesota & Kraus
+#NAME 6 Pennsylvania & Quincy
+#NAME 7 Pennsylvania & Loughborough
+#NAME 8 Pennsylvania & Kraus
+#NAME 9 S. Broadway & Quincy
+#NAME 10 S. Broadway & Loughborough
+#NAME 11 S. Broadway & Kraus
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2558730,38.5536779,610.0,-336.0,1,0,0,0
+-90.2550550,38.5544096,1682.0,-333.0,1,0,0,0
+-90.2542039,38.5551354,2742.0,-329.0,1,0,0,0
+-90.2549369,38.5530591,642.0,-1421.0,1,0,0,0
+-90.2541130,38.5537739,1713.0,-1414.0,1,0,0,0
+-90.2532746,38.5545091,2784.0,-1410.0,1,0,0,0
+-90.2539722,38.5524135,673.0,-2502.0,1,0,0,0
+-90.2531559,38.5531303,1743.0,-2500.0,1,0,0,0
+-90.2523106,38.5538749,2819.0,-2501.0,1,0,0,0
+-90.2530215,38.5517718,709.0,-3593.0,1,0,0,0
+-90.2521967,38.5524918,1770.0,-3597.0,1,0,0,0
+-90.2513739,38.5532234,2838.0,-3600.0,1,0,0,0

@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { search } from "@/lib/data";
 import { geocode } from "@/lib/geocode";
-import { groupSites, present, presentSheet } from "@/lib/present";
+import { groupSites, markChanges, present, presentSheet } from "@/lib/present";
 
 export const runtime = "nodejs";
 const RADIUS_M = 100;
+const MATCH_MARGIN_M = 50; // look this much further when comparing map years
 
 export async function GET(req: Request) {
   const q = new URL(req.url).searchParams.get("q")?.trim() ?? "";
@@ -28,7 +29,7 @@ export async function GET(req: Request) {
   }
   let found;
   try {
-    found = await search(point.lat, point.lon, RADIUS_M);
+    found = await search(point.lat, point.lon, RADIUS_M + MATCH_MARGIN_M);
   } catch (e) {
     console.error(e);
     return NextResponse.json(
@@ -42,6 +43,11 @@ export async function GET(req: Request) {
     point,
     radiusM: RADIUS_M,
     coveredBy: coveredBy.map(presentSheet),
-    findings: groupSites(findings.map(present)),
+    findings: groupSites(
+      markChanges(
+        findings.map(present),
+        coveredBy.map((s) => s.edition),
+      ).filter((f) => f.distanceM <= RADIUS_M),
+    ),
   });
 }

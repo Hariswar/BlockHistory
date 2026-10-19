@@ -308,3 +308,10 @@ Reached 25 people outside the project. Their feedback was about layout, so it wa
 - **"Add a legend on the map":** a key in the map's top-left corner (often / sometimes linked, the searched address, the 100 m area, the covered area).
 - **"About & limits is too long":** split into two tabs, **About** (what, how, accuracy as three stat tiles) and **Limits & privacy**. The disclaimer stays in the footer of every page.
 Checked at desktop and phone width, light and dark, with no console errors; production build passes.
+
+## Phase 2, month 4: the 1950 map (Oct 19, 2026)
+- **Read the whole 1950 volume** (73 sheets, 1,460 tiles; sheet 11 isn't scanned), plus the tank and location passes on the 17 covered sheets. Cost **$0.58** (first pass $0.48, tanks $0.07, points $0.02). **Project total $1.34 of $10.**
+- **Placed on the map without reading corners again:** `scripts/align_edition.py` aligns each 1950 scan to the 1938 one and carries the control points over. 17 sheets, median leave-one-out error 0.5–4.1 m, like 1938. Points that fell under a paste-over keep the whole-sheet prediction; checked by eye on sheets 57 and 72.
+- **Checked all 189 shown 1950 listings against the scan.** 155 (82%) were right as read. Hidden: 5 reads of old print under a paste-over (a new kind of error: the building was replaced by 1950), 7 not on the map, 4 sprinkler or construction marks, 6 private garages or "found'n" notes, and 12 repeats or misplaced points. Corrected 3 and added 3 plant names (Monsanto, Laclede, the shipyard). The Mississippi Valley Iron Co. pig iron plant is gone by 1950: pasted over with a junk storage and a soap factory.
+- **Website:** a 1938 / 1950 switch above the map. Each listing says whether the other year's map shows the same kind of use within 50 m ("Also on the 1950 map", "Not on the 1950 map", "New since the 1938 map"). Example: at 7313 S. Broadway the 1950 map adds a battery service at 7230 in a building that was a store in 1938, which is right on both scans.
+- Shown: 176 sites (1938), 159 (1950). Recall for 1950 isn't measured yet: there are no hand labels for 1950.

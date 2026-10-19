@@ -1,7 +1,7 @@
 """Load every georeferenced sheet's findings into the database (week 10).
 
     python scripts/build_db.py carondelet 1938            # -> data/blockhistory.sqlite
-    python scripts/build_db.py carondelet 1938 --export   # + data/export/load_postgis.sql
+    python scripts/build_db.py carondelet 1938 --export   # + data/export/load_postgis_N.sql
 
 A sheet is included when config/georef/<area>/<edition>/<sheet>.points exists (a sheet
 with two panels has a row per panel). Hand fixes in config/corrections/<area>-<edition>.json
@@ -53,8 +53,10 @@ def main() -> None:
     print(f"database: {store.DB_PATH.relative_to(ROOT)}")
     if args.export:
         out = ROOT / "data" / "export" / "load_postgis.sql"
-        n = store.export_postgis_sql(con, out)
-        print(f"PostGIS export: {n} findings -> {out.relative_to(ROOT)}")
+        n, files = store.export_postgis_sql(con, out)
+        print(f"PostGIS export: {n} findings in {len(files)} files (run in order):")
+        for f in files:
+            print(f"  {f.relative_to(ROOT)}  ({f.stat().st_size // 1000} KB)")
 
 
 if __name__ == "__main__":

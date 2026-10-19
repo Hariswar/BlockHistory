@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#OUTLINE 96,11 1340,5 1357,3900 113,3906
+#NAME 0 Dover & S. Broadway
+#NAME 1 Elwood & S. Broadway
+#NAME 2 Fillmore & S. Broadway
+#NAME 3 Bowen & S. Broadway
+#NAME 4 Iron & S. Broadway
+#NAME 5 Holly Hills & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2431593,38.5602720,237.6,-381.8,1,0,0,0
+-90.2438650,38.5595613,278.7,-880.3,1,0,0,0
+-90.2446959,38.5588887,268.0,-1397.0,1,0,0,0
+-90.2463099,38.5575757,244.0,-2402.0,1,0,0,0
+-90.2471548,38.5568835,233.5,-2931.0,1,0,0,0
+-90.2480056,38.5561872,226.8,-3463.6,1,0,0,0

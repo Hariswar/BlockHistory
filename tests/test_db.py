@@ -60,8 +60,10 @@ def test_search_outside_any_sheet_says_not_covered(con):
 
 def test_postgis_export_uses_geography(con, tmp_path):
     out = tmp_path / "load.sql"
-    assert store.export_postgis_sql(con, out) == 3
-    sql = out.read_text()
+    n, files = store.export_postgis_sql(con, out)
+    assert n == 3 and [f.name for f in files] == ["load_1.sql"]
+    sql = files[0].read_text()
+    assert sql.index("DELETE FROM findings") < sql.index("INSERT INTO sheets")
     assert "ST_Point(-90.255, 38.545, 4326)::geography" in sql
     assert "FILL''G STA." in sql  # quotes escaped
 
@@ -93,3 +95,13 @@ def test_tanks_at_a_non_fuel_site_get_their_own_sentence():
         {"label": "AUTO. REP.", "use": "auto repair", "gasoline_tank_count": 1}, "1938"
     )
     assert "Auto repair shops" in text and "buried tanks sometimes leaked" in text
+
+
+def test_postgis_export_splits_into_parts_that_each_commit(con, tmp_path, monkeypatch):
+    monkeypatch.setattr(store, "PART_BYTES", 400)
+    n, files = store.export_postgis_sql(con, tmp_path / "load.sql")
+    assert len(files) > 1
+    texts = [f.read_text() for f in files]
+    assert all(t.count("BEGIN;") == 1 and t.rstrip().endswith("COMMIT;") for t in texts)
+    assert "DELETE FROM" in texts[0] and not any("DELETE FROM" in t for t in texts[1:])
+    assert sum(t.count("INSERT INTO findings") for t in texts) == n

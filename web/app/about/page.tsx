@@ -20,7 +20,10 @@ export default function About() {
         <section>
           <h2>What&apos;s covered</h2>
           <ul>
-            <li>One map year: 1938 (Sanborn St. Louis Vol. 12). 1950 is next.</li>
+            <li>
+              Two map years: 1938 (Sanborn St. Louis Vol. 12) and its 1950 update. Switch between
+              them above the map; each listing says whether the other year shows it too.
+            </li>
             <li>
               17 map sheets: much of Carondelet between Iron St. and the River des Peres, with gaps
               (the outlined areas on the map). More are being added.

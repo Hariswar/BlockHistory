@@ -31,6 +31,7 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [coverage, setCoverage] = useState<Coverage[]>([]);
   const [active, setActive] = useState<number | null>(null);
+  const [year, setYear] = useState("1938");
 
   // A search can be linked: /?q=7313+S+Broadway
   useEffect(() => {
@@ -71,6 +72,14 @@ export default function Search() {
     }
   }
 
+  const years = [...new Set(coverage.map((c) => c.year))].sort();
+  // What the selected map year shows: its sheets, its findings.
+  const shown = result && {
+    ...result,
+    coveredBy: result.coveredBy.filter((s) => s.year === year),
+    findings: result.findings.filter((f) => f.year === year),
+  };
+
   return (
     <>
       <form
@@ -101,6 +110,24 @@ export default function Search() {
           </button>
         ))}
       </p>
+      {years.length > 1 && (
+        <div className="years" role="group" aria-label="Map year">
+          <span>Map year:</span>
+          {years.map((y) => (
+            <button
+              key={y}
+              type="button"
+              aria-pressed={y === year}
+              onClick={() => {
+                setYear(y);
+                setActive(null);
+              }}
+            >
+              {y}
+            </button>
+          ))}
+        </div>
+      )}
 
       {error && (
         <div className="summary error" role="alert">
@@ -108,27 +135,27 @@ export default function Search() {
         </div>
       )}
 
-      <div className={`results${result ? "" : " empty"}`}>
+      <div className={`results${shown ? "" : " empty"}`}>
         <div className="map">
           <MapView
-            coverage={coverage}
-            point={result?.point ?? null}
-            radiusM={result?.radiusM ?? 100}
-            findings={result?.findings ?? []}
+            coverage={coverage.filter((c) => c.year === year)}
+            point={shown?.point ?? null}
+            radiusM={shown?.radiusM ?? 100}
+            findings={shown?.findings ?? []}
             active={active}
             onSelect={(id) => {
               setActive(id);
               document.getElementById(`f-${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
             }}
           />
-          <MapLegend searched={!!result} />
+          <MapLegend searched={!!shown} />
         </div>
-        {result && (
+        {shown && (
           <div className="side">
-            <Summary result={result} />
-            {result.findings.length > 0 && (
+            <Summary result={shown} year={year} />
+            {shown.findings.length > 0 && (
               <ol className="cards">
-                {result.findings.map((f, i) => (
+                {shown.findings.map((f, i) => (
                   <FindingCard
                     key={f.id}
                     f={f}
@@ -141,7 +168,7 @@ export default function Search() {
             )}
           </div>
         )}
-        {!result && (
+        {!shown && (
           <p className="small">
             The outlined areas on the map are the parts of Carondelet processed so far. More are
             being added.
@@ -152,9 +179,8 @@ export default function Search() {
   );
 }
 
-function Summary({ result }: { result: Result }) {
+function Summary({ result, year }: { result: Result; year: string }) {
   const { findings, coveredBy, radiusM, point } = result;
-  const years = [...new Set(coveredBy.map((s) => s.year))].join(" and ");
   // A sheet with two panels covers as two rows; name it once.
   const sheets = [...new Set(coveredBy.map((s) => `sheet ${s.sheetNumber}`))].join(", ");
   return (
@@ -163,16 +189,16 @@ function Summary({ result }: { result: Result }) {
         <>
           <h2>We haven&apos;t processed the maps for this address yet</h2>
           <p>
-            So far BlockHistory covers part of Carondelet on the 1938 map (the outlined areas on
+            So far BlockHistory covers part of Carondelet on the {year} map (the outlined areas on
             the map). This says nothing either way about this property.
           </p>
         </>
       ) : findings.length === 0 ? (
         <>
-          <h2>No flagged past uses within {radiusM} m on the {years} map</h2>
+          <h2>No flagged past uses within {radiusM} m on the {year} map</h2>
           <p>
             Nothing within {radiusM} m was a gas station, garage, dry cleaner, factory or similar
-            use on the {years} map ({sheets}). That covers one year only: businesses that came and
+            use on the {year} map ({sheets}). That covers one year only: businesses that came and
             went at other times won&apos;t show here, and this is not a sign that the soil is clean.
           </p>
         </>
@@ -180,11 +206,11 @@ function Summary({ result }: { result: Result }) {
         <>
           <h2>
             {findings.length} past {findings.length === 1 ? "use" : "uses"} within {radiusM} m on the{" "}
-            {years} map
+            {year} map
           </h2>
           <p>
             These are kinds of businesses that sometimes left soil or groundwater contamination.
-            They are historical uses, not test results. Source: {years} Sanborn map, {sheets}.
+            They are historical uses, not test results. Source: {year} Sanborn map, {sheets}.
           </p>
         </>
       )}
@@ -229,6 +255,7 @@ function FindingCard({
             {f.relevance === "high" ? "Often linked to contamination" : "Sometimes linked to contamination"}
           </span>
           {f.hasGasolineTanks && <span className="tag high">Gasoline tanks on the map</span>}
+          {f.change && <span className="tag">{changeText(f.change)}</span>}
           {f.reviewStatus === "checked_ok" ? (
             <span className="tag checked">Checked against the map by a person</span>
           ) : f.reviewStatus === "partly_checked" ? (
@@ -272,4 +299,12 @@ function FindingCard({
       </div>
     </li>
   );
+}
+
+// Compared with the other map year at this spot; "not on the map" rather than "gone", since a
+// missed read looks the same.
+function changeText(c: NonNullable<PublicFinding["change"]>) {
+  if (c.kind === "still") return `Also on the ${c.otherYear} map`;
+  if (c.kind === "new") return `New since the ${c.otherYear} map`;
+  return `Not on the ${c.otherYear} map`;
 }

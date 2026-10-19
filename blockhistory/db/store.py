@@ -251,8 +251,13 @@ def search(
     return {"findings": out, "covered_by": covering}
 
 
-def export_postgis_sql(con: sqlite3.Connection, out: Path) -> int:
-    """All rows as INSERTs for schema_postgis.sql (paste into Supabase's SQL editor)."""
+PART_BYTES = 400_000  # Supabase's SQL editor refuses much larger queries
+
+
+def export_postgis_sql(con: sqlite3.Connection, out: Path) -> tuple[int, list[Path]]:
+    """All rows as INSERTs for schema_postgis.sql, split into files small enough for
+    Supabase's SQL editor: <out stem>_1.sql (clears the tables, then loads), _2.sql, ...
+    Run them in order. Returns (findings written, files)."""
 
     def lit(v):
         if v is None:
@@ -261,12 +266,7 @@ def export_postgis_sql(con: sqlite3.Connection, out: Path) -> int:
             return repr(v)
         return "'" + str(v).replace("'", "''") + "'"
 
-    lines = [
-        "-- BlockHistory data. Run after blockhistory/db/schema_postgis.sql.",
-        "SET search_path = public, extensions;",
-        "BEGIN;",
-        "DELETE FROM findings; DELETE FROM sheets;",
-    ]
+    lines = ["DELETE FROM findings; DELETE FROM sheets;"]
     for s in con.execute("SELECT * FROM sheets"):
         s = dict(s)
         fp = s.pop("footprint")
@@ -284,7 +284,27 @@ def export_postgis_sql(con: sqlite3.Connection, out: Path) -> int:
         )
         lines.append(f"INSERT INTO findings ({cols}) VALUES ({vals});")
         n += 1
-    lines.append("COMMIT;")
+
+    parts: list[list[str]] = [[]]
+    size = 0
+    for line in lines:
+        if size + len(line) > PART_BYTES and parts[-1]:
+            parts.append([])
+            size = 0
+        parts[-1].append(line)
+        size += len(line) + 1
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text("\n".join(lines) + "\n")
-    return n
+    for old in out.parent.glob(f"{out.stem}*.sql"):
+        old.unlink()  # a shorter export must not leave an old extra part behind
+    files = []
+    for i, body in enumerate(parts, 1):
+        path = out.with_name(f"{out.stem}_{i}{out.suffix}")
+        head = [
+            f"-- BlockHistory data, part {i} of {len(parts)}. Run parts in order, after",
+            "-- blockhistory/db/schema_postgis.sql. Part 1 clears the tables first.",
+            "SET search_path = public, extensions;",
+            "BEGIN;",
+        ]
+        path.write_text("\n".join([*head, *body, "COMMIT;"]) + "\n")
+        files.append(path)
+    return n, files

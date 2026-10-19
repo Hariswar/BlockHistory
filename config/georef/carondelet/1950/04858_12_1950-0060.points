@@ -1,0 +1,18 @@
+#CRS: EPSG:4326
+#NAME 0 Steins & Michigan
+#NAME 1 Steins & Minnesota
+#NAME 2 Schirmer & Virginia
+#NAME 3 Schirmer & Michigan
+#NAME 4 Schirmer & Minnesota
+#NAME 5 Courtois & Michigan
+#NAME 6 Courtois & Minnesota
+#NAME 7 Primm & Virginia
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2608482,38.5493734,1601.0,-314.0,1,0,0,0
+-90.2598588,38.5487170,2667.0,-279.0,1,0,0,0
+-90.2626299,38.5492195,538.0,-1499.0,1,0,0,0
+-90.2616147,38.5486338,1621.0,-1373.0,1,0,0,0
+-90.2606581,38.5480017,2691.0,-1337.0,1,0,0,0
+-90.2624149,38.5479105,1633.0,-2441.0,1,0,0,0
+-90.2614762,38.5472791,2706.0,-2402.0,1,0,0,0
+-90.2641852,38.5478182,571.2,-3547.3,1,0,0,0

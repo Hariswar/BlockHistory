@@ -4,6 +4,7 @@ import { distanceM, type FindingRow, type Sheet } from "./data";
 const IIIF = "https://tile.loc.gov/image-services/iiif";
 const CROP_FULL_PX = 700; // square crop of the full-resolution scan around the building
 const SAME_SITE_M = 40; // same kind of use this close together = one site (a plant's buildings)
+const SAME_PLACE_M = 50; // same kind of use this close on two map years = still there
 // The reader says so when a label runs off the tile or can't be read in full.
 const CUT_OFF = /cut off|partially visible|partly visible|uncertain|unclear|illegible|not legible/i;
 // A company name ("LIBERTY FOUNDRY CO.", "CARONDELET CHEMICAL WKS.") is the clearest title.
@@ -28,6 +29,9 @@ export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
     reviewStatus: f.review_status as "unreviewed" | "checked_ok" | "partly_checked",
     cutOff: CUT_OFF.test(f.use),
     alsoPrinted: [] as string[],
+    // Compared with the other map year at the same place: "still" there, "not" on the other
+    // map, or "new" since the earlier one. Null when only one year covers the spot.
+    change: null as null | { kind: "still" | "not" | "new"; otherYear: string },
     readerConfidence: f.reader_confidence,
     distanceM: f.distance_m,
     lat: f.lat,
@@ -42,6 +46,29 @@ export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
 }
 
 /**
+ * Mark each finding against the other map year(s) covering the searched spot: a finding with
+ * the same kind of use within SAME_PLACE_M on the other map is "still" there; otherwise the
+ * earlier year's is "not" on the later map and the later year's is "new". Pass findings from
+ * a wider radius than shown, so a match just outside the circle still counts.
+ */
+export function markChanges(found: PublicFinding[], coveredYears: string[]): PublicFinding[] {
+  const years = [...new Set(coveredYears)].sort();
+  if (years.length < 2) return found;
+  return found.map((f) => {
+    const others = years.filter((y) => y !== f.year);
+    const other = f.year < others[0] ? others[0] : others[others.length - 1];
+    const same = found.some(
+      (g) =>
+        g.year === other &&
+        g.category === f.category &&
+        distanceM(f.lat, f.lon, g.lat, g.lon) <= SAME_PLACE_M,
+    );
+    const kind = same ? "still" : f.year < other ? "not" : "new";
+    return { ...f, change: { kind, otherYear: other } };
+  });
+}
+
+/**
  * One card per site: findings of the same kind within SAME_SITE_M of the nearest one are
  * repeat reads or parts of one plant. The card is titled by its clearest read (not cut off,
  * a company name, high concern, checked, with tanks) and lists the other printed labels. It
@@ -51,7 +78,10 @@ export function groupSites(found: PublicFinding[]): PublicFinding[] {
   const groups: PublicFinding[][] = [];
   for (const f of found) {
     const g = groups.find(
-      (g) => g[0].category === f.category && distanceM(g[0].lat, g[0].lon, f.lat, f.lon) <= SAME_SITE_M,
+      (g) =>
+        g[0].year === f.year &&
+        g[0].category === f.category &&
+        distanceM(g[0].lat, g[0].lon, f.lat, f.lon) <= SAME_SITE_M,
     );
     if (g) g.push(f);
     else groups.push([f]);

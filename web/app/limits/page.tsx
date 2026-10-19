@@ -12,7 +12,10 @@ export default function Limits() {
           <strong>This is not an environmental site assessment.</strong> A past use doesn&apos;t
           mean the soil is contaminated today, and no listing doesn&apos;t mean it&apos;s clean.
         </li>
-        <li>One year only: businesses that opened and closed between map years don&apos;t show.</li>
+        <li>
+          Two years only: businesses that opened and closed between 1938 and 1950, or after 1950,
+          don&apos;t show. &ldquo;Not on the 1950 map&rdquo; can also mean the reader missed it.
+        </li>
         <li>Address positions come from the US Census and can be 30–80 m off.</li>
         <li>
           For a property decision, talk to an environmental professional, or look up the site in the

@@ -1,0 +1,20 @@
+#CRS: EPSG:4326
+#NAME 0 Elwood & Minnesota
+#NAME 1 Elwood & Pennsylvania
+#NAME 2 Elwood & S. Broadway
+#NAME 3 Fillmore & Minnesota
+#NAME 4 Fillmore & Pennsylvania
+#NAME 5 Fillmore & S. Broadway
+#NAME 6 Bowen & Minnesota
+#NAME 7 Bowen & Pennsylvania
+#NAME 8 Bowen & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2457627,38.5608517,754.0,-351.0,1,0,0,0
+-90.2448185,38.5602075,1831.0,-275.0,1,0,0,0
+-90.2438650,38.5595613,2920.0,-204.0,1,0,0,0
+-90.2465877,38.5601682,752.0,-1391.0,1,0,0,0
+-90.2456535,38.5595376,1832.0,-1303.0,1,0,0,0
+-90.2446959,38.5588887,2929.0,-1222.0,1,0,0,0
+-90.2482052,38.5588635,761.0,-3387.0,1,0,0,0
+-90.2472591,38.5582204,1837.0,-3300.0,1,0,0,0
+-90.2463099,38.5575757,2923.0,-3209.0,1,0,0,0

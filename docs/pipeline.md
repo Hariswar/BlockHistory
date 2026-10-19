@@ -78,18 +78,29 @@ Human-verified and draft label files are reported separately. A draft becomes ve
 - **`--similarity`** fits shift, one scale and rotation (no shear). Use it when every usable crossing is on one street (sheet 50's two strips along S. Broadway) or there are only 3–4 points in one corner (sheet 74). The scale it prints should match the sheet's printed scale: 0.333 ft/px at 50 ft to the inch, 0.667 at 100 ft.
 - **Check far from the points** when a panel's points are bunched or in a line: compare a feature two sheets share (sheets 50 and 53 put the same water-main end 0.2 m apart), or one that hasn't moved (the River des Peres channel on sheet 74).
 
+## 6b. A later edition of the same volume (free)
+```
+.venv/bin/python scripts/run_batch.py submit carondelet 1950 <sheets>          # first pass (~$0.0008/tile)
+.venv/bin/python scripts/run_batch.py submit carondelet 1950 <sheets> --tanks  # then --points
+.venv/bin/python scripts/align_edition.py carondelet 1938 1950 <sheets>        # control points
+```
+- The 1938–1950 volume is the 1938 plates with paste-over patches, so `align_edition.py` reuses the 1938 control points: it matches each whole scan, then finds each street corner's patch on the later scan. It prints a leave-one-out report like `fit`; a "weak match" kept the whole-sheet prediction (a corner under a paste-over), so look at those sheets.
+- Needs OpenCV: `.venv/bin/python -m pip install "opencv-python>=4.9"` (the `vision` extra).
+- 1950 has no sheet 11 at the Library of Congress. A batch over ~250 MB is refused; submit sheets in chunks of about 25.
+- Paste-overs: the reader sometimes reads old print showing faintly through a patch. Check new findings against the scan and hide those in `config/corrections/<area>-1950.json`.
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]
 .venv/bin/python scripts/search_address.py "7313 S Broadway"
 ```
 - Loads every sheet that has a `.points` file into `data/blockhistory.sqlite`: one row per site (repeat reads within 15 m merged), with relevance, a plain-language explanation, review status from the spot-check ticks (rows ticked **wrong** are kept but never shown), and the sheet's outline on today's map.
-- `--export` also writes `data/export/load_postgis.sql` for Supabase.
+- `--export` also writes `data/export/load_postgis_1.sql`, `_2.sql`, ... for Supabase (each under 400 KB: the SQL editor refuses bigger queries).
 - Hand fixes in `config/corrections/<area>-<edition>.json` are applied first: `hide` (not on the map, a repeat, a private garage), `set` (`new_label`, `use`, `gasoline_tank_count`, or `sheet_px` to move it) and `add` (a site the reader missed, such as a plant name printed across its buildings). Each entry names the sheet, the label as read and its position (`near`, 50% image pixels), plus a `why`. The build prints any entry that no longer matches.
 
 **Supabase** (the site's database once keys are set):
 1. Supabase dashboard → SQL Editor → paste and run `blockhistory/db/schema_postgis.sql` (once; safe to re-run). It turns on PostGIS, creates the tables with read-only row-level security, and the functions `findings_near(at_lat, at_lon, radius_m)`, `sheets_covering(at_lat, at_lon)` and `sheets_list()`.
-2. Same place → paste and run `data/export/load_postgis.sql`. It replaces all rows, so re-run it after every `build_db.py --export`.
+2. Same place → paste and run `data/export/load_postgis_1.sql`, then `_2`, `_3`, ... in order, each in its own query. Part 1 clears the tables, so always start from part 1 and run every part after each `build_db.py --export`.
 3. Project Settings → API → copy the Project URL and the **anon/publishable** key (never the service_role/secret key) into `web/.env.local`, following `web/.env.local.example`. That file is gitignored.
 4. Restart `npm run dev`. With both values set the site reads Supabase; with them empty it reads the local SQLite file.
 

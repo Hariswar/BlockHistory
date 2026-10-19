@@ -1,0 +1,10 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#OUTLINE 117,14 2335,5 2351,3908 133,3917
+#NAME 0 Vulcan & Catalan
+#NAME 1 Vulcan & Espenschied
+#NAME 2 Reilly & Espenschied
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2640511,38.5391093,1723.0,-333.0,1,0,0,0
+-90.2632488,38.5397898,2242.0,-334.0,1,0,0,0
+-90.2622892,38.5391635,2251.0,-869.0,1,0,0,0

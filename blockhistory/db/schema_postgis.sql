@@ -1,7 +1,7 @@
 -- BlockHistory on Supabase (Postgres + PostGIS). Same tables as blockhistory/db/store.py,
 -- with geography columns instead of lat/lon.
 -- 1. Run this whole file once in the Supabase SQL editor (safe to re-run).
--- 2. Then run data/export/load_postgis.sql (written by scripts/build_db.py --export).
+-- 2. Then run data/export/load_postgis_1.sql, _2.sql, ... in order (scripts/build_db.py --export).
 -- The website reads with the public (anon / publishable) key: row-level security lets
 -- anyone read and no one write. Loading is done here in the SQL editor, as the owner.
 

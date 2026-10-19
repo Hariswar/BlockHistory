@@ -1,0 +1,380 @@
+{
+ "about": "Fixes from checking every shown 1950 listing against the full-resolution scan (Claude, 2026-10-19). Same format and rules as carondelet-1938.json. New in 1950: paste-over patches cover removed buildings, and the reader sometimes reads the old print showing through.",
+ "hide": [
+  {
+   "sheet": 22,
+   "label": "AUTO SALES",
+   "near": [
+    846,
+    1547
+   ],
+   "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
+  },
+  {
+   "sheet": 24,
+   "label": "FILL'G STA.",
+   "near": [
+    2016,
+    1138
+   ],
+   "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
+  },
+  {
+   "sheet": 24,
+   "label": "FILLING STA.",
+   "near": [
+    2771,
+    2361
+   ],
+   "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
+  },
+  {
+   "sheet": 24,
+   "label": "FILLING STA.",
+   "near": [
+    2018,
+    1230
+   ],
+   "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
+  },
+  {
+   "sheet": 49,
+   "label": "AUTO REP'G",
+   "near": [
+    2364,
+    3414
+   ],
+   "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
+  },
+  {
+   "sheet": 24,
+   "label": "DRY CLEANING",
+   "near": [
+    1265,
+    2668
+   ],
+   "why": "Not on the map: no such label at or near this spot (low-confidence read)."
+  },
+  {
+   "sheet": 49,
+   "label": "DRY CLEANING",
+   "near": [
+    2006,
+    512
+   ],
+   "why": "Not on the map: no such label at or near this spot (low-confidence read)."
+  },
+  {
+   "sheet": 50,
+   "label": "DRY CLEANING",
+   "near": [
+    2311,
+    2975
+   ],
+   "why": "Not on the map: no such label at or near this spot (low-confidence read)."
+  },
+  {
+   "sheet": 53,
+   "label": "DRY CLEANING",
+   "near": [
+    951,
+    1230
+   ],
+   "why": "Not on the map: no such label at or near this spot (low-confidence read)."
+  },
+  {
+   "sheet": 58,
+   "label": "DRY CLEANING",
+   "near": [
+    2455,
+    512
+   ],
+   "why": "Not on the map: no such label at or near this spot (low-confidence read)."
+  },
+  {
+   "sheet": 50,
+   "label": "FILL'G STA.",
+   "near": [
+    1631,
+    3027
+   ],
+   "why": "Placed on the feed mill; no filling station there."
+  },
+  {
+   "sheet": 74,
+   "label": "FILL'G STA.",
+   "near": [
+    955,
+    2256
+   ],
+   "why": "Placed on the coke wharf; no filling station there."
+  },
+  {
+   "sheet": 22,
+   "label": "WOOD FL.",
+   "near": [
+    2292,
+    3411
+   ],
+   "why": "Construction note of the filling station at 725, already listed."
+  },
+  {
+   "sheet": 23,
+   "label": "DRY CLEANING",
+   "near": [
+    872,
+    1446
+   ],
+   "why": "Repeat: the dry cleaner is at 6145 Michigan, listed; this spot is a store."
+  },
+  {
+   "sheet": 47,
+   "label": "AS",
+   "near": [
+    707,
+    3153
+   ],
+   "why": "Automatic sprinkler symbol (AS), not a use."
+  },
+  {
+   "sheet": 50,
+   "label": "AS",
+   "near": [
+    465,
+    768
+   ],
+   "why": "Automatic sprinkler symbol (AS), not a use."
+  },
+  {
+   "sheet": 47,
+   "label": "PRINT SHOP",
+   "near": [
+    872,
+    3084
+   ],
+   "why": "Misread repeat of PAINT SPRAYG. & BENZOL WASHG., already listed."
+  },
+  {
+   "sheet": 50,
+   "label": "OILS STA.",
+   "near": [
+    1681,
+    3504
+   ],
+   "why": "Misread repeat of the FILL'G STA. at 6930 S. Broadway, already listed."
+  },
+  {
+   "sheet": 50,
+   "label": "FR. FOUNDRY",
+   "near": [
+    2112,
+    2017
+   ],
+   "why": "FR. FOUND'N (frame building on a foundation), not a foundry."
+  },
+  {
+   "sheet": 57,
+   "label": "FR. FOUNDRY",
+   "near": [
+    2017,
+    2352
+   ],
+   "why": "FR. FOUND'N (frame building on a foundation), not a foundry."
+  },
+  {
+   "sheet": 50,
+   "label": "GARAGE",
+   "near": [
+    2012,
+    2586
+   ],
+   "why": "Private garage of the ice plant, not a commercial garage."
+  },
+  {
+   "sheet": 52,
+   "label": "3 GARS.",
+   "near": [
+    1336,
+    2159
+   ],
+   "why": "Private auto house (3 cars), not a commercial garage."
+  },
+  {
+   "sheet": 60,
+   "label": "MISCL. STGE-2 2 1/2 STORIES A-1ST-3 CARS",
+   "near": [
+    2140,
+    880
+   ],
+   "why": "Private auto house (3 cars) under storage, not a commercial garage."
+  },
+  {
+   "sheet": 62,
+   "label": "A- CARS",
+   "near": [
+    960,
+    2197
+   ],
+   "why": "Private auto house, not a commercial garage."
+  },
+  {
+   "sheet": 53,
+   "label": "ERY VICE",
+   "near": [
+    1531,
+    3444
+   ],
+   "why": "Repeat read of BATTERY SERVICE, already listed."
+  },
+  {
+   "sheet": 53,
+   "label": "IR. CORN OIL TKS",
+   "near": [
+    1774,
+    1426
+   ],
+   "why": "Corn oil tanks of the flour mill (food oil), not fuel."
+  },
+  {
+   "sheet": 57,
+   "label": "BR. ... GS",
+   "near": [
+    1417,
+    1689
+   ],
+   "why": "Unreadable fragment on the Liberty Foundry parking lot's lumber shed."
+  },
+  {
+   "sheet": 57,
+   "label": "CLEANING ROOM",
+   "near": [
+    610,
+    1767
+   ],
+   "why": "Cleaning room of the Maco foundry (castings), not a dry cleaner; the foundry is listed."
+  },
+  {
+   "sheet": 57,
+   "label": "DRY CLEANING",
+   "near": [
+    620,
+    1561
+   ],
+   "why": "No dry cleaner here: the Maco foundry's cupolas and dust collectors."
+  },
+  {
+   "sheet": 57,
+   "label": "FOUNDRY",
+   "near": [
+    1288,
+    2033
+   ],
+   "why": "Placed on the railroad tracks; the foundry buildings nearby are listed."
+  },
+  {
+   "sheet": 57,
+   "label": "AUTO. SALES",
+   "near": [
+    512,
+    512
+   ],
+   "why": "Repeat of USED AUTO SALES at 7414 S. Broadway, placed on the tracks."
+  },
+  {
+   "sheet": 58,
+   "label": "V V MET...",
+   "near": [
+    1735,
+    2656
+   ],
+   "why": "Repeat read of METAL MIXING, already listed."
+  },
+  {
+   "sheet": 62,
+   "label": "EARTH FL. WOOD POSTS",
+   "near": [
+    2360,
+    3209
+   ],
+   "why": "Construction note of the foundry, already listed."
+  },
+  {
+   "sheet": 74,
+   "label": "9 CO",
+   "near": [
+    1005,
+    2137
+   ],
+   "why": "Repeat read of 9 COKE OVENS, already listed."
+  }
+ ],
+ "set": [
+  {
+   "sheet": 47,
+   "label": "AUTO RER",
+   "near": [
+    2616,
+    3284
+   ],
+   "new_label": "AUTO REP.",
+   "use": "auto repair",
+   "why": "The map says AUTO REP."
+  },
+  {
+   "sheet": 50,
+   "label": "...on Tin Foil & Metal Co.",
+   "near": [
+    907,
+    2027
+   ],
+   "new_label": "THE JOHNSTON TIN FOIL & METAL CO. MFG. METAL FOIL",
+   "use": "metal foil factory",
+   "why": "Full name as printed."
+  },
+  {
+   "sheet": 72,
+   "label": "FILLG STA.",
+   "near": [
+    2984,
+    1057
+   ],
+   "sheet_px": [
+    3084,
+    757
+   ],
+   "why": "FILL'G STA. with AUTO GREASING and TIRE SERVICE is 30 m north of where it was placed (as on the 1938 map)."
+  }
+ ],
+ "add": [
+  {
+   "sheet": 58,
+   "label": "MONSANTO CHEMICAL CO. CARONDELET CHEMICAL WKS.",
+   "use": "chemical plant",
+   "sheet_px": [
+    2218,
+    2835
+   ],
+   "why": "Plant name printed across the buildings; the reader listed only its parts."
+  },
+  {
+   "sheet": 74,
+   "label": "LACLEDE GAS LIGHT CO. COKE & BY-PRODUCTS PLANT",
+   "use": "coke and gas by-products plant",
+   "sheet_px": [
+    944,
+    1412
+   ],
+   "why": "Plant name; the reader listed its buildings only."
+  },
+  {
+   "sheet": 74,
+   "label": "ST. LOUIS SHIP BUILDING & STEEL CO.",
+   "use": "shipyard",
+   "sheet_px": [
+    1981,
+    2860
+   ],
+   "why": "Shipyard printed along the riverbank; missed by the reader."
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+#CRS: EPSG:4326
+#OUTLINE 91,2 3294,10 3290,1961 86,1953
+#NAME 0 Iron & Louisiana
+#NAME 1 Iron & Alaska
+#NAME 2 Holly Hills & Tennessee
+#NAME 3 Holly Hills & Louisiana
+#NAME 4 Holly Hills & Alaska
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2567582,38.5625888,2112.0,-286.0,1,0,0,0
+-90.2557872,38.5620938,3098.0,-297.0,1,0,0,0
+-90.2586852,38.5620118,1065.0,-1742.0,1,0,0,0
+-90.2576857,38.5614851,2118.0,-1745.0,1,0,0,0
+-90.2567153,38.5609739,3108.0,-1749.0,1,0,0,0
