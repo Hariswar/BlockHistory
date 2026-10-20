@@ -1,0 +1,10 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#OUTLINE 0,2470 1190,2470 1190,3898 0,3898
+#NAME 0 Davis & Idaho
+#NAME 1 Hurck & Alabama
+#NAME 2 Marceau & Alabama
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2697766,38.5473404,540.0,-2679.0,1,0,0,0
+-90.2695255,38.5463744,990.0,-3032.0,1,0,0,0
+-90.2703009,38.5457214,993.0,-3535.0,1,0,0,0

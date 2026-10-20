@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#NAME 0 Minnesota & Bates
+#NAME 1 Minnesota & Bellerive
+#NAME 2 Minnesota & Dover
+#NAME 3 Pennsylvania & Bates
+#NAME 4 Pennsylvania & Bellerive
+#NAME 5 Pennsylvania & Dover
+#NAME 6 S. Broadway & Dover
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2439123,38.5629899,723.0,-261.0,1,0,0,0
+-90.2444968,38.5621853,806.0,-1277.0,1,0,0,0
+-90.2451542,38.5613246,886.0,-2388.0,1,0,0,0
+-90.2428804,38.5624428,1802.0,-267.0,1,0,0,0
+-90.2434639,38.5616344,1880.0,-1292.0,1,0,0,0
+-90.2441161,38.5607769,1960.0,-2371.0,1,0,0,0
+-90.2431593,38.5602720,2961.0,-2362.0,1,0,0,0

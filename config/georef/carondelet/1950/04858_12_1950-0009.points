@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Grand & Bellerive
+#NAME 1 Grand & Dover
+#NAME 2 Grand & Wilmington
+#NAME 3 Louisiana & Bellerive
+#NAME 4 Louisiana & Dover
+#NAME 5 Louisiana & Wilmington
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2551058,38.5677491,657.0,-1279.0,1,0,0,0
+-90.2559470,38.5667726,655.0,-2617.0,1,0,0,0
+-90.2566026,38.5660120,656.0,-3603.0,1,0,0,0
+-90.2532213,38.5667885,2620.0,-1267.0,1,0,0,0
+-90.2540694,38.5657722,2629.0,-2619.0,1,0,0,0
+-90.2547063,38.5650159,2632.0,-3617.0,1,0,0,0

@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Virginia & Robert
+#NAME 1 Michigan & Robert
+#NAME 2 Minnesota & Robert
+#NAME 3 Michigan & Koeln
+#NAME 4 Minnesota & Koeln
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2592928,38.5521614,546.0,-394.0,1,0,0,0
+-90.2583514,38.5515237,1610.0,-357.0,1,0,0,0
+-90.2573912,38.5508881,2702.0,-332.0,1,0,0,0
+-90.2599983,38.5500763,1605.0,-2481.0,1,0,0,0
+-90.2590300,38.5494407,2697.0,-2467.0,1,0,0,0

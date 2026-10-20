@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Catalan & Pennsylvania
+#NAME 1 Catalan & S. Broadway
+#NAME 2 Espenschied & Pennsylvania
+#NAME 3 Catalan & Water
+#NAME 4 Espenschied & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2669457,38.5410022,2167.0,-277.0,1,0,0,0
+-90.2659699,38.5403688,2177.0,-1372.0,1,0,0,0
+-90.2661445,38.5417070,3164.0,-275.0,1,0,0,0
+-90.2649513,38.5396965,2170.0,-2559.0,1,0,0,0
+-90.2651880,38.5410533,3195.9,-1381.9,1,0,0,0

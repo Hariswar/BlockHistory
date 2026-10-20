@@ -9,6 +9,7 @@ rated high or medium, or with gas tanks, are asked about, so it runs on a minori
 from __future__ import annotations
 
 import base64
+import functools
 import hashlib
 import json
 from pathlib import Path
@@ -136,15 +137,38 @@ def candidate_tiles(tile_dir: Path) -> list[Path]:
     return [t for t in sorted(tile_dir.glob("*.jpg")) if labels_for(t)]
 
 
+@functools.cache
+def _results_by_tile() -> dict[str, list[dict]]:
+    """Every cached point-pass result, by tile name (names are unique across sheets)."""
+    out: dict[str, list[dict]] = {}
+    for path in CACHE_DIR.glob("*.json"):
+        result = json.loads(path.read_text())
+        out.setdefault(result["tile"], []).append(result)
+    return out
+
+
 def tile_points(tile: Path, model: str | None = None) -> list[dict]:
-    """[{label, street_number, x, y, found}] for the tile, or [] if the pass hasn't run."""
+    """[{label, street_number, x, y, found}] for the tile, or [] if the pass hasn't run.
+
+    The cache is keyed by the labels the pass was asked about, which change when the relevance
+    rules do. A result asked about a different set of labels is still good: its points are
+    matched to the labels stored with it, not to today's list."""
     result = load_cached(tile, model)
+    if result is None:
+        earlier = _results_by_tile().get(tile.name, [])
+        result = earlier[-1] if earlier else None
     if not result:
         return []
-    labels = labels_for(tile, model)
+    numbers = {b["label"]: b.get("street_number") for b in _first_pass(tile, model)}
+    labels = result.get("labels") or [b["label"] for b in labels_for(tile, model)]
     out = []
     for p in result["reading"]["points"]:
         if 0 <= p["index"] < len(labels):
-            b = labels[p["index"]]
-            out.append({"label": b["label"], "street_number": b.get("street_number"), **p})
+            label = labels[p["index"]]
+            out.append({"label": label, "street_number": numbers.get(label), **p})
     return out
+
+
+def _first_pass(tile: Path, model: str | None) -> list[dict]:
+    result = extract.load_cached(tile, model)
+    return result["extraction"]["buildings"] if result else []

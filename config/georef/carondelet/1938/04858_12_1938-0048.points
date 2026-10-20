@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#NAME 0 Mott & Michigan
+#NAME 1 Holly Hills & Michigan
+#NAME 2 Mott & Minnesota
+#NAME 3 Holly Hills & Minnesota
+#NAME 4 Mott & Pennsylvania
+#NAME 5 Holly Hills & Pennsylvania
+#NAME 6 Mott & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2524839,38.5566450,388.0,-314.0,1,0,0,0
+-90.2510008,38.5579621,2306.0,-322.0,1,0,0,0
+-90.2515413,38.5560263,406.0,-1388.0,1,0,0,0
+-90.2498914,38.5574791,2540.0,-1407.0,1,0,0,0
+-90.2505859,38.5553917,440.0,-2469.0,1,0,0,0
+-90.2489418,38.5568339,2570.0,-2472.0,1,0,0,0
+-90.2496406,38.5547493,478.0,-3557.0,1,0,0,0

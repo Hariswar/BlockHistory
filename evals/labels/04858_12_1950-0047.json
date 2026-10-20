@@ -1,0 +1,185 @@
+{
+ "sheet_id": "04858_12_1950-0047",
+ "edition": "1950",
+ "volume": "St. Louis Vol. 12",
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938, revised to 1950), sheet 47, image 04858_12_1950-0047",
+ "labeled_by": "AI-assisted draft from the 1938 key: each site compared with the 1950 scan side by side, 2026-10-19",
+ "labeled_on": "2026-10-19",
+ "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+ "definitions": {
+  "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+  "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+  "map_notes": "Only what is printed on the sheet.",
+  "interpretation": "Inference, not a map fact; never scored."
+ },
+ "sheet_layout": "Michigan Av at top, then Minnesota Av, Pennsylvania Av and S Broadway (bottom); Kraus on the left, Haven in the middle, Mott on the right.",
+ "out_of_scope_seen": [
+  "BEVERAGE CASE W. HO., 6727 Pennsylvania Av block (rear)",
+  "BAKE HO. NOT USED, rear of 6600 Michigan Av",
+  "APTS. 5 FAMILIES, Kraus side of block 3002",
+  "A. 6 CARS, 6630 Michigan Av block",
+  "(ASB. CL.) dwelling, Minnesota Av: asbestos-cement siding, a building material, not a use"
+ ],
+ "total_gasoline_tanks": 6,
+ "verification": {
+  "status": "draft",
+  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
+  "date": "2026-10-19"
+ },
+ "buildings": [
+  {
+   "label": "FILL'G STA.",
+   "use": "filling station",
+   "street_number": "6633",
+   "street_name": "Pennsylvania Av",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 3,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 2980",
+   "map_notes": "Corner of Haven. CONC. FL. 3 G.T.S circles north-west of the building.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "FILL'G STA.",
+   "use": "filling station",
+   "street_number": "6601",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 3,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 2979",
+   "map_notes": "Corner of E Mott. CONC. FL. G.T.S: 2 circles on the west side, 1 on the east.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label",
+    "street_number",
+    "construction",
+    "stories",
+    "gasoline_tank_count"
+   ],
+   "needs_human_check": [
+    "still on the 1950 map? Station rebuilt under a 1950 paste-over (\"FILLING STA.\"); the G.T. symbols are not visible on the patch."
+   ]
+  },
+  {
+   "label": "A. / WOOD YARD",
+   "use": "wood yard",
+   "street_number": "6631-6633",
+   "street_name": "S Broadway",
+   "construction": "frame",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 2979",
+   "map_notes": "1950 paste-over shows a wood yard where the auto parts and wrecking yard was.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  },
+  {
+   "label": "PAINT SPRAYING & BENZOL WASHING / PAINT STGE. (CONC.)",
+   "use": "paint spraying and benzol washing shop",
+   "street_number": null,
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3006",
+   "map_notes": "Small building on the alley behind 6723-6725 S Broadway; CONC. FL. Concrete paint storage beside it.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "PRTG. & BINDING",
+   "use": "printing and binding plant",
+   "street_number": "6727",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3006",
+   "map_notes": "Corner of Kraus. CONC. FL. 1ST, PILASTD. WALLS. Two automatic sprinkler (AS) marks.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "TIN SHOP",
+   "use": "tin shop",
+   "street_number": "6725",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3006",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "CARNIVAL MAINTENANCE SHOP & A.",
+   "use": "carnival equipment repair shop and auto house",
+   "street_number": "6611",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 2979",
+   "map_notes": "Rear of the lot, on the alley.",
+   "interpretation": "Equipment repair; may have used fuel and solvents.",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number",
+    "construction",
+    "stories",
+    "gasoline_tank_count"
+   ],
+   "needs_human_check": [
+    "still on the 1950 map? Not located on the 1950 crop; check the block (ROOFING W. HO. nearby)."
+   ]
+  }
+ ],
+ "removed_since_1938": [
+  {
+   "label": "JUNK",
+   "why": "Store (S) in 1950."
+  }
+ ]
+}

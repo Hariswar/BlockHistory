@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#NAME 0 Holly Hills & Vermont
+#NAME 1 Iron & Alabama
+#NAME 2 Iron & Vermont
+#NAME 3 Iron & Virginia
+#NAME 4 Bowen & Vermont
+#NAME 5 Bowen & Virginia
+#NAME 6 Holly Hills & Virginia
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2528847,38.5589591,404.0,-1302.0,1,0,0,0
+-90.2528894,38.5605417,1882.0,-313.0,1,0,0,0
+-90.2519236,38.5600739,1879.0,-1310.0,1,0,0,0
+-90.2509991,38.5595695,1880.0,-2313.0,1,0,0,0
+-90.2513838,38.5606796,2707.0,-1313.0,1,0,0,0
+-90.2504580,38.5601909,2706.0,-2313.0,1,0,0,0
+-90.2519325,38.5584536,412.0,-2307.0,1,0,0,0

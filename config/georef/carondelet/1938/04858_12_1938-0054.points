@@ -1,0 +1,18 @@
+#CRS: EPSG:4326
+#NAME 0 Vermont & Robert
+#NAME 1 Virginia & Robert
+#NAME 2 Vermont & Koeln
+#NAME 3 Virginia & Koeln
+#NAME 4 Alabama & Koeln
+#NAME 5 Vermont & Steins
+#NAME 6 Virginia & Steins
+#NAME 7 Alabama & Steins
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2598754,38.5529753,1720.0,-149.0,1,0,0,0
+-90.2589180,38.5524802,2784.0,-119.0,1,0,0,0
+-90.2620153,38.5512219,1396.0,-2727.0,1,0,0,0
+-90.2610066,38.5506415,2476.0,-2741.0,1,0,0,0
+-90.2630050,38.5518111,314.0,-2716.0,1,0,0,0
+-90.2628119,38.5505168,1268.0,-3771.0,1,0,0,0
+-90.2618168,38.5499358,2350.0,-3777.0,1,0,0,0
+-90.2638049,38.5511133,189.0,-3768.0,1,0,0,0

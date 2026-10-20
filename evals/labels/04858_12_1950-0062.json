@@ -1,0 +1,97 @@
+{
+ "sheet_id": "04858_12_1950-0062",
+ "edition": "1950",
+ "volume": "St. Louis Vol. 12",
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938, revised to 1950), sheet 62, image 04858_12_1950-0062",
+ "labeled_by": "AI-assisted draft from the 1938 key: each site compared with the 1950 scan side by side, 2026-10-19",
+ "labeled_on": "2026-10-19",
+ "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+ "definitions": {
+  "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+  "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+  "map_notes": "Only what is printed on the sheet.",
+  "interpretation": "Inference, not a map fact; never scored."
+ },
+ "sheet_layout": "S Broadway on the left, then Water St and the M.P. R.R. along Vulcan St on the right; E Steins at top, E Primm at bottom. Mostly dwellings, flats, stores and private auto houses.",
+ "false_positive_test": "No G.T. symbols, oil houses or fuel tanks anywhere on this sheet. A model that reports gasoline tanks here is wrong.",
+ "out_of_scope_seen": [
+  "PRIV. GARAGE CAP'Y 12 CARS with BOILER RM., 116 E Courtois (vehicle storage, no fuel or service marked)",
+  "UNDERTAKER / CHAPEL with garage for 5 cars, 7814-7816 S Broadway",
+  "W. HO. (warehouse) with auto house, rear of 7800-7802 Water St"
+ ],
+ "total_gasoline_tanks": 0,
+ "buildings": [
+  {
+   "label": "CHESTER IRON & FOUNDRY CO. STRUCTURAL IRON WORKS",
+   "use": "structural iron works",
+   "street_number": "218-224",
+   "street_name": "E Courtois",
+   "construction": "brick (woodworking frame)",
+   "stories": "1-2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3127",
+   "map_notes": "Mutual risk. Shop 18 ft, earth floor, pilastered walls, steel trusses; pattern shop on 2nd floor; office (2 stories, 28 ft) at 224. Woodworking building behind: frame, 1 story, 12 ft, concrete floor. No watchman. Heat: stoves. Power: electric.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "FOUNDRY (NOT USED) / CORE OVENS (NOT USED) / CUPOLA",
+   "use": "idle foundry",
+   "street_number": "(7821-7823 frontage)",
+   "street_name": "Vulcan St side",
+   "construction": "brick (core ovens fireproof; cupola house metal)",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3127",
+   "map_notes": "Part of the Chester Iron & Foundry lot, south of the woodworking building. Foundry 14 ft, earth floor raised 7 ft, wood posts, marked NOT USED. Two fireproof core ovens marked NOT USED. Cupola in a 1-story metal house, 16 ft.",
+   "interpretation": "Idle foundry: foundry sand, slag and metals possible.",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "STEEL STGE.",
+   "use": "steel storage",
+   "street_number": "7820",
+   "street_name": "Water St",
+   "construction": "metal",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3127",
+   "map_notes": "1-story metal building.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  }
+ ],
+ "verification": {
+  "status": "draft",
+  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
+  "date": "2026-10-19"
+ },
+ "removed_since_1938": [
+  {
+   "label": "SIGN PAINT'G",
+   "why": "Flats (F) in 1950."
+  },
+  {
+   "label": "TIN SHOP",
+   "why": "Store (S) in 1950."
+  }
+ ]
+}

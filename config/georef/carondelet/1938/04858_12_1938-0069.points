@@ -1,0 +1,9 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Catalan & Minnesota
+#NAME 1 Catalan & Pennsylvania
+#NAME 2 Espenschied & Pennsylvania
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2678947,38.5416359,2113.0,-2460.0,1,0,0,0
+-90.2669457,38.5410022,2125.0,-3549.0,1,0,0,0
+-90.2661445,38.5417070,3100.0,-3567.0,1,0,0,0

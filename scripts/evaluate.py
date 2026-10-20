@@ -243,7 +243,7 @@ def main() -> None:
     if verified:
         lines += summary_lines("Human-verified labels", verified)
     if draft:
-        lines += summary_lines("Draft labels (Claude, unverified)", draft)
+        lines += summary_lines("Draft labels (AI-assisted, unverified)", draft)
     lines += summary_lines("All labeled sheets", rows)
     lines += [
         "## Per sheet",

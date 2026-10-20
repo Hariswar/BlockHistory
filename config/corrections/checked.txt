@@ -1,0 +1,7 @@
+# Sheets whose shown listings were all checked against the full-resolution scan (by the
+# project author's spot checks and AI-assisted scan checks). scripts/shown_precision.py scores
+# the reader against these judgments. Format: area edition sheet numbers...
+carondelet 1938 22 23 24 44 47 49 50 52 53 56 57 58 59 60 62 72 74
+carondelet 1938 9 10 11 12 13 14 19 20 21 25 26 42 43 45 46 48 51 54 55 61 63 64 65 66 67 68 69 70 71 73
+carondelet 1950 22 23 24 44 47 49 50 52 53 56 57 58 59 60 62 72 74
+carondelet 1950 9 10 12 13 14 19 20 21 25 26 42 43 45 46 48 51 54 55 61 63 64 65 66 67 68 69 70 71 73

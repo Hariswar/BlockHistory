@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Colorado & Bellerive
+#NAME 1 Colorado & Dover
+#NAME 2 Colorado & Wilmington
+#NAME 3 Alabama & Bellerive
+#NAME 4 Alabama & Dover
+#NAME 5 Alabama & Wilmington
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2512955,38.5657573,595.0,-1279.0,1,0,0,0
+-90.2521231,38.5647738,601.0,-2609.0,1,0,0,0
+-90.2527671,38.5640092,602.0,-3603.0,1,0,0,0
+-90.2493754,38.5647569,2599.0,-1280.0,1,0,0,0
+-90.2502082,38.5637617,2596.0,-2605.0,1,0,0,0
+-90.2508520,38.5629962,2599.0,-3603.0,1,0,0,0

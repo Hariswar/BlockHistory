@@ -36,8 +36,24 @@ CONSTRUCTION = {
     "ASB", "ASBESTOS", "SC", "GL", "GLASS", "POSTS", "POST", "LATH", "PLASTER", "PLASTE",
     "PARTNS", "PARTS", "PARTITIONS", "METAL", "STEEL", "COLS", "CDLS", "TRUSSES", "RF", "ROOF", "EARTH",
     "RAISED", "FR", "FRAME", "C", "B", "ST", "STS", "STORY", "STORIES", "ABV", "ABOVE", "HOLLOW",
-    "TILE", "STONE",
+    "TILE", "STONE", "SL", "CI", "FIRE", "PROOF", "FIREPROOF", "CONST", "CONSTN", "WALL", "WALLS",
+    "WOOD", "BEAMS", "IST", "ISR", "JOIST", "JOISTS", "FLS", "CEILING", "CEILINGS", "CEILG", "SLAB",
+    "EXCEPT", "EXPOSED", "APRON", "CURTAIN", "PILASTD", "PILASTERED", "CONSTR",
 }  # fmt: skip
+# "IST"/"ISR" are common misreads of "1ST"; "CI" of "CL".
+# Map symbols and markers that readers sometimes report as uses: a lone dwelling (D), flat (F),
+# store (S) or auto house (A) marker, and the automatic sprinkler symbol (AS).
+MARKER = re.compile(r"\(?(A\.?\s?S|[DFSAE])[.'’)]*")
+# A rear-address note pasted on a later edition ("R. 6016 LOUISIANA"), and the reader's own
+# "(illegible)" for text it couldn't read: neither names a use.
+ADDRESS_NOTE = re.compile(r"R\.?\s*\d+\s*[A-Z. ]*")
+ILLEGIBLE = re.compile(r"ILLEGIBLE|UNREADABLE")
+# A car count on a building that isn't a garage or auto business is a private auto house:
+# "15 - CARS A.", "MISCL. STGE-2 A.-1ST.-3 CARS", "3 GARS." (a misread of CARS).
+CAR_COUNT = re.compile(r"\b\d+\s*[-–]?\s*[CG]ARS?\b|\bA[.\-]?\s*[-–]?\s*\d*\s*CARS\b")
+COMMERCIAL_GARAGE = re.compile(r"GARAGE|REP|SALES|SERV|FILL|TRUCK|AUTO STGE|CAP'?Y")
+# "FR. FOUND'N" (a frame building on a foundation), often read as "FR. FOUNDRY".
+FRAME_ON_FOUNDATION = re.compile(r"\bFR\.?\s*FOUND[A-Z'’]*\.?")
 
 
 def construction_note(label: str) -> bool:
@@ -53,9 +69,22 @@ def relevance(label: str, use: str = "") -> str:
         r"(A\.?\s*)?(\w{1,2}[- ]?)?CARS?\.?(\s*A\.?)?|\d+", label.strip().upper()
     ):
         return "low"
-    if construction_note(label):
+    if (
+        construction_note(label)
+        or MARKER.fullmatch(label.strip().upper())
+        or ADDRESS_NOTE.fullmatch(label.strip().upper())
+        or ILLEGIBLE.search(label.upper())
+    ):
         return "low"
-    label = re.sub(r"PRIV(ATE|\.)? GARAGE", "", label.upper())
+    upper = label.upper()
+    if CAR_COUNT.search(upper) and not COMMERCIAL_GARAGE.search(upper):
+        return "low"
+    if FRAME_ON_FOUNDATION.search(upper):
+        upper = FRAME_ON_FOUNDATION.sub(" ", upper)
+        use = re.sub(r"(?i)\bfoundry\b", "", use)
+        if not re.search(r"[A-Z]{3}", upper):
+            return "low"
+    label = re.sub(r"PRIV(ATE|\.)? GARAGE", "", upper)
     text = f" {label} | {use} ".upper().replace("PRIVATE GARAGE", "").replace("AUTO HOUSE", "")
     # A capacity note in the description ("chapel with 4 cars garage") is a private garage.
     text = re.sub(r"\b\d+[- ]?CARS?\b( GARAGE)?", "", text)

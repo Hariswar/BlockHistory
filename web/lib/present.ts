@@ -29,9 +29,10 @@ export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
     reviewStatus: f.review_status as "unreviewed" | "checked_ok" | "partly_checked",
     cutOff: CUT_OFF.test(f.use),
     alsoPrinted: [] as string[],
-    // Compared with the other map year at the same place: "still" there, "not" on the other
-    // map, or "new" since the earlier one. Null when only one year covers the spot.
-    change: null as null | { kind: "still" | "not" | "new"; otherYear: string },
+    // Compared with the other map year at the same place: "still" there (same printed name),
+    // a "similar" use nearby (same kind, different label), "not" on the other map, or "new"
+    // since the earlier one. Null when only one year covers the spot.
+    change: null as null | { kind: "still" | "similar" | "not" | "new"; otherYear: string },
     readerConfidence: f.reader_confidence,
     distanceM: f.distance_m,
     lat: f.lat,
@@ -45,11 +46,33 @@ export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
   };
 }
 
+// Words that name a use, for matching a label across map years ("FILL'G STA." = "FILLING
+// STA"). Construction and filler words don't count.
+const FILLER = new Set(
+  "CONC FL FLR STA STGE STG MISC MISCL CO INC THE AND OF ST BR IR FR RM HO NO 1ST 2ND".split(" "),
+);
+const SPELLING: Record<string, string> = { FILLG: "FILLING", FILLNG: "FILLING", REPG: "REP", REPAIR: "REP" };
+
+function useWords(label: string): Set<string> {
+  const words = label.toUpperCase().replace(/['’.]/g, "").split(/[^A-Z0-9]+/);
+  return new Set(
+    words
+      .map((w) => SPELLING[w] ?? w)
+      .filter((w) => w.length >= 3 && !FILLER.has(w) && !/^\d+$/.test(w)),
+  );
+}
+
+// Kinds of use that readers swap for one site: a garage with a gasoline tank can be read as
+// "fuel" one year and "auto" the next.
+const FAMILY: Record<string, string> = { fuel: "vehicles", auto: "vehicles" };
+const family = (category: string) => FAMILY[category] ?? category;
+
 /**
- * Mark each finding against the other map year(s) covering the searched spot: a finding with
- * the same kind of use within SAME_PLACE_M on the other map is "still" there; otherwise the
- * earlier year's is "not" on the later map and the later year's is "new". Pass findings from
- * a wider radius than shown, so a match just outside the circle still counts.
+ * Mark each finding against the other map year(s) covering the searched spot. Within
+ * SAME_PLACE_M on the other map, a finding with a shared label word is "still" there (any
+ * kind) and one of a related kind is a "similar" use; with neither, the earlier year's is
+ * "not" on the later map and the later year's is "new". Pass findings from a wider radius
+ * than shown, so a match just outside the circle still counts.
  */
 export function markChanges(found: PublicFinding[], coveredYears: string[]): PublicFinding[] {
   const years = [...new Set(coveredYears)].sort();
@@ -57,13 +80,13 @@ export function markChanges(found: PublicFinding[], coveredYears: string[]): Pub
   return found.map((f) => {
     const others = years.filter((y) => y !== f.year);
     const other = f.year < others[0] ? others[0] : others[others.length - 1];
-    const same = found.some(
-      (g) =>
-        g.year === other &&
-        g.category === f.category &&
-        distanceM(f.lat, f.lon, g.lat, g.lon) <= SAME_PLACE_M,
+    const near = found.filter(
+      (g) => g.year === other && distanceM(f.lat, f.lon, g.lat, g.lon) <= SAME_PLACE_M,
     );
-    const kind = same ? "still" : f.year < other ? "not" : "new";
+    const words = useWords(f.printedLabel);
+    const named = near.some((g) => [...useWords(g.printedLabel)].some((w) => words.has(w)));
+    const similar = near.some((g) => family(g.category) === family(f.category));
+    const kind = named ? "still" : similar ? "similar" : f.year < other ? "not" : "new";
     return { ...f, change: { kind, otherYear: other } };
   });
 }

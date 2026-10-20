@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#NAME 0 Michigan & Haven
+#NAME 1 Virginia & Kraus
+#NAME 2 Michigan & Kraus
+#NAME 3 Virginia & Loughborough
+#NAME 4 Michigan & Loughborough
+#NAME 5 Virginia & Quincy
+#NAME 6 Michigan & Quincy
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2533916,38.5558445,2562.0,-292.0,1,0,0,0
+-90.2551730,38.5557758,1463.0,-1380.0,1,0,0,0
+-90.2542039,38.5551354,2546.0,-1366.0,1,0,0,0
+-90.2560099,38.5550457,1459.0,-2460.0,1,0,0,0
+-90.2550550,38.5544096,2543.0,-2410.0,1,0,0,0
+-90.2568175,38.5543294,1452.0,-3518.0,1,0,0,0
+-90.2558730,38.5536779,2532.0,-3489.0,1,0,0,0

@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#NAME 0 Colorado & Wilmington
+#NAME 1 Alaska & Fillmore
+#NAME 2 Colorado & Fillmore
+#NAME 3 Idaho & Fillmore
+#NAME 4 Alaska & Iron
+#NAME 5 Colorado & Iron
+#NAME 6 Idaho & Iron
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2527671,38.5640092,1905.0,-334.0,1,0,0,0
+-90.2543093,38.5638372,903.0,-1213.0,1,0,0,0
+-90.2533491,38.5633360,1909.0,-1219.0,1,0,0,0
+-90.2523809,38.5628359,2913.0,-1228.0,1,0,0,0
+-90.2557872,38.5620938,900.0,-3526.0,1,0,0,0
+-90.2548270,38.5615821,1899.0,-3530.0,1,0,0,0
+-90.2538453,38.5610976,2890.0,-3528.0,1,0,0,0

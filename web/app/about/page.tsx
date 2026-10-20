@@ -25,8 +25,9 @@ export default function About() {
               them above the map; each listing says whether the other year shows it too.
             </li>
             <li>
-              17 map sheets: much of Carondelet between Iron St. and the River des Peres, with gaps
-              (the outlined areas on the map). More are being added.
+              All of Carondelet and Patch: 46 map sheets from Bates St. to the River des Peres,
+              Grand Blvd. to the river (the outlined area on the map). The 1950 scan has no sheet
+              11.
             </li>
           </ul>
         </section>
@@ -38,8 +39,11 @@ export default function About() {
               An AI model (Claude Haiku) reads each sheet&apos;s business labels and gasoline-tank
               symbols.
             </li>
-            <li>Sheets are matched to today&apos;s streets, typically within 1–4 m.</li>
-            <li>People check findings against the map; each listing says whether it was checked.</li>
+            <li>Sheets are matched to today&apos;s streets, typically within 1–7 m.</li>
+            <li>
+              Every listing was then compared with the full-resolution scan, and wrong ones were
+              fixed or removed. Listings the project&apos;s author also checked say so.
+            </li>
           </ol>
         </section>
       </div>
@@ -51,8 +55,8 @@ export default function About() {
           <span>of hand-checked sites found</span>
         </div>
         <div>
-          <strong>91%</strong>
-          <span>of flags are real sites</span>
+          <strong>92% / 89%</strong>
+          <span>of AI flags right as read (1938 / 1950)</span>
         </div>
         <div>
           <strong>14 of 15</strong>
@@ -60,8 +64,10 @@ export default function About() {
         </div>
       </div>
       <p className="small">
-        Measured on 10 sheets checked by hand (119 sites). Some listings are wrong and some past
-        uses are missing, so every listing links to the map image for you to check.
+        &ldquo;Found&rdquo; and tank sites: 10 sheets annotated by hand (119 sites, 1938).
+        &ldquo;Right as read&rdquo;: every listing on all 46 sheets, before the scan check fixed
+        the rest. The AI misses some past uses, and a check can miss an error, so every listing
+        links to the map image for you to check.
       </p>
     </article>
   );

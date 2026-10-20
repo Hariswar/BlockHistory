@@ -1,0 +1,18 @@
+#CRS: EPSG:4326
+#NAME 0 Minnesota & Steins
+#NAME 1 Pennsylvania & Steins
+#NAME 2 Minnesota & Schirmer
+#NAME 3 Pennsylvania & Schirmer
+#NAME 4 S. Broadway & Schirmer
+#NAME 5 Minnesota & Courtois
+#NAME 6 Pennsylvania & Courtois
+#NAME 7 S. Broadway & Courtois
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2598588,38.5487170,522.0,-350.0,1,0,0,0
+-90.2589093,38.5480872,1583.0,-325.0,1,0,0,0
+-90.2606581,38.5480017,509.0,-1405.0,1,0,0,0
+-90.2597153,38.5473621,1588.0,-1385.0,1,0,0,0
+-90.2587554,38.5467227,2694.0,-1358.0,1,0,0,0
+-90.2614762,38.5472791,511.0,-2469.0,1,0,0,0
+-90.2605160,38.5466579,1588.0,-2451.0,1,0,0,0
+-90.2595647,38.5460084,2690.0,-2430.0,1,0,0,0

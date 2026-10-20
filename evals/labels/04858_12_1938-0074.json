@@ -3,7 +3,7 @@
   "edition": "1938",
   "volume": "St. Louis Vol. 12",
   "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 74, image 04858_12_1938-0074",
-  "labeled_by": "Claude draft from the LOC sheet image; spot-checked and approved by Baburaj, 2026-10-11",
+  "labeled_by": "AI-assisted draft from the LOC sheet image; spot-checked and approved by Baburaj, 2026-10-11",
   "labeled_on": "2026-10-11",
   "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
   "definitions": {
@@ -747,7 +747,7 @@
   ],
   "verification": {
     "status": "human_verified",
-    "method": "Claude read every entry from the full-resolution image; Baburaj spot-checked the 1-million cu ft gasometer, the benzol plant stills, the 23 benzol and solvent tanks, the coke oven batteries and the experimental building against the map, and approved the file.",
+    "method": "Every entry was read from the full-resolution image; Baburaj spot-checked the 1-million cu ft gasometer, the benzol plant stills, the 23 benzol and solvent tanks, the coke oven batteries and the experimental building against the map, and approved the file.",
     "date": "2026-10-11"
   }
 }

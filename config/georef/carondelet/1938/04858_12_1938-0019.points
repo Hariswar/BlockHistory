@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Grand & Wilmington
+#NAME 1 Tennessee & Wilmington
+#NAME 2 Louisiana & Wilmington
+#NAME 3 Tennessee & Fillmore
+#NAME 4 Louisiana & Fillmore
+#NAME 5 Louisiana & Iron
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2566026,38.5660120,297.0,-322.0,1,0,0,0
+-90.2556719,38.5655255,1264.0,-326.0,1,0,0,0
+-90.2547063,38.5650159,2273.0,-322.0,1,0,0,0
+-90.2562298,38.5648439,1272.0,-1216.0,1,0,0,0
+-90.2552696,38.5643406,2274.0,-1216.0,1,0,0,0
+-90.2567582,38.5625888,2286.0,-3539.0,1,0,0,0

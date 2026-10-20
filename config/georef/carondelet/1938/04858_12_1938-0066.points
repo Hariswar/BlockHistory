@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 S. Broadway & Primm
+#NAME 1 Water & Primm
+#NAME 2 S. Broadway & Davis
+#NAME 3 Water & Davis
+#NAME 4 Vulcan & Davis
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2603795,38.5452889,442.0,-386.0,1,0,0,0
+-90.2594140,38.5446463,1539.0,-381.0,1,0,0,0
+-90.2628223,38.5431302,421.0,-3584.0,1,0,0,0
+-90.2618396,38.5424761,1514.0,-3570.0,1,0,0,0
+-90.2608935,38.5418604,2589.0,-3559.0,1,0,0,0

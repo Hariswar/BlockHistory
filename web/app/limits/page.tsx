@@ -16,7 +16,11 @@ export default function Limits() {
           Two years only: businesses that opened and closed between 1938 and 1950, or after 1950,
           don&apos;t show. &ldquo;Not on the 1950 map&rdquo; can also mean the reader missed it.
         </li>
-        <li>Address positions come from the US Census and can be 30–80 m off.</li>
+        <li>
+          Addresses are placed with the City of St. Louis address service, usually on the
+          property&apos;s parcel (within about 15–40 m); otherwise along the street or by the US
+          Census, which can be 30–80 m off. Each search says which.
+        </li>
         <li>
           For a property decision, talk to an environmental professional, or look up the site in the
           Missouri Department of Natural Resources and EPA databases.
@@ -29,8 +33,8 @@ export default function Limits() {
           <p>
             BlockHistory shows land uses from public historical maps. It doesn&apos;t show or
             collect anything about the people who own or live in a property, and it doesn&apos;t
-            store the addresses you search. To find an address, the search is sent to the US
-            Census Bureau&apos;s free address lookup. Visits are counted with Umami, which uses no
+            store the addresses you search. To find an address, the search is sent to the City of
+            St. Louis address service (or, if it has no match, the US Census Bureau&apos;s). Visits are counted with Umami, which uses no
             cookies; it records how many searches found something, never the address.
           </p>
         </section>

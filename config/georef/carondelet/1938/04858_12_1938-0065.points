@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Minnesota & Primm
+#NAME 1 Pennsylvania & Primm
+#NAME 2 S. Broadway & Primm
+#NAME 3 Pennsylvania & Davis
+#NAME 4 S. Broadway & Davis
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2622969,38.5465574,473.0,-432.0,1,0,0,0
+-90.2613475,38.5459265,1590.0,-421.0,1,0,0,0
+-90.2603795,38.5452889,2697.0,-411.0,1,0,0,0
+-90.2638017,38.5437762,1509.0,-3618.0,1,0,0,0
+-90.2628223,38.5431302,2617.0,-3604.0,1,0,0,0

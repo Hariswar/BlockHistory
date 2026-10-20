@@ -1,6 +1,10 @@
 """Merge each sheet's tile results and write a spot-check checklist to evals/spotcheck/.
 
     python scripts/sheet_report.py carondelet 1938 50 53 57 62 74 47 49 56 61 67
+    python scripts/sheet_report.py carondelet 1950 24 58 --as-shown
+
+--as-shown lists what the website shows for a georeferenced sheet instead: hand corrections
+applied, repeat reads merged, high and medium only. Its ticks match the database rows.
 
 Sheets with hand labels in evals/labels/ also get a comparison: which hand-labeled sites
 the reader found anywhere on the sheet, and whether gas tanks landed on the right site.
@@ -8,9 +12,14 @@ the reader found anywhere on the sheet, and whether gas tanks landed on the righ
 
 import argparse
 import json
+import sys
 from datetime import date
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from georef_sheet import load_panels, located_findings
+
+from blockhistory.db import corrections, store
 from blockhistory.map_reader import tanks
 from blockhistory.map_reader.scoring import is_found, label_words, tank_count
 from blockhistory.map_reader.sheets import merge_sheet
@@ -36,14 +45,27 @@ def compare(findings: list[dict], hand: list[dict]) -> dict:
 
 
 def addr(f: dict) -> str:
-    return " ".join(x for x in (f["street_number"], f["street_name"]) if x) or "—"
+    return " ".join(x for x in (f.get("street_number"), f.get("street_name")) if x) or "—"
 
 
-def write_report(area: str, edition: str, sheet: int) -> dict:
+def shown_sites(area: str, edition: str, sheet: int) -> list[dict]:
+    """The sheet's sites as build_db.py stores them, high and medium only."""
+    sid, located = located_findings(area, edition, sheet, use_ocr=True)
+    panels = load_panels(area, edition, sid)
+    located, _ = corrections.apply(located, corrections.load(area, edition), sheet, panels)
+    sites = []
+    for pid, _, _ in panels:
+        sites += store.prepare_sites([f for f in located if f["panel"] == pid])
+    return [f for f in sites if f["relevance"] in ("high", "medium")]
+
+
+def write_report(area: str, edition: str, sheet: int, as_shown: bool = False) -> dict:
     tile_dir = next((ROOT / "data" / "tiles" / area / edition).glob(f"*-{sheet:04d}"))
     merged = merge_sheet(tile_dir)
     tank_info = tanks.apply(merged["findings"], tile_dir)  # no-op if the tank pass hasn't run
     merged["usd"] += tank_info["usd"]
+    if as_shown:
+        merged["findings"] = shown_sites(area, edition, sheet)
     order = {"high": 0, "medium": 1, "low": 2}
     merged["findings"].sort(
         key=lambda f: (order[f["relevance"]], -f["gasoline_tank_count"], f["label"])
@@ -117,8 +139,8 @@ def write_report(area: str, edition: str, sheet: int) -> dict:
         tiles = ", ".join(t.rsplit("_", 2)[1] + "_" + t.rsplit("_", 2)[2][:-4] for t in f["tiles"])
         lines.append(
             f"| [ ] | [ ] | {f['relevance']} | {f['label']} | {f['use']} | {addr(f)} | "
-            f"{f['gasoline_tank_count'] or ''} | {f['confidence']} | "
-            f"{'yes' if f['ocr_seen'] else ''} | {tiles} |"
+            f"{f['gasoline_tank_count'] or ''} | {f.get('confidence') or 'added by hand'} | "
+            f"{'yes' if f.get('ocr_seen') else ''} | {tiles} |"
         )
     lines += ["", "## Notes", "", "- "]
     OUT.mkdir(parents=True, exist_ok=True)
@@ -135,13 +157,14 @@ def main() -> None:
     parser.add_argument("area")
     parser.add_argument("edition")
     parser.add_argument("sheets", nargs="+", type=int)
+    parser.add_argument("--as-shown", action="store_true", help="list what the website shows")
     args = parser.parse_args()
 
     print(
         f"{'sheet':<20} {'findings':>8} {'high':>5} {'hand found':>11} {'tank sites':>11} {'$':>8}"
     )
     for n in args.sheets:
-        s = write_report(args.area, args.edition, n)
+        s = write_report(args.area, args.edition, n, args.as_shown)
         hand = f"{s['found']}/{s['hand']}" if "hand" in s else "—"
         tanks = f"{s['tank_found']}/{s['tank_sites']}" if "hand" in s else "—"
         print(

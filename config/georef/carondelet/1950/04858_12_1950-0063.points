@@ -1,0 +1,11 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Virginia & Primm
+#NAME 1 Virginia & Poepping
+#NAME 2 Virginia & Davis
+#NAME 3 Alabama & Primm
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2641852,38.5478182,2668.0,-403.0,1,0,0,0
+-90.2658231,38.5463829,2695.0,-2537.0,1,0,0,0
+-90.2666186,38.5456856,2686.0,-3604.0,1,0,0,0
+-90.2662854,38.5489310,513.0,-706.0,1,0,0,0

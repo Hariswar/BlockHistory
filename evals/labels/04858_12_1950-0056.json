@@ -1,0 +1,137 @@
+{
+ "sheet_id": "04858_12_1950-0056",
+ "edition": "1950",
+ "volume": "St. Louis Vol. 12",
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938, revised to 1950), sheet 56, image 04858_12_1950-0056",
+ "labeled_by": "AI-assisted draft from the 1938 key: each site compared with the 1950 scan side by side, 2026-10-19",
+ "labeled_on": "2026-10-19",
+ "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+ "definitions": {
+  "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+  "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+  "map_notes": "Only what is printed on the sheet.",
+  "interpretation": "Inference, not a map fact; never scored."
+ },
+ "sheet_layout": "Robert Av at top, then Upton, Koeln Av and Steins (bottom); Minnesota Av on the left, Pennsylvania Av in the middle, S Broadway on the right.",
+ "out_of_scope_seen": [
+  "CLUB RMS., 7300 Pennsylvania Av",
+  "BICYCLE REP. CONC. FL., 217 Koeln Av",
+  "FURNE REP. / MDSE. W. HO. & A, block 3054",
+  "BAKE HO. CONC. FL. BR. OVEN, rear of 7513 S Broadway",
+  "IR. POSTS METAL LATH & PLASTER PARTNS.: a construction note on stores 7517-7523 S Broadway, not a use",
+  "(ASB. CL.) dwelling, 7412 Minnesota Av: asbestos-cement siding, a building material, not a use"
+ ],
+ "total_gasoline_tanks": 2,
+ "verification": {
+  "status": "draft",
+  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
+  "date": "2026-10-19"
+ },
+ "buildings": [
+  {
+   "label": "AUTO. REP.",
+   "use": "auto repair shop",
+   "street_number": "116",
+   "street_name": "E Robert Av",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 1,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3055",
+   "map_notes": "CONC. FL. One G.T. circle inside the lot at the south-east corner.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "AUTO. SALES & SERVICE",
+   "use": "auto dealer and service garage",
+   "street_number": "7313-7315",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 1,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3055",
+   "map_notes": "CONC. FL., STEEL POSTS & BEAMS, three RAISED 4' platforms. One G.T. at the rear (west) wall.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "AUTO. REP.",
+   "use": "auto repair shop",
+   "street_number": "217",
+   "street_name": "Upton",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3056",
+   "map_notes": "WOOD FL. Rear of 7318 Minnesota Av.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "AUTO REP.",
+   "use": "auto repair shop",
+   "street_number": "122-126",
+   "street_name": "Koeln Av",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3083",
+   "map_notes": "EARTH & CONC. FL. Rear of 7500 Pennsylvania Av.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "BL. SM.",
+   "use": "blacksmith shop",
+   "street_number": "213-215",
+   "street_name": "Steins",
+   "construction": "frame",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3082",
+   "map_notes": "EARTH FL., WOOD POSTS.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  }
+ ],
+ "removed_since_1938": [
+  {
+   "label": "COAL YARD / COAL & A",
+   "why": "Pasted over in 1950."
+  },
+  {
+   "label": "AUTO. REP.",
+   "why": "Store (S) in 1950."
+  }
+ ]
+}

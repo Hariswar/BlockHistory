@@ -1,0 +1,352 @@
+{
+ "sheet_id": "04858_12_1950-0053",
+ "edition": "1950",
+ "volume": "St. Louis Vol. 12",
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938, revised to 1950), sheet 53, image 04858_12_1950-0053",
+ "labeled_by": "AI-assisted draft from the 1938 key: each site compared with the 1950 scan side by side, 2026-10-19",
+ "labeled_on": "2026-10-19",
+ "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+ "definitions": {
+  "gasoline_tank_count": "Number of G.T. / G.T.S. symbols drawn for this site. 0 means none drawn.",
+  "other_tanks": "Tanks that are not G.T. symbols (water, grain, iron, fuel oil, etc.).",
+  "map_notes": "Only what is printed on the sheet.",
+  "interpretation": "Inference, not a map fact; never scored."
+ },
+ "sheet_layout": "S Broadway runs down the middle (Quincy at top, Robert at bottom). Pennsylvania Ave is the left edge; the M.P. R.R. tracks and an unopened Water St are on the right.",
+ "out_of_scope_seen": [
+  "DRS CLINIC, 7102 Pennsylvania Ave",
+  "BANK, 7201-7205 S Broadway (label is real: letters spread across the building)",
+  "FURN'E W. HO., 7215-7219 S Broadway",
+  "GRO. W. HO., rear of 7103 S Broadway",
+  "A & MDSE W. HO., rear of 7214-7218 S Broadway",
+  "A & MISCL. STGE., 7024 Pennsylvania Ave"
+ ],
+ "total_gasoline_tanks": 2,
+ "buildings": [
+  {
+   "label": "SCREW PRODUCTS MFG.",
+   "use": "screw products factory (machining)",
+   "street_number": "7014-7016",
+   "street_name": "Pennsylvania Ave",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3012",
+   "map_notes": "Woodworking and paint shop replaced.",
+   "interpretation": "Paint shop: solvents and pigments possible.",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  },
+  {
+   "label": "LBR.",
+   "use": "lumber shed",
+   "street_number": "(7014½)",
+   "street_name": "Pennsylvania Ave",
+   "construction": "frame",
+   "stories": "1-1½",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3012",
+   "map_notes": "18 ft and 16 ft. Adjoins a frame miscellaneous storage building at (7016½).",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "WOODWK'G",
+   "use": "woodworking shop",
+   "street_number": "119",
+   "street_name": "Blow St",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3012",
+   "map_notes": "Rear of 7024-7028 Pennsylvania; 14 ft; concrete-filled partition. Next to A & MISCL. STGE. (auto house and storage) at 7024.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "PAINTS",
+   "use": "paint store",
+   "street_number": "7000",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2½",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3011",
+   "map_notes": "28 ft. Corner of E Quincy.",
+   "interpretation": "Paint stock: solvents possible.",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "FEED W. HO.",
+   "use": "feed warehouse",
+   "street_number": "7002",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2½",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3011",
+   "map_notes": "Hardware warehouse is a feed warehouse in 1950.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  },
+  {
+   "label": "BLDG SUPPLY W. HO.",
+   "use": "building supply warehouse",
+   "street_number": null,
+   "street_name": null,
+   "construction": "frame",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3011",
+   "map_notes": "14 ft. Rear of the 7000-7006 lots, beside the tracks. Same yard has an office and scales at 7006.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "BLR. HO.",
+   "use": "boiler house (built 1946)",
+   "street_number": "7012 (lot)",
+   "street_name": "S Broadway",
+   "construction": "frame",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3011",
+   "map_notes": "Cement warehouse replaced by a boiler house.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  },
+  {
+   "label": "BAG W. HO.",
+   "use": "bag warehouse",
+   "street_number": null,
+   "street_name": null,
+   "construction": "frame",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3011",
+   "map_notes": "12 ft. Beside the tracks, north of the Baur flour warehouse.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number",
+    "construction",
+    "stories",
+    "gasoline_tank_count"
+   ],
+   "needs_human_check": [
+    "still on the 1950 map? Not located on the crops."
+   ]
+  },
+  {
+   "label": "BAUR FLOUR MILLS CO.",
+   "use": "flour mill",
+   "street_number": "7018-7026",
+   "street_name": "S Broadway",
+   "construction": "brick (shipping room frame; grain tanks concrete; head house iron-clad)",
+   "stories": "1-5",
+   "gasoline_tank_count": 0,
+   "other_tanks": [
+    {
+     "type": "grain tanks",
+     "count": 6,
+     "capacity_bu": 85000,
+     "height_ft": 54
+    }
+   ],
+   "partial": false,
+   "position": "block 3011",
+   "map_notes": "Flour mill, capacity 50 bbl per 24 hrs. Office (2½), warehouse (2), mill (5), motor room, flour warehouse, frame shipping room. Elevator 6,000 bu, crib construction. 6 grain tanks 54 ft high, capacity 85,000 bu, fireproof (concrete), with a 2-story iron-clad head house 28 ft high on the tanks. Watchman, no clock. Heat: steam. Power: electric. Chemical extinguishers, barrels & pails.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "FILL'G STA.",
+   "use": "filling station",
+   "street_number": "7106",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 2,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3044",
+   "map_notes": "Station still there; BATTERY SERV. room is MISC'L STGE. in 1950.",
+   "interpretation": "Battery service: possible lead contamination; not documented on the map.",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  },
+  {
+   "label": "TIN SHOP",
+   "use": "tin shop",
+   "street_number": "7120",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3044",
+   "map_notes": "25 ft.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "TIN SHOP",
+   "use": "tin shop (rear)",
+   "street_number": null,
+   "street_name": null,
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3044",
+   "map_notes": "Separate rear building behind 7118-7120; 25 ft.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "PAINTS",
+   "use": "paint store",
+   "street_number": "7126-7130",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3044",
+   "map_notes": "26 ft; wood posts each floor. Corner of E Nagel.",
+   "interpretation": "Paint stock: solvents possible.",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "OIL HO.",
+   "use": "oil house",
+   "street_number": null,
+   "street_name": null,
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3044",
+   "map_notes": "14 ft. Rear of the 7126-7130 paint store, next to 113 E Nagel.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "A. & HARDW. W. HO.",
+   "use": "auto house and hardware warehouse",
+   "street_number": "113",
+   "street_name": "E Nagel",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3044",
+   "map_notes": "12 ft.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  }
+ ],
+ "verification": {
+  "status": "draft",
+  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
+  "date": "2026-10-19"
+ },
+ "removed_since_1938": [
+  {
+   "label": "COAL",
+   "why": "Stores (S) in 1950."
+  },
+  {
+   "label": "BULK OIL STA.",
+   "why": "Bulk oil station gone; IRON TK. NOT USED in 1950."
+  }
+ ]
+}

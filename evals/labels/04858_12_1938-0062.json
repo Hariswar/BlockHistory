@@ -3,7 +3,7 @@
   "edition": "1938",
   "volume": "St. Louis Vol. 12",
   "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938), sheet 62, image 04858_12_1938-0062",
-  "labeled_by": "Claude draft from the LOC sheet image; spot-checked and approved by Baburaj, 2026-10-11",
+  "labeled_by": "AI-assisted draft from the LOC sheet image; spot-checked and approved by Baburaj, 2026-10-11",
   "labeled_on": "2026-10-11",
   "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
   "definitions": {
@@ -139,7 +139,7 @@
   ],
   "verification": {
     "status": "human_verified",
-    "method": "Claude read every block of the full-resolution image; Baburaj spot-checked the sign painting shop, tin shop, Chester Iron & Foundry, the idle foundry, and the absence of G.T. symbols against the map, and approved the file.",
+    "method": "Every block was read of the full-resolution image; Baburaj spot-checked the sign painting shop, tin shop, Chester Iron & Foundry, the idle foundry, and the absence of G.T. symbols against the map, and approved the file.",
     "date": "2026-10-11"
   }
 }

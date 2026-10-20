@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Virginia & Bellerive
+#NAME 1 Virginia & Dover
+#NAME 2 Compton & Bates
+#NAME 3 Michigan & Bates
+#NAME 4 Compton & Wilmington
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2474610,38.5637428,320.0,-1322.0,1,0,0,0
+-90.2483000,38.5627760,321.0,-2611.0,1,0,0,0
+-90.2460458,38.5641128,1143.0,-283.0,1,0,0,0
+-90.2449553,38.5635395,2307.0,-271.0,1,0,0,0
+-90.2479993,38.5614769,1319.0,-3622.0,1,0,0,0

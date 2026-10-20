@@ -105,3 +105,27 @@ def test_postgis_export_splits_into_parts_that_each_commit(con, tmp_path, monkey
     assert all(t.count("BEGIN;") == 1 and t.rstrip().endswith("COMMIT;") for t in texts)
     assert "DELETE FROM" in texts[0] and not any("DELETE FROM" in t for t in texts[1:])
     assert sum(t.count("INSERT INTO findings") for t in texts) == n
+
+
+def test_misread_repeats_merge_but_facing_corners_stay_apart():
+    near = 38.5450 + 20 / 111_320  # 20 m north
+    rows = [
+        _finding("MACH. SHOP", "machine shop", 38.5450, -90.2550),
+        _finding("MACHI SHOP", "machine shop", near, -90.2550),  # misread repeat: merged
+        _finding("FILL'G STA.", "filling station", 38.5460, -90.2550, tanks=2),
+        _finding("FILL'G STA.", "filling station", 38.5460 + 20 / 111_320, -90.2550),
+    ]
+    sites = store.prepare_sites(rows)
+    labels = sorted(f["label"] for f in sites)
+    assert labels == ["FILL'G STA.", "FILL'G STA.", "MACH. SHOP"]
+
+
+def test_low_confidence_guessed_dry_cleaner_is_not_shown():
+    guess = _finding("DRY CLEANING", "dry cleaner", 38.5450, -90.2550) | {"confidence": "low"}
+    printed = _finding("DRY CLEANG", "dry cleaner", 38.5470, -90.2550) | {"confidence": "low"}
+    sure = _finding("DRY CLEANING", "dry cleaner", 38.5490, -90.2550)  # medium
+    rel = {
+        f["label"] + str(f["lat"]): f["relevance"]
+        for f in store.prepare_sites([guess, printed, sure])
+    }
+    assert sorted(rel.values()) == ["high", "high", "low"]

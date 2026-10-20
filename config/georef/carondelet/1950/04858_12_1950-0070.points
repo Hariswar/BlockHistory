@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Marceau & Virginia
+#NAME 1 Hurck & Virginia
+#NAME 2 Hurck & Michigan
+#NAME 3 Marceau & Minnesota
+#NAME 4 Hurck & Minnesota
+#NAME 5 Marceau & Pennsylvania
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2681893,38.5443086,1118.0,-411.0,1,0,0,0
+-90.2674232,38.5449802,2154.0,-396.0,1,0,0,0
+-90.2664441,38.5443292,2143.0,-1454.0,1,0,0,0
+-90.2663153,38.5430140,1152.0,-2522.0,1,0,0,0
+-90.2655156,38.5437119,2165.0,-2525.0,1,0,0,0
+-90.2653776,38.5423846,1156.0,-3604.0,1,0,0,0

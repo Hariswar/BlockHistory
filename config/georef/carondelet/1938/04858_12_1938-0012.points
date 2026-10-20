@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Alabama & Bellerive
+#NAME 1 Alabama & Dover
+#NAME 2 Alabama & Wilmington
+#NAME 3 Vermont & Bellerive
+#NAME 4 Virginia & Bellerive
+#NAME 5 Virginia & Dover
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2493754,38.5647569,536.0,-1278.0,1,0,0,0
+-90.2502082,38.5637617,534.0,-2606.0,1,0,0,0
+-90.2508520,38.5629962,535.0,-3601.0,1,0,0,0
+-90.2484192,38.5642546,1541.0,-1278.0,1,0,0,0
+-90.2474610,38.5637428,2547.0,-1288.0,1,0,0,0
+-90.2483000,38.5627760,2540.0,-2600.0,1,0,0,0

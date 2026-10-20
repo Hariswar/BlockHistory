@@ -1,0 +1,11 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Virginia & Davis
+#NAME 1 Alabama & Hurck
+#NAME 2 Virginia & Hurck
+#NAME 3 Virginia & Marceau
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2666186,38.5456856,2790.0,-126.0,1,0,0,0
+-90.2695255,38.5463744,494.0,-1154.0,1,0,0,0
+-90.2674232,38.5449802,2796.0,-1121.0,1,0,0,0
+-90.2681893,38.5443086,2801.0,-2141.0,1,0,0,0

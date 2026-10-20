@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Virginia & Primm
+#NAME 1 Michigan & Primm
+#NAME 2 Minnesota & Primm
+#NAME 3 Virginia & Poepping
+#NAME 4 Michigan & Davis
+#NAME 5 Minnesota & Davis
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2641852,38.5478182,566.3,-421.4,1,0,0,0
+-90.2632464,38.5471909,1629.0,-405.0,1,0,0,0
+-90.2622969,38.5465574,2689.0,-383.0,1,0,0,0
+-90.2658231,38.5463829,567.0,-2552.0,1,0,0,0
+-90.2656851,38.5450417,1644.0,-3599.0,1,0,0,0
+-90.2647387,38.5444038,2713.0,-3564.0,1,0,0,0

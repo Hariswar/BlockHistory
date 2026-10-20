@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Alabama & Wilmington
+#NAME 1 Alabama & Fillmore
+#NAME 2 Virginia & Fillmore
+#NAME 3 Vermont & Bowen
+#NAME 4 Alabama & Iron
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2508520,38.5629962,1075.0,-376.0,1,0,0,0
+-90.2514227,38.5623263,1076.0,-1251.0,1,0,0,0
+-90.2494899,38.5613196,3104.0,-1258.0,1,0,0,0
+-90.2513838,38.5606796,2092.0,-2756.0,1,0,0,0
+-90.2528894,38.5605417,1093.0,-3583.0,1,0,0,0

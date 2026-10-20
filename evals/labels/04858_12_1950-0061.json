@@ -1,0 +1,83 @@
+{
+ "sheet_id": "04858_12_1950-0061",
+ "edition": "1950",
+ "volume": "St. Louis Vol. 12",
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938, revised to 1950), sheet 61, image 04858_12_1950-0061",
+ "labeled_by": "AI-assisted draft from the 1938 key: each site compared with the 1950 scan side by side, 2026-10-19",
+ "labeled_on": "2026-10-19",
+ "scope": "Industrial, fuel, tank and vehicle-service uses, plus stores and warehouses for paint, hardware or building materials, plus every G.T. symbol. Excludes dwellings, general stores and flats, offices, clinics, banks, post offices, general/grocery/furniture/merchandise storage, and auto houses (A) with no other use. Groups (a field of tanks) are one entry.",
+ "definitions": {
+  "gasoline_tank_count": "Number of tanks the map labels as gasoline: G.T. / G.T.S. symbols, 'GASOL. STGE. TKS.', or a labeled gasoline tank. 0 means none drawn.",
+  "other_tanks": "Tanks that are not labeled gasoline (water, grain, iron, fuel oil, etc.).",
+  "map_notes": "Only what is printed on the sheet.",
+  "interpretation": "Inference, not a map fact; never scored."
+ },
+ "sheet_layout": "Steins at top, then Schirmer, Courtois and Primm (bottom); Minnesota Av on the left, Pennsylvania Av and Commercial Alley in the middle, S Broadway on the right. Park in block 3116.",
+ "out_of_scope_seen": [
+  "HALL 2.3, 7801 S Broadway",
+  "W. HO. and 10' STGE., block 3095",
+  "Auto houses for 3 and 4 cars"
+ ],
+ "total_gasoline_tanks": 0,
+ "verification": {
+  "status": "draft",
+  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
+  "date": "2026-10-19"
+ },
+ "buildings": [
+  {
+   "label": "MACH. SHOP",
+   "use": "machine shop",
+   "street_number": "111",
+   "street_name": "E Primm",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3129",
+   "map_notes": "Truck garage is a machine shop in 1950.",
+   "interpretation": "Fleet truck garage; fuel and oil use likely even without a drawn tank.",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  },
+  {
+   "label": "REIS-MORAN LUMBER CO.",
+   "use": "lumber yard",
+   "street_number": "200",
+   "street_name": "Pennsylvania Av",
+   "construction": "frame",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "block 3115",
+   "map_notes": "Same lumber yard, new name.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  }
+ ],
+ "removed_since_1938": [
+  {
+   "label": "FILLING STA.",
+   "why": "OFF. under a 1950 paste-over; FILLING STA. only faint underneath."
+  },
+  {
+   "label": "CARPR.",
+   "why": "Carpenter shop replaced (out of scope)."
+  }
+ ]
+}

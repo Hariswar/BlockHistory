@@ -1,0 +1,552 @@
+[
+  {
+    "sheet": "04858_12_1950-0047",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.009707,
+    "tank_pass_tiles": 4,
+    "sites": 7,
+    "found": 5,
+    "high_sites": 3,
+    "high_found": 2,
+    "flagged": 10,
+    "flagged_true": 8,
+    "flagged_part_of": 1,
+    "duplicates": 3,
+    "tank_sites": 2,
+    "tank_sites_found": 0,
+    "tank_counts_exact": 0,
+    "tanks_hand": 6,
+    "tanks_reported_on_sites": 0,
+    "extra_tanks": [],
+    "ocr_found": 0,
+    "missed": [
+      "FILL'G STA. (high)",
+      "CARNIVAL MAINTENANCE SHOP & A. (low)"
+    ],
+    "tank_misses": [
+      "FILL'G STA. 6633: map 3, read 0",
+      "FILL'G STA. 6601: map 3, read 0"
+    ],
+    "false_flags": [
+      {
+        "label": "FILLING STA.",
+        "relevance": "high",
+        "address": "6601",
+        "out_of_scope": false
+      },
+      {
+        "label": "PRINT SHOP",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0049",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.009753,
+    "tank_pass_tiles": 3,
+    "sites": 5,
+    "found": 3,
+    "high_sites": 2,
+    "high_found": 2,
+    "flagged": 6,
+    "flagged_true": 5,
+    "flagged_part_of": 0,
+    "duplicates": 2,
+    "tank_sites": 0,
+    "tank_sites_found": 0,
+    "tank_counts_exact": 0,
+    "tanks_hand": 0,
+    "tanks_reported_on_sites": 0,
+    "extra_tanks": [
+      "AUTO REP'G & PAINTING x1"
+    ],
+    "ocr_found": 0,
+    "missed": [
+      "DISPLAY CASE FACTY. / CARPR. / TIN SHOP (medium)",
+      "PLUMB'G (low)"
+    ],
+    "tank_misses": [],
+    "false_flags": [
+      {
+        "label": "DRY CLEANING",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0050",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.017703999999999998,
+    "tank_pass_tiles": 9,
+    "sites": 20,
+    "found": 18,
+    "high_sites": 8,
+    "high_found": 8,
+    "flagged": 40,
+    "flagged_true": 31,
+    "flagged_part_of": 7,
+    "duplicates": 12,
+    "tank_sites": 5,
+    "tank_sites_found": 4,
+    "tank_counts_exact": 3,
+    "tanks_hand": 13,
+    "tanks_reported_on_sites": 10,
+    "extra_tanks": [
+      "OILS STA. x2",
+      "FILLG. STA. CONC. FL. x2",
+      "FOUNDRY x2",
+      "FILL'G STA. x2"
+    ],
+    "ocr_found": 12,
+    "missed": [
+      "PAINT'G (medium)",
+      "MATERIALS PACKING & FORWARDING CO. DIV'N OF MARQUETTE CEMENT CO. (low)"
+    ],
+    "tank_misses": [
+      "SEMI-STEEL CASTING CO. MFG. CASTINGS 139: map 1, read 0",
+      "FILL'G STA. 6800: map 3, read 1"
+    ],
+    "false_flags": [
+      {
+        "label": "OILS STA.",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "FILLG. STA. CONC. FL.",
+        "relevance": "high",
+        "address": "6520",
+        "out_of_scope": false
+      },
+      {
+        "label": "GARAGE",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "BLAK. SMITH (BAR.)",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "BLR. RM.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "LBR. STGE.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "LBR. W. HO.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "PRINTG",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "FILL'G STA.",
+        "relevance": "high",
+        "address": "100",
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0053",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.014143,
+    "tank_pass_tiles": 9,
+    "sites": 15,
+    "found": 13,
+    "high_sites": 2,
+    "high_found": 2,
+    "flagged": 17,
+    "flagged_true": 13,
+    "flagged_part_of": 1,
+    "duplicates": 4,
+    "tank_sites": 1,
+    "tank_sites_found": 1,
+    "tank_counts_exact": 1,
+    "tanks_hand": 2,
+    "tanks_reported_on_sites": 2,
+    "extra_tanks": [],
+    "ocr_found": 4,
+    "missed": [
+      "BLDG SUPPLY W. HO. (low)",
+      "BAG W. HO. (low)"
+    ],
+    "tank_misses": [],
+    "false_flags": [
+      {
+        "label": "DRY CLEANING",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "ERY VICE",
+        "relevance": "high",
+        "address": "107",
+        "out_of_scope": false
+      },
+      {
+        "label": "COAL YARD",
+        "relevance": "medium",
+        "address": "200",
+        "out_of_scope": false
+      },
+      {
+        "label": "NEON SIGN MFG.",
+        "relevance": "medium",
+        "address": "1025",
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0056",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.013216,
+    "tank_pass_tiles": 7,
+    "sites": 5,
+    "found": 5,
+    "high_sites": 4,
+    "high_found": 4,
+    "flagged": 8,
+    "flagged_true": 8,
+    "flagged_part_of": 0,
+    "duplicates": 3,
+    "tank_sites": 2,
+    "tank_sites_found": 1,
+    "tank_counts_exact": 1,
+    "tanks_hand": 2,
+    "tanks_reported_on_sites": 1,
+    "extra_tanks": [
+      "AUTO REP. x1"
+    ],
+    "ocr_found": 0,
+    "missed": [],
+    "tank_misses": [
+      "AUTO. SALES & SERVICE 7313-7315: map 1, read 0"
+    ],
+    "false_flags": [],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0057",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.011047000000000001,
+    "tank_pass_tiles": 4,
+    "sites": 12,
+    "found": 8,
+    "high_sites": 5,
+    "high_found": 4,
+    "flagged": 30,
+    "flagged_true": 24,
+    "flagged_part_of": 13,
+    "duplicates": 4,
+    "tank_sites": 2,
+    "tank_sites_found": 1,
+    "tank_counts_exact": 1,
+    "tanks_hand": 7,
+    "tanks_reported_on_sites": 3,
+    "extra_tanks": [
+      "USED AUTO SALES x4",
+      "AUTO. SALES x4"
+    ],
+    "ocr_found": 6,
+    "missed": [
+      "FILL'G STA. (high)",
+      "IR. TANKS NOT USED (medium)",
+      "COAL YARD (medium)",
+      "POND (WATER FILLED QUARRY) (medium)"
+    ],
+    "tank_misses": [
+      "FILL'G STA. 7300-7302: map 4, read 0"
+    ],
+    "false_flags": [
+      {
+        "label": "BLEACHING",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "BR. ... GS",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "DRY CLEANING",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "IR. OIL TKS",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "BLR RM.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "MATH. SHOP",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0061",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.007365,
+    "tank_pass_tiles": 0,
+    "sites": 2,
+    "found": 2,
+    "high_sites": 0,
+    "high_found": 0,
+    "flagged": 6,
+    "flagged_true": 3,
+    "flagged_part_of": 0,
+    "duplicates": 1,
+    "tank_sites": 0,
+    "tank_sites_found": 0,
+    "tank_counts_exact": 0,
+    "tanks_hand": 0,
+    "tanks_reported_on_sites": 0,
+    "extra_tanks": [],
+    "ocr_found": 1,
+    "missed": [],
+    "tank_misses": [],
+    "false_flags": [
+      {
+        "label": "LBR.",
+        "relevance": "medium",
+        "address": "7804",
+        "out_of_scope": false
+      },
+      {
+        "label": "OFF.",
+        "relevance": "medium",
+        "address": "7201",
+        "out_of_scope": false
+      },
+      {
+        "label": "WELDING",
+        "relevance": "medium",
+        "address": "7819",
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0062",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.010353,
+    "tank_pass_tiles": 4,
+    "sites": 3,
+    "found": 2,
+    "high_sites": 1,
+    "high_found": 1,
+    "flagged": 6,
+    "flagged_true": 3,
+    "flagged_part_of": 0,
+    "duplicates": 1,
+    "tank_sites": 0,
+    "tank_sites_found": 0,
+    "tank_counts_exact": 0,
+    "tanks_hand": 0,
+    "tanks_reported_on_sites": 0,
+    "extra_tanks": [],
+    "ocr_found": 2,
+    "missed": [
+      "STEEL STGE. (low)"
+    ],
+    "tank_misses": [],
+    "false_flags": [
+      {
+        "label": "BLR.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "BLR. RM.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "BOILER RM.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": true
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0067",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.007643,
+    "tank_pass_tiles": 0,
+    "sites": 5,
+    "found": 3,
+    "high_sites": 1,
+    "high_found": 1,
+    "flagged": 11,
+    "flagged_true": 7,
+    "flagged_part_of": 1,
+    "duplicates": 3,
+    "tank_sites": 0,
+    "tank_sites_found": 0,
+    "tank_counts_exact": 0,
+    "tanks_hand": 0,
+    "tanks_reported_on_sites": 0,
+    "extra_tanks": [],
+    "ocr_found": 3,
+    "missed": [
+      "CONTRACTOR'S YARD (medium)",
+      "ST. LOUIS SHIP BUILDING & STEEL CO. / SHIP YARDS (medium)"
+    ],
+    "tank_misses": [],
+    "false_flags": [
+      {
+        "label": "DRY CLEANING",
+        "relevance": "high",
+        "address": "527",
+        "out_of_scope": false
+      },
+      {
+        "label": "BLR. RM",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "MACH. SHOP CONC. FL.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "PAINT HO.",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  },
+  {
+    "sheet": "04858_12_1950-0074",
+    "status": "draft",
+    "tiles_read": 20,
+    "tiles_missing": 0,
+    "usd": 0.01255,
+    "tank_pass_tiles": 7,
+    "sites": 27,
+    "found": 21,
+    "high_sites": 20,
+    "high_found": 15,
+    "flagged": 27,
+    "flagged_true": 24,
+    "flagged_part_of": 1,
+    "duplicates": 5,
+    "tank_sites": 0,
+    "tank_sites_found": 0,
+    "tank_counts_exact": 0,
+    "tanks_hand": 0,
+    "tanks_reported_on_sites": 0,
+    "extra_tanks": [],
+    "ocr_found": 21,
+    "missed": [
+      "GASOMETER CAP'Y 1 MILLION CU. FT. (high)",
+      "STEEL PROCESSING TK. / AERATING TOWER (high)",
+      "STEEL GAS COOLING TKS. / STEEL TAR TANKS IN CONC. PIT (high)",
+      "WATER TREATING PLANT (medium)",
+      "STEEL BENZOL & SOLVENT TKS. (high)",
+      "COAL PILE / COKE PILE (high)"
+    ],
+    "tank_misses": [],
+    "false_flags": [
+      {
+        "label": "9 CO",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "FILL'G STA.",
+        "relevance": "high",
+        "address": null,
+        "out_of_scope": false
+      },
+      {
+        "label": "MACHINE SHOP",
+        "relevance": "medium",
+        "address": null,
+        "out_of_scope": false
+      }
+    ],
+    "spotcheck_ok": 0,
+    "spotcheck_wrong": 0
+  }
+]

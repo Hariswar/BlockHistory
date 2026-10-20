@@ -1,0 +1,495 @@
+{
+ "sheet_id": "04858_12_1950-0050",
+ "edition": "1950",
+ "volume": "St. Louis Vol. 12",
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 12 (1938, revised to 1950), sheet 50, image 04858_12_1950-0050",
+ "labeled_by": "AI-assisted draft from the 1938 key: each site compared with the 1950 scan side by side, 2026-10-19",
+ "labeled_on": "2026-10-19",
+ "scope": "Industrial, fuel, tank and vehicle-service uses, plus every G.T. symbol. Excludes dwellings, plain stores and flats, offices, the post office, and private auto houses. Groups (a field of tanks) are one entry.",
+ "definitions": {
+  "gasoline_tank_count": "Number of G.T. / G.T.S. symbols drawn for this site. 0 means none drawn.",
+  "map_notes": "Only what is printed on the sheet.",
+  "interpretation": "Inference, not a map fact; never scored.",
+  "checked_against_map": "Fields read from the image.",
+  "needs_human_check": "Fields still to confirm by eye."
+ },
+ "sheet_layout": "Two strips: left = S Broadway, Dover to Holly Hills (river to the east); right = S Broadway, Holly Hills to Quincy (river at far right). Entries on the right strip are not at the sheet edge.",
+ "total_gasoline_tanks": 13,
+ "buildings": [
+  {
+   "label": "PAINT'G",
+   "use": "painting shop",
+   "street_number": "5800",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r0_c0",
+   "map_notes": "Corner of Dover.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "CARONDELET MFG. CO. SASH & DOOR FACTY.",
+   "use": "sash and door factory",
+   "street_number": "5810-5826",
+   "street_name": "S Broadway",
+   "construction": "brick (parts fireproof)",
+   "stories": "1-2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [
+    {
+     "type": "water gravity tank",
+     "capacity_gal": 19000
+    }
+   ],
+   "partial": false,
+   "position": "tile r0_c0",
+   "map_notes": "Lumber warehouse, lumber storage, dry kiln, glueing room, shavings bin. Fuel: coal & waste. Blowers to woodworking machinery. 19,000 gal wood gravity tank (city water).",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "COTTONWOOD FIBRE CO. MFG. PLASTER FIBRE",
+   "use": "plaster fibre mill",
+   "street_number": "129",
+   "street_name": "E Fillmore",
+   "construction": "brick",
+   "stories": "1-3",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r1_c1",
+   "map_notes": "Log yard. Raw stock & sawing. Dust bins. Fuel: gas & wood. Blowers to shredding machinery.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "USED AUTO SALES",
+   "use": "used auto sales",
+   "street_number": "6012",
+   "street_name": "S Broadway",
+   "construction": "brick (office)",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r1_c0",
+   "map_notes": "Coal yard replaced by a used auto lot.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  },
+  {
+   "label": "THE JOHNSTON TIN FOIL & METAL CO. MFG. METAL FOIL",
+   "use": "tin foil and metal plant",
+   "street_number": "6016-6128",
+   "street_name": "S Broadway",
+   "construction": "brick (bldgs 1, 2, 5) and fireproof (bldgs 4, 6)",
+   "stories": "1-2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [
+    {
+     "type": "fuel oil tank",
+     "location": "underground"
+    },
+    {
+     "type": "water gravity tank",
+     "capacity_gal": 20000
+    }
+   ],
+   "partial": false,
+   "position": "tile r2_c0",
+   "map_notes": "Smelting furnace & melting pot; 4 melting pots; machine shop. Fuel oil tank (underground). Fuel: coal & oil. Transformer house (TRANSF. HO.): fireproof construction, concrete floor & roof, brick walls. Bldg 4 built 1918, bldg 6 built 1936, one bldg built 1937. 20,000 gal wood gravity tank on steel trestle (water).",
+   "interpretation": "Transformer house may be a PCB screening concern; not documented on the map.",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [],
+   "human_verified": [
+    "transformer house"
+   ]
+  },
+  {
+   "label": "COAL YARD",
+   "use": "coal yard",
+   "street_number": "6200",
+   "street_name": "S Broadway",
+   "construction": "frame (office)",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r3_c0",
+   "map_notes": "Office at 6200.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "JUNK YARD",
+   "use": "junk yard",
+   "street_number": "6304",
+   "street_name": "S Broadway",
+   "construction": "frame",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r4_c0",
+   "map_notes": "Junk yard on the lot behind 6300; small 1-story frame 'JUNK' building at 6304.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "MISSISSIPPI VALLEY IRON CO. PIG IRON PLANT (NOT IN OPERATION)",
+   "use": "blast furnace / pig iron plant",
+   "street_number": null,
+   "street_name": null,
+   "construction": "metal (boiler house brick)",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [
+    {
+     "type": "steel gravity tank",
+     "capacity_gal": 50000,
+     "note": "not used"
+    },
+    {
+     "type": "iron tanks"
+    }
+   ],
+   "partial": false,
+   "position": "tile r0_c2",
+   "map_notes": "Blast furnace, boilers (dilapidated), stoves 65 ft high, iron tanks, water tower, transformer room, inclined conveyor, ore handling crane. Steel gravity tank elevated 60 ft on steel trestle, 50,000 gal (not used). No power, no lights.",
+   "interpretation": "Slag or iron fill along the river is possible but not shown on the map.",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "construction",
+    "gasoline_tank_count",
+    "label",
+    "map_notes",
+    "stories",
+    "street_number"
+   ],
+   "needs_human_check": [
+    "still on the 1950 map? Pig iron plant pasted over in 1950, but scrap iron and melting buildings remain nearby."
+   ]
+  },
+  {
+   "label": "ST. LOUIS STEEL CASTING CO. MFG. STEEL CASTINGS",
+   "use": "steel foundry",
+   "street_number": "118-130",
+   "street_name": "E Mott",
+   "construction": "metal (office concrete)",
+   "stories": "1",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r2_c2",
+   "map_notes": "2 electric melting pots, brick core oven, 3 iron core ovens, sand, scrap iron, dust collector, transformer room. Fuel: coke & gas.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "MATERIALS PACKING & FORWARDING CO. DIV'N OF MARQUETTE CEMENT CO.",
+   "use": "cement elevator",
+   "street_number": null,
+   "street_name": null,
+   "construction": "concrete (steel frame)",
+   "stories": "1 + basement",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r1_c3",
+   "map_notes": "Cement elevator, capacity 55,719 bbls. 8 concrete tanks on steel frame, 66-83 ft high; sacking room under tanks; sack storage; iron dust house on roof; office & compressor room; wood platform to dock on the river. Heat: steam in office. Power: electric. Fuel: coal.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "BULK OIL STA. / GASOL STGE TKS.",
+   "use": "bulk oil and gasoline storage",
+   "street_number": "6800",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "1-2",
+   "gasoline_tank_count": 4,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r3_c2",
+   "map_notes": "Same lot and common roof as the 6800 filling station, corner of E Kraus. Oil warehouse, office, pump house. 4 gasoline storage tanks.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "CARONDELET ICE MFG. & FUEL CO. ARTIFICIAL ICE PLANT",
+   "use": "ice plant",
+   "street_number": "120-132",
+   "street_name": "E Kraus",
+   "construction": "brick",
+   "stories": "1-2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [
+    {
+     "type": "ammonia",
+     "count": 2
+    }
+   ],
+   "partial": false,
+   "position": "tile r3_c2",
+   "map_notes": "2 ammonia tanks; engine room, boiler room, ice storage. Fuel: coal. Alternate numbers (6807), (6815).",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "CENTRAL VALLEY VINEGAR CO. VINEGAR WKS.",
+   "use": "vinegar works",
+   "street_number": "(6813)",
+   "street_name": null,
+   "construction": "brick",
+   "stories": "1-2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [
+    {
+     "type": "iron alcohol tank",
+     "count": 1
+    }
+   ],
+   "partial": false,
+   "position": "tile r3_c2",
+   "map_notes": "Wooden vinegar vats, iron vinegar vats, iron alcohol tank. Fuel: coal.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "SEMI-STEEL CASTING CO. MFG. CASTINGS",
+   "use": "iron foundry",
+   "street_number": "139",
+   "street_name": "E Quincy",
+   "construction": "brick",
+   "stories": "1-2",
+   "gasoline_tank_count": 1,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r3_c2",
+   "map_notes": "Foundry (2 buildings), cupolas, pattern storage, flask storage, rattlers, sand storage, brick oven. 1 G.T. beside building E on E Quincy.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "FILL'G STA.",
+   "use": "filling station",
+   "street_number": "6800",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "1-2",
+   "gasoline_tank_count": 3,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r3_c3",
+   "map_notes": "BR. TO EAVES; concrete floor. 3 G.T. Corner of E Kraus. Shares a building with the bulk oil station.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "H-H FEED MILLS - HEINRICHMEYER FEED CO.",
+   "use": "feed mill",
+   "street_number": "6820-6830; 6900-6902",
+   "street_name": "S Broadway",
+   "construction": "brick (elevator concrete)",
+   "stories": "2-3",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r3_c3",
+   "map_notes": "Feed warehouse, grain bins, elevator built 1912 (capacity 30,000 bu). Continues south of Loughborough at 6900-6902.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "FILL'G STA.",
+   "use": "filling station",
+   "street_number": "6930",
+   "street_name": "S Broadway",
+   "construction": "frame and brick",
+   "stories": "1",
+   "gasoline_tank_count": 3,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r4_c3",
+   "map_notes": "Concrete floor. 1 G.T. + 2 G.T.S. Corner of E Quincy.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "FILL'G STA.",
+   "use": "filling station",
+   "street_number": "6532",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "1",
+   "gasoline_tank_count": 2,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r1_c3",
+   "map_notes": "Concrete floor. 2 G.T.S. South of E Soper. Missed by the first draft and first audit.",
+   "interpretation": "",
+   "contamination_relevance": "high",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "MATTRESS FACTY.",
+   "use": "mattress factory",
+   "street_number": "6916",
+   "street_name": "S Broadway",
+   "construction": "brick",
+   "stories": "2",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r4_c3",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "construction",
+    "gasoline_tank_count",
+    "label",
+    "stories",
+    "street_number"
+   ],
+   "needs_human_check": [
+    "still on the 1950 map? Not located on the crops."
+   ]
+  },
+  {
+   "label": "PATTERN STGE.",
+   "use": "pattern storage",
+   "street_number": "(6504), (6510)",
+   "street_name": null,
+   "construction": "iron-clad frame",
+   "stories": "1 (20 ft)",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "tile r1_c2",
+   "map_notes": "Locomotive house is PATTERN STG. in 1950.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label (1950 crop)"
+   ],
+   "needs_human_check": [
+    "street number",
+    "construction"
+   ]
+  }
+ ],
+ "verification": {
+  "status": "draft",
+  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
+  "date": "2026-10-19"
+ },
+ "notes": "2026-10-13: the coal dealers' yard label now lists GASOL. ENG. and A. 18 TRUCKS (already in its map_notes) so the eval can match a reader that names the building instead of the yard. 2026-10-13: added BL. SM. (blacksmith) at 107-111 E Soper, approved by Baburaj after the spot check found it missing.",
+ "removed_since_1938": [
+  {
+   "label": "TIN SHOP",
+   "why": "Empty lot under a 1950 paste-over."
+  },
+  {
+   "label": "GASOL. & ALCOHOL STGE.",
+   "why": "Under the Johnson Foil Mfg. buildings in 1950."
+  },
+  {
+   "label": "FILL'G STA.",
+   "why": "TEMPERING room of the foil plant in 1950."
+  },
+  {
+   "label": "COAL DEALERS EQUIPMENT YARD / GASOL. ENG. / A. 18 TRUCKS",
+   "why": "Blank in 1950."
+  },
+  {
+   "label": "OIL HO.",
+   "why": "Blank under a 1950 paste-over."
+  },
+  {
+   "label": "MOUND CITY WRECKING & SUPPLY CO.",
+   "why": "Pasted over in 1950."
+  },
+  {
+   "label": "ST. LOUIS PUBLIC SERVICE CO. ELEC. SUB-STA.",
+   "why": "Substation gone; USED AUTO SALES nearby in 1950."
+  },
+  {
+   "label": "BL. SM.",
+   "why": "Pasted over in 1950."
+  }
+ ]
+}

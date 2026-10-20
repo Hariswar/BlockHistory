@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Alabama & Blow
+#NAME 1 Vermont & Blow
+#NAME 2 Virginia & Quincy
+#NAME 3 Virginia & Nagel
+#NAME 4 Vermont & Robert
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2592185,38.5546955,412.0,-1618.0,1,0,0,0
+-90.2583308,38.5542338,1317.0,-1484.0,1,0,0,0
+-90.2568175,38.5543294,2231.0,-481.0,1,0,0,0
+-90.2584721,38.5528767,2252.0,-2618.0,1,0,0,0
+-90.2598754,38.5529753,1317.0,-3350.0,1,0,0,0

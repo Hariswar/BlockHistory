@@ -7,7 +7,7 @@ import type { PublicFinding } from "@/lib/present";
 
 type Result = {
   query: string;
-  point: { lat: number; lon: number; matched: string };
+  point: { lat: number; lon: number; matched: string; source: "parcel" | "street" | "census" };
   radiusM: number;
   coveredBy: Coverage[];
   findings: PublicFinding[];
@@ -215,8 +215,7 @@ function Summary({ result, year }: { result: Result; year: string }) {
         </>
       )}
       <p className="small">
-        Address found as {point.matched}. Its position comes from the US Census and can be 30–80 m
-        off, so check the map.
+        Address found as {point.matched}. {PLACED[point.source]}
       </p>
     </section>
   );
@@ -301,10 +300,20 @@ function FindingCard({
   );
 }
 
+// How the address was put on the map, and how far off that can be (see lib/geocode.ts).
+const PLACED = {
+  parcel: "It was placed on its city parcel, usually within about 15–40 m of the building.",
+  street:
+    "It was placed along the street by the city's address ranges, so it can be 30–60 m off; check the map.",
+  census:
+    "It was placed by the US Census address lookup, which can be 30–80 m off; check the map.",
+};
+
 // Compared with the other map year at this spot; "not on the map" rather than "gone", since a
 // missed read looks the same.
 function changeText(c: NonNullable<PublicFinding["change"]>) {
   if (c.kind === "still") return `Also on the ${c.otherYear} map`;
+  if (c.kind === "similar") return `Similar use nearby on the ${c.otherYear} map`;
   if (c.kind === "new") return `New since the ${c.otherYear} map`;
   return `Not on the ${c.otherYear} map`;
 }

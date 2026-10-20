@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Idaho & Haven
+#NAME 1 Alabama & Haven
+#NAME 2 Vermont & Haven
+#NAME 3 Idaho & Loughborough
+#NAME 4 Alabama & Loughborough
+#NAME 5 Vermont & Loughborough
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2571601,38.5577041,1150.0,-989.0,1,0,0,0
+-90.2563264,38.5572663,2060.0,-842.0,1,0,0,0
+-90.2554328,38.5567904,2981.0,-698.0,1,0,0,0
+-90.2586615,38.5564420,1173.0,-2886.0,1,0,0,0
+-90.2577787,38.5559790,2077.0,-2755.0,1,0,0,0
+-90.2568973,38.5555130,3003.0,-2606.0,1,0,0,0

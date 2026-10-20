@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Louisiana & Bellerive
+#NAME 1 Louisiana & Dover
+#NAME 2 Louisiana & Wilmington
+#NAME 3 Colorado & Bellerive
+#NAME 4 Colorado & Dover
+#NAME 5 Colorado & Wilmington
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2532213,38.5667885,541.0,-1260.0,1,0,0,0
+-90.2540694,38.5657722,541.0,-2587.0,1,0,0,0
+-90.2547063,38.5650159,542.0,-3582.0,1,0,0,0
+-90.2512955,38.5657573,2547.0,-1260.0,1,0,0,0
+-90.2521231,38.5647738,2540.0,-2592.0,1,0,0,0
+-90.2527671,38.5640092,2537.0,-3589.0,1,0,0,0

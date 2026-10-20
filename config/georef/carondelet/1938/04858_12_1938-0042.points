@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Idaho & Blow
+#NAME 1 Alabama & Blow
+#NAME 2 Idaho & Robert
+#NAME 3 Alabama & Koeln
+#NAME 4 Alaska & Koeln
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2601180,38.5551516,2452.0,-1014.0,1,0,0,0
+-90.2592185,38.5546955,2888.0,-990.0,1,0,0,0
+-90.2615927,38.5538740,2337.0,-1956.0,1,0,0,0
+-90.2630050,38.5518111,2513.0,-3235.0,1,0,0,0
+-90.2649979,38.5529710,1471.0,-3235.0,1,0,0,0

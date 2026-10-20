@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DB_PATH = ROOT / "data" / "blockhistory.sqlite"
 SHOWN = ("high", "medium")  # relevance levels the website lists
 DUPLICATE_M = 15  # same label within this distance on one sheet = one site
+REPEAT_M = 30  # same kind of use with a similar label (a misread repeat) within this = one site
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS sheets (
@@ -116,22 +117,72 @@ def _dedupe(findings: list[dict]) -> list[dict]:
     }
     kept: list[dict] = []
     for f in sorted(findings, key=lambda f: rank.get(f["location_method"], 9)):
-        words = set(label_words(f["label"]))
-        same = next(
-            (
-                k
-                for k in kept
-                if words & set(label_words(k["label"]))
-                and _distance_m(f["lat"], f["lon"], k["lat"], k["lon"]) < DUPLICATE_M
-            ),
-            None,
-        )
+        same = next((k for k in kept if _repeat(f, k)), None)
         if same is None:
             kept.append(f)
         else:
             same["gasoline_tank_count"] = max(same["gasoline_tank_count"], f["gasoline_tank_count"])
             same["street_number"] = same.get("street_number") or f.get("street_number")
     return kept
+
+
+def _repeat(f: dict, k: dict) -> bool:
+    """Is f another read of the site k? Same label words within DUPLICATE_M, or a similar but
+    different label of the same kind of use within REPEAT_M. Identical labels farther apart
+    are separate sites (two filling stations on facing corners)."""
+    d = _distance_m(f["lat"], f["lon"], k["lat"], k["lon"])
+    words, other = set(label_words(f["label"])), set(label_words(k["label"]))
+    if words & other and d < DUPLICATE_M:
+        return True
+    return (
+        d < REPEAT_M
+        and words != other
+        and category(f["label"], f["use"], f["gasoline_tank_count"])[0]
+        == category(k["label"], k["use"], k["gasoline_tank_count"])[0]
+        and _similar_words(words, other)
+    )
+
+
+def _similar_words(a: set[str], b: set[str]) -> bool:
+    """A shared word, or a misread of one: a prefix ("MACH" / "MACHINE", "MIX" / "MIXING") or
+    up to two letters different in a longer word ("PRINTG" / "PAINTG", "VARNISHING" /
+    "VARNISHG")."""
+    for x in a:
+        for y in b:
+            if x == y or (min(len(x), len(y)) >= 3 and (x.startswith(y) or y.startswith(x))):
+                return True
+            if min(len(x), len(y)) >= 5 and _edits(x, y) <= 2:
+                return True
+    return False
+
+
+def _edits(x: str, y: str) -> int:
+    """Levenshtein distance."""
+    row = list(range(len(y) + 1))
+    for i, cx in enumerate(x, 1):
+        prev, row[0] = row[0], i
+        for j, cy in enumerate(y, 1):
+            prev, row[j] = row[j], min(row[j] + 1, row[j - 1] + 1, prev + (cx != cy))
+    return row[-1]
+
+
+# The reader writes a clean "DRY CLEANING" when it guesses; the map prints "DRY CLEANG",
+# "DRY CLG" and the like. At low confidence that full spelling was never on the map in any
+# of the 10 checked cases, so it isn't shown.
+GUESSED = re.compile(r"\s*DRY CLEANING\.?\s*")
+
+
+def prepare_sites(findings: list[dict]) -> list[dict]:
+    """One row per site (repeat reads merged), with its relevance: what load_sheet stores and
+    what a spot-check list should show."""
+    sites = _dedupe(findings)
+    for f in sites:
+        f["relevance"] = relevance(f["label"], f["use"])
+        if f["gasoline_tank_count"] and f["relevance"] == "low":
+            f["relevance"] = "high"  # a drawn gasoline tank always matters
+        if f.get("confidence") == "low" and GUESSED.fullmatch(f["label"].upper()):
+            f["relevance"] = "low"
+    return sites
 
 
 def clear_sheet(con: sqlite3.Connection, sheet_id: str) -> None:
@@ -180,10 +231,7 @@ def load_sheet(
     )
     marks = review_marks(sheet_id)
     rows = 0
-    for f in _dedupe(findings):
-        f["relevance"] = relevance(f["label"], f["use"])
-        if f["gasoline_tank_count"] and f["relevance"] == "low":
-            f["relevance"] = "high"  # a drawn gasoline tank always matters
+    for f in prepare_sites(findings):
         status = marks.get((norm(f["label"]), _tiles_key(f["tiles"])), "unreviewed")
         cat, _ = category(f["label"], f["use"], f["gasoline_tank_count"])
         con.execute(

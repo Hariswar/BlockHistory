@@ -1,5 +1,5 @@
 {
- "about": "Fixes from checking every shown 1950 listing against the full-resolution scan (Claude, 2026-10-19). Same format and rules as carondelet-1938.json. New in 1950: paste-over patches cover removed buildings, and the reader sometimes reads the old print showing through.",
+ "about": "Fixes from checking every shown 1950 listing against the full-resolution scan (2026-10-19). Same format and rules as carondelet-1938.json. New in 1950: paste-over patches cover removed buildings, and the reader sometimes reads the old print showing through.",
  "hide": [
   {
    "sheet": 22,
@@ -24,7 +24,7 @@
    "label": "FILLING STA.",
    "near": [
     2771,
-    2361
+    2668
    ],
    "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
   },
@@ -306,6 +306,96 @@
     2137
    ],
    "why": "Repeat read of 9 COKE OVENS, already listed."
+  },
+  {
+   "sheet": 57,
+   "label": "FILLG STA.",
+   "near": [
+    258,
+    866
+   ],
+   "why": "No filling station label here; the tanks belong to the USED AUTO SALES at 7414, already listed."
+  },
+  {
+   "sheet": 25,
+   "label": "FILL'G STA.",
+   "near": [
+    512,
+    3386
+   ],
+   "why": "Placed on an empty lot; repeat of the FILL'G STA. at 6341 S. Broadway, listed."
+  },
+  {
+   "sheet": 26,
+   "label": "COAL YARD",
+   "near": [
+    1328,
+    3334
+   ],
+   "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different use (listed)."
+  },
+  {
+   "sheet": 42,
+   "label": "D A MB.",
+   "near": [
+    765,
+    692
+   ],
+   "why": "A dwelling with a pasted address note, not a concern use."
+  },
+  {
+   "sheet": 42,
+   "label": "LUMBER HO.",
+   "near": [
+    1978,
+    3036
+   ],
+   "why": "Misread of FINISHED PRODUCT W. HO. of National Refrigerators, not a lumber house."
+  },
+  {
+   "sheet": 42,
+   "label": "WOODWORKING",
+   "near": [
+    1560,
+    888
+   ],
+   "why": "Repeat of WOODW'K'G, already listed."
+  },
+  {
+   "sheet": 67,
+   "label": "DRY CLEANING",
+   "near": [
+    1698,
+    923
+   ],
+   "why": "No dry cleaner here: a building of the sulphur works (low-confidence read)."
+  },
+  {
+   "sheet": 67,
+   "label": "DRY NO. / CONC. BLOCK / CONC. SLAB / BOILER",
+   "near": [
+    1565,
+    512
+   ],
+   "why": "Garbled read placed on an empty yard."
+  },
+  {
+   "sheet": 67,
+   "label": "OFF.",
+   "near": [
+    3058,
+    3027
+   ],
+   "why": "Placed on the river; can't be matched to a building."
+  },
+  {
+   "sheet": 67,
+   "label": "PAINT HO.",
+   "near": [
+    3058,
+    2308
+   ],
+   "why": "Placed on the river; can't be matched to a building."
   }
  ],
  "set": [
@@ -329,7 +419,11 @@
    ],
    "new_label": "THE JOHNSTON TIN FOIL & METAL CO. MFG. METAL FOIL",
    "use": "metal foil factory",
-   "why": "Full name as printed."
+   "why": "Full name as printed. Placed on the plant, as on the 1938 map.",
+   "sheet_px": [
+    394,
+    1958
+   ]
   },
   {
    "sheet": 72,
@@ -343,6 +437,61 @@
     757
    ],
    "why": "FILL'G STA. with AUTO GREASING and TIRE SERVICE is 30 m north of where it was placed (as on the 1938 map)."
+  },
+  {
+   "sheet": 25,
+   "label": "PRINTS & OILS",
+   "near": [
+    631,
+    3112
+   ],
+   "new_label": "PAINTS & OILS",
+   "use": "paints and oils store",
+   "why": "The map says PAINTS & OILS."
+  },
+  {
+   "sheet": 42,
+   "label": "VARNISH & PRINT'G",
+   "near": [
+    1708,
+    3136
+   ],
+   "new_label": "VARNISH'G & PAINT'G",
+   "use": "varnishing and painting",
+   "why": "The map says PAINT'G."
+  },
+  {
+   "sheet": 55,
+   "label": "AUTO ... CO.",
+   "near": [
+    1742,
+    3119
+   ],
+   "new_label": "AUTO BODY REP.",
+   "use": "auto body repair",
+   "why": "Full label as printed."
+  },
+  {
+   "sheet": 66,
+   "label": "TO REP.",
+   "near": [
+    780,
+    2237
+   ],
+   "new_label": "AUTO REP.",
+   "use": "auto repair",
+   "why": "Full label as printed."
+  },
+  {
+   "sheet": 42,
+   "label": "D TILE SIGN CO",
+   "near": [
+    878,
+    248
+   ],
+   "new_label": "TILE FACT'Y",
+   "use": "tile factory",
+   "why": "The map says TILE FACT'Y; no sign shop."
   }
  ],
  "add": [
@@ -375,6 +524,96 @@
     2860
    ],
    "why": "Shipyard printed along the riverbank; missed by the reader."
+  },
+  {
+   "sheet": 57,
+   "label": "FILL'G STA. CONC. FL.",
+   "use": "filling station",
+   "sheet_px": [
+    275,
+    1316
+   ],
+   "why": "Missed by the 1950 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 57,
+   "label": "COAL YARD",
+   "use": "coal yard",
+   "sheet_px": [
+    450,
+    1271
+   ],
+   "why": "Missed by the 1950 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 57,
+   "label": "COAL YARD",
+   "use": "coal yard",
+   "sheet_px": [
+    1326,
+    2300
+   ],
+   "why": "Missed by the 1950 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 50,
+   "label": "TRANSF. RM. FIRE PROOF",
+   "use": "transformer room",
+   "sheet_px": [
+    1931,
+    1510
+   ],
+   "why": "Missed by the 1950 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 58,
+   "label": "ANDREWS INDUSTRIES INC. MFRS. TANKS & TRAILER BODIES",
+   "use": "tank and trailer body factory (metal)",
+   "sheet_px": [
+    2920,
+    1859
+   ],
+   "why": "New by 1950 in the former Didion foundry; missed by the 1950 read."
+  },
+  {
+   "sheet": 74,
+   "label": "OIL HO.",
+   "use": "oil house",
+   "sheet_px": [
+    1488,
+    1731
+   ],
+   "why": "Missed by the 1950 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 58,
+   "label": "AUTO REP. CONC. FL.",
+   "use": "auto repair",
+   "sheet_px": [
+    852,
+    3140
+   ],
+   "why": "Missed by the 1950 read; 8302-8306 Ivory, in the inset (also on the 1938 map)."
+  },
+  {
+   "sheet": 42,
+   "label": "PHELAN-FAUST PAINT MFG. CO.",
+   "use": "paint factory",
+   "sheet_px": [
+    1624,
+    512
+   ],
+   "why": "Plant name printed across the buildings; the reader listed only its parts."
+  },
+  {
+   "sheet": 42,
+   "label": "NATIONAL REFRIGERATORS CO. MFG. SECTIONAL ICE & COLD STGE. HOUSES",
+   "use": "refrigerator factory (woodworking and tin shop)",
+   "sheet_px": [
+    1748,
+    2836
+   ],
+   "why": "Plant name; the reader listed its shops only."
   }
  ]
 }

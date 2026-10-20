@@ -1,5 +1,5 @@
 {
- "about": "Fixes from checking every unreviewed shown listing against the full-resolution scan (Claude, 2026-10-14). Applied by scripts/build_db.py. A finding is matched by sheet, printed label and the nearest position within 150 px of 'near' (50% image pixels). These are machine-assisted checks, not a person's spot check: listings stay 'not yet checked by a person'.",
+ "about": "Fixes from checking every unreviewed shown listing against the full-resolution scan (2026-10-14). Applied by scripts/build_db.py. A finding is matched by sheet, printed label and the nearest position within 150 px of 'near' (50% image pixels). These are AI-assisted scan checks, not a person's spot check: listings stay 'not yet checked by a person'.",
  "hide": [
   {
    "sheet": 22,
@@ -120,21 +120,219 @@
   },
   {
    "sheet": 60,
-   "label": "GARAGE CAP'Y. 20 CARS CONC. FL. WOOD POSTS",
-   "near": [
-    952,
-    2259
-   ],
-   "why": "Placed on a private 3-car auto house; the 20-car garage is listed."
-  },
-  {
-   "sheet": 60,
    "label": "G A R",
    "near": [
     1545,
     2308
    ],
    "why": "Cut-off repeat of the 12-car GARAGE at 7726 Michigan."
+  },
+  {
+   "sheet": 57,
+   "label": "FR. FOUNDR",
+   "near": [
+    2046,
+    2112
+   ],
+   "why": "FR. FOUND'N (frame building on a foundation), not a foundry; ticked ok in the first spot check, corrected after the 1950 comparison."
+  },
+  {
+   "sheet": 60,
+   "label": "MISCL. STGE-22 A. 1ST-3 CARS",
+   "near": [
+    1963,
+    819
+   ],
+   "why": "Private auto house (3 cars) under storage, not a commercial garage (hidden in 1950 too)."
+  },
+  {
+   "sheet": 58,
+   "label": "FILL'G STA. (stone tend)",
+   "near": [
+    776,
+    2721
+   ],
+   "why": "No filling station: 710 Davis is a 2-story stone tenement (\"2ND STONE TEND\"), a dwelling."
+  },
+  {
+   "sheet": 11,
+   "label": "CALVIN M. WOODWARD - PUBL",
+   "near": [
+    1564,
+    870
+   ],
+   "why": "A public school (Calvin M. Woodward), not a concern use; its boiler room is listed."
+  },
+  {
+   "sheet": 11,
+   "label": "M. WOODWARD- PUBLIC SCHOOL",
+   "near": [
+    1688,
+    740
+   ],
+   "why": "Repeat of the school name; its boiler room is listed."
+  },
+  {
+   "sheet": 13,
+   "label": "DRY CLEANING",
+   "near": [
+    445,
+    400
+   ],
+   "why": "No dry cleaner: a 1-story store with the note \"BR. 6' FR. ABV.\" (low-confidence read)."
+  },
+  {
+   "sheet": 14,
+   "label": "15 - CARS A.",
+   "near": [
+    2614,
+    2260
+   ],
+   "why": "Private auto house (15 cars), not a commercial garage."
+  },
+  {
+   "sheet": 14,
+   "label": "SL.CI. 2N.Y.",
+   "near": [
+    240,
+    430
+   ],
+   "why": "\"SL. CL. 2ND\" is a construction note on a dwelling."
+  },
+  {
+   "sheet": 26,
+   "label": "STANDARD OIL",
+   "near": [
+    2136,
+    2322
+   ],
+   "why": "No Standard Oil here: a 2-story dwelling with concrete first-floor walls."
+  },
+  {
+   "sheet": 26,
+   "label": "FR. FOUND.",
+   "near": [
+    770,
+    3404
+   ],
+   "why": "FR. FOUND'N (frame building on a foundation), not a foundry; the tin shop next door is listed."
+  },
+  {
+   "sheet": 42,
+   "label": "D'",
+   "near": [
+    1237,
+    3360
+   ],
+   "why": "A dwelling, not a concern use."
+  },
+  {
+   "sheet": 42,
+   "label": "G.T.",
+   "near": [
+    2669,
+    1363
+   ],
+   "why": "No gasoline tank here: a private auto house."
+  },
+  {
+   "sheet": 42,
+   "label": "UNION ELEC. LIGHT & POWER CO. SUB. STA.",
+   "near": [
+    2485,
+    2077
+   ],
+   "why": "Repeat of the Union Electric substation, already listed."
+  },
+  {
+   "sheet": 42,
+   "label": "VARNISHING & PRINTG",
+   "near": [
+    1602,
+    3149
+   ],
+   "why": "Misread repeat of VARNISH'G & PAINT'G, already listed."
+  },
+  {
+   "sheet": 45,
+   "label": "LOCKER R",
+   "near": [
+    2747,
+    3064
+   ],
+   "why": "YMCA locker room, not a concern use."
+  },
+  {
+   "sheet": 46,
+   "label": "DRY CLEANING",
+   "near": [
+    819,
+    1949
+   ],
+   "why": "No dry cleaner: \"SL. CL. 2ND\" is a construction note on a dwelling."
+  },
+  {
+   "sheet": 63,
+   "label": "COAL",
+   "near": [
+    1403,
+    1114
+   ],
+   "why": "Placed on empty ground by a retaining wall; the coal yard nearby is listed."
+  },
+  {
+   "sheet": 65,
+   "label": "SERVICE",
+   "near": [
+    2347,
+    2386
+   ],
+   "why": "Repeat of AUTO SALES & SERVICE, already listed."
+  },
+  {
+   "sheet": 65,
+   "label": "MACH",
+   "near": [
+    1686,
+    1967
+   ],
+   "why": "Repeat of MACH. SHOP, already listed."
+  },
+  {
+   "sheet": 68,
+   "label": "FR. FOUNDRY",
+   "near": [
+    1562,
+    2367
+   ],
+   "why": "FR. FOUND'N (frame building on a foundation), not a foundry."
+  },
+  {
+   "sheet": 70,
+   "label": "FIRE PROOF CONST. CONC. FL. & RF. BR. WALLS",
+   "near": [
+    142,
+    3131
+   ],
+   "why": "Construction note, not a use."
+  },
+  {
+   "sheet": 71,
+   "label": "BR. ISR.",
+   "near": [
+    2680,
+    1158
+   ],
+   "why": "Construction note, not a use."
+  },
+  {
+   "sheet": 71,
+   "label": "PRINTG (K2)",
+   "near": [
+    345,
+    778
+   ],
+   "why": "Misread repeat of PAINT'G (K2), already listed."
   }
  ],
  "set": [
@@ -182,6 +380,63 @@
     757
    ],
    "why": "FILL'G STA. with AUTO GREASING and TIRE SERVICE is 30 m north of where it was placed."
+  },
+  {
+   "sheet": 74,
+   "label": "OIL TK",
+   "near": [
+    1362,
+    1721
+   ],
+   "sheet_px": [
+    1050,
+    1710
+   ],
+   "why": "OIL TK is the small tank by the naphthaline storage; the point was on the oil house."
+  },
+  {
+   "sheet": 64,
+   "label": "AUTO REP & PRINT G",
+   "near": [
+    1934,
+    3352
+   ],
+   "new_label": "AUTO REP. & PAINT'G",
+   "use": "auto repair and painting",
+   "gasoline_tank_count": 0,
+   "why": "The map says PAINT'G; the tanks nearby belong to the filling station, listed."
+  },
+  {
+   "sheet": 63,
+   "label": "OFF.",
+   "near": [
+    1997,
+    1943
+   ],
+   "new_label": "SAND & GRAVEL YARD OFF.",
+   "use": "sand and gravel yard office (with a gasoline tank)",
+   "why": "OFF. of the sand and gravel yard; one G.T. drawn."
+  },
+  {
+   "sheet": 71,
+   "label": "METAL FURNE FACTY",
+   "near": [
+    205,
+    1632
+   ],
+   "use": "metal furniture factory with lacquer spray booth, iron oven, and oil and solvent storage",
+   "why": "The map also prints LACQUER SPRAY BOOTH and OILS & SOLVENT STGE."
+  },
+  {
+   "sheet": 73,
+   "label": "FR. FOUND. TIN SHOP",
+   "near": [
+    2543,
+    2256
+   ],
+   "new_label": "TIN SHOP",
+   "use": "tin shop",
+   "why": "FR. FOUND. is a construction note; the use is TIN SHOP."
   }
  ],
  "add": [
@@ -235,6 +490,157 @@
     2850
    ],
    "why": "Shipyard printed along the riverbank; missed by the reader."
+  },
+  {
+   "sheet": 50,
+   "label": "FILL'G STA. CONC. FL.",
+   "use": "filling station",
+   "sheet_px": [
+    1575,
+    3503
+   ],
+   "gasoline_tank_count": 3,
+   "why": "Missed by the 1938 read (its tanks had been put on the substation next door); 3 tanks drawn."
+  },
+  {
+   "sheet": 50,
+   "label": "FIRE PROOF FUEL BIN CONC. CEIL'G",
+   "use": "fireproof coal bin",
+   "sheet_px": [
+    1554,
+    2789
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 50,
+   "label": "PRINT'G",
+   "use": "printing",
+   "sheet_px": [
+    295,
+    2036
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 52,
+   "label": "COAL",
+   "use": "coal storage",
+   "sheet_px": [
+    1241,
+    3309
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 57,
+   "label": "2 BR. CORE OVENS",
+   "use": "foundry core ovens",
+   "sheet_px": [
+    1549,
+    2388
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 57,
+   "label": "FOUNDRY",
+   "use": "foundry",
+   "sheet_px": [
+    1584,
+    2448
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 57,
+   "label": "MOULDING RM.",
+   "use": "foundry moulding room",
+   "sheet_px": [
+    1601,
+    2330
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 58,
+   "label": "TRANSF. HO.",
+   "use": "transformer house",
+   "sheet_px": [
+    2803,
+    1999
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 72,
+   "label": "AUTO GREASING / TIRE SERVICE",
+   "use": "auto greasing and tire service",
+   "sheet_px": [
+    2767,
+    784
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 72,
+   "label": "COAL YARD",
+   "use": "coal yard",
+   "sheet_px": [
+    188,
+    1141
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 74,
+   "label": "QUENCHING STA.",
+   "use": "coke quenching station",
+   "sheet_px": [
+    666,
+    2217
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 74,
+   "label": "STEEL AMMONIA LIQUOR TKS.",
+   "use": "ammonia liquor tanks of the gas plant",
+   "sheet_px": [
+    1137,
+    1661
+   ],
+   "why": "Missed by the 1938 read; on both maps (found by comparing the 1938 and 1950 scans side by side)."
+  },
+  {
+   "sheet": 58,
+   "label": "AUTO REP. CONC. FL.",
+   "use": "auto repair",
+   "sheet_px": [
+    735,
+    3133
+   ],
+   "why": "Missed by the 1938 read; 8302 Ivory, in the inset."
+  },
+  {
+   "sheet": 42,
+   "label": "PHELAN-FAUST PAINT MFG. CO.",
+   "use": "paint factory",
+   "sheet_px": [
+    1561,
+    505
+   ],
+   "why": "Plant name printed across the buildings; the reader listed only its parts."
+  },
+  {
+   "sheet": 67,
+   "label": "ST. LOUIS SULPHUR & CHEM. CO.",
+   "use": "sulphur and chemical works",
+   "sheet_px": [
+    240,
+    585
+   ],
+   "why": "Plant name printed across the buildings; the reader listed its mill and sacking building."
   }
  ]
 }
