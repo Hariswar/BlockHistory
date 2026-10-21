@@ -59,7 +59,26 @@ CREATE TABLE IF NOT EXISTS findings (
   sheet_px INTEGER, sheet_py INTEGER
 );
 CREATE INDEX IF NOT EXISTS findings_latlon ON findings (lat, lon);
+CREATE TABLE IF NOT EXISTS records (
+  id INTEGER PRIMARY KEY,
+  source TEXT,                  -- e.g. Missouri DNR
+  kind TEXT,                    -- tank / cleanup
+  name TEXT, address TEXT,
+  status TEXT,                  -- as the agency words it
+  status_plain TEXT,            -- plain words (blockhistory/records/dnr.py)
+  release INTEGER,              -- 1 if a leak or contamination is on record
+  contaminants TEXT,
+  detail TEXT,
+  url TEXT,
+  lat REAL, lon REAL,
+  located_by TEXT               -- parcel / state point
+);
+CREATE INDEX IF NOT EXISTS records_latlon ON records (lat, lon);
 """
+RECORD_COLS = (
+    "source", "kind", "name", "address", "status", "status_plain", "release", "contaminants",
+    "detail", "url", "lat", "lon", "located_by",
+)  # fmt: skip
 
 
 def connect(path: Path = DB_PATH) -> sqlite3.Connection:
@@ -273,6 +292,31 @@ def _inside(lat: float, lon: float, polygon: dict) -> bool:
     return inside
 
 
+def load_records(con: sqlite3.Connection, rows: list[dict]) -> int:
+    """Replace every official record with `rows` (from blockhistory/records)."""
+    con.execute("DELETE FROM records")
+    marks = ", ".join("?" * len(RECORD_COLS))
+    con.executemany(
+        f"INSERT INTO records ({', '.join(RECORD_COLS)}) VALUES ({marks})",
+        [tuple(int(r[c]) if c == "release" else r.get(c) for c in RECORD_COLS) for r in rows],
+    )
+    con.commit()
+    return len(rows)
+
+
+def records_near(con: sqlite3.Connection, lat: float, lon: float, radius_m: float) -> list[dict]:
+    dlat = radius_m / M_PER_DEG
+    dlon = radius_m / (M_PER_DEG * math.cos(math.radians(lat)))
+    rows = con.execute(
+        "SELECT * FROM records WHERE lat BETWEEN ? AND ? AND lon BETWEEN ? AND ?",
+        (lat - dlat, lat + dlat, lon - dlon, lon + dlon),
+    ).fetchall()
+    out = [
+        {**dict(r), "distance_m": round(_distance_m(lat, lon, r["lat"], r["lon"]))} for r in rows
+    ]
+    return sorted((r for r in out if r["distance_m"] <= radius_m), key=lambda r: r["distance_m"])
+
+
 def search(
     con: sqlite3.Connection, lat: float, lon: float, radius_m: float = 100, levels=SHOWN
 ) -> dict:
@@ -296,7 +340,8 @@ def search(
         for s in con.execute("SELECT * FROM sheets").fetchall()
         if _inside(lat, lon, json.loads(s["footprint"]))
     ]
-    return {"findings": out, "covered_by": covering}
+    records = records_near(con, lat, lon, radius_m) if covering else []
+    return {"findings": out, "covered_by": covering, "records": records}
 
 
 PART_BYTES = 400_000  # Supabase's SQL editor refuses much larger queries
@@ -314,7 +359,7 @@ def export_postgis_sql(con: sqlite3.Connection, out: Path) -> tuple[int, list[Pa
             return repr(v)
         return "'" + str(v).replace("'", "''") + "'"
 
-    lines = ["DELETE FROM findings; DELETE FROM sheets;"]
+    lines = ["DELETE FROM findings; DELETE FROM sheets; DELETE FROM records;"]
     for s in con.execute("SELECT * FROM sheets"):
         s = dict(s)
         fp = s.pop("footprint")
@@ -332,6 +377,19 @@ def export_postgis_sql(con: sqlite3.Connection, out: Path) -> tuple[int, list[Pa
         )
         lines.append(f"INSERT INTO findings ({cols}) VALUES ({vals});")
         n += 1
+    for r in con.execute("SELECT * FROM records"):
+        r = dict(r)
+        r.pop("id")
+        lat, lon = r.pop("lat"), r.pop("lon")
+        r["release"] = bool(r["release"])
+        cols = ", ".join(r) + ", geom"
+        vals = (
+            ", ".join(
+                ("TRUE" if v else "FALSE") if k == "release" else lit(v) for k, v in r.items()
+            )
+            + f", ST_Point({lon!r}, {lat!r}, 4326)::geography"
+        )
+        lines.append(f"INSERT INTO records ({cols}) VALUES ({vals});")
 
     parts: list[list[str]] = [[]]
     size = 0

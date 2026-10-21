@@ -44,6 +44,24 @@ export type FindingRow = {
   sheet_py: number;
 };
 
+export type RecordRow = {
+  id: number;
+  source: string;
+  kind: "tank" | "cleanup";
+  name: string;
+  address: string;
+  status: string;
+  status_plain: string;
+  release: boolean | number;
+  contaminants: string | null;
+  detail: string | null;
+  url: string | null;
+  located_by: string;
+  lat: number;
+  lon: number;
+  distance_m: number;
+};
+
 const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/$/, "");
 const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY;
 export const backend = SUPABASE_URL && SUPABASE_KEY ? "supabase" : "sqlite";
@@ -95,15 +113,21 @@ export async function sheets(): Promise<Sheet[]> {
 
 export async function search(lat: number, lon: number, radiusM = 100) {
   if (backend === "supabase") {
-    const [rows, covering, all] = await Promise.all([
+    const [rows, covering, all, recs] = await Promise.all([
       rpc<(FindingRow & { distance_m: number })[]>("findings_near", { at_lat: lat, at_lon: lon, radius_m: radiusM }),
       rpc<string[]>("sheets_covering", { at_lat: lat, at_lon: lon }),
       sheets(),
+      // Records are extra: if the table isn't there yet, search still works without them.
+      rpc<RecordRow[]>("records_near", { at_lat: lat, at_lon: lon, radius_m: radiusM }).catch((e) => {
+        console.error(e);
+        return [] as RecordRow[];
+      }),
     ]);
     const bySheet = new Map(all.map((s) => [s.sheet_id, s]));
     return {
       findings: rows.map((r) => ({ ...r, distance_m: Math.round(r.distance_m), sheet: bySheet.get(r.sheet_id)! })),
       coveredBy: all.filter((s) => covering.includes(s.sheet_id)),
+      records: covering.length ? recs.map((r) => ({ ...r, distance_m: Math.round(r.distance_m) })) : [],
     };
   }
   const dlat = radiusM / M_PER_DEG;
@@ -123,5 +147,13 @@ export async function search(lat: number, lon: number, radiusM = 100) {
     .sort((a, b) => a.distance_m - b.distance_m)
     .map((r) => ({ ...r, sheet: bySheet.get(r.sheet_id)! }));
   const coveredBy = [...bySheet.values()].filter((s) => inside(lat, lon, s.footprint));
-  return { findings, coveredBy };
+  const recs = coveredBy.length
+    ? ((db ?? (await open()))
+        .prepare("SELECT * FROM records WHERE lat BETWEEN ? AND ? AND lon BETWEEN ? AND ?")
+        .all(lat - dlat, lat + dlat, lon - dlon, lon + dlon) as unknown as RecordRow[])
+        .map((r) => ({ ...r, distance_m: Math.round(distanceM(lat, lon, r.lat, r.lon)) }))
+        .filter((r) => r.distance_m <= radiusM)
+        .sort((a, b) => a.distance_m - b.distance_m)
+    : [];
+  return { findings, coveredBy, records: recs };
 }

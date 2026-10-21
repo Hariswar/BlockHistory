@@ -22,6 +22,11 @@ export default function Limits() {
           Census, which can be 30–80 m off. Each search says which.
         </li>
         <li>
+          State records are shown as the Missouri Department of Natural Resources words them, from
+          its public E-START data. Tanks only had to be registered from 1986, so older tanks often
+          have no record; a record at the same spot as an old listing may be a later business.
+        </li>
+        <li>
           For a property decision, talk to an environmental professional, or look up the site in the
           Missouri Department of Natural Resources and EPA databases.
         </li>

@@ -469,6 +469,38 @@ button:disabled {
   border-color: transparent;
 }
 
+.record {
+  margin: 8px 0;
+  padding: 8px 10px;
+  border-left: 3px solid var(--line);
+  background: var(--paper);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.9rem;
+}
+
+.record.release {
+  border-left-color: var(--brick);
+}
+
+.records {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.records h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.record-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .source {
   display: flex;
   gap: 12px;

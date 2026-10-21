@@ -55,7 +55,7 @@ def test_search_finds_nearby_sites_and_merges_repeat_reads(con):
 
 def test_search_outside_any_sheet_says_not_covered(con):
     res = store.search(con, 38.60, -90.30)
-    assert res == {"findings": [], "covered_by": []}
+    assert res == {"findings": [], "covered_by": [], "records": []}
 
 
 def test_postgis_export_uses_geography(con, tmp_path):
@@ -129,3 +129,26 @@ def test_low_confidence_guessed_dry_cleaner_is_not_shown():
         for f in store.prepare_sites([guess, printed, sure])
     }
     assert sorted(rel.values()) == ["high", "high", "low"]
+
+
+def _record(name, lat, lon, release=True):
+    return {
+        "source": "Missouri DNR", "kind": "tank", "name": name, "address": "1 Main",
+        "status": "No Further Action Letter Issued with Restriction",
+        "status_plain": "a petroleum leak was cleaned up; limits on how the land is used remain",
+        "release": release, "contaminants": "Petroleum constituents", "detail": None, "url": None,
+        "lat": lat, "lon": lon, "located_by": "parcel",
+    }  # fmt: skip
+
+
+def test_records_are_returned_only_where_the_maps_cover(con, tmp_path):
+    store.load_records(
+        con, [_record("BROADWAY 66", 38.5451, -90.2550), _record("FAR", 38.60, -90.30)]
+    )
+    res = store.search(con, 38.5450, -90.2550)
+    assert [r["name"] for r in res["records"]] == ["BROADWAY 66"]
+    assert res["records"][0]["distance_m"] == 11 and res["records"][0]["release"] == 1
+    assert store.search(con, 38.60, -90.30)["records"] == []  # not covered: nothing either way
+    _, files = store.export_postgis_sql(con, tmp_path / "load.sql")
+    sql = files[0].read_text()
+    assert "DELETE FROM records" in sql and "INSERT INTO records" in sql and "TRUE" in sql

@@ -1,5 +1,5 @@
 // What the browser gets for each finding: no internal fields, plus links to the source.
-import { distanceM, type FindingRow, type Sheet } from "./data";
+import { distanceM, type FindingRow, type RecordRow, type Sheet } from "./data";
 
 const IIIF = "https://tile.loc.gov/image-services/iiif";
 const CROP_FULL_PX = 700; // square crop of the full-resolution scan around the building
@@ -33,6 +33,8 @@ export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
     // a "similar" use nearby (same kind, different label), "not" on the other map, or "new"
     // since the earlier one. Null when only one year covers the spot.
     change: null as null | { kind: "still" | "similar" | "not" | "new"; otherYear: string },
+    // State records at about the same spot (within SAME_RECORD_M); filled by attachRecords.
+    records: [] as PublicRecord[],
     readerConfidence: f.reader_confidence,
     distanceM: f.distance_m,
     lat: f.lat,
@@ -142,6 +144,66 @@ export function groupSites(found: PublicFinding[]): PublicFinding[] {
 
 function norm(label: string) {
   return label.toUpperCase().replace(/[^A-Z]/g, "").replace("FILLING", "FILLG");
+}
+
+const SAME_RECORD_M = 40; // a state record this close is at about the same spot
+const ESTART =
+  "https://dnr.mo.gov/waste-recycling/data-e-services/environmental-site-tracking-research-tool-e-start";
+
+export type PublicRecord = ReturnType<typeof presentRecord>;
+
+export function presentRecord(r: RecordRow) {
+  return {
+    id: r.id,
+    source: r.source,
+    kind: r.kind,
+    name: titleCase(r.name),
+    address: titleCase(r.address),
+    status: r.status,
+    statusPlain: capitalize(r.status_plain),
+    release: Boolean(r.release),
+    contaminants: r.contaminants,
+    url: r.url?.startsWith("http") ? r.url : ESTART,
+    lat: r.lat,
+    lon: r.lon,
+    distanceM: r.distance_m,
+  };
+}
+
+/**
+ * Put each state record on one card per map year: the nearest one within SAME_RECORD_M whose
+ * kind fits (a tank record goes to a fuel or auto site, or one with tanks drawn; a cleanup
+ * record to any site). Records that fit no card are listed on their own.
+ */
+export function attachRecords(cards: PublicFinding[], records: PublicRecord[]): PublicFinding[] {
+  const vehicle = (c: PublicFinding) =>
+    c.category === "fuel" || c.category === "auto" || c.hasGasolineTanks;
+  const named = (c: PublicFinding, r: PublicRecord) => {
+    const words = useWords(r.name);
+    return [c.printedLabel, ...c.alsoPrinted].some((l) => [...useWords(l)].some((w) => words.has(w)));
+  };
+  // A tank record fits a fuel or auto site; a cleanup record fits an industrial one. Either
+  // fits a site that shares a word of its name ("LIBERTY FOUNDRY CO." / "Liberty Foundry").
+  const fits = (c: PublicFinding, r: PublicRecord) =>
+    named(c, r) || (r.kind === "tank" ? vehicle(c) : !vehicle(c));
+  const out = cards.map((c) => ({ ...c, records: [] as PublicRecord[] }));
+  for (const r of records) {
+    for (const year of new Set(out.map((c) => c.year))) {
+      const best = out
+        .filter((c) => c.year === year && fits(c, r))
+        .map((c) => ({ c, d: distanceM(c.lat, c.lon, r.lat, r.lon), n: named(c, r) ? 0 : 1 }))
+        .filter(({ d }) => d <= SAME_RECORD_M)
+        .sort((a, b) => a.n - b.n || a.d - b.d)[0];
+      if (best) best.c.records.push(r);
+    }
+  }
+  return out;
+}
+
+function titleCase(t: string) {
+  if (!t || t !== t.toUpperCase()) return t;
+  return t.toLowerCase().replace(/\b([a-z])/g, (m) => m.toUpperCase()).replace(/\b(Llc|Lp|Usa|Us|Bp|Icl)\b/g, (m) => m.toUpperCase())
+    .replace(/(?<=.) (Of|And|The) /g, (m) => m.toLowerCase());
 }
 
 export function presentSheet(s: Sheet) {

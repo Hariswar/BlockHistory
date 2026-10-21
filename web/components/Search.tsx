@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import MapLegend from "./MapLegend";
 import MapView, { type Coverage } from "./MapView";
-import type { PublicFinding } from "@/lib/present";
+import type { PublicFinding, PublicRecord } from "@/lib/present";
 
 type Result = {
   query: string;
@@ -11,6 +11,7 @@ type Result = {
   radiusM: number;
   coveredBy: Coverage[];
   findings: PublicFinding[];
+  records: PublicRecord[];
 };
 
 const EXAMPLES = ["7313 S Broadway", "6601 S Broadway", "7421 Pennsylvania Ave"];
@@ -166,6 +167,7 @@ export default function Search() {
                 ))}
               </ol>
             )}
+            <StateRecords result={shown} />
           </div>
         )}
         {!shown && (
@@ -189,7 +191,7 @@ function Summary({ result, year }: { result: Result; year: string }) {
         <>
           <h2>We haven&apos;t processed the maps for this address yet</h2>
           <p>
-            So far BlockHistory covers part of Carondelet on the {year} map (the outlined areas on
+            So far BlockHistory covers Carondelet and Patch on the {year} map (the outlined area on
             the map). This says nothing either way about this property.
           </p>
         </>
@@ -264,6 +266,9 @@ function FindingCard({
           )}
         </div>
         <p style={{ margin: "6px 0" }}>{f.explanation}</p>
+        {f.records.map((r) => (
+          <RecordNote key={r.id} r={r} lead="State record at about this spot" />
+        ))}
         {f.alsoPrinted.length > 0 && (
           <p className="small" style={{ margin: "4px 0" }}>
             Same kind of use, also printed within 40 m:{" "}
@@ -316,4 +321,57 @@ function changeText(c: NonNullable<PublicFinding["change"]>) {
   if (c.kind === "similar") return `Similar use nearby on the ${c.otherYear} map`;
   if (c.kind === "new") return `New since the ${c.otherYear} map`;
   return `Not on the ${c.otherYear} map`;
+}
+
+// Official state tank and cleanup records within the search circle. Records already shown on
+// a card (same spot) aren't repeated; with none at all, say why that isn't reassurance.
+function StateRecords({ result }: { result: Result }) {
+  if (result.coveredBy.length === 0) return null;
+  const onCards = new Set(result.findings.flatMap((f) => f.records.map((r) => r.id)));
+  const others = result.records.filter((r) => !onCards.has(r.id));
+  return (
+    <section className="records" aria-label="State environmental records">
+      <h3>State tank and cleanup records within {result.radiusM} m</h3>
+      {result.records.length === 0 ? (
+        <p className="small">
+          The Missouri Department of Natural Resources has no tank or cleanup record within{" "}
+          {result.radiusM} m. Tanks only had to be registered from 1986, so tanks from the 1930s–50s
+          that were removed or abandoned earlier usually have no record. No record is not a sign
+          that the ground is clean.
+        </p>
+      ) : (
+        <>
+          <p className="small">
+            {result.records.length} {result.records.length === 1 ? "record" : "records"} from the
+            Missouri Department of Natural Resources
+            {onCards.size > 0 && others.length > 0 ? `; ${onCards.size} shown on the listings above` : ""}
+            {onCards.size > 0 && others.length === 0 ? ", shown on the listings above" : ""}.
+          </p>
+          {others.length > 0 && (
+            <ul className="record-list">
+              {others.map((r) => (
+                <li key={r.id}>
+                  <RecordNote r={r} lead={`About ${r.distanceM} m away`} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
+      )}
+    </section>
+  );
+}
+
+function RecordNote({ r, lead }: { r: PublicRecord; lead: string }) {
+  const what = r.kind === "tank" ? "storage tank site" : "cleanup site";
+  return (
+    <div className={`record${r.release ? " release" : ""}`}>
+      <strong>{lead}:</strong> {r.name}
+      {r.address ? `, ${r.address}` : ""} ({what}). {r.statusPlain}.
+      {r.contaminants ? ` Listed contaminants: ${r.contaminants.toLowerCase()}.` : ""}{" "}
+      <a href={r.url} target="_blank" rel="noreferrer">
+        State record ({r.source})
+      </a>
+    </div>
+  );
 }

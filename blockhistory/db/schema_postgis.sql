@@ -38,19 +38,33 @@ CREATE TABLE IF NOT EXISTS findings (
   geom GEOGRAPHY(POINT, 4326)
 );
 CREATE INDEX IF NOT EXISTS findings_geom ON findings USING GIST (geom);
+
+-- Official environmental records (state tank and cleanup sites), shown beside the map's
+-- past uses. Loaded by scripts/load_records.py.
+CREATE TABLE IF NOT EXISTS records (
+  id BIGSERIAL PRIMARY KEY,
+  source TEXT, kind TEXT, name TEXT, address TEXT,
+  status TEXT, status_plain TEXT, release BOOLEAN,
+  contaminants TEXT, detail TEXT, url TEXT, located_by TEXT,
+  geom GEOGRAPHY(POINT, 4326)
+);
+CREATE INDEX IF NOT EXISTS records_geom ON records USING GIST (geom);
 CREATE INDEX IF NOT EXISTS sheets_footprint ON sheets USING GIST (footprint);
 
 -- Read-only for the public key. Newer Supabase projects don't grant table access to anon
 -- automatically, so grant SELECT (only) here; row-level security below still applies.
 GRANT USAGE ON SCHEMA public TO anon, authenticated;
-GRANT SELECT ON sheets, findings TO anon, authenticated;
-REVOKE INSERT, UPDATE, DELETE, TRUNCATE ON sheets, findings FROM anon, authenticated;
+GRANT SELECT ON sheets, findings, records TO anon, authenticated;
+REVOKE INSERT, UPDATE, DELETE, TRUNCATE ON sheets, findings, records FROM anon, authenticated;
 ALTER TABLE sheets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE findings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE records ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "public read" ON sheets;
 DROP POLICY IF EXISTS "public read" ON findings;
+DROP POLICY IF EXISTS "public read" ON records;
 CREATE POLICY "public read" ON sheets FOR SELECT TO anon, authenticated USING (true);
 CREATE POLICY "public read" ON findings FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "public read" ON records FOR SELECT TO anon, authenticated USING (true);
 
 -- Sheets with their outline as GeoJSON text (the shape web/lib/data.ts expects).
 CREATE OR REPLACE FUNCTION sheets_list()
@@ -99,6 +113,26 @@ LANGUAGE sql STABLE SET search_path = public, extensions AS $$
   ORDER BY 19;
 $$;
 
+-- Official records near a point, nearest first (radius capped at 500 m).
+DROP FUNCTION IF EXISTS records_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION);
+CREATE FUNCTION records_near(at_lat DOUBLE PRECISION, at_lon DOUBLE PRECISION,
+                             radius_m DOUBLE PRECISION DEFAULT 100)
+RETURNS TABLE (
+  id BIGINT, source TEXT, kind TEXT, name TEXT, address TEXT, status TEXT, status_plain TEXT,
+  release BOOLEAN, contaminants TEXT, detail TEXT, url TEXT, located_by TEXT,
+  lat DOUBLE PRECISION, lon DOUBLE PRECISION, distance_m DOUBLE PRECISION
+)
+LANGUAGE sql STABLE SET search_path = public, extensions AS $$
+  SELECT r.id, r.source, r.kind, r.name, r.address, r.status, r.status_plain, r.release,
+         r.contaminants, r.detail, r.url, r.located_by,
+         ST_Y(r.geom::geometry), ST_X(r.geom::geometry),
+         ST_Distance(r.geom, ST_Point(at_lon, at_lat, 4326)::geography)
+  FROM records r
+  WHERE ST_DWithin(r.geom, ST_Point(at_lon, at_lat, 4326)::geography, LEAST(radius_m, 500))
+  ORDER BY 15;
+$$;
+
 GRANT EXECUTE ON FUNCTION sheets_list() TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION records_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION sheets_covering(DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION findings_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;

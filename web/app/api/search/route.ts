@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { search } from "@/lib/data";
 import { geocode } from "@/lib/geocode";
-import { groupSites, markChanges, present, presentSheet } from "@/lib/present";
+import { attachRecords, groupSites, markChanges, present, presentRecord, presentSheet } from "@/lib/present";
 
 export const runtime = "nodejs";
 const RADIUS_M = 100;
@@ -38,16 +38,21 @@ export async function GET(req: Request) {
     );
   }
   const { findings, coveredBy } = found;
+  const records = found.records.filter((r) => r.distance_m <= RADIUS_M).map(presentRecord);
   return NextResponse.json({
     query: q,
     point,
     radiusM: RADIUS_M,
     coveredBy: coveredBy.map(presentSheet),
-    findings: groupSites(
-      markChanges(
-        findings.map(present),
-        coveredBy.map((s) => s.edition),
-      ).filter((f) => f.distanceM <= RADIUS_M),
+    findings: attachRecords(
+      groupSites(
+        markChanges(
+          findings.map(present),
+          coveredBy.map((s) => s.edition),
+        ).filter((f) => f.distanceM <= RADIUS_M),
+      ),
+      records,
     ),
+    records,
   });
 }

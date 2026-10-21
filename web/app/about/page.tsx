@@ -44,6 +44,10 @@ export default function About() {
               Every listing was then compared with the full-resolution scan, and wrong ones were
               fixed or removed. Listings the project&apos;s author also checked say so.
             </li>
+            <li>
+              Each search also lists the Missouri Department of Natural Resources&apos; tank and
+              cleanup records nearby, and puts a record on a listing when both are at the same spot.
+            </li>
           </ol>
         </section>
       </div>

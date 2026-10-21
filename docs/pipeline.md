@@ -89,6 +89,13 @@ Human-verified and draft label files are reported separately. A draft becomes ve
 - 1950 has no sheet 11 at the Library of Congress. A batch over ~250 MB is refused; submit sheets in chunks of about 25.
 - Paste-overs: the reader sometimes reads old print showing faintly through a patch. Check new findings against the scan and hide those in `config/corrections/<area>-1950.json`.
 
+## 6c. Official records (free)
+```
+.venv/bin/python scripts/load_records.py      # Missouri DNR tank and cleanup sites -> records table
+```
+- `blockhistory/records/dnr.py` reads two public layers of the DNR E-START map service (tank facilities, hazardous-waste cleanup sites) for Carondelet and Patch, puts each on its City of St. Louis parcel when the address matches, and words its status plainly. Cached in `data/cache/records/`.
+- Run it before `build_db.py --export`; the export carries the records. After a schema change, re-run `schema_postgis.sql` in Supabase first (it adds the `records` table and `records_near()`).
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]

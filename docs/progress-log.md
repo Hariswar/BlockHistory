@@ -324,3 +324,8 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 - **Change notes:** "Also on the other map" now needs a shared label word; same kind of use only is "Similar use nearby".
 - **1950 answer keys drafted** from the verified 1938 keys by comparing each site on the two scans (`evals/labels/04858_12_1950-*.json`, status draft). 26 sites marked gone, 10 renamed, 22 flagged `needs_human_check`. Sites new since 1938 are not in the drafts yet, so 1950 precision against them (78%) is too low by construction; recall 80/101 (79%) and tank sites 7/12 are the useful numbers until the keys are verified and swept for new sites.
 - 1938 person-checked rows: 96 (was 99; three ticked rows were merged into a neighbouring site by the repeat rule).
+
+## Phase 2: state tank and cleanup records (Oct 20, 2026)
+- **152 Missouri DNR records** around Carondelet and Patch (106 tank facilities, 46 cleanup sites; 80 with a leak or contamination on record), 89 placed on their city parcel. 72 fall inside the mapped area; 38 of those are within 40 m of a past use on the maps.
+- Examples that line up: Broadway 66 and a former service station (leaks, cleaned up) on the 1938 filling stations at 6520–6532 S. Broadway; the former Geldbach site at 6800 S. Broadway on the bulk oil station; J. W. Aluminum on the Johnston Tin Foil plant; Carondelet Coke on the Laclede coke ovens; ICL Performance Products (active cleanup) on the Monsanto plant; Nexeo on the Lowell Bleachery; a leak under investigation at 6101 Michigan on the 1938 gasoline filling station.
+- Website: a "State record at about this spot" note on matching listings, a list of other state records within 100 m, and a plain "no record" note. About and Limits pages updated. Tests: 100.
