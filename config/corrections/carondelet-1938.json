@@ -47,15 +47,6 @@
    "why": "Cut-off end of REEDER & RICHTER PATTERN & FOUNDRY CO., already listed as FOUNDRY."
   },
   {
-   "sheet": 47,
-   "label": "FILL'G STA.",
-   "near": [
-    1234,
-    2668
-   ],
-   "why": "Placed in a yard at 6708 with no station; the sheet's filling stations are listed and checked."
-  },
-  {
    "sheet": 58,
    "label": "4E MISCL STGE",
    "near": [
@@ -333,6 +324,24 @@
     778
    ],
    "why": "Misread repeat of PAINT'G (K2), already listed."
+  },
+  {
+   "sheet": 50,
+   "label": "FILL'G STA.",
+   "near": [
+    1595,
+    2596
+   ],
+   "why": "Tank pass repeat of the FILL'G STA. at 6800 S. Broadway, read under its corner number 100; already listed."
+  },
+  {
+   "sheet": 50,
+   "label": "I.E.L.P.",
+   "near": [
+    1234,
+    2668
+   ],
+   "why": "Garbled tank-pass read placed on empty ground by the river."
   }
  ],
  "set": [

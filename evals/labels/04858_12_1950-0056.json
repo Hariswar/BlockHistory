@@ -21,7 +21,7 @@
   "IR. POSTS METAL LATH & PLASTER PARTNS.: a construction note on stores 7517-7523 S Broadway, not a use",
   "(ASB. CL.) dwelling, 7412 Minnesota Av: asbestos-cement siding, a building material, not a use"
  ],
- "total_gasoline_tanks": 2,
+ "total_gasoline_tanks": 1,
  "verification": {
   "status": "draft",
   "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
@@ -39,10 +39,11 @@
    "other_tanks": [],
    "partial": false,
    "position": "block 3055",
-   "map_notes": "CONC. FL. One G.T. circle inside the lot at the south-east corner.",
+   "map_notes": "CONC. FL. One G.T. circle inside the lot at the south-east corner. | 1950 G.T. count checked on the full-resolution 1950 scan: 1",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []
@@ -54,14 +55,15 @@
    "street_name": "S Broadway",
    "construction": "brick",
    "stories": "1",
-   "gasoline_tank_count": 1,
+   "gasoline_tank_count": 0,
    "other_tanks": [],
    "partial": false,
    "position": "block 3055",
-   "map_notes": "CONC. FL., STEEL POSTS & BEAMS, three RAISED 4' platforms. One G.T. at the rear (west) wall.",
+   "map_notes": "CONC. FL., STEEL POSTS & BEAMS, three RAISED 4' platforms. One G.T. at the rear (west) wall. | 1950 G.T. count checked on the full-resolution 1950 scan: 0 (1938: 1; the 1950 paste-over shows no tank circles)",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []

@@ -20,7 +20,7 @@
   "Railroad tracks and Levee St (infrastructure, no building)",
   "Dwellings along Levee St"
  ],
- "total_gasoline_tanks": 7,
+ "total_gasoline_tanks": 6,
  "buildings": [
   {
    "label": "FILL'G STA.",
@@ -29,14 +29,15 @@
    "street_name": "S Broadway",
    "construction": "brick",
    "stories": "1",
-   "gasoline_tank_count": 4,
+   "gasoline_tank_count": 3,
    "other_tanks": [],
    "partial": false,
    "position": "block 3052",
-   "map_notes": "Corner of E Robert. 16 ft. 3 G.T.S. plus one iron gasoline tank on the ground (IR. GASOL. TK. ON GRD), drawn as a circle north of the building.",
+   "map_notes": "Corner of E Robert. 16 ft. 3 G.T.S. plus one iron gasoline tank on the ground (IR. GASOL. TK. ON GRD), drawn as a circle north of the building. | 1950 G.T. count checked on the full-resolution 1950 scan: 3",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []
@@ -74,19 +75,20 @@
    "street_name": "S Broadway",
    "construction": "frame (office)",
    "stories": "1",
-   "gasoline_tank_count": 0,
+   "gasoline_tank_count": 3,
    "other_tanks": [],
    "partial": false,
    "position": "block 3053",
-   "map_notes": "Open lot with a 1-story frame office and a small 1-story metal building. No G.T. symbol drawn.",
+   "map_notes": "Open lot with a 1-story frame office and a small 1-story metal building. No G.T. symbol drawn. | 1950 G.T. count checked on the full-resolution 1950 scan: 3 (\"IR. GASOL. TKS.\", 3 circles)",
    "interpretation": "",
    "contamination_relevance": "medium",
    "checked_against_map": [
-    "label",
-    "street_number",
     "construction",
+    "gasoline_tank_count",
+    "gasoline_tank_count (1950 full-res)",
+    "label",
     "stories",
-    "gasoline_tank_count"
+    "street_number"
    ],
    "needs_human_check": [
     "still on the 1950 map? Not located on the crops."
@@ -99,14 +101,15 @@
    "street_name": "S Broadway",
    "construction": "brick and frame",
    "stories": "1",
-   "gasoline_tank_count": 3,
+   "gasoline_tank_count": 0,
    "other_tanks": [],
    "partial": false,
    "position": "block 3053",
-   "map_notes": "Concrete floor. 3 G.T.S. Corner of E Koeln.",
+   "map_notes": "Concrete floor. 3 G.T.S. Corner of E Koeln. | 1950 G.T. count checked on the full-resolution 1950 scan: 0 (1938: 3; the 1950 paste-over shows no tank circles)",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []

@@ -29,15 +29,6 @@
    "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
   },
   {
-   "sheet": 24,
-   "label": "FILLING STA.",
-   "near": [
-    2018,
-    1230
-   ],
-   "why": "Old print showing faintly under a 1950 paste-over; the paste-over shows a different building, so this use is gone by 1950 (the 1938 map lists it)."
-  },
-  {
    "sheet": 49,
    "label": "AUTO REP'G",
    "near": [
@@ -90,15 +81,6 @@
     512
    ],
    "why": "Not on the map: no such label at or near this spot (low-confidence read)."
-  },
-  {
-   "sheet": 50,
-   "label": "FILL'G STA.",
-   "near": [
-    1631,
-    3027
-   ],
-   "why": "Placed on the feed mill; no filling station there."
   },
   {
    "sheet": 74,
@@ -272,15 +254,6 @@
    "why": "Placed on the railroad tracks; the foundry buildings nearby are listed."
   },
   {
-   "sheet": 57,
-   "label": "AUTO. SALES",
-   "near": [
-    512,
-    512
-   ],
-   "why": "Repeat of USED AUTO SALES at 7414 S. Broadway, placed on the tracks."
-  },
-  {
    "sheet": 58,
    "label": "V V MET...",
    "near": [
@@ -315,15 +288,6 @@
     866
    ],
    "why": "No filling station label here; the tanks belong to the USED AUTO SALES at 7414, already listed."
-  },
-  {
-   "sheet": 25,
-   "label": "FILL'G STA.",
-   "near": [
-    512,
-    3386
-   ],
-   "why": "Placed on an empty lot; repeat of the FILL'G STA. at 6341 S. Broadway, listed."
   },
   {
    "sheet": 26,
@@ -396,6 +360,15 @@
     2308
    ],
    "why": "Placed on the river; can't be matched to a building."
+  },
+  {
+   "sheet": 57,
+   "label": "FILL'G STA.",
+   "near": [
+    512,
+    512
+   ],
+   "why": "Tank-pass repeat placed on the railroad tracks; the 7300 S. Broadway station's tanks, already counted there."
   }
  ],
  "set": [

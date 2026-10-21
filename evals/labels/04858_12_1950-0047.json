@@ -20,7 +20,7 @@
   "A. 6 CARS, 6630 Michigan Av block",
   "(ASB. CL.) dwelling, Minnesota Av: asbestos-cement siding, a building material, not a use"
  ],
- "total_gasoline_tanks": 6,
+ "total_gasoline_tanks": 0,
  "verification": {
   "status": "draft",
   "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
@@ -34,14 +34,15 @@
    "street_name": "Pennsylvania Av",
    "construction": "brick",
    "stories": "1",
-   "gasoline_tank_count": 3,
+   "gasoline_tank_count": 0,
    "other_tanks": [],
    "partial": false,
    "position": "block 2980",
-   "map_notes": "Corner of Haven. CONC. FL. 3 G.T.S circles north-west of the building.",
+   "map_notes": "Corner of Haven. CONC. FL. 3 G.T.S circles north-west of the building. | 1950 G.T. count checked on the full-resolution 1950 scan: 0 (1938: 3; the 1950 paste-over shows no tank circles)",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []
@@ -53,19 +54,20 @@
    "street_name": "S Broadway",
    "construction": "brick",
    "stories": "1",
-   "gasoline_tank_count": 3,
+   "gasoline_tank_count": 0,
    "other_tanks": [],
    "partial": false,
    "position": "block 2979",
-   "map_notes": "Corner of E Mott. CONC. FL. G.T.S: 2 circles on the west side, 1 on the east.",
+   "map_notes": "Corner of E Mott. CONC. FL. G.T.S: 2 circles on the west side, 1 on the east. | 1950 G.T. count checked on the full-resolution 1950 scan: 0 (1938: 3; the 1950 paste-over shows no tank circles)",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
-    "label",
-    "street_number",
     "construction",
+    "gasoline_tank_count",
+    "gasoline_tank_count (1950 full-res)",
+    "label",
     "stories",
-    "gasoline_tank_count"
+    "street_number"
    ],
    "needs_human_check": [
     "still on the 1950 map? Station rebuilt under a 1950 paste-over (\"FILLING STA.\"); the G.T. symbols are not visible on the patch."

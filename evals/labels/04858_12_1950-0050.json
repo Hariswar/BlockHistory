@@ -14,7 +14,7 @@
   "needs_human_check": "Fields still to confirm by eye."
  },
  "sheet_layout": "Two strips: left = S Broadway, Dover to Holly Hills (river to the east); right = S Broadway, Holly Hills to Quincy (river at far right). Entries on the right strip are not at the sheet edge.",
- "total_gasoline_tanks": 13,
+ "total_gasoline_tanks": 10,
  "buildings": [
   {
    "label": "PAINT'G",
@@ -253,10 +253,11 @@
    "other_tanks": [],
    "partial": false,
    "position": "tile r3_c2",
-   "map_notes": "Same lot and common roof as the 6800 filling station, corner of E Kraus. Oil warehouse, office, pump house. 4 gasoline storage tanks.",
+   "map_notes": "Same lot and common roof as the 6800 filling station, corner of E Kraus. Oil warehouse, office, pump house. 4 gasoline storage tanks. | 1950 G.T. count checked on the full-resolution 1950 scan: 4",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []
@@ -316,14 +317,15 @@
    "street_name": "E Quincy",
    "construction": "brick",
    "stories": "1-2",
-   "gasoline_tank_count": 1,
+   "gasoline_tank_count": 0,
    "other_tanks": [],
    "partial": false,
    "position": "tile r3_c2",
-   "map_notes": "Foundry (2 buildings), cupolas, pattern storage, flask storage, rattlers, sand storage, brick oven. 1 G.T. beside building E on E Quincy.",
+   "map_notes": "Foundry (2 buildings), cupolas, pattern storage, flask storage, rattlers, sand storage, brick oven. 1 G.T. beside building E on E Quincy. | 1950 G.T. count checked on the full-resolution 1950 scan: 0 (1938: 1; the 1950 paste-over shows no tank circles)",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []
@@ -335,14 +337,15 @@
    "street_name": "S Broadway",
    "construction": "brick",
    "stories": "1-2",
-   "gasoline_tank_count": 3,
+   "gasoline_tank_count": 1,
    "other_tanks": [],
    "partial": false,
    "position": "tile r3_c3",
-   "map_notes": "BR. TO EAVES; concrete floor. 3 G.T. Corner of E Kraus. Shares a building with the bulk oil station.",
+   "map_notes": "BR. TO EAVES; concrete floor. 3 G.T. Corner of E Kraus. Shares a building with the bulk oil station. | 1950 G.T. count checked on the full-resolution 1950 scan: 1",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []
@@ -377,10 +380,11 @@
    "other_tanks": [],
    "partial": false,
    "position": "tile r4_c3",
-   "map_notes": "Concrete floor. 1 G.T. + 2 G.T.S. Corner of E Quincy.",
+   "map_notes": "Concrete floor. 1 G.T. + 2 G.T.S. Corner of E Quincy. | 1950 G.T. count checked on the full-resolution 1950 scan: 3",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []
@@ -396,10 +400,11 @@
    "other_tanks": [],
    "partial": false,
    "position": "tile r1_c3",
-   "map_notes": "Concrete floor. 2 G.T.S. South of E Soper. Missed by the first draft and first audit.",
+   "map_notes": "Concrete floor. 2 G.T.S. South of E Soper. Missed by the first draft and first audit. | 1950 G.T. count checked on the full-resolution 1950 scan: 2",
    "interpretation": "",
    "contamination_relevance": "high",
    "checked_against_map": [
+    "gasoline_tank_count (1950 full-res)",
     "label (1950 crop)"
    ],
    "needs_human_check": []

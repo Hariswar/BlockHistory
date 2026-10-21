@@ -29,7 +29,7 @@ from blockhistory.map_reader.scoring import address_level, is_found, label_words
 ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "data" / "cache" / "tank_reader"
 DEFAULT_EFFORT = "low"
-PROMPT_VERSION = "t1"
+PROMPT_VERSION = "t2"  # t2: ignore faint print showing through paste-over patches
 MAX_TOKENS = 4000
 EST_TOKENS = (2_300, 600)  # per crop; only used for the budget check
 CROP_OVERLAP = 128  # full-res pixels shared by neighboring crops of one tile
@@ -56,6 +56,7 @@ What does not count:
 - Water tanks ("W.T."), and tanks labeled for oil, tar, benzol, ammonia, acid, water, \
 grain or molasses. Gas holders ("GASOMETER") store coal gas, not gasoline.
 - Letters O and the digit 0 in printed text; skylights and small squares.
+- Faint, washed-out circles or labels showing through a pasted-on paper patch. Later map editions cover changed lots with printed patches (often a slightly different paper tone with a visible edge); the old symbols underneath can still show faintly. They are no longer on the map. Count only crisp, dark circles printed on top.
 
 For each group of gasoline tanks give the printed tank label, the number of circles, and \
 the site the tanks serve: copy that building's or yard's use label exactly as printed \
@@ -218,23 +219,42 @@ def _unnamed(site: str) -> bool:
     return not label_words(site) or bool(re.fullmatch(r"\s*[DSFA]\.?\s*", site))
 
 
+def _grid(tile: str) -> tuple[int, int]:
+    """'..._r2_c3.jpg' -> (2, 3)."""
+    m = re.search(r"_r(\d+)_c(\d+)\.jpg$", tile)
+    return (int(m.group(1)), int(m.group(2))) if m else (-99, -99)
+
+
+def _same_number(group: dict, finding: dict) -> bool:
+    """Exactly the same house number, or one of them unknown (no misread tolerance)."""
+    a, b = group.get("site_street_number"), finding.get("street_number")
+    return not a or not b or a.split("-")[0].strip() == b.split("-")[0].strip()
+
+
+def _near_tiles(tile: str, other: str) -> bool:
+    (r1, c1), (r2, c2) = _grid(tile), _grid(other)
+    return abs(r1 - r2) <= 1 and abs(c1 - c2) <= 1
+
+
 def apply(findings: list[dict], tile_dir: Path, model: str | None = None) -> dict:
     """Put second-pass tank counts on a sheet's findings, in place.
 
     Each tank group goes to the finding on its tile that it names. A group that names no
     business ("" or "D.") goes to the tile's only fuel or vehicle finding if there is
-    exactly one, and is dropped otherwise. A finding's count becomes the most circles any
+    exactly one, and is dropped otherwise. A named group that matches nothing on its tile
+    but names a finding on a neighbouring tile, street number included, is that finding's
+    tanks seen across a tile edge, not a new site. A finding's count becomes the most circles any
     one crop of its tiles gives it (crops overlap, so counts are not added across crops),
     or the first pass's count if that is higher. Groups naming a business the first pass
     missed become new findings. Returns a summary.
     """
-    readings: dict[str, list[list[dict]]] = {}
+    readings: dict[str, list[tuple[str, list[dict]]]] = {}
     usd = 0.0
     for tile in sorted(tile_dir.glob("*.jpg")):
         for crop in sorted(hires_dir(tile_dir).glob(f"{tile.stem}_q*.jpg")):
             result = load_cached(crop, model)
             if result:
-                readings.setdefault(tile.name, []).append(result["reading"]["groups"])
+                readings.setdefault(tile.name, []).append((crop.name, result["reading"]["groups"]))
                 usd += result["usd"]
     if not readings:
         return {"tiles": 0, "usd": 0.0, "changed": 0, "added": 0}
@@ -244,7 +264,7 @@ def apply(findings: list[dict], tile_dir: Path, model: str | None = None) -> dic
     for tile, crops in readings.items():
         here = [k for k, f in enumerate(findings) if tile in f["tiles"]]
         fuel = [k for k in here if is_candidate(findings[k])]
-        for groups in crops:
+        for crop, groups in crops:
             per_crop: dict[int, int] = {k: 0 for k in here}
             for g in groups:
                 if g["circles"] <= 0:
@@ -270,6 +290,23 @@ def apply(findings: list[dict], tile_dir: Path, model: str | None = None) -> dic
     added: list[dict] = []
     for tile, g in orphans:
         label = g["site_label"]
+        # The same tanks seen from a neighbouring tile, under a slightly different name.
+        near = [
+            k
+            for k, f in enumerate(findings)
+            if any(_near_tiles(tile, t) for t in f["tiles"])
+            and (
+                is_found(f["label"], set(label_words(label)))
+                or is_found(label, set(label_words(f["label"])))
+            )
+        ]
+
+        same_place = [k for k in near if _serves(g, findings[k]) and _same_number(g, findings[k])]
+        if same_place:
+            f = findings[same_place[0]]
+            f["tank_pass_count"] = max(f.get("tank_pass_count", 0), g["circles"])
+            f["gasoline_tank_count"] = max(f["gasoline_tank_count"], g["circles"])
+            continue
         same = next(
             (
                 a
