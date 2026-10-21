@@ -18,7 +18,8 @@ import re
 import sqlite3
 from pathlib import Path
 
-from blockhistory.explain import category, explanation
+from blockhistory import explain_ai
+from blockhistory.explain import category
 from blockhistory.georef.transform import M_PER_DEG, Affine, leave_one_out
 from blockhistory.map_reader.relevance import relevance
 from blockhistory.map_reader.scoring import label_words, norm
@@ -266,7 +267,7 @@ def load_sheet(
                 f.get("street_number"),
                 f["relevance"],
                 cat,
-                explanation(f, edition),
+                explain_ai.explanation(f, edition)[0],
                 f["gasoline_tank_count"],
                 f.get("confidence"),
                 status,

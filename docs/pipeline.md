@@ -96,6 +96,15 @@ Human-verified and draft label files are reported separately. A draft becomes ve
 - `blockhistory/records/dnr.py` reads two public layers of the DNR E-START map service (tank facilities, hazardous-waste cleanup sites) for Carondelet and Patch, puts each on its City of St. Louis parcel when the address matches, and words its status plainly. Cached in `data/cache/records/`.
 - Run it before `build_db.py --export`; the export carries the records. After a schema change, re-run `schema_postgis.sql` in Supabase first (it adds the `records` table and `records_near()`).
 
+## 6c-2. AI explanations (~$0.02 for all labels)
+```
+.venv/bin/python scripts/run_explain.py submit                    # one request per distinct shown label
+.venv/bin/python scripts/run_explain.py collect <batch_id> --wait
+.venv/bin/python scripts/run_explain.py apply                     # or rebuild with build_db.py
+.venv/bin/python scripts/run_explain.py report                    # how many pass the checks
+```
+- Haiku writes only the middle of each note (what the business was, what it handled, how that could reach soil or groundwater). `blockhistory/explain_ai.py` keeps the fixed opening (year, label as printed), the tank sentence and "This is a historical use, not a test result", and rejects any text that overclaims, mentions health, addresses the reader, talks about the present, adds numbers, or runs long; those keep the reviewed template from `explain.py`. Cached by the facts sent, so new sheets only pay for new labels.
+
 ## 6d. Check accuracy after every change (free, ~15 s)
 ```
 .venv/bin/python scripts/check_accuracy.py            # scores vs evals/baseline.json; exit 1 if worse

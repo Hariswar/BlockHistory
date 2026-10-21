@@ -152,3 +152,43 @@ def test_records_are_returned_only_where_the_maps_cover(con, tmp_path):
     _, files = store.export_postgis_sql(con, tmp_path / "load.sql")
     sql = files[0].read_text()
     assert "DELETE FROM records" in sql and "INSERT INTO records" in sql and "TRUE" in sql
+
+
+def test_ai_explanations_are_checked_and_framed(tmp_path, monkeypatch):
+    from blockhistory import explain_ai
+
+    f = explain_ai.facts({"label": "BENZOL PLANT", "use": "benzol plant"})
+    ok = (
+        "A benzol plant refined light oil from coke-oven gas into benzene and related "
+        "solvents. Spilled solvents could soak into soil and sometimes reach groundwater."
+    )
+    assert explain_ai.check(ok, f) is None
+    assert "contaminat" in explain_ai.check("The site is contaminated with benzene.", f)
+    assert "you" in explain_ai.check("You may want to test the soil.", f).lower()
+    assert "number" in explain_ai.check("It ran from 1890 on.", f)
+    assert explain_ai.check("One. Two. Three.", f) == "more than 2 sentences"
+
+    # A passing text replaces only the category sentence; the framing stays.
+    monkeypatch.setattr(explain_ai, "ai_text", lambda finding, model=None: ok)
+    text, source = explain_ai.explanation(
+        {"label": "BENZOL PLANT", "use": "benzol plant", "gasoline_tank_count": 1}, "1938"
+    )
+    assert source == "ai" and ok in text
+    assert text.startswith("The 1938 Sanborn fire insurance map labels this site “BENZOL PLANT”")
+    assert text.endswith("This is a historical use, not a test result.")
+    monkeypatch.setattr(explain_ai, "ai_text", lambda finding, model=None: None)
+    assert (
+        explain_ai.explanation({"label": "BENZOL PLANT", "use": "benzol plant"}, "1938")[1]
+        == "template"
+    )
+
+
+def test_abbreviations_are_not_sentence_ends():
+    from blockhistory import explain_ai
+
+    f = explain_ai.facts({"label": "PAINT W. HO.", "use": "paint warehouse"})
+    text = (
+        "PAINT W. HO. likely means a paint warehouse, where paint products were stored. "
+        "Such places often held solvents and pigments that could reach soil or groundwater."
+    )
+    assert explain_ai.check(text, f) is None

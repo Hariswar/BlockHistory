@@ -339,3 +339,7 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 - `scripts/check_accuracy.py` scores both map years against the answer keys and every scan-checked listing, checks the hand corrections and the georeferencing, and compares with `evals/baseline.json` (~15 s, $0). A pre-commit hook runs it with the lint and tests.
 - Baseline: 1938 sites found 103/119, high-concern 47/53, real flags 140/154, tank sites 14/15, exact counts 13/15, listings right as read 232/253 (92%); 1950 81/101, 40/46, 127/160, 8/8, 6/8, 213/238 (89%; answer keys still drafts). Worst georeferencing panel: 7.8 m median (sheet 69, 1938). Reading cost about $0.012 per sheet.
 - Tested by switching off one rule: the check failed and named the 30 listings that newly appeared. Tests: 104.
+
+## Phase 2: AI-written explanations (Oct 21, 2026)
+- 295 distinct shown labels explained by Haiku via the Batch API ($0.02; project $1.60 of $10). 472 of 475 shown listings use the AI sentence; 3 fail the checks and keep the template (one too long, one misreading "EARTH FL." as fill, one office text using "hazardous").
+- Read a sample by hand before applying: specific and hedged (e.g. a varnish house "cooked resins, oils and solvents in kettles"; a benzol plant "recovered light oils such as benzene from coke-oven gas"). The About page says the middle sentence is AI-written and rule-checked. Tests: 106.

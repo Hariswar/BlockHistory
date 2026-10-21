@@ -45,6 +45,11 @@ export default function About() {
               fixed or removed. Listings the project&apos;s author also checked say so.
             </li>
             <li>
+              The note on each listing explains that kind of business in plain words. The middle
+              sentence is written by the AI model from the printed label and checked by fixed
+              rules (no claims about a property, no health claims); the rest is fixed wording.
+            </li>
+            <li>
               Each search also lists the Missouri Department of Natural Resources&apos; tank and
               cleanup records nearby, and puts a record on a listing when both are at the same spot.
             </li>
