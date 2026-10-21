@@ -269,6 +269,7 @@ function FindingCard({
         {f.records.map((r) => (
           <RecordNote key={r.id} r={r} lead="State record at about this spot" />
         ))}
+        <NextStep f={f} />
         {f.alsoPrinted.length > 0 && (
           <p className="small" style={{ margin: "4px 0" }}>
             Same kind of use, also printed within 40 m:{" "}
@@ -373,5 +374,27 @@ function RecordNote({ r, lead }: { r: PublicRecord; lead: string }) {
         State record ({r.source})
       </a>
     </div>
+  );
+}
+
+const ESTART_URL =
+  "https://dnr.mo.gov/waste-recycling/data-e-services/environmental-site-tracking-research-tool-e-start";
+
+// A practical next step on every listing (plan rule 4). Fuel and garage sites point to the
+// state tank program; the rest to state cleanup records and a soil test.
+function NextStep({ f }: { f: PublicFinding }) {
+  const tanks = f.hasGasolineTanks || f.category === "fuel" || f.category === "auto";
+  return (
+    <p className="small next-step">
+      <strong>If this matters for a property:</strong> check the state&apos;s records in{" "}
+      <a href={ESTART_URL} target="_blank" rel="noreferrer">
+        Missouri DNR E-START
+      </a>
+      {tanks
+        ? " for whether tanks were removed or a leak was reported"
+        : " for a cleanup or a reported release"}
+      , and before digging or gardening consider a soil test by a certified lab. The City of St.
+      Louis Department of Health can advise.
+    </p>
   );
 }

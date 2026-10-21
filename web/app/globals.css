@@ -482,6 +482,10 @@ button:disabled {
   border-left-color: var(--brick);
 }
 
+.next-step {
+  margin: 6px 0;
+}
+
 .records {
   margin-top: 16px;
   padding: 14px 16px;
