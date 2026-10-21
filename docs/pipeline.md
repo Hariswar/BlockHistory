@@ -96,6 +96,16 @@ Human-verified and draft label files are reported separately. A draft becomes ve
 - `blockhistory/records/dnr.py` reads two public layers of the DNR E-START map service (tank facilities, hazardous-waste cleanup sites) for Carondelet and Patch, puts each on its City of St. Louis parcel when the address matches, and words its status plainly. Cached in `data/cache/records/`.
 - Run it before `build_db.py --export`; the export carries the records. After a schema change, re-run `schema_postgis.sql` in Supabase first (it adds the `records` table and `records_near()`).
 
+## 6d. Check accuracy after every change (free, ~15 s)
+```
+.venv/bin/python scripts/check_accuracy.py            # scores vs evals/baseline.json; exit 1 if worse
+.venv/bin/python scripts/check_accuracy.py --update   # accept the current scores
+git config core.hooksPath .githooks                   # once per clone: run it before each commit
+```
+- Both map years: the answer keys (sites found, high-concern sites, real flags, tank sites, exact counts, tanks on sites with none), every shown listing on the scan-checked sheets (right as read, and any listing that is new since the baseline), stale hand corrections, and each panel's georeferencing error (fails over 8 m). Cost per sheet is shown, never a failure.
+- A rate may fall at most 1 point; error counts may not rise. New listings fail the check until they are compared with the scans (add fixes to `config/corrections/`) and accepted with `--update`, which also records them as checked. Commit `evals/baseline.json` with the change.
+- The pre-commit hook (`.githooks/pre-commit`) runs lint, tests and this check when a commit touches `blockhistory/`, `scripts/`, `config/`, `evals/labels/` or `tests/`.
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]

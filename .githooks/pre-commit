@@ -1,0 +1,12 @@
+#!/bin/sh
+# Before a commit that touches the pipeline, its data or its answer keys: lint, tests, and
+# the accuracy check against evals/baseline.json (all from cache, about 20 s, $0).
+# Enable once per clone:  git config core.hooksPath .githooks
+# Skip once (not recommended): git commit --no-verify
+changed=$(git diff --cached --name-only)
+echo "$changed" | grep -qE '^(blockhistory/|scripts/|config/|evals/labels/|tests/)' || exit 0
+py=.venv/bin/python
+[ -x "$py" ] || { echo "pre-commit: no .venv, skipping checks"; exit 0; }
+echo "pre-commit: lint" && $py -m ruff check . -q || exit 1
+echo "pre-commit: tests" && $py -m pytest -q 2>&1 | tail -1 | grep -q passed || { $py -m pytest -q | tail -15; exit 1; }
+echo "pre-commit: accuracy" && $py scripts/check_accuracy.py | tail -4 || exit 1

@@ -201,6 +201,22 @@ def summary_lines(name: str, rows: list[dict]) -> list[str]:
     ]
 
 
+def score_edition(area: str, edition: str, tank_pass: bool = True) -> list[dict]:
+    """score_sheet() for every sheet of the edition that has hand labels and read tiles."""
+    tile_root = ROOT / "data" / "tiles" / area / edition
+    rows = []
+    for path in sorted(LABELS.glob("*.json")):
+        tile_dir = tile_root / path.stem
+        if path.stem.startswith("_") or not tile_dir.is_dir():
+            continue
+        if not any(tile_dir.glob("*.jpg")):
+            continue
+        r = score_sheet(tile_dir, json.loads(path.read_text()), tank_pass=tank_pass)
+        if r["tiles_read"]:
+            rows.append(r)
+    return rows
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("area")
@@ -208,18 +224,7 @@ def main() -> None:
     parser.add_argument("--no-tank-pass", action="store_true", help="first pass only")
     args = parser.parse_args()
 
-    tile_root = ROOT / "data" / "tiles" / args.area / args.edition
-    rows = []
-    for path in sorted(LABELS.glob("*.json")):
-        tile_dir = tile_root / path.stem
-        if path.stem.startswith("_") or not tile_dir.is_dir():
-            continue
-        labels = json.loads(path.read_text())
-        if not any(tile_dir.glob("*.jpg")):
-            continue
-        r = score_sheet(tile_dir, labels, tank_pass=not args.no_tank_pass)
-        if r["tiles_read"]:
-            rows.append(r)
+    rows = score_edition(args.area, args.edition, tank_pass=not args.no_tank_pass)
     if not rows:
         raise SystemExit("no sheet has both hand labels and read tiles")
 
