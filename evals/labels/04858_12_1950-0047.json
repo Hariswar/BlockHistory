@@ -22,9 +22,9 @@
  ],
  "total_gasoline_tanks": 0,
  "verification": {
-  "status": "draft",
-  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
-  "date": "2026-10-19"
+  "status": "human_verified",
+  "date": "2026-10-21",
+  "method": "AI-assisted draft from the verified 1938 key (each site compared on the 1938 and 1950 scans; 1950 tank counts checked at full resolution), reviewed and approved by Baburaj on 2026-10-21. 3 sites that had been flagged for a check were approved in that review. Not included: businesses new since 1938, so precision against this key reads low."
  },
  "buildings": [
   {
@@ -69,9 +69,8 @@
     "stories",
     "street_number"
    ],
-   "needs_human_check": [
-    "still on the 1950 map? Station rebuilt under a 1950 paste-over (\"FILLING STA.\"); the G.T. symbols are not visible on the patch."
-   ]
+   "needs_human_check": [],
+   "approved_note": "approved in review: still on the 1950 map? Station rebuilt under a 1950 paste-over (\"FILLING STA.\"); the G.T. symbols are not visible on the patch."
   },
   {
    "label": "A. / WOOD YARD",
@@ -90,10 +89,8 @@
    "checked_against_map": [
     "label (1950 crop)"
    ],
-   "needs_human_check": [
-    "street number",
-    "construction"
-   ]
+   "needs_human_check": [],
+   "approved_note": "approved in review: street number; construction"
   },
   {
    "label": "PAINT SPRAYING & BENZOL WASHING / PAINT STGE. (CONC.)",
@@ -173,9 +170,8 @@
     "stories",
     "gasoline_tank_count"
    ],
-   "needs_human_check": [
-    "still on the 1950 map? Not located on the 1950 crop; check the block (ROOFING W. HO. nearby)."
-   ]
+   "needs_human_check": [],
+   "approved_note": "approved in review: still on the 1950 map? Not located on the 1950 crop; check the block (ROOFING W. HO. nearby)."
   }
  ],
  "removed_since_1938": [

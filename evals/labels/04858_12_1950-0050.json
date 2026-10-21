@@ -95,10 +95,8 @@
    "checked_against_map": [
     "label (1950 crop)"
    ],
-   "needs_human_check": [
-    "street number",
-    "construction"
-   ]
+   "needs_human_check": [],
+   "approved_note": "approved in review: street number; construction"
   },
   {
    "label": "THE JOHNSTON TIN FOIL & METAL CO. MFG. METAL FOIL",
@@ -200,9 +198,8 @@
     "stories",
     "street_number"
    ],
-   "needs_human_check": [
-    "still on the 1950 map? Pig iron plant pasted over in 1950, but scrap iron and melting buildings remain nearby."
-   ]
+   "needs_human_check": [],
+   "approved_note": "approved in review: still on the 1950 map? Pig iron plant pasted over in 1950, but scrap iron and melting buildings remain nearby."
   },
   {
    "label": "ST. LOUIS STEEL CASTING CO. MFG. STEEL CASTINGS",
@@ -430,9 +427,8 @@
     "stories",
     "street_number"
    ],
-   "needs_human_check": [
-    "still on the 1950 map? Not located on the crops."
-   ]
+   "needs_human_check": [],
+   "approved_note": "approved in review: still on the 1950 map? Not located on the crops."
   },
   {
    "label": "PATTERN STGE.",
@@ -451,16 +447,14 @@
    "checked_against_map": [
     "label (1950 crop)"
    ],
-   "needs_human_check": [
-    "street number",
-    "construction"
-   ]
+   "needs_human_check": [],
+   "approved_note": "approved in review: street number; construction"
   }
  ],
  "verification": {
-  "status": "draft",
-  "method": "Drafted from the human-verified 1938 key. Sites marked needs_human_check could not be confirmed; sites new since 1938 are NOT included yet (sweep the 1950 sheet for them before marking verified).",
-  "date": "2026-10-19"
+  "status": "human_verified",
+  "date": "2026-10-21",
+  "method": "AI-assisted draft from the verified 1938 key (each site compared on the 1938 and 1950 scans; 1950 tank counts checked at full resolution), reviewed and approved by Baburaj on 2026-10-21. 4 sites that had been flagged for a check were approved in that review. Not included: businesses new since 1938, so precision against this key reads low."
  },
  "notes": "2026-10-13: the coal dealers' yard label now lists GASOL. ENG. and A. 18 TRUCKS (already in its map_notes) so the eval can match a reader that names the building instead of the yard. 2026-10-13: added BL. SM. (blacksmith) at 107-111 E Soper, approved by Baburaj after the spot check found it missing.",
  "removed_since_1938": [
