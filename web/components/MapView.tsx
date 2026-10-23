@@ -12,8 +12,21 @@ export type Coverage = {
   footprint: GeoJSON.Polygon;
 };
 
+// One georeferenced panel of an old map scan (web/public/overlays/<area>.json).
+export type Overlay = {
+  id: string;
+  year: string;
+  service: string;
+  region: [number, number, number, number]; // x, y, w, h on the full-resolution scan
+  corners: [number, number][]; // [lon, lat]: top-left, top-right, bottom-right, bottom-left
+  clip: [number, number][]; // panel outline as fractions of the region
+  holes: [number, number][][]; // other panels of the sheet, cut out (same fractions)
+};
+
 type Props = {
   coverage: Coverage[];
+  overlays: Overlay[];
+  overlayOpacity: number;
   point: { lat: number; lon: number } | null;
   radiusM: number;
   findings: PublicFinding[];
@@ -34,7 +47,49 @@ function circle(lat: number, lon: number, radiusM: number): GeoJSON.Polygon {
   return { type: "Polygon", coordinates: [ring] };
 }
 
-export default function MapView({ coverage, point, radiusM, findings, active, onSelect }: Props) {
+const IIIF = "https://tile.loc.gov/image-services/iiif";
+
+// The scan region, cut to the panel outline so panels of one sheet don't cover each other.
+function loadPanel(o: Overlay): Promise<HTMLCanvasElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const c = document.createElement("canvas");
+      c.width = img.naturalWidth;
+      c.height = img.naturalHeight;
+      const ctx = c.getContext("2d")!;
+      ctx.beginPath();
+      o.clip.forEach(([fx, fy], i) => (i ? ctx.lineTo : ctx.moveTo).call(ctx, fx * c.width, fy * c.height));
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(img, 0, 0);
+      ctx.globalCompositeOperation = "destination-out";
+      for (const hole of o.holes) {
+        ctx.beginPath();
+        hole.forEach(([fx, fy], i) => (i ? ctx.lineTo : ctx.moveTo).call(ctx, fx * c.width, fy * c.height));
+        ctx.fill();
+      }
+      resolve(c);
+    };
+    img.onerror = reject;
+    img.src = `${IIIF}/${o.service}/${o.region.join(",")}/!2048,2048/0/default.jpg`;
+  });
+}
+
+export default function MapView({
+  coverage,
+  overlays,
+  overlayOpacity,
+  point,
+  radiusM,
+  findings,
+  active,
+  onSelect,
+}: Props) {
+  const shownPanels = useRef(new Set<string>());
+  const opacity = useRef(overlayOpacity);
+  opacity.current = overlayOpacity;
   const box = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const markers = useRef<maplibregl.Marker[]>([]);
@@ -66,6 +121,7 @@ export default function MapView({ coverage, point, radiusM, findings, active, on
     return () => {
       m.remove();
       map.current = null;
+      shownPanels.current.clear();
     };
   }, []);
 
@@ -84,6 +140,62 @@ export default function MapView({ coverage, point, radiusM, findings, active, on
       return () => clearInterval(t);
     }
   }, [coverage]);
+
+  // Old map panels under the coverage outlines and markers.
+  useEffect(() => {
+    const wanted = new Set(overlays.map((o) => o.id));
+    const sync = () => {
+      const m = map.current!;
+      for (const id of [...shownPanels.current]) {
+        if (wanted.has(id)) continue;
+        if (m.getLayer(`old-${id}`)) m.removeLayer(`old-${id}`);
+        if (m.getSource(`old-${id}`)) m.removeSource(`old-${id}`);
+        shownPanels.current.delete(id);
+      }
+      for (const o of overlays) {
+        if (shownPanels.current.has(o.id)) continue;
+        shownPanels.current.add(o.id);
+        loadPanel(o)
+          .then((canvas) => {
+            // Skip if the search or year changed while the image loaded.
+            if (!map.current || !shownPanels.current.has(o.id) || m.getSource(`old-${o.id}`)) return;
+            m.addSource(`old-${o.id}`, {
+              type: "canvas",
+              canvas,
+              animate: false,
+              coordinates: o.corners as [[number, number], [number, number], [number, number], [number, number]],
+            });
+            m.addLayer(
+              {
+                id: `old-${o.id}`,
+                type: "raster",
+                source: `old-${o.id}`,
+                paint: { "raster-opacity": opacity.current / 100, "raster-fade-duration": 0 },
+              },
+              "coverage-fill",
+            );
+            // Stack in the given order (the panel holding the address last, on top).
+            for (const other of overlays) {
+              if (m.getLayer(`old-${other.id}`)) m.moveLayer(`old-${other.id}`, "coverage-fill");
+            }
+          })
+          .catch(() => shownPanels.current.delete(o.id));
+      }
+    };
+    if (map.current) sync();
+    else {
+      const t = setInterval(() => map.current && (sync(), clearInterval(t)), 200);
+      return () => clearInterval(t);
+    }
+  }, [overlays]);
+
+  useEffect(() => {
+    const m = map.current;
+    if (!m) return;
+    for (const id of shownPanels.current) {
+      if (m.getLayer(`old-${id}`)) m.setPaintProperty(`old-${id}`, "raster-opacity", overlayOpacity / 100);
+    }
+  }, [overlayOpacity]);
 
   // Search point, radius and numbered finding markers.
   useEffect(() => {

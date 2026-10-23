@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import MapLegend from "./MapLegend";
-import MapView, { type Coverage } from "./MapView";
+import MapView, { type Coverage, type Overlay } from "./MapView";
 import type { PublicFinding, PublicRecord } from "@/lib/present";
 
 type Result = {
@@ -33,12 +33,21 @@ export default function Search() {
   const [coverage, setCoverage] = useState<Coverage[]>([]);
   const [active, setActive] = useState<number | null>(null);
   const [year, setYear] = useState("1938");
+  const [overlays, setOverlays] = useState<Overlay[]>([]);
+  const [oldMap, setOldMap] = useState(70); // % opacity of the old map over today's streets
 
   // A search can be linked: /?q=7313+S+Broadway
   useEffect(() => {
     const q = new URLSearchParams(window.location.search).get("q");
     if (q) run(q);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetch("/overlays/carondelet.json")
+      .then((r) => r.json())
+      .then((d) => setOverlays(d.panels))
+      .catch(() => setOverlays([]));
   }, []);
 
   useEffect(() => {
@@ -80,6 +89,9 @@ export default function Search() {
     coveredBy: result.coveredBy.filter((s) => s.year === year),
     findings: result.findings.filter((f) => f.year === year),
   };
+
+  // Old map panels of the selected year around the searched address.
+  const panels = shown ? panelsNear(overlays, year, shown.point, shown.radiusM) : [];
 
   return (
     <>
@@ -140,6 +152,8 @@ export default function Search() {
         <div className="map">
           <MapView
             coverage={coverage.filter((c) => c.year === year)}
+            overlays={panels}
+            overlayOpacity={oldMap}
             point={shown?.point ?? null}
             radiusM={shown?.radiusM ?? 100}
             findings={shown?.findings ?? []}
@@ -150,6 +164,25 @@ export default function Search() {
             }}
           />
           <MapLegend searched={!!shown} />
+          {panels.length > 0 && (
+            <div className="fade">
+              <label htmlFor="old-map">
+                <span>Today</span>
+                <input
+                  id="old-map"
+                  type="range"
+                  min={0}
+                  max={100}
+                  step={5}
+                  value={oldMap}
+                  onChange={(e) => setOldMap(Number(e.target.value))}
+                  aria-label={`Show the ${year} map over today's streets`}
+                />
+                <span>{year} map</span>
+              </label>
+              <span className="small">{year} scan: Library of Congress</span>
+            </div>
+          )}
         </div>
         {shown && (
           <div className="side">
@@ -397,4 +430,28 @@ function NextStep({ f }: { f: PublicFinding }) {
       Louis Department of Health can advise.
     </p>
   );
+}
+
+// Panels whose ground box overlaps the search circle (at most 8); the one holding the address
+// drawn last (on top). The neighbours fill in the circle where the address panel ends.
+function panelsNear(all: Overlay[], year: string, p: { lat: number; lon: number }, radiusM: number) {
+  const dLat = radiusM / 111_320;
+  const dLon = radiusM / (111_320 * Math.cos((p.lat * Math.PI) / 180));
+  const box = (o: Overlay) => {
+    const lons = o.corners.map((c) => c[0]);
+    const lats = o.corners.map((c) => c[1]);
+    return [Math.min(...lons), Math.min(...lats), Math.max(...lons), Math.max(...lats)];
+  };
+  const holds = (o: Overlay) => {
+    const [w, s, e, n] = box(o);
+    return p.lon >= w && p.lon <= e && p.lat >= s && p.lat <= n;
+  };
+  return all
+    .filter((o) => o.year === year)
+    .filter((o) => {
+      const [w, s, e, n] = box(o);
+      return w <= p.lon + dLon && e >= p.lon - dLon && s <= p.lat + dLat && n >= p.lat - dLat;
+    })
+    .sort((a, b) => Number(holds(a)) - Number(holds(b)))
+    .slice(-8);
 }

@@ -115,6 +115,10 @@ git config core.hooksPath .githooks                   # once per clone: run it b
 - A rate may fall at most 1 point; error counts may not rise. New listings fail the check until they are compared with the scans (add fixes to `config/corrections/`) and accepted with `--update`, which also records them as checked. Commit `evals/baseline.json` with the change.
 - The pre-commit hook (`.githooks/pre-commit`) runs lint, tests and this check when a commit touches `blockhistory/`, `scripts/`, `config/`, `evals/labels/` or `tests/`.
 
+## 6e. Old-map overlay (free)
+- `build_db.py --export` also writes `web/public/overlays/<area>.json` (or run `scripts/export_overlays.py <area>`): for each panel, its IIIF region on the full-resolution scan, the ground position of that region's corners, and its outline (plus, for a rest-of-sheet panel, the other panels' outlines as holes). The transforms are affine, so four corners place a scan exactly.
+- The website loads the scan region straight from the Library of Congress (CORS is open), cuts it to the outline on a canvas, and draws it as a MapLibre canvas source under the markers, with the panel holding the address on top. A slider fades between the old map and today's streets. Commit the JSON with the website; re-export after any control-point change.
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]

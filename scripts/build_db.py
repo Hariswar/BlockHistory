@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import export_overlays
 from georef_sheet import load_panels, located_findings
 
 from blockhistory.db import corrections, store
@@ -57,6 +58,8 @@ def main() -> None:
         print(f"PostGIS export: {n} findings in {len(files)} files (run in order):")
         for f in files:
             print(f"  {f.relative_to(ROOT)}  ({f.stat().st_size // 1000} KB)")
+        overlays = export_overlays.write(args.area)
+        print(f"old-map overlay: {overlays.relative_to(ROOT)} (commit it with the website)")
 
 
 if __name__ == "__main__":
