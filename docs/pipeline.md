@@ -124,6 +124,16 @@ git config core.hooksPath .githooks                   # once per clone: run it b
 - Website: `/streets` (every street, sites per map year) and `/streets/<slug>` (sites in order along the street, turned so house numbers go up; each links to a map search around it, `/?q=lat,lon`). Both count sites the way search does (`groupSites`). Supabase: `street_findings(street_name)` in `schema_postgis.sql`; re-run that file after pulling this change.
 - Shared links: `/?q=...` and street pages set a title, summary and a 1200×630 preview image from `/api/og`. The search page has a Share button.
 
+## 6g. Community notes: review them (free)
+Visitors send two kinds of note from the website: **memories** ("Remember what used to be here?", under every search in the mapped area) and **corrections** ("Something wrong with this listing?", on every card). They land in the `community_notes` table in Supabase; the public can add notes (through `submit_note()`, which checks every field, refuses links and caps the site at 30 notes an hour) but can't read them.
+
+To review, open Supabase → Table Editor → `community_notes`, filter `status = new`:
+- **Memory worth showing:** write `public_text` in your own words, short and neutral, following the explainer rules: what was there and roughly when, no names or private details, never "contaminated" (e.g. "A gas station on the corner, with pumps out front."). Then set `status` to `approved`. It appears under searches within 100 m as "Neighbors remember", marked as not checked against records. Visitors' own words are never shown.
+- **Correction:** compare it with the map scan; if right, add the fix to `config/corrections/` (or ask for it), rebuild and reload, then set `status` to `applied`. Otherwise `rejected`.
+- Anything else (spam, personal details, unsure): `rejected`. Use `reviewer_note` for why.
+
+The data reload (`load_postgis_*.sql`) never touches this table.
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]

@@ -162,3 +162,95 @@ GRANT EXECUTE ON FUNCTION street_findings(TEXT) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION records_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION sheets_covering(DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION findings_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;
+
+-- Community notes (Phase 3): memories of what used to be on a block, and corrections to
+-- listings, sent from the website. Visitors can only ADD notes, through submit_note(), which
+-- checks every field and caps the rate. Nobody can read the queue through the public API:
+-- review it in the Supabase Table Editor. A note shows on the site only once its status is
+-- 'approved' AND public_text is filled in (the reviewer's edited wording), via notes_near().
+-- The load_postgis_*.sql files never touch this table.
+CREATE TABLE IF NOT EXISTS community_notes (
+  id BIGSERIAL PRIMARY KEY,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  kind TEXT NOT NULL CHECK (kind IN ('memory', 'correction')),
+  body TEXT NOT NULL,                 -- what the visitor wrote (never shown as is)
+  decade TEXT,                        -- memories: roughly when
+  source TEXT,                        -- memories: how they know (lived, worked, family, other)
+  problem TEXT,                       -- corrections: wrong_use, wrong_place, other
+  edition TEXT, sheet_number INTEGER, label TEXT,  -- corrections: the listing as shown
+  geom GEOGRAPHY(POINT, 4326) NOT NULL,            -- rounded to about 10 m
+  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'approved', 'rejected', 'applied')),
+  public_text TEXT,                   -- the wording the site shows, written by the reviewer
+  reviewer_note TEXT
+);
+CREATE INDEX IF NOT EXISTS community_notes_geom ON community_notes USING GIST (geom);
+CREATE INDEX IF NOT EXISTS community_notes_new ON community_notes (status, created_at);
+ALTER TABLE community_notes ENABLE ROW LEVEL SECURITY;  -- and no policies: no direct access
+REVOKE ALL ON community_notes FROM anon, authenticated;
+REVOKE ALL ON SEQUENCE community_notes_id_seq FROM anon, authenticated;
+
+DROP FUNCTION IF EXISTS submit_note(TEXT, TEXT, DOUBLE PRECISION, DOUBLE PRECISION, TEXT, TEXT, TEXT, TEXT, INTEGER, TEXT);
+CREATE FUNCTION submit_note(
+  p_kind TEXT, p_body TEXT, p_lat DOUBLE PRECISION, p_lon DOUBLE PRECISION,
+  p_decade TEXT DEFAULT NULL, p_source TEXT DEFAULT NULL, p_problem TEXT DEFAULT NULL,
+  p_edition TEXT DEFAULT NULL, p_sheet_number INTEGER DEFAULT NULL, p_label TEXT DEFAULT NULL
+)
+RETURNS TEXT
+LANGUAGE plpgsql SECURITY DEFINER SET search_path = public, extensions AS $$
+DECLARE
+  b TEXT := btrim(coalesce(p_body, ''));
+BEGIN
+  -- Messages starting "note:" are shown to the visitor by the website.
+  IF p_kind NOT IN ('memory', 'correction') THEN RAISE EXCEPTION 'note: unknown kind'; END IF;
+  IF length(b) < 10 THEN RAISE EXCEPTION 'note: Please write a little more (at least 10 characters).'; END IF;
+  IF length(b) > 1000 THEN RAISE EXCEPTION 'note: Please keep it under 1000 characters.'; END IF;
+  IF b ~* '(https?://|www\.)' THEN RAISE EXCEPTION 'note: Please leave out links.'; END IF;
+  IF p_lat IS NULL OR p_lon IS NULL OR p_lat NOT BETWEEN 38.525 AND 38.575
+     OR p_lon NOT BETWEEN -90.29 AND -90.225 THEN
+    RAISE EXCEPTION 'note: Notes can only be added for places in Carondelet and Patch.';
+  END IF;
+  IF p_kind = 'memory' AND (
+       p_decade IS NULL OR p_decade NOT IN ('before 1940', '1940s', '1950s', '1960s', '1970s',
+                                          '1980s', '1990s', '2000s or later', 'not sure')
+       OR (p_source IS NOT NULL AND p_source NOT IN ('lived', 'worked', 'family', 'other'))) THEN
+    RAISE EXCEPTION 'note: unknown decade or source';
+  END IF;
+  IF p_kind = 'correction' AND (
+       p_problem IS NULL OR p_problem NOT IN ('wrong_use', 'wrong_place', 'other')
+       OR coalesce(p_edition, '') NOT IN ('1938', '1950') OR p_label IS NULL OR length(p_label) > 200) THEN
+    RAISE EXCEPTION 'note: unknown problem or listing';
+  END IF;
+  -- Flood guard for the whole site: a neighborhood site gets nowhere near this honestly.
+  IF (SELECT count(*) FROM community_notes WHERE created_at > now() - interval '1 hour') >= 30 THEN
+    RAISE EXCEPTION 'note: Lots of notes are coming in right now. Please try again in an hour.';
+  END IF;
+  INSERT INTO community_notes (kind, body, decade, source, problem, edition, sheet_number, label, geom)
+  VALUES (p_kind, b,
+          CASE WHEN p_kind = 'memory' THEN p_decade END,
+          CASE WHEN p_kind = 'memory' THEN p_source END,
+          CASE WHEN p_kind = 'correction' THEN p_problem END,
+          CASE WHEN p_kind = 'correction' THEN p_edition END,
+          CASE WHEN p_kind = 'correction' THEN p_sheet_number END,
+          CASE WHEN p_kind = 'correction' THEN p_label END,
+          ST_Point(round(p_lon::numeric, 4)::float8, round(p_lat::numeric, 4)::float8, 4326)::geography);
+  RETURN 'ok';
+END;
+$$;
+
+-- Approved memories near a point: only the reviewer's wording, nothing the visitor typed.
+DROP FUNCTION IF EXISTS notes_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION);
+CREATE FUNCTION notes_near(at_lat DOUBLE PRECISION, at_lon DOUBLE PRECISION,
+                           radius_m DOUBLE PRECISION DEFAULT 100)
+RETURNS TABLE (id BIGINT, public_text TEXT, decade TEXT, source TEXT, distance_m DOUBLE PRECISION)
+LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public, extensions AS $$
+  SELECT n.id, n.public_text, n.decade, n.source,
+         ST_Distance(n.geom, ST_Point(at_lon, at_lat, 4326)::geography)
+  FROM community_notes n
+  WHERE n.kind = 'memory' AND n.status = 'approved' AND n.public_text IS NOT NULL
+    AND ST_DWithin(n.geom, ST_Point(at_lon, at_lat, 4326)::geography, LEAST(radius_m, 500))
+  ORDER BY 5;
+$$;
+
+REVOKE EXECUTE ON FUNCTION submit_note(TEXT, TEXT, DOUBLE PRECISION, DOUBLE PRECISION, TEXT, TEXT, TEXT, TEXT, INTEGER, TEXT) FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION submit_note(TEXT, TEXT, DOUBLE PRECISION, DOUBLE PRECISION, TEXT, TEXT, TEXT, TEXT, INTEGER, TEXT) TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION notes_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;

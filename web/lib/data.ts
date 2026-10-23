@@ -131,6 +131,48 @@ export async function streetFindings(street: string | null) {
   return rows.map((r) => ({ ...r, sheet: bySheet.get(r.sheet_id)! }));
 }
 
+export type NoteRow = {
+  id: number;
+  public_text: string;
+  decade: string | null;
+  source: string | null;
+  distance_m: number;
+};
+
+/** Approved neighbor memories near a point (online database only). */
+export async function notesNear(lat: number, lon: number, radiusM: number): Promise<NoteRow[]> {
+  if (backend !== "supabase") return [];
+  return rpc<NoteRow[]>("notes_near", { at_lat: lat, at_lon: lon, radius_m: radiusM });
+}
+
+export type NewNote = {
+  p_kind: "memory" | "correction";
+  p_body: string;
+  p_lat: number;
+  p_lon: number;
+  p_decade?: string;
+  p_source?: string;
+  p_problem?: string;
+  p_edition?: string;
+  p_sheet_number?: number;
+  p_label?: string;
+};
+
+/** Add a note to the review queue. Returns null, or a message to show the visitor. */
+export async function submitNote(note: NewNote): Promise<string | null> {
+  if (backend !== "supabase") return "Notes can only be sent on the live site.";
+  try {
+    await rpc<string>("submit_note", note as unknown as Record<string, number | string>);
+    return null;
+  } catch (e) {
+    // submit_note raises "note: <message for the visitor>" for anything it refuses.
+    const m = String(e).match(/"message":"note: ([^"]+)"/);
+    if (m) return m[1];
+    console.error(e);
+    return "Your note couldn't be saved. Please try again in a minute.";
+  }
+}
+
 export async function search(lat: number, lon: number, radiusM = 100) {
   if (backend === "supabase") {
     const [rows, covering, all, recs] = await Promise.all([

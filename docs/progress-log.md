@@ -354,3 +354,7 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 - 47 street pages plus an index (`/streets`, in the header): each street's past uses in order along it for 1938 and 1950, with change badges and a "See on the map" link that opens the search at that spot. South Broadway: 33 sites (1938), 34 (1950).
 - Shared search and street links now preview with a title, a one-line summary ("Within 100 m: 7 past uses on the 1938 map and 5 on the 1950 map…") and a generated image; a Share button on results uses the phone's share sheet or copies the link.
 - Security: Next.js upgraded to 16.4.2 (3 critical advisories in 16.4.0, the version running live) and MapLibre to 6.14.0 (1 critical); `npm audit` now finds 0 vulnerabilities. Run the site with `npm run dev`, not `npx next dev`, so the MapLibre worker gets copied.
+
+## Phase 3: community notes (Oct 23, 2026)
+- "Remember what used to be here?" under each search in the mapped area (what was here, roughly when, how you know) and "Something wrong with this listing?" on every card (replaces the GitHub link; the footer link stays for website problems). Notes go to a review queue in Supabase; approved memories show under nearby searches as "Neighbors remember", in the reviewer's wording.
+- Tested on a local build: valid notes reach the database step, missing fields get a clear message, both spam traps drop the note silently, the Limits & privacy page lists exactly what a note stores. Review steps in `docs/pipeline.md` (6g).

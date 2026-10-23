@@ -1,5 +1,5 @@
 // One address search, shared by the search API, link previews and preview images.
-import { search } from "@/lib/data";
+import { notesNear, search } from "@/lib/data";
 import { geocode } from "@/lib/geocode";
 import { attachRecords, groupSites, markChanges, present, presentRecord, presentSheet } from "@/lib/present";
 
@@ -34,6 +34,11 @@ export async function lookup(q: string): Promise<Lookup> {
   }
   const { findings, coveredBy } = found;
   const records = found.records.filter((r) => r.distance_m <= RADIUS_M).map(presentRecord);
+  // Neighbor memories are extra: search works without them.
+  const notes = await notesNear(point.lat, point.lon, RADIUS_M).catch((e) => {
+    console.error(e);
+    return [];
+  });
   return {
     status: 200,
     body: {
@@ -51,6 +56,13 @@ export async function lookup(q: string): Promise<Lookup> {
         records,
       ),
       records,
+      notes: notes.map((n) => ({
+        id: n.id,
+        text: n.public_text,
+        decade: n.decade,
+        source: n.source,
+        distanceM: Math.round(n.distance_m),
+      })),
     },
   };
 }

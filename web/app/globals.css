@@ -657,3 +657,82 @@ footer.site {
   margin-top: 4px;
   align-items: center;
 }
+
+.notes summary {
+  cursor: pointer;
+  list-style-position: outside;
+}
+
+.notes summary h3 {
+  display: inline;
+}
+
+.note-inline {
+  margin-top: 8px;
+}
+
+.note-inline summary {
+  cursor: pointer;
+  color: var(--blue);
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  position: relative;
+}
+
+.note-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.note-form textarea,
+.note-form select {
+  font: inherit;
+  font-weight: 400;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.note-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.note-row label {
+  flex: 1 1 180px;
+}
+
+.note-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.note-form .note-choice {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+}
+
+.note-form button {
+  align-self: flex-start;
+}
+
+.note-error {
+  color: var(--brick);
+}

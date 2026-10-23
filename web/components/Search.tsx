@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import MapLegend from "./MapLegend";
+import { CorrectionForm, MemoryForm, NeighborNotes, type PublicNote } from "./Notes";
 import MapView, { type Coverage, type Overlay } from "./MapView";
 import type { PublicFinding, PublicRecord } from "@/lib/present";
 
@@ -12,6 +13,7 @@ type Result = {
   coveredBy: Coverage[];
   findings: PublicFinding[];
   records: PublicRecord[];
+  notes: PublicNote[];
 };
 
 const EXAMPLES = ["7313 S Broadway", "6601 S Broadway", "7421 Pennsylvania Ave"];
@@ -23,7 +25,6 @@ function track(outcome: string, sites = 0) {
     sites,
   });
 }
-const REPORT_URL = "https://github.com/Hariswar/BlockHistory/issues/new";
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -201,6 +202,8 @@ export default function Search() {
               </ol>
             )}
             <StateRecords result={shown} />
+            <NeighborNotes notes={shown.notes ?? []} />
+            {result.coveredBy.length > 0 && <MemoryForm key={result.query} point={result.point} />}
           </div>
         )}
         {!shown && (
@@ -270,10 +273,6 @@ function FindingCard({
   active: boolean;
   onFocus: () => void;
 }) {
-  const issue = `${REPORT_URL}?${new URLSearchParams({
-    title: `Finding ${f.id}: ${f.printedLabel} (${f.year} sheet ${f.sheetNumber})`,
-    body: "What's wrong with this finding?\n\n",
-  })}`;
   return (
     <li id={`f-${f.id}`} className={`card${active ? " active" : ""}`} onMouseEnter={onFocus}>
       <span className={`num ${f.relevance}`} aria-hidden>
@@ -332,11 +331,9 @@ function FindingCard({
             <a href={f.sourcePage} target="_blank" rel="noreferrer">
               {f.year} map, {f.volume}, sheet {f.sheetNumber} (Library of Congress)
             </a>
-            <a href={issue} target="_blank" rel="noreferrer">
-              Something wrong? Report it
-            </a>
           </div>
         </div>
+        <CorrectionForm f={f} />
       </div>
     </li>
   );

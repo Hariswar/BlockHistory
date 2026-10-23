@@ -47,11 +47,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               professional or the Missouri Department of Natural Resources.
             </p>
             <p>
-              Maps: Sanborn Map Company, 1938, from the{" "}
+              Maps: Sanborn Map Company, 1938 and 1950, from the{" "}
               <a href="https://www.loc.gov/collections/sanborn-maps/">Library of Congress</a>. Base
               map: <a href="https://openfreemap.org">OpenFreeMap</a> ©{" "}
-              <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. Found
-              a mistake? <a href={REPORT_URL}>Report it</a>.
+              <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. A problem
+              with the website? <a href={REPORT_URL}>Report it on GitHub</a>.
             </p>
           </div>
         </footer>

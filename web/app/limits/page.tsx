@@ -42,12 +42,22 @@ export default function Limits() {
             St. Louis address service (or, if it has no match, the US Census Bureau&apos;s). Visits are counted with Umami, which uses no
             cookies; it records how many searches found something, never the address.
           </p>
+          <p>
+            If you send a note, we keep what you wrote, the decade and &ldquo;how you know&rdquo;
+            you picked, the listing it&apos;s about (for corrections), the time, and the map
+            point rounded to about 10 m. Not the address you searched, your name, contact details or
+            IP address. Notes are read before anything is shown; only a shortened wording of
+            approved memories appears on the site, marked as shared by a neighbor.
+          </p>
         </section>
         <section>
           <h2>Mistakes</h2>
           <p>
-            If something is wrong, or you know what used to be at a place,{" "}
-            <a href="https://github.com/Hariswar/BlockHistory/issues/new">tell us</a>.
+            Each listing has a &ldquo;Something wrong with this listing?&rdquo; form, and every
+            search ends with &ldquo;Remember what used to be here?&rdquo;. Corrections are checked
+            against the map scan; memories help fill the years after 1950 that the maps don&apos;t
+            cover. For problems with the website itself,{" "}
+            <a href="https://github.com/Hariswar/BlockHistory/issues/new">report them on GitHub</a>.
           </p>
         </section>
       </div>
