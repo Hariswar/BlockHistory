@@ -3,7 +3,13 @@ import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 
+// Absolute base for link previews (og:image needs a full URL).
+const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE),
   title: "BlockHistory",
   description:
     "See what stood on a St. Louis block in 1938, from fire insurance maps, with plain notes on past uses that sometimes left soil contamination.",
@@ -25,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <nav>
               <Link href="/">Search</Link>
+              <Link href="/streets">Streets</Link>
               <Link href="/about">About</Link>
               <Link href="/limits">Limits</Link>
             </nav>

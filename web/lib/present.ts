@@ -20,8 +20,12 @@ export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
   const region = `${Math.max(0, cx - half)},${Math.max(0, cy - half)},${CROP_FULL_PX},${CROP_FULL_PX}`;
   return {
     id: f.id,
-    title: capitalize(f.use.split(";")[0].replace(/\s*\(.*?\)/g, "").trim() || f.label),
+    // Drop the reader's bracketed notes, including one cut off without its ")".
+    title: capitalize(
+      f.use.split(";")[0].replace(/\s*\(.*?\)/g, "").replace(/\s*\(.*$/, "").trim() || f.label,
+    ),
     printedLabel: f.label,
+    streetNumber: f.street_number,
     category: f.category,
     relevance: f.relevance as "high" | "medium",
     explanation: f.explanation,

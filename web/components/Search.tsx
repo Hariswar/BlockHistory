@@ -7,7 +7,7 @@ import type { PublicFinding, PublicRecord } from "@/lib/present";
 
 type Result = {
   query: string;
-  point: { lat: number; lon: number; matched: string; source: "parcel" | "street" | "census" };
+  point: { lat: number; lon: number; matched: string; source: "parcel" | "street" | "census" | "point" };
   radiusM: number;
   coveredBy: Coverage[];
   findings: PublicFinding[];
@@ -250,7 +250,10 @@ function Summary({ result, year }: { result: Result; year: string }) {
         </>
       )}
       <p className="small">
-        Address found as {point.matched}. {PLACED[point.source]}
+        {point.source === "point"
+          ? "Searching around the spot you followed from a street page."
+          : `Address found as ${point.matched}. ${PLACED[point.source]}`}{" "}
+        <ShareButton />
       </p>
     </section>
   );
@@ -454,4 +457,28 @@ function panelsNear(all: Overlay[], year: string, p: { lat: number; lon: number 
     })
     .sort((a, b) => Number(holds(a)) - Number(holds(b)))
     .slice(-8);
+}
+
+// Share the current search: the phone's share sheet where there is one, else copy the link.
+function ShareButton() {
+  const [copied, setCopied] = useState(false);
+  async function share() {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: document.title, url });
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Share sheet closed, or clipboard blocked: nothing to do.
+    }
+  }
+  return (
+    <button type="button" className="linkish" onClick={share}>
+      {copied ? "Link copied" : "Share this search"}
+    </button>
+  );
 }

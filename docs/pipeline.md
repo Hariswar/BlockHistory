@@ -119,6 +119,11 @@ git config core.hooksPath .githooks                   # once per clone: run it b
 - `build_db.py --export` also writes `web/public/overlays/<area>.json` (or run `scripts/export_overlays.py <area>`): for each panel, its IIIF region on the full-resolution scan, the ground position of that region's corners, and its outline (plus, for a rest-of-sheet panel, the other panels' outlines as holes). The transforms are affine, so four corners place a scan exactly.
 - The website loads the scan region straight from the Library of Congress (CORS is open), cuts it to the outline on a canvas, and draws it as a MapLibre canvas source under the markers, with the panel holding the address on top. A slider fades between the old map and today's streets. Commit the JSON with the website; re-export after any control-point change.
 
+## 6f. Street pages (free)
+- `store.load_sheet()` gives each listing `street`: today's name of the nearest frontage street within 80 m (`osm.nearest_street()`, cached OpenStreetMap streets; paths, alleys and the interstate don't count, named service roads that were streets do), or the street printed with its house number when that one is in range too. East/West halves share one page.
+- Website: `/streets` (every street, sites per map year) and `/streets/<slug>` (sites in order along the street, turned so house numbers go up; each links to a map search around it, `/?q=lat,lon`). Both count sites the way search does (`groupSites`). Supabase: `street_findings(street_name)` in `schema_postgis.sql`; re-run that file after pulling this change.
+- Shared links: `/?q=...` and street pages set a title, summary and a 1200×630 preview image from `/api/og`. The search page has a Share button.
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]

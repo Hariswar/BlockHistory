@@ -621,3 +621,39 @@ footer.site {
   width: 16px;
   height: 16px;
 }
+
+.linkish {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--blue);
+  text-decoration: underline;
+  font: inherit;
+  cursor: pointer;
+}
+
+.street-years {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .street-years {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.street-list {
+  padding-left: 1.4em;
+  margin: 0;
+}
+
+.street-row {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.street-row .tags {
+  margin-top: 4px;
+  align-items: center;
+}

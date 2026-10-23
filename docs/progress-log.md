@@ -349,3 +349,8 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 ## Phase 3: old-map overlay (Oct 23, 2026)
 - After a search, the selected year's map scan is drawn under the markers for every panel that touches the 100 m circle, with a "Today ↔ 1938 map" slider (starts at 70%). Checked on 6532 and 7313 S. Broadway: streets, lot lines and the filling station under marker 1 line up; works at phone width with the map credit visible.
 - `scripts/export_overlays.py` (also run by `build_db.py --export`) writes `web/public/overlays/carondelet.json`: 99 panels, 32 KB. Corners agree with the database footprints (exactly for rectangular panels; four 1950 panels have slanted outlines, handled by the cut). No API cost, no new hosting.
+
+## Phase 3: street pages and shareable links (Oct 23, 2026)
+- 47 street pages plus an index (`/streets`, in the header): each street's past uses in order along it for 1938 and 1950, with change badges and a "See on the map" link that opens the search at that spot. South Broadway: 33 sites (1938), 34 (1950).
+- Shared search and street links now preview with a title, a one-line summary ("Within 100 m: 7 past uses on the 1938 map and 5 on the 1950 map…") and a generated image; a Share button on results uses the phone's share sheet or copies the link.
+- Security: Next.js upgraded to 16.4.2 (3 critical advisories in 16.4.0, the version running live) and MapLibre to 6.14.0 (1 critical); `npm audit` now finds 0 vulnerabilities. Run the site with `npm run dev`, not `npx next dev`, so the MapLibre worker gets copied.

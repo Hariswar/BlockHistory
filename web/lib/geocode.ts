@@ -13,10 +13,26 @@ export type Geocoded = {
   lat: number;
   lon: number;
   matched: string;
-  source: "parcel" | "street" | "census";
+  source: "parcel" | "street" | "census" | "point";
 };
 
+// "38.5547,-90.2492": a spot picked on the website (street pages link to their sites this
+// way). Only inside St. Louis.
+const POINT = /^\s*(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)\s*$/;
+const ST_LOUIS = { south: 38.5, north: 38.8, west: -90.35, east: -90.15 };
+
+function mapPoint(q: string): Geocoded | null {
+  const m = q.match(POINT);
+  if (!m) return null;
+  const [lat, lon] = [Number(m[1]), Number(m[2])];
+  const b = ST_LOUIS;
+  if (lat < b.south || lat > b.north || lon < b.west || lon > b.east) return null;
+  return { lat, lon, matched: "the spot on the map you followed", source: "point" };
+}
+
 export async function geocode(address: string): Promise<Geocoded | null> {
+  const point = mapPoint(address);
+  if (point) return point;
   const key = address.toLowerCase().replace(/\s+/g, " ").trim();
   if (cache.has(key)) return cache.get(key)!;
   let out: Geocoded | null = null;

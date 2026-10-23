@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS findings (
   label TEXT,
   use TEXT,
   street_number TEXT,
+  street TEXT,
   relevance TEXT,
   category TEXT,
   explanation TEXT,
@@ -38,6 +39,9 @@ CREATE TABLE IF NOT EXISTS findings (
   geom GEOGRAPHY(POINT, 4326)
 );
 CREATE INDEX IF NOT EXISTS findings_geom ON findings USING GIST (geom);
+-- Today's street name for street pages (added Oct 2026; for tables made before that).
+ALTER TABLE findings ADD COLUMN IF NOT EXISTS street TEXT;
+CREATE INDEX IF NOT EXISTS findings_street ON findings (street);
 
 -- Official environmental records (state tank and cleanup sites), shown beside the map's
 -- past uses. Loaded by scripts/load_records.py.
@@ -132,7 +136,29 @@ LANGUAGE sql STABLE SET search_path = public, extensions AS $$
   ORDER BY 15;
 $$;
 
+-- Shown past uses on one street, or on every street when street_name is NULL (street pages).
+DROP FUNCTION IF EXISTS streets_list();
+DROP FUNCTION IF EXISTS street_findings(TEXT);
+CREATE FUNCTION street_findings(street_name TEXT DEFAULT NULL)
+RETURNS TABLE (
+  id BIGINT, sheet_id TEXT, edition TEXT, label TEXT, use TEXT, street_number TEXT,
+  street TEXT, relevance TEXT, category TEXT, explanation TEXT, gasoline_tank_count INTEGER,
+  reader_confidence TEXT, review_status TEXT, location_method TEXT,
+  location_uncertainty_m DOUBLE PRECISION, sheet_px INTEGER, sheet_py INTEGER,
+  lat DOUBLE PRECISION, lon DOUBLE PRECISION, distance_m DOUBLE PRECISION
+)
+LANGUAGE sql STABLE SET search_path = public, extensions AS $$
+  SELECT f.id, f.sheet_id, f.edition, f.label, f.use, f.street_number, f.street, f.relevance,
+         f.category, f.explanation, f.gasoline_tank_count, f.reader_confidence,
+         f.review_status, f.location_method, f.location_uncertainty_m, f.sheet_px, f.sheet_py,
+         ST_Y(f.geom::geometry), ST_X(f.geom::geometry), 0::DOUBLE PRECISION
+  FROM findings f
+  WHERE f.street IS NOT NULL AND (street_name IS NULL OR f.street = street_name)
+    AND f.review_status <> 'checked_wrong' AND f.relevance IN ('high', 'medium');
+$$;
+
 GRANT EXECUTE ON FUNCTION sheets_list() TO anon, authenticated;
+GRANT EXECUTE ON FUNCTION street_findings(TEXT) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION records_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION sheets_covering(DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;
 GRANT EXECUTE ON FUNCTION findings_near(DOUBLE PRECISION, DOUBLE PRECISION, DOUBLE PRECISION) TO anon, authenticated;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import maplibregl from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { PublicFinding } from "@/lib/present";
 
@@ -101,6 +101,9 @@ export default function MapView({
   useEffect(() => {
     if (!box.current) return;
     let m: maplibregl.Map;
+    // MapLibre 6 runs its worker from a separate file the bundler doesn't ship; npm run
+    // dev/build copies it into public/ (see package.json).
+    maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
     try {
       m = new maplibregl.Map({ container: box.current, style: STYLE, center: CARONDELET, zoom: 14 });
     } catch {

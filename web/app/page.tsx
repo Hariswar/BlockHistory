@@ -1,4 +1,26 @@
+import type { Metadata } from "next";
 import Search from "@/components/Search";
+import { lookup, lookupSummary } from "@/lib/lookup";
+
+type Props = { searchParams: Promise<{ q?: string }> };
+
+// A shared search link previews as "What stood near 7313 S Broadway?" with its counts.
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const q = (await searchParams).q?.trim();
+  if (!q) return {};
+  const { status, body } = await lookup(q);
+  if (status !== 200) return { title: "BlockHistory" };
+  const place = (body.point as { source: string }).source === "point" ? "this spot" : q;
+  const title = `What stood near ${place}? · BlockHistory`;
+  const description = lookupSummary(body);
+  const image = `/api/og?q=${encodeURIComponent(q)}`;
+  return {
+    title,
+    description,
+    openGraph: { title, description, images: [{ url: image, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
+  };
+}
 
 export default function Home() {
   return (
@@ -9,7 +31,7 @@ export default function Home() {
           Type a street address in Carondelet, St. Louis. BlockHistory looks at the 1938 and 1950
           Sanborn fire insurance maps and lists past uses within 100 meters that sometimes left
           soil or groundwater contamination, like gas stations, garages, dry cleaners and
-          foundries.
+          foundries. Or <a href="/streets">browse by street</a>.
         </p>
       </section>
       <Search />

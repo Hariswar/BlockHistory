@@ -20,6 +20,7 @@ from pathlib import Path
 
 from blockhistory import explain_ai
 from blockhistory.explain import category
+from blockhistory.georef import osm
 from blockhistory.georef.transform import M_PER_DEG, Affine, leave_one_out
 from blockhistory.map_reader.relevance import relevance
 from blockhistory.map_reader.scoring import label_words, norm
@@ -48,6 +49,7 @@ CREATE TABLE IF NOT EXISTS findings (
   label TEXT,                   -- as printed on the map
   use TEXT,                     -- plain English, from the reader
   street_number TEXT,
+  street TEXT,                  -- today's name of the street it faces (OpenStreetMap)
   relevance TEXT,               -- high / medium / low
   category TEXT,
   explanation TEXT,
@@ -87,6 +89,9 @@ def connect(path: Path = DB_PATH) -> sqlite3.Connection:
     con = sqlite3.connect(path)
     con.row_factory = sqlite3.Row
     con.executescript(SCHEMA)
+    # Databases built before the street column was added.
+    if "street" not in {r[1] for r in con.execute("PRAGMA table_info(findings)")}:
+        con.execute("ALTER TABLE findings ADD COLUMN street TEXT")
     return con
 
 
@@ -250,21 +255,23 @@ def load_sheet(
         ),
     )
     marks = review_marks(sheet_id)
+    streets = osm.fetch_streets()
     rows = 0
     for f in prepare_sites(findings):
         status = marks.get((norm(f["label"]), _tiles_key(f["tiles"])), "unreviewed")
         cat, _ = category(f["label"], f["use"], f["gasoline_tank_count"])
         con.execute(
-            "INSERT INTO findings (sheet_id, edition, label, use, street_number, relevance, category,"
-            " explanation, gasoline_tank_count, reader_confidence, review_status, lat, lon,"
-            " location_method, location_uncertainty_m, sheet_px, sheet_py)"
-            " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            "INSERT INTO findings (sheet_id, edition, label, use, street_number, street, relevance,"
+            " category, explanation, gasoline_tank_count, reader_confidence, review_status, lat,"
+            " lon, location_method, location_uncertainty_m, sheet_px, sheet_py)"
+            " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (
                 panel_id,
                 edition,
                 f["label"],
                 f["use"],
                 f.get("street_number"),
+                osm.nearest_street(f["lat"], f["lon"], f.get("street_name"), streets),
                 f["relevance"],
                 cat,
                 explain_ai.explanation(f, edition)[0],

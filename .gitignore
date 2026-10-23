@@ -27,3 +27,5 @@ web/out/
 web/next-env.d.ts
 web/tsconfig.tsbuildinfo
 web/.env*.local
+# Copied from node_modules by npm run dev/build (MapLibre 6 loads its worker from a URL)
+web/public/maplibre-gl-worker.mjs

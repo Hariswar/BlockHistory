@@ -30,6 +30,7 @@ export type FindingRow = {
   label: string;
   use: string;
   street_number: string | null;
+  street?: string | null;
   relevance: string;
   category: string;
   explanation: string;
@@ -66,7 +67,7 @@ const SUPABASE_URL = process.env.SUPABASE_URL?.replace(/\/$/, "");
 const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY;
 export const backend = SUPABASE_URL && SUPABASE_KEY ? "supabase" : "sqlite";
 
-async function rpc<T>(fn: string, args: Record<string, number> = {}): Promise<T> {
+async function rpc<T>(fn: string, args: Record<string, number | string> = {}): Promise<T> {
   const headers: Record<string, string> = { apikey: SUPABASE_KEY!, "Content-Type": "application/json" };
   // Legacy anon keys are JWTs and also go in Authorization; new sb_publishable_ keys don't.
   if (SUPABASE_KEY!.startsWith("eyJ")) headers.Authorization = `Bearer ${SUPABASE_KEY}`;
@@ -109,6 +110,25 @@ function inside(lat: number, lon: number, footprint: string): boolean {
 export async function sheets(): Promise<Sheet[]> {
   if (backend === "supabase") return rpc<Sheet[]>("sheets_list");
   return (await open()).prepare("SELECT * FROM sheets ORDER BY sheet_number").all() as unknown as Sheet[];
+}
+
+/** The shown past uses on one street, or on every street (null), with their sheets. */
+export async function streetFindings(street: string | null) {
+  const rows =
+    backend === "supabase"
+      ? await rpc<(FindingRow & { distance_m: number })[]>(
+          "street_findings",
+          street === null ? {} : { street_name: street },
+        )
+      : ((await open())
+          .prepare(
+            `SELECT *, 0 AS distance_m FROM findings
+             WHERE street IS NOT NULL AND (:street IS NULL OR street = :street)
+               AND review_status != 'checked_wrong' AND relevance IN ('high', 'medium')`,
+          )
+          .all({ street }) as unknown as (FindingRow & { distance_m: number })[]);
+  const bySheet = new Map((await sheets()).map((s) => [s.sheet_id, s]));
+  return rows.map((r) => ({ ...r, sheet: bySheet.get(r.sheet_id)! }));
 }
 
 export async function search(lat: number, lon: number, radiusM = 100) {
