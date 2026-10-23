@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#OUTLINE 0,1973 3345,1973 3345,3957 0,3957
+#NAME 0 Iron St & Alaska Av
+#NAME 1 Iron St & Colorado Av
+#NAME 2 Iron St & Idaho Av
+#NAME 3 Iron St & Alabama Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2557872,38.5620938,115.0,-2188.0,1,0,0,0
+-90.2548270,38.5615821,1132.0,-2192.0,1,0,0,0
+-90.2538453,38.5610976,2101.0,-2195.0,1,0,0,0
+-90.2528894,38.5605417,3109.0,-2199.0,1,0,0,0

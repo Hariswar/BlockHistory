@@ -134,6 +134,17 @@ To review, open Supabase → Table Editor → `community_notes`, filter `status 
 
 The data reload (`load_postgis_*.sql`) never touches this table.
 
+## 6h. Placing a new map year by street lines (1908)
+```
+.venv/bin/python scripts/georef_preview.py grid carondelet 1908 63    # sheet with a pixel grid
+# add a line to config/georef/carondelet/1908/streets.txt: which streets cross the sheet and where
+.venv/bin/python scripts/place_sheets.py carondelet 1908 63            # fit lines, match corners, fit
+.venv/bin/python scripts/place_sheets.py carondelet 1908 --report      # every saved fit
+```
+- `georef_preview.py lines` measures each street's center line every 40 px (the blank band between blocks) and fits a line by consensus, so labels and hydrants in the street don't pull it; corners are where lines cross. Much steadier than clicking a corner: 1–3 px spread.
+- `georef_sheet.py gcps --robust` matches each corner to today's intersection by consensus across the sheet, picks the right one when a street pair meets twice today, and sets aside corners that disagree (streets moved since the map was drawn). `place_sheets.py` tries affine and similarity fits and keeps the better.
+- Streets that moved, vanished or were renamed since 1908 are listed in `config/georef/carondelet/1908/NOTES.md` (e.g. Malt St is today's Mott St).
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]

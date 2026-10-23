@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Mott St & Minnesota Av
+#NAME 1 Mott St & Pennsylvania Av
+#NAME 2 Mott St & S. Broadway
+#NAME 3 Haven St & Minnesota Av
+#NAME 4 Haven St & Pennsylvania Av
+#NAME 5 Haven St & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2515413,38.5560263,573.0,-2524.0,1,0,0,0
+-90.2505859,38.5553917,1671.0,-2498.0,1,0,0,0
+-90.2496406,38.5547493,2790.0,-2471.0,1,0,0,0
+-90.2524524,38.5552133,579.0,-3724.0,1,0,0,0
+-90.2515157,38.5545839,1677.0,-3698.0,1,0,0,0
+-90.2505559,38.5539439,2801.0,-3671.0,1,0,0,0

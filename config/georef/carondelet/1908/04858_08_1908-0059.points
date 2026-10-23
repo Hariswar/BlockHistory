@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Bowen St & Michigan Av
+#NAME 1 Bowen St & Minnesota Av
+#NAME 2 Bowen St & Pennsylvania Av
+#NAME 3 Iron St & Minnesota Av
+#NAME 4 Iron St & Pennsylvania Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2491381,38.5594944,617.0,-1433.0,1,0,0,0
+-90.2482052,38.5588635,1710.0,-1435.0,1,0,0,0
+-90.2472591,38.5582204,2804.0,-1437.0,1,0,0,0
+-90.2490472,38.5581541,1654.0,-2508.0,1,0,0,0
+-90.2481158,38.5575182,2740.0,-2503.0,1,0,0,0

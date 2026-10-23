@@ -1,0 +1,14 @@
+#CRS: EPSG:4326
+#NAME 0 Mott St & Idaho Av
+#NAME 1 Mott St & Alabama Av
+#NAME 2 Mott St & Vermont Av
+#NAME 3 Haven St & Idaho Av
+#NAME 4 Haven St & Alabama Av
+#NAME 5 Haven St & Vermont Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2559019,38.5589029,1296.0,-2000.0,1,0,0,0
+-90.2550546,38.5583697,2222.0,-1973.0,1,0,0,0
+-90.2542473,38.5578265,3143.0,-1947.0,1,0,0,0
+-90.2571601,38.5577041,1313.0,-3775.0,1,0,0,0
+-90.2563264,38.5572663,2223.0,-3640.0,1,0,0,0
+-90.2554328,38.5567904,3101.0,-3510.0,1,0,0,0

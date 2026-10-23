@@ -70,16 +70,66 @@ def panel_id(path: Path) -> str:
     return path.name.removesuffix(".points")
 
 
+ROBUST_M = 12.0  # a corner this close to the consensus placement agrees with it
+
+
+def _robust(cands: list[tuple[str, float, float, list]], scale_ft: float | None) -> list[GCP]:
+    """Choose one today-location per corner by consensus, and drop corners that agree with
+    nothing. `cands` is (name, px, py, [(lat, lon), ...]) with every OSM match for each
+    corner (0, 1 or several). Every pair of matches from two corners fixes a similarity
+    placement; the one most other corners land within ROBUST_M of wins (scale must be
+    within 10% of scale_ft when given). Prints what it set aside."""
+    flat = [(i, px, py, hit) for i, (_, px, py, hits) in enumerate(cands) for hit in hits]
+    best: list[GCP] = []
+    for j in range(len(flat)):
+        for k in range(j + 1, len(flat)):
+            if flat[j][0] == flat[k][0]:
+                continue
+            pair = [GCP(f[1], f[2], f[3][0], f[3][1], "") for f in (flat[j], flat[k])]
+            if (pair[0].px, pair[0].py) == (pair[1].px, pair[1].py):
+                continue
+            t = Affine(pair, "similarity")
+            if scale_ft and abs(t.meters_per_pixel() * 3.281 / scale_ft - 1) > 0.10:
+                continue
+            chosen = []
+            for name, px, py, hits in cands:
+                lat, lon = t.to_latlon(px, py)
+                near = min(hits, key=lambda h: distance_m((lat, lon), h), default=None)
+                if near and distance_m((lat, lon), near) <= ROBUST_M:
+                    chosen.append(GCP(px, py, near[0], near[1], name))
+            if len(chosen) > len(best):
+                best = chosen
+    kept = {g.name for g in best}
+    for name, _, _, hits in cands:
+        if name not in kept:
+            why = "no match today" if not hits else "disagrees with the other corners"
+            print(f"  set aside: {name} ({why})")
+    return best
+
+
 def cmd_gcps(args) -> None:
     sid = sheet_dir(args.area, args.edition, args.sheet).name
     gcps = []
-    for spec in args.points:
+    if args.robust:
+        cands = []
+        for spec in args.points:
+            streets, xy = spec.split("@")
+            a, b = streets.split("/")
+            px, py = (float(v) for v in xy.split(","))
+            cands.append((f"{a} & {b}", px, py, osm.intersection(a, b)))
+        gcps = _robust(cands, args.scale_ft)
+    for spec in [] if args.robust else args.points:
         streets, xy = spec.split("@")
         a, b = streets.split("/")
         px, py = (float(v) for v in xy.split(","))
         hits = osm.intersection(a, b)
         if len(hits) != 1:
-            raise SystemExit(f"{a} & {b}: {len(hits)} intersections in OpenStreetMap; pick another")
+            msg = f"{a} & {b}: {len(hits)} intersections in OpenStreetMap"
+            # Streets renamed, closed or rerouted since the map was drawn (common for 1908).
+            if args.skip_missing:
+                print(f"  skipped: {msg}")
+                continue
+            raise SystemExit(f"{msg}; pick another (or pass --skip-missing)")
         (lat, lon) = hits[0]
         gcps.append(GCP(px, py, lat, lon, f"{a} & {b}"))
     path = points_path(args.area, args.edition, sid, args.panel)
@@ -216,6 +266,17 @@ def main() -> None:
     g.add_argument("--panel", help="name of a second panel on the sheet, e.g. inset")
     g.add_argument("--outline", help='the panel in sheet pixels: "x0,y0,x1,y1" or "x,y x,y ..."')
     g.add_argument("--similarity", action="store_true", help="no shear: for points on one street")
+    g.add_argument(
+        "--robust",
+        action="store_true",
+        help="pick among repeated matches and set aside corners that disagree (streets changed)",
+    )
+    g.add_argument("--scale-ft", type=float, help="with --robust: expected ft per pixel")
+    g.add_argument(
+        "--skip-missing",
+        action="store_true",
+        help="drop corners whose streets no longer meet (or meet twice) today",
+    )
     f = sub.add_parser("fit")
     f.add_argument("area"), f.add_argument("edition"), f.add_argument("sheet", type=int)
     for name in ("locate", "validate"):

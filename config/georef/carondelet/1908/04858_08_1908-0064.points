@@ -1,0 +1,9 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Soper St & S. Broadway
+#NAME 1 Mott St & S. Broadway
+#NAME 2 Haven St & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2488225,38.5554730,329.0,-1385.0,1,0,0,0
+-90.2496406,38.5547493,338.0,-2489.0,1,0,0,0
+-90.2505559,38.5539439,347.0,-3688.0,1,0,0,0

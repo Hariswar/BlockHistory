@@ -1,0 +1,17 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Wilmington Av & Grand Blvd
+#NAME 1 Wilmington Av & Tennessee Av
+#NAME 2 Wilmington Av & Louisiana Av
+#NAME 3 Fillmore St & Tennessee Av
+#NAME 4 Fillmore St & Louisiana Av
+#NAME 5 Fillmore St & Alaska Av
+#NAME 6 Iron St & Grand Blvd
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2566026,38.5660120,238.0,-345.0,1,0,0,0
+-90.2556719,38.5655255,1235.0,-338.0,1,0,0,0
+-90.2547063,38.5650159,2169.0,-331.0,1,0,0,0
+-90.2562298,38.5648439,1239.0,-1241.0,1,0,0,0
+-90.2552696,38.5643406,2200.0,-1233.0,1,0,0,0
+-90.2543093,38.5638372,3288.0,-1224.0,1,0,0,0
+-90.2586626,38.5635997,252.0,-3603.0,1,0,0,0

@@ -1,0 +1,26 @@
+#CRS: EPSG:4326
+#NAME 0 Robert Av & Minnesota Av
+#NAME 1 Robert Av & Pennsylvania Av
+#NAME 2 Robert Av & S. Broadway
+#NAME 3 Upton St & Minnesota Av
+#NAME 4 Upton St & Pennsylvania Av
+#NAME 5 Upton St & S. Broadway
+#NAME 6 Koeln Av & Minnesota Av
+#NAME 7 Koeln Av & Pennsylvania Av
+#NAME 8 Koeln Av & S. Broadway
+#NAME 9 Steins St & Minnesota Av
+#NAME 10 Steins St & Pennsylvania Av
+#NAME 11 Steins St & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2573912,38.5508881,561.0,-396.0,1,0,0,0
+-90.2564220,38.5502589,1661.0,-373.0,1,0,0,0
+-90.2554717,38.5496102,2787.0,-350.0,1,0,0,0
+-90.2581985,38.5501665,563.0,-1476.0,1,0,0,0
+-90.2572544,38.5495372,1662.0,-1449.0,1,0,0,0
+-90.2562857,38.5488902,2787.0,-1422.0,1,0,0,0
+-90.2590300,38.5494407,565.0,-2552.0,1,0,0,0
+-90.2580698,38.5488151,1663.0,-2523.0,1,0,0,0
+-90.2571031,38.5481675,2787.0,-2493.0,1,0,0,0
+-90.2598588,38.5487170,568.0,-3593.0,1,0,0,0
+-90.2589093,38.5480872,1664.0,-3568.0,1,0,0,0
+-90.2579400,38.5474459,2787.0,-3542.0,1,0,0,0

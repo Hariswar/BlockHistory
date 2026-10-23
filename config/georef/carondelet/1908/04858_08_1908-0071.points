@@ -1,0 +1,11 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Loughborough Av & Idaho Av
+#NAME 1 Loughborough Av & Alabama Av
+#NAME 2 Blow St & Idaho Av
+#NAME 3 Blow St & Alabama Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2586615,38.5564420,1515.0,-103.0,1,0,0,0
+-90.2577787,38.5559790,2427.0,-104.0,1,0,0,0
+-90.2601180,38.5551516,1230.0,-1977.0,1,0,0,0
+-90.2592185,38.5546955,2155.0,-1977.0,1,0,0,0

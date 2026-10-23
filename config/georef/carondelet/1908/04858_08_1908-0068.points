@@ -1,0 +1,11 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Haven St & S. Broadway
+#NAME 1 Kraus St & S. Broadway
+#NAME 2 Loughborough Av & S. Broadway
+#NAME 3 Quincy St & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2505559,38.5539439,279.0,-387.0,1,0,0,0
+-90.2513739,38.5532234,280.0,-1434.0,1,0,0,0
+-90.2521967,38.5524918,280.0,-2493.0,1,0,0,0
+-90.2530215,38.5517718,281.0,-3616.0,1,0,0,0

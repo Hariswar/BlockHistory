@@ -41,3 +41,10 @@ Vol. 8 (1938, `sanborn04858_019`, 90 images), Dutchtown / Marine Villa just nort
 ## Other sources (stretch goals)
 - **City directories**: yearly St. Louis directories after ~1930 aren't on the Internet Archive. Gould's Red Book (business directory, possibly 1917) may be a free pre-1938 snapshot. Ask the St. Louis Public Library about criss-cross directories for key lots (Phase 3).
 - **University of Missouri Digital Library** (digital.library.missouri.edu) also hosts St. Louis sheets. It blocks scripts with a CAPTCHA, so search it in a browser.
+
+## 1908 Vol. 8: scoping (Oct 23, 2026)
+- `sanborn04858_011`: 123 images (title, index, key map `-0000`, sheets 1–120), each 6672×7913 px like 1938. Runs from Chippewa St. south across the River Des Peres into Luxemburg and Lemay (St. Louis County).
+- **Scale 50 ft to the inch** (1938: 100 ft), so a sheet covers one to two blocks. Carondelet and Patch (Eichelberger to the River Des Peres, Grand to the river) is roughly **sheets 41–106, about 60 sheets**; sheets west of Grand (e.g. 69, 75, 76) and south of the Des Peres (88–89, 95, 107–120) are outside the study area. Exact list: the sheets that overlap the 1938 coverage once placed.
+- Georeferencing: hand-picked street intersections as for 1938 (the 1950 image-alignment shortcut doesn't apply: different layout and scale). Sheet 80 (Robert–Steins × Minnesota–S. Broadway) shows ~12 named intersections, all streets still named the same today. Expect 4–8 points per sheet.
+- Labels are large and clean at full resolution. Uses differ from 1938: liveries, blacksmiths, broom and soda works, foundries, coal yards; almost no gasoline tanks yet.
+- Cost estimate from the 1938/1950 ledger: reading ~$0.011 per sheet, points pass ~$0.001, tank pass mostly unnecessary, explanations only for new labels: **about $0.85 for 60 sheets, ~$1.20 with re-runs.**

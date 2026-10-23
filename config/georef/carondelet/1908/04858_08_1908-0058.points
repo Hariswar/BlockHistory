@@ -1,0 +1,11 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Alabama Av & Fillmore St
+#NAME 1 Alabama Av & Wilmington Av
+#NAME 2 Virginia Av & Bowen St
+#NAME 3 Virginia Av & Fillmore St
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2514227,38.5623263,1948.0,-120.0,1,0,0,0
+-90.2508520,38.5629962,2883.0,-127.0,1,0,0,0
+-90.2504580,38.5601909,443.0,-2138.0,1,0,0,0
+-90.2494899,38.5613196,1957.0,-2151.0,1,0,0,0

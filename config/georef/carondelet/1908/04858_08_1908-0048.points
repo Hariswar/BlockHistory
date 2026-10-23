@@ -1,0 +1,15 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Bates St & Colorado Av
+#NAME 1 Bates St & Alabama Av
+#NAME 2 Dover St & Colorado Av
+#NAME 3 Dover St & Alabama Av
+#NAME 4 Wilmington Av & Colorado Av
+#NAME 5 Wilmington Av & Alabama Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2506181,38.5665337,1110.0,-261.0,1,0,0,0
+-90.2487089,38.5655381,3142.0,-257.0,1,0,0,0
+-90.2521231,38.5647738,1119.0,-2688.0,1,0,0,0
+-90.2502082,38.5637617,3146.0,-2672.0,1,0,0,0
+-90.2527671,38.5640092,1122.0,-3712.0,1,0,0,0
+-90.2508520,38.5629962,3147.0,-3700.0,1,0,0,0

@@ -108,3 +108,32 @@ def test_intersection_merges_divided_road_vertices():
 def test_position_words(words, expected):
     assert _fraction(words) == expected
     assert _fraction("from the tank pass") is None
+
+
+def test_robust_picks_matches_by_consensus_and_sets_aside_moved_corners():
+    import sys
+    from pathlib import Path
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+    import georef_sheet
+
+    # A 10 cm/px sheet, north up: pixel (x, y) is (x*0.1 m east, y*0.1 m south) of the origin.
+    lat0, lon0 = 38.55, -90.25
+    kx = 111_320 * math.cos(math.radians(lat0))
+
+    def at(x, y, east=0.0, north=0.0):
+        return (lat0 - y * 0.1 / 111_320 + north / 111_320, lon0 + x * 0.1 / kx + east / kx)
+
+    cands = [
+        ("A & B", 0, 0, [at(0, 0)]),
+        ("A & C", 1000, 0, [at(1000, 0), at(1000, 0, east=300)]),  # two matches today: pick one
+        ("D & B", 0, 1000, [at(0, 1000)]),
+        ("D & C", 1000, 1000, [at(1000, 1000)]),
+        ("E & B", 0, 2000, [at(0, 2000, north=40)]),  # street moved 40 m: set aside
+        ("F & G", 500, 500, []),  # gone today
+    ]
+    kept = georef_sheet._robust(cands, scale_ft=0.328)
+    names = {g.name for g in kept}
+    assert names == {"A & B", "A & C", "D & B", "D & C"}
+    a_c = next(g for g in kept if g.name == "A & C")
+    assert abs(a_c.lon - at(1000, 0)[1]) < 1e-9  # the consistent match, not the one 300 m east

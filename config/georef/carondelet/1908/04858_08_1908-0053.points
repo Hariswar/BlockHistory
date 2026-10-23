@@ -1,0 +1,21 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Dover St & Michigan Av
+#NAME 1 Dover St & Minnesota Av
+#NAME 2 Dover St & Pennsylvania Av
+#NAME 3 Elwood St & Michigan Av
+#NAME 4 Elwood St & Minnesota Av
+#NAME 5 Elwood St & Pennsylvania Av
+#NAME 6 Fillmore St & Michigan Av
+#NAME 7 Fillmore St & Minnesota Av
+#NAME 8 Fillmore St & Pennsylvania Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2461840,38.5618680,1142.0,-723.0,1,0,0,0
+-90.2451542,38.5613246,2256.0,-600.0,1,0,0,0
+-90.2441161,38.5607769,3282.0,-487.0,1,0,0,0
+-90.2466803,38.5615037,1108.0,-1316.0,1,0,0,0
+-90.2457627,38.5608517,2203.0,-1346.0,1,0,0,0
+-90.2448185,38.5602075,3268.0,-1376.0,1,0,0,0
+-90.2475294,38.5607998,1045.0,-2416.0,1,0,0,0
+-90.2465877,38.5601682,2127.0,-2415.0,1,0,0,0
+-90.2456535,38.5595376,3252.0,-2415.0,1,0,0,0

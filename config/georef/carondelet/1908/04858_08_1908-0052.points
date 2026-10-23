@@ -1,0 +1,10 @@
+#CRS: EPSG:4326
+#NAME 0 Bates St & Pennsylvania Av
+#NAME 1 Bates St & S. Broadway
+#NAME 2 Dover St & Pennsylvania Av
+#NAME 3 Dover St & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2428804,38.5624428,761.0,-1473.0,1,0,0,0
+-90.2419560,38.5619592,1776.0,-1454.0,1,0,0,0
+-90.2441161,38.5607769,866.0,-3619.0,1,0,0,0
+-90.2431593,38.5602720,1981.0,-3607.0,1,0,0,0

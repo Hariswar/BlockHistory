@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Bates St & Compton Av
+#NAME 1 Bates St & Michigan Av
+#NAME 2 Bates St & Minnesota Av
+#NAME 3 Dover St & Michigan Av
+#NAME 4 Dover St & Minnesota Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2460458,38.5641128,155.0,-1431.0,1,0,0,0
+-90.2449553,38.5635395,1356.0,-1423.0,1,0,0,0
+-90.2439123,38.5629899,2452.0,-1415.0,1,0,0,0
+-90.2461840,38.5618680,1579.0,-3584.0,1,0,0,0
+-90.2451542,38.5613246,2665.0,-3575.0,1,0,0,0

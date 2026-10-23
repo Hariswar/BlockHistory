@@ -1,0 +1,24 @@
+#CRS: EPSG:4326
+#NAME 0 Haven St & Virginia Av
+#NAME 1 Haven St & Michigan Av
+#NAME 2 Haven St & Minnesota Av
+#NAME 3 Kraus St & Virginia Av
+#NAME 4 Kraus St & Michigan Av
+#NAME 5 Kraus St & Minnesota Av
+#NAME 6 Loughborough Av & Michigan Av
+#NAME 7 Loughborough Av & Minnesota Av
+#NAME 8 Quincy St & Virginia Av
+#NAME 9 Quincy St & Michigan Av
+#NAME 10 Quincy St & Minnesota Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2544538,38.5564102,993.0,-337.0,1,0,0,0
+-90.2533916,38.5558445,2119.0,-315.0,1,0,0,0
+-90.2524524,38.5552133,3227.0,-294.0,1,0,0,0
+-90.2551730,38.5557758,996.0,-1409.0,1,0,0,0
+-90.2542039,38.5551354,2123.0,-1389.0,1,0,0,0
+-90.2532746,38.5545091,3232.0,-1371.0,1,0,0,0
+-90.2550550,38.5544096,2126.0,-2459.0,1,0,0,0
+-90.2541130,38.5537739,3237.0,-2433.0,1,0,0,0
+-90.2568175,38.5543294,1003.0,-3562.0,1,0,0,0
+-90.2558730,38.5536779,2129.0,-3544.0,1,0,0,0
+-90.2549369,38.5530591,3243.0,-3526.0,1,0,0,0

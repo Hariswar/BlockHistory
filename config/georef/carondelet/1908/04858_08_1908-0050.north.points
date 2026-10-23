@@ -1,0 +1,10 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#OUTLINE 0,0 3345,0 3345,1973 0,1973
+#NAME 0 Iron St & Tennessee Av
+#NAME 1 Iron St & Louisiana Av
+#NAME 2 Iron St & Alaska Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2577707,38.5631279,1014.0,-177.0,1,0,0,0
+-90.2567582,38.5625888,2149.0,-184.0,1,0,0,0
+-90.2557872,38.5620938,3187.0,-190.0,1,0,0,0

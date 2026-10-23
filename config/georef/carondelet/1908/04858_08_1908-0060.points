@@ -1,0 +1,10 @@
+#CRS: EPSG:4326
+#NAME 0 Bowen St & Pennsylvania Av
+#NAME 1 Bowen St & S. Broadway
+#NAME 2 Iron St & Pennsylvania Av
+#NAME 3 Iron St & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2472591,38.5582204,298.0,-1425.0,1,0,0,0
+-90.2463099,38.5575757,1423.0,-1430.0,1,0,0,0
+-90.2481158,38.5575182,231.0,-2506.0,1,0,0,0
+-90.2471548,38.5568835,1380.0,-2505.0,1,0,0,0

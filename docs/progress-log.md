@@ -358,3 +358,9 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 ## Phase 3: community notes (Oct 23, 2026)
 - "Remember what used to be here?" under each search in the mapped area (what was here, roughly when, how you know) and "Something wrong with this listing?" on every card (replaces the GitHub link; the footer link stays for website problems). Notes go to a review queue in Supabase; approved memories show under nearby searches as "Neighbors remember", in the reviewer's wording.
 - Tested on a local build: valid notes reach the database step, missing fields get a clear message, both spam traps drop the note silently, the Limits & privacy page lists exactly what a note stores. Review steps in `docs/pipeline.md` (6g).
+
+## Phase 3: 1908 map placement, first half (Oct 23, 2026)
+- Downloaded and tiled 66 sheets of 1908 Vol. 8 (41–106 and the key map). Sheets 41–46, 69 and 70 are outside the 1938 coverage or unplaceable.
+- Placed 23 sheets (47–68, 71, 80; 50 in two panels): median left-out error 0.9–5.6 m, most 1–4 m. Checked against the 1938 data: the Carondelet ice plant lands 8 m from its 1938 position, the branch library 18 m (label vs building center).
+- New tools: `georef_preview.py` (grid, street-line fitting), `georef_sheet.py gcps --robust/--skip-missing`, `place_sheets.py` (re-places a whole year from `streets.txt`). Found that Malt St (1908) is today's Mott St. Tests: 107. No API cost.
+- Next: sheets 72–79 and 81–106, then reading (~$0.85, after the Nov 1 budget reset).

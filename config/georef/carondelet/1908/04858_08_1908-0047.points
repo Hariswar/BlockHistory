@@ -1,0 +1,12 @@
+#CRS: EPSG:4326
+#NAME 0 Bates St & Grand Blvd
+#NAME 1 Dover St & Grand Blvd
+#NAME 2 Dover St & Louisiana Av
+#NAME 3 Wilmington Av & Grand Blvd
+#NAME 4 Wilmington Av & Louisiana Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2544150,38.5685390,259.0,-262.0,1,0,0,0
+-90.2559470,38.5667726,261.0,-2696.0,1,0,0,0
+-90.2540694,38.5657722,2202.0,-2692.0,1,0,0,0
+-90.2566026,38.5660120,263.0,-3712.0,1,0,0,0
+-90.2547063,38.5650159,2207.0,-3711.0,1,0,0,0

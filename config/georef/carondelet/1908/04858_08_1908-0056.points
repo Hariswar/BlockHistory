@@ -1,0 +1,21 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Wilmington Av & Colorado Av
+#NAME 1 Wilmington Av & Alabama Av
+#NAME 2 Fillmore St & Colorado Av
+#NAME 3 Fillmore St & Idaho Av
+#NAME 4 Fillmore St & Alabama Av
+#NAME 5 Bowen St & Idaho Av
+#NAME 6 Iron St & Colorado Av
+#NAME 7 Iron St & Idaho Av
+#NAME 8 Iron St & Alabama Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2527671,38.5640092,1108.0,-323.0,1,0,0,0
+-90.2508520,38.5629962,3132.0,-301.0,1,0,0,0
+-90.2533491,38.5633360,1114.0,-1236.0,1,0,0,0
+-90.2523809,38.5628359,2114.0,-1240.0,1,0,0,0
+-90.2514227,38.5623263,3141.0,-1244.0,1,0,0,0
+-90.2533434,38.5617052,2137.0,-2753.0,1,0,0,0
+-90.2548270,38.5615821,1130.0,-3588.0,1,0,0,0
+-90.2538453,38.5610976,2150.0,-3582.0,1,0,0,0
+-90.2528894,38.5605417,3162.0,-3576.0,1,0,0,0

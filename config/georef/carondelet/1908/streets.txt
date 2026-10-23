@@ -1,0 +1,30 @@
+# 1908 Vol. 8: streets per sheet for scripts/georef_preview.py lines (H = across at y, V = down
+# at x, 50% image pixels; "/a-b" = measure only from a to b along the street). OPTS go to
+# georef_sheet.py gcps; SKIP drops corners that aren't drawn crossings. Old names are already
+# replaced by today's (Malt -> Mott). THIN=8 bridges pipe lines drawn down a street. One sheet per line:
+#   <sheet> [OPTS=...] [SKIP=a/b|c/d] | <streets...>   (" | " with spaces separates the street list)
+47 SKIP=Bates St/Louisiana Av | H:Bates St@262 H:Dover St@2686 H:Wilmington Av@3706 V:Grand Blvd@257 V:Louisiana Av@2247/2160-3910
+48 | H:Bates St@262 H:Dover St@2681 H:Wilmington Av@3693 V:Colorado Av@1113 V:Alabama Av@3136
+49 | H:Bates St@310 H:Dover St@2700 H:Wilmington Av@3698 V:Alabama Av@191 V:Virginia Av@2230
+50 OPTS=--similarity --outline 0,1973,3345,3957 | H:Iron St@2204 V:Alaska Av@110/1973-3956 V:Colorado Av@1134/1973-3956 V:Idaho Av@2140/1973-3956 V:Alabama Av@3145/1973-3956
+50 OPTS=--similarity --panel north --outline 0,0,3345,1973 SKIP=Iron St/Grand Blvd | H:Iron St@172 V:Grand Blvd@120/0-1973 V:Tennessee Av@1048/0-1973 V:Louisiana Av@2145/0-1973 V:Alaska Av@3145/0-1973
+51 | H:Bates St@1418 H:Dover St@3574 V:Compton Av@290 V:Michigan Av@1382 V:Minnesota Av@2507
+52 | H:Bates St@1465 H:Dover St@3603 V:Pennsylvania Av@815 V:S. Broadway@1966
+53 | H:Dover St@662 H:Elwood St@1352 H:Fillmore St@2402 V:Michigan Av@1072 V:Minnesota Av@2149 V:Pennsylvania Av@3252
+54 | H:Dover St@572 H:Elwood St@1489 H:Fillmore St@2531 V:Pennsylvania Av@410 V:S. Broadway@1478
+55 SKIP=Iron St/Tennessee Av|Iron St/Louisiana Av|Iron St/Alaska Av|Fillmore St/Grand Blvd | H:Wilmington Av@334 H:Fillmore St@1232 H:Iron St@3588 V:Grand Blvd@210 V:Tennessee Av@1232/0-2120 V:Louisiana Av@2245/0-2120 V:Alaska Av@3254/0-2120
+56 | H:Wilmington Av@322 H:Fillmore St@1232 H:Bowen St@2736/2200-3345 H:Iron St@3576 V:Colorado Av@1113 V:Idaho Av@2128 V:Alabama Av@3136
+57 | H:Alabama Av@172 H:Vermont Av@1132 H:Virginia Av@2140 V:Iron St@2043 V:Bowen St@2884
+58 SKIP=Vermont Av/Bowen St|Vermont Av/Fillmore St | H:Alabama Av@162 H:Virginia Av@2140 V:Bowen St@441 V:Fillmore St@1955 V:Wilmington Av@2860
+59 SKIP=Iron St/Michigan Av | H:Bowen St@1430 H:Iron St@2503 V:Michigan Av@579 V:Minnesota Av@1668 V:Pennsylvania Av@2777
+60 | H:Bowen St@1423 H:Iron St@2496 V:Pennsylvania Av@262 V:S. Broadway@1382
+61 | H:Mott St@1978 H:Haven St@3670 V:Idaho Av@1294 V:Alabama Av@2202 V:Vermont Av@3134
+62 SKIP=Haven St/Virginia Av|Haven St/Vermont Av | H:Mott St@2312 H:Haven St@3503/2100-3345 V:Vermont Av@148 V:Virginia Av@1061 V:Michigan Av@2121 V:Minnesota Av@3164
+63 | H:Mott St@2491 H:Haven St@3706 V:Minnesota Av@565 V:Pennsylvania Av@1661 V:S. Broadway@2765
+64 | H:Soper St@1387/0-840 H:Mott St@2467 H:Haven St@3640 V:S. Broadway@334
+65 THIN=8 | H:Haven St@929 H:Loughborough Av@2836 V:Idaho Av@1208 V:Alabama Av@2114 V:Vermont Av@3039
+80 | H:Robert Av@386 H:Upton St@1453 H:Koeln Av@2525 H:Steins St@3590 V:Minnesota Av@572 V:Pennsylvania Av@1661 V:S. Broadway@2764
+66 SKIP=Haven St/Vermont Av|Kraus St/Vermont Av|Loughborough Av/Vermont Av|Quincy St/Vermont Av|Loughborough Av/Virginia Av | H:Haven St@322/1000-3345 H:Kraus St@1382/1000-3345 H:Loughborough Av@2455/1000-3345 H:Quincy St@3527/1000-3345 V:Vermont Av@167 V:Virginia Av@1037 V:Michigan Av@2114 V:Minnesota Av@3158
+67 SKIP=Haven St/Minnesota Av | H:Haven St@429 H:Kraus St@1502 H:Loughborough Av@2567 H:Quincy St@3651 V:Minnesota Av@560 V:Pennsylvania Av@1649 V:S. Broadway@2758
+68 OPTS=--similarity | H:Haven St@374 H:Kraus St@1435 H:Loughborough Av@2490/0-800 H:Quincy St@3592 V:S. Broadway@281
+71 OPTS=--similarity SKIP=Robert Av/Idaho Av|Robert Av/Alabama Av|Robert Av/Vermont Av|Blow St/Vermont Av|Loughborough Av/Vermont Av | H:Loughborough Av@124 H:Blow St@1959 H:Robert Av@3801 V:Idaho Av@1304 V:Alabama Av@2209
