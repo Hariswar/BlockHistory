@@ -145,6 +145,12 @@ The data reload (`load_postgis_*.sql`) never touches this table.
 - `georef_sheet.py gcps --robust` matches each corner to today's intersection by consensus across the sheet, picks the right one when a street pair meets twice today, and sets aside corners that disagree (streets moved since the map was drawn). `place_sheets.py` tries affine and similarity fits and keeps the better.
 - Streets that moved, vanished or were renamed since 1908 are listed in `config/georef/carondelet/1908/NOTES.md` (e.g. Malt St is today's Mott St).
 
+## 6i. A new neighborhood
+1. Pick sheets from the volume key map: `scripts/area_config.py <slug> --name ... --item <loc id> --sheets ...` (and add more editions to the same file the same way).
+2. Add a `site` block to `config/neighborhoods/<slug>.json`: `name`, `place`, `city`, `state`, `bbox` (south/west/north/east), `center` ([lon, lat]), `years`, `default_year`, `volumes`. Everything else reads it (`blockhistory/area.py`; the website through `web/lib/area.json`, written by `export_overlays.py`).
+3. Download and tile (`download_sheet.py`, `tile_sheet.py`), read (`run_batch.py submit/collect`, then `--tanks`, `--points`), place (`georef_preview.py` + `config/georef/<slug>/<year>/streets.txt` + `place_sheets.py`), records (`load_records.py <slug>`), build and export (`build_db.py`).
+4. Still per neighborhood: the notes bounding box in `submit_note()` (schema_postgis.sql) and, for a second neighborhood on the same site, a way to choose between them on the website.
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]

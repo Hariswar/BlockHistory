@@ -21,13 +21,16 @@ export default function About() {
           <h2>What&apos;s covered</h2>
           <ul>
             <li>
-              Two map years: 1938 (Sanborn St. Louis Vol. 12) and its 1950 update. Switch between
-              them above the map; each listing says whether the other year shows it too.
+              Three map years: 1908 (Sanborn St. Louis Vol. 8), 1938 (Vol. 12) and its 1950
+              update. Switch between them above the map; each listing says whether the map before
+              and after it shows it too.
             </li>
             <li>
               All of Carondelet and Patch: 46 map sheets from Bates St. to the River des Peres,
-              Grand Blvd. to the river (the outlined area on the map). The 1950 scan has no sheet
-              11.
+              Grand Blvd. to the river (the outlined area on the map) for 1938 and 1950; the 1950
+              scan has no sheet 11. The 1908 map is drawn at twice the scale; 48 of its sheets cover
+              most of the same area, except a few blocks where streets were re-laid after the River
+              des Peres was moved.
             </li>
           </ul>
         </section>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Search from "@/components/Search";
 import { lookup, lookupSummary } from "@/lib/lookup";
+import { AREA, yearsText } from "@/lib/site";
 
 type Props = { searchParams: Promise<{ q?: string }> };
 
@@ -28,8 +29,8 @@ export default function Home() {
       <section className="hero">
         <h1>What stood on your block?</h1>
         <p>
-          Type a street address in Carondelet, St. Louis. BlockHistory looks at the 1938 and 1950
-          Sanborn fire insurance maps and lists past uses within 100 meters that sometimes left
+          Type a street address in {AREA.place}. BlockHistory looks at the {yearsText()} Sanborn
+          fire insurance maps and lists past uses within 100 meters that sometimes left
           soil or groundwater contamination, like gas stations, garages, dry cleaners and
           foundries. Or <a href="/streets">browse by street</a>.
         </p>

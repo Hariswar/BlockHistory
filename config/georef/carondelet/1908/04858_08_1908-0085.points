@@ -1,0 +1,26 @@
+#CRS: EPSG:4326
+#NAME 0 Steins St & Michigan Av
+#NAME 1 Steins St & Minnesota Av
+#NAME 2 Steins St & Pennsylvania Av
+#NAME 3 Schirmer St & Michigan Av
+#NAME 4 Schirmer St & Minnesota Av
+#NAME 5 Schirmer St & Pennsylvania Av
+#NAME 6 Courtois St & Michigan Av
+#NAME 7 Courtois St & Minnesota Av
+#NAME 8 Courtois St & Pennsylvania Av
+#NAME 9 Primm St & Michigan Av
+#NAME 10 Primm St & Minnesota Av
+#NAME 11 Primm St & Pennsylvania Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2608482,38.5493734,386.0,-377.0,1,0,0,0
+-90.2598588,38.5487170,1491.0,-382.0,1,0,0,0
+-90.2589093,38.5480872,2529.0,-387.0,1,0,0,0
+-90.2616147,38.5486338,359.0,-1465.0,1,0,0,0
+-90.2606581,38.5480017,1462.0,-1468.0,1,0,0,0
+-90.2597153,38.5473621,2500.0,-1472.0,1,0,0,0
+-90.2624149,38.5479105,331.0,-2555.0,1,0,0,0
+-90.2614762,38.5472791,1432.0,-2540.0,1,0,0,0
+-90.2605160,38.5466579,2472.0,-2526.0,1,0,0,0
+-90.2632464,38.5471909,305.0,-3611.0,1,0,0,0
+-90.2622969,38.5465574,1403.0,-3605.0,1,0,0,0
+-90.2613475,38.5459265,2444.0,-3599.0,1,0,0,0

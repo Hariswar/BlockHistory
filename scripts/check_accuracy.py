@@ -40,7 +40,8 @@ from blockhistory.georef.transform import leave_one_out, read_model, read_points
 ROOT = Path(__file__).resolve().parent.parent
 BASELINE = ROOT / "evals" / "baseline.json"
 AREA = "carondelet"
-EDITIONS = ("1938", "1950")
+# Years with hand-made answer keys; add one here when its keys exist.
+EDITIONS = ("1908", "1938", "1950")
 RATE_TOLERANCE = 0.01  # one percentage point
 GEOREF_MAX_M = 8.0
 
@@ -70,7 +71,8 @@ def measure(edition: str) -> dict:
     }
     sheets = judged_sheets(AREA, edition)
     right, wrong = score(AREA, edition, sheets)
-    out["rates"]["listings right as read"] = [len(right), len(right) + len(wrong)]
+    if right or wrong:  # no fully scan-checked sheet yet: no rate
+        out["rates"]["listings right as read"] = [len(right), len(right) + len(wrong)]
     out["shown"] = sorted(_key(f) for f in right + wrong)
 
     fixes = corrections.load(AREA, edition)

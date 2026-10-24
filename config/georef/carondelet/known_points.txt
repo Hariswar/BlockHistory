@@ -1,0 +1,21 @@
+# Street corners that no longer exist today, measured on an older placed map.
+# georef_sheet.py gcps uses these instead of OpenStreetMap (today's street of that name may differ).
+# <street> & <street> = lat,lon   # where it was measured
+Quincy St & Water St = 38.5511607,-90.2520818   # 1938 sheet 53 at 2328,366 (Water: center beside block 3045)
+Blow St & Water St = 38.5504359,-90.2528921   # 1938 sheet 53 at 2328,1431
+Nagel Av & Water St = 38.5497430,-90.2536666   # 1938 sheet 53 at 2328,2449
+Robert Av & Water St = 38.5489889,-90.2545096   # 1938 sheet 53 at 2328,3557
+# Coke-plant riverfront, re-platted after 1938 (Polk St today is a different street, 57 m off):
+Upton St & Vulcan St = 38.5476299,-90.2543675   # 1938 sheet 57 at 1174,829
+Upton St & Reilly Av = 38.5469384,-90.2533755   # 1938 sheet 57 at 1741,832
+Upton St & Polk St = 38.5463136,-90.2524803   # 1938 sheet 57 at 2253,835
+Koeln Av & Vulcan St = 38.5469031,-90.2552069   # 1938 sheet 57 at 1173,1366
+Koeln Av & Reilly Av = 38.5462483,-90.2542011   # 1938 sheet 57 at 1731,1350
+Koeln Av & Polk St = 38.5456322,-90.2532549   # 1938 sheet 57 at 2256,1335
+Steins St & Polk St = 38.5449045,-90.2540860   # 1938 sheet 57 at 2258,1870 (overrides today's Polk St, a different street)
+Schirmer St & Polk St = 38.5443213,-90.2547633   # 1938 sheet 57 at 2256,2302 (overrides today's Polk St, a different street)
+Courtois St & Polk St = 38.5434437,-90.2557858   # 1938 sheet 57 at 2252,2953 (overrides today's Polk St, a different street)
+# Old River Des Peres bend (channel moved in the 1920s-30s; Hiertz smelter site). Poepping is weak (few samples).
+Tesson St & Tennessee Av = 38.5500323,-90.2699967   # 1938 sheet 58 at 1328,2344
+Poepping St & Tennessee Av = 38.5491473,-90.2710064   # 1938 sheet 58 at 1325,2966 (weak)
+Poepping St & Alaska Av = 38.5485756,-90.2699654   # 1938 sheet 58 at 1871,2966 (weak)

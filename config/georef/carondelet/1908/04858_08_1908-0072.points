@@ -1,0 +1,27 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Quincy St & Virginia Av
+#NAME 1 Quincy St & Michigan Av
+#NAME 2 Quincy St & Minnesota Av
+#NAME 3 Blow St & Virginia Av
+#NAME 4 Blow St & Michigan Av
+#NAME 5 Blow St & Minnesota Av
+#NAME 6 Nagel Av & Virginia Av
+#NAME 7 Nagel Av & Michigan Av
+#NAME 8 Nagel Av & Minnesota Av
+#NAME 9 Robert Av & Virginia Av
+#NAME 10 Robert Av & Michigan Av
+#NAME 11 Robert Av & Minnesota Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2568175,38.5543294,1090.0,-445.0,1,0,0,0
+-90.2558730,38.5536779,2123.0,-440.0,1,0,0,0
+-90.2549369,38.5530591,3230.0,-434.0,1,0,0,0
+-90.2575528,38.5536822,1091.0,-1529.0,1,0,0,0
+-90.2566992,38.5529585,2129.0,-1514.0,1,0,0,0
+-90.2557523,38.5523418,3232.0,-1499.0,1,0,0,0
+-90.2584721,38.5528767,1093.0,-2620.0,1,0,0,0
+-90.2575280,38.5522411,2135.0,-2596.0,1,0,0,0
+-90.2565758,38.5516055,3235.0,-2571.0,1,0,0,0
+-90.2592928,38.5521614,1094.0,-3700.0,1,0,0,0
+-90.2583514,38.5515237,2141.0,-3683.0,1,0,0,0
+-90.2573912,38.5508881,3237.0,-3665.0,1,0,0,0

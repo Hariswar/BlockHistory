@@ -1,0 +1,9 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Primm St & Virginia Av
+#NAME 1 Poepping St & Virginia Av
+#NAME 2 Davis St & Virginia Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2641852,38.5478182,2982.0,-273.0,1,0,0,0
+-90.2658231,38.5463829,2817.0,-2394.0,1,0,0,0
+-90.2666186,38.5456856,2734.0,-3457.0,1,0,0,0

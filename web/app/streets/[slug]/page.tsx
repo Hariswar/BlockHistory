@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { mapLink, streetHistory, streets } from "@/lib/streets";
 import type { PublicFinding } from "@/lib/present";
+import { AREA } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = await find((await params).slug);
   if (!s) return { title: "Street not found · BlockHistory" };
   const title = `${s.name}: past uses · BlockHistory`;
-  const description = `Past uses along ${s.name}, Carondelet, St. Louis, that sometimes left soil contamination: ${countLine(s.counts)}.`;
+  const description = `Past uses along ${s.name}, ${AREA.place}, that sometimes left soil contamination: ${countLine(s.counts)}.`;
   const image = `/api/og?street=${encodeURIComponent(s.name)}&line=${encodeURIComponent(
     `Past uses that sometimes left soil contamination: ${countLine(s.counts)}.`,
   )}`;
@@ -57,7 +58,11 @@ function Row({ f }: { f: PublicFinding }) {
           {f.relevance === "high" ? "Often linked to contamination" : "Sometimes linked"}
         </span>
         {f.hasGasolineTanks && <span className="tag high">Gasoline tanks on the map</span>}
-        {f.change && <span className="tag">{CHANGE[f.change.kind](f.change.otherYear)}</span>}
+        {f.changes.map((c) => (
+          <span key={c.otherYear} className="tag">
+            {CHANGE[c.kind](c.otherYear)}
+          </span>
+        ))}
         <Link href={mapLink(f)} className="small">
           See on the map
         </Link>
@@ -77,7 +82,7 @@ export default async function StreetPage({ params }: Props) {
       </p>
       <h1>{s.name}</h1>
       <p>
-        Businesses along {s.name} in Carondelet that sometimes left soil or groundwater
+        Businesses along {s.name} in {AREA.name} that sometimes left soil or groundwater
         contamination, as printed on the {years.join(" and ")} Sanborn fire insurance maps, in
         order along the street. They are historical uses, not test results; open one on the map
         for the scan, the full note and nearby state records.

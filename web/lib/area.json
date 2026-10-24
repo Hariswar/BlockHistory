@@ -1,0 +1,20 @@
+{
+ "area": "carondelet",
+ "name": "Carondelet and Patch",
+ "place": "Carondelet, St. Louis",
+ "center": [
+  -90.256,
+  38.552
+ ],
+ "years": [
+  "1908",
+  "1938",
+  "1950"
+ ],
+ "defaultYear": "1938",
+ "volumes": {
+  "1908": "Vol. 8",
+  "1938": "Vol. 12",
+  "1950": "Vol. 12 (1950 update)"
+ }
+}

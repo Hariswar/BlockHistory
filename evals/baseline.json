@@ -1,6 +1,31 @@
 {
- "date": "2026-10-21",
+ "date": "2026-10-24",
  "editions": {
+  "1908": {
+   "keys": "2 sheets, includes drafts",
+   "rates": {
+    "sites found": [
+     19,
+     19
+    ],
+    "flags that are real sites": [
+     8,
+     9
+    ]
+   },
+   "errors": {
+    "tanks on sites with none": 0,
+    "stale corrections": 0
+   },
+   "usd_per_sheet": 0.007,
+   "shown": [],
+   "georef": {
+    "panels": 49,
+    "worst median m": 7.3,
+    "worst panel": "04858_08_1908-0052",
+    "over limit": []
+   }
+  },
   "1938": {
    "keys": "10 sheets, human-verified",
    "rates": {

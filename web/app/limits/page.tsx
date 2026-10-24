@@ -13,8 +13,10 @@ export default function Limits() {
           mean the soil is contaminated today, and no listing doesn&apos;t mean it&apos;s clean.
         </li>
         <li>
-          Two years only: businesses that opened and closed between 1938 and 1950, or after 1950,
-          don&apos;t show. &ldquo;Not on the 1950 map&rdquo; can also mean the reader missed it.
+          Three years only: businesses that opened and closed between 1908 and 1938, between 1938
+          and 1950, or after 1950, don&apos;t show. &ldquo;Not on the 1950 map&rdquo; can also mean
+          the reader missed it. The 1908 map is placed from street corners that still exist, so a
+          few riverfront and Patch sheets are less precise.
         </li>
         <li>
           Addresses are placed with the City of St. Louis address service, usually on the

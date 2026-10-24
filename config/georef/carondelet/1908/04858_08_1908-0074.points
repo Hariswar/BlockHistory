@@ -1,0 +1,11 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Quincy St & Water St
+#NAME 1 Blow St & Water St
+#NAME 2 Nagel Av & Water St
+#NAME 3 Robert Av & Water St
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2520818,38.5511607,683.0,-307.0,1,0,0,0
+-90.2528921,38.5504359,679.0,-1350.0,1,0,0,0
+-90.2536666,38.5497430,675.0,-2499.0,1,0,0,0
+-90.2545096,38.5489889,671.0,-3573.0,1,0,0,0

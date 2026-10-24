@@ -1,0 +1,19 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Steins St & Vulcan St
+#NAME 1 Steins St & Reilly Av
+#NAME 2 Steins St & Polk St
+#NAME 3 Schirmer St & Vulcan St
+#NAME 4 Courtois St & Vulcan St
+#NAME 5 Courtois St & Reilly Av
+#NAME 6 Courtois St & Polk St
+#NAME 7 Primm St & Vulcan St
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2559734,38.5461455,164.0,-422.0,1,0,0,0
+-90.2550522,38.5455428,1190.0,-403.0,1,0,0,0
+-90.2540860,38.5449045,2273.0,-383.0,1,0,0,0
+-90.2568582,38.5454719,159.0,-1494.0,1,0,0,0
+-90.2576540,38.5447254,154.0,-2554.0,1,0,0,0
+-90.2567249,38.5441063,1185.0,-2537.0,1,0,0,0
+-90.2557858,38.5434437,2263.0,-2520.0,1,0,0,0
+-90.2584413,38.5439997,149.0,-3632.0,1,0,0,0

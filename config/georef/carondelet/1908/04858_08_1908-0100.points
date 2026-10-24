@@ -1,0 +1,13 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Espenschied St & Pennsylvania Av
+#NAME 1 Espenschied St & S. Broadway
+#NAME 2 Catalan St & Pennsylvania Av
+#NAME 3 Catalan St & S. Broadway
+#NAME 4 Catalan St & Water St
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2661445,38.5417070,337.0,-441.0,1,0,0,0
+-90.2651880,38.5410533,1422.0,-433.0,1,0,0,0
+-90.2669457,38.5410022,305.0,-1465.0,1,0,0,0
+-90.2659699,38.5403688,1394.0,-1461.0,1,0,0,0
+-90.2649513,38.5396965,2551.0,-1456.0,1,0,0,0

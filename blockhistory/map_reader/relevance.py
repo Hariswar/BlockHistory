@@ -26,6 +26,10 @@ MEDIUM = [
     r"ICE (PLANT|MFG)|AMMONIA|SUB(STATION)?\b|ELEC\.? SUB|TRANSF",
     r"BOILER|BLR|ENG(INE)? (RM|HO)|LOCOMOTIVE|ROUNDHOUSE|QUARRY|POND",
     r"SHIP ?(BUILDING|YARD)|CONTRACTOR",
+    # Pre-car trades (1908): wagon and carriage works had forges, paint and varnish; potteries
+    # and brick and tile works had kilns burning coal (ash, lead glazes).
+    r"WAGON (MAKER|MAKING|MFG|WKS|WORKS|FACT|SHOP)|CARRIAGE (MFG|WKS|WORKS|FACT|MAKER)",
+    r"POTTERY|KILN|BRICK (MOULD|MOLD|MAKING|MFG|WKS|WORKS|YARD)|TILE (WKS|WORKS|MFG)",
 ]
 # Words that describe how a building is built, not what it was used for: "CONC. FL."
 # (concrete floor), "BR. 7ST.", "IR. CL." (iron clad), "(ASB. CL.)" (asbestos siding),
@@ -39,6 +43,7 @@ CONSTRUCTION = {
     "TILE", "STONE", "SL", "CI", "FIRE", "PROOF", "FIREPROOF", "CONST", "CONSTN", "WALL", "WALLS",
     "WOOD", "BEAMS", "IST", "ISR", "JOIST", "JOISTS", "FLS", "CEILING", "CEILINGS", "CEILG", "SLAB",
     "EXCEPT", "EXPOSED", "APRON", "CURTAIN", "PILASTD", "PILASTERED", "CONSTR",
+    "TIN",  # "TIN CL." = tin clad
 }  # fmt: skip
 # "IST"/"ISR" are common misreads of "1ST"; "CI" of "CL".
 # Map symbols and markers that readers sometimes report as uses: a lone dwelling (D), flat (F),

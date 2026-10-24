@@ -5,6 +5,7 @@ import MapLegend from "./MapLegend";
 import { CorrectionForm, MemoryForm, NeighborNotes, type PublicNote } from "./Notes";
 import MapView, { type Coverage, type Overlay } from "./MapView";
 import type { PublicFinding, PublicRecord } from "@/lib/present";
+import { AREA } from "@/lib/site";
 
 type Result = {
   query: string;
@@ -33,7 +34,7 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [coverage, setCoverage] = useState<Coverage[]>([]);
   const [active, setActive] = useState<number | null>(null);
-  const [year, setYear] = useState("1938");
+  const [year, setYear] = useState(AREA.defaultYear);
   const [overlays, setOverlays] = useState<Overlay[]>([]);
   const [oldMap, setOldMap] = useState(70); // % opacity of the old map over today's streets
 
@@ -45,7 +46,7 @@ export default function Search() {
   }, []);
 
   useEffect(() => {
-    fetch("/overlays/carondelet.json")
+    fetch(`/overlays/${AREA.area}.json`)
       .then((r) => r.json())
       .then((d) => setOverlays(d.panels))
       .catch(() => setOverlays([]));
@@ -208,7 +209,7 @@ export default function Search() {
         )}
         {!shown && (
           <p className="small">
-            The outlined areas on the map are the parts of Carondelet processed so far. More are
+            The outlined areas on the map are the parts of {AREA.place} processed so far. More are
             being added.
           </p>
         )}
@@ -227,7 +228,7 @@ function Summary({ result, year }: { result: Result; year: string }) {
         <>
           <h2>We haven&apos;t processed the maps for this address yet</h2>
           <p>
-            So far BlockHistory covers Carondelet and Patch on the {year} map (the outlined area on
+            So far BlockHistory covers {AREA.name} on the {year} map (the outlined area on
             the map). This says nothing either way about this property.
           </p>
         </>
@@ -291,7 +292,11 @@ function FindingCard({
             {f.relevance === "high" ? "Often linked to contamination" : "Sometimes linked to contamination"}
           </span>
           {f.hasGasolineTanks && <span className="tag high">Gasoline tanks on the map</span>}
-          {f.change && <span className="tag">{changeText(f.change)}</span>}
+          {f.changes.map((c) => (
+            <span key={c.otherYear} className="tag">
+              {changeText(c)}
+            </span>
+          ))}
           {f.reviewStatus === "checked_ok" ? (
             <span className="tag checked">Checked against the map by a person</span>
           ) : f.reviewStatus === "partly_checked" ? (

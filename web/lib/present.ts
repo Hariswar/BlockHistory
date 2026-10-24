@@ -12,6 +12,8 @@ const NAMED = /\b(CO|INC|WKS|WORKS|COMPANY|CORP)\b\.?/i;
 
 export type PublicFinding = ReturnType<typeof present>;
 
+export type Change = { kind: "still" | "similar" | "not" | "new"; otherYear: string };
+
 export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
   const s = f.sheet;
   const cx = Math.round(f.sheet_px * s.full_res_scale);
@@ -36,7 +38,9 @@ export function present(f: FindingRow & { distance_m: number; sheet: Sheet }) {
     // Compared with the other map year at the same place: "still" there (same printed name),
     // a "similar" use nearby (same kind, different label), "not" on the other map, or "new"
     // since the earlier one. Null when only one year covers the spot.
-    change: null as null | { kind: "still" | "similar" | "not" | "new"; otherYear: string },
+    change: null as null | Change,
+    // One entry per neighboring map year (earlier first); change is the first of them.
+    changes: [] as Change[],
     // State records at about the same spot (within SAME_RECORD_M); filled by attachRecords.
     records: [] as PublicRecord[],
     readerConfidence: f.reader_confidence,
@@ -84,16 +88,20 @@ export function markChanges(found: PublicFinding[], coveredYears: string[]): Pub
   const years = [...new Set(coveredYears)].sort();
   if (years.length < 2) return found;
   return found.map((f) => {
-    const others = years.filter((y) => y !== f.year);
-    const other = f.year < others[0] ? others[0] : others[others.length - 1];
-    const near = found.filter(
-      (g) => g.year === other && distanceM(f.lat, f.lon, g.lat, g.lon) <= SAME_PLACE_M,
-    );
+    // Compare with the map years just before and just after this one.
+    const i = years.indexOf(f.year);
+    const neighbors = [years[i - 1], years[i + 1]].filter(Boolean) as string[];
     const words = useWords(f.printedLabel);
-    const named = near.some((g) => [...useWords(g.printedLabel)].some((w) => words.has(w)));
-    const similar = near.some((g) => family(g.category) === family(f.category));
-    const kind = named ? "still" : similar ? "similar" : f.year < other ? "not" : "new";
-    return { ...f, change: { kind, otherYear: other } };
+    const changes = neighbors.map((other) => {
+      const near = found.filter(
+        (g) => g.year === other && distanceM(f.lat, f.lon, g.lat, g.lon) <= SAME_PLACE_M,
+      );
+      const named = near.some((g) => [...useWords(g.printedLabel)].some((w) => words.has(w)));
+      const similar = near.some((g) => family(g.category) === family(f.category));
+      const kind: Change["kind"] = named ? "still" : similar ? "similar" : f.year < other ? "not" : "new";
+      return { kind, otherYear: other };
+    });
+    return { ...f, change: changes[0] ?? null, changes };
   });
 }
 

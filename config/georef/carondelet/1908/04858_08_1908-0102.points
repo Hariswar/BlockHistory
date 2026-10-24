@@ -1,0 +1,19 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Water St & Marceau St
+#NAME 1 Water St & Davis St
+#NAME 2 Vulcan St & Marceau St
+#NAME 3 Vulcan St & Davis St
+#NAME 4 Reilly Av & Marceau St
+#NAME 5 Reilly Av & Davis St
+#NAME 6 Polk St & Marceau St
+#NAME 7 Polk St & Davis St
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2634221,38.5411041,1166.0,-362.0,1,0,0,0
+-90.2618396,38.5424761,3196.0,-412.0,1,0,0,0
+-90.2624619,38.5404831,1151.0,-1452.0,1,0,0,0
+-90.2608935,38.5418604,3205.0,-1514.0,1,0,0,0
+-90.2615089,38.5398692,1136.0,-2543.0,1,0,0,0
+-90.2599485,38.5412316,3214.0,-2594.0,1,0,0,0
+-90.2605132,38.5391900,1121.0,-3629.0,1,0,0,0
+-90.2589911,38.5405998,3223.0,-3694.0,1,0,0,0

@@ -107,8 +107,32 @@ def _robust(cands: list[tuple[str, float, float, list]], scale_ft: float | None)
     return best
 
 
+def known_points(area: str) -> dict[frozenset, tuple[float, float]]:
+    """config/georef/<area>/known_points.txt: corners gone from today's map, measured on an
+    older placed map. Keyed by the two normalized street names."""
+    path = ROOT / "config" / "georef" / area / "known_points.txt"
+    out = {}
+    if path.exists():
+        for line in path.read_text().splitlines():
+            line = line.split("#")[0].strip()
+            if "=" not in line:
+                continue
+            names, ll = line.split("=")
+            a, b = (osm.norm_street(n) for n in names.split("&"))
+            out[frozenset((a, b))] = tuple(float(v) for v in ll.split(","))
+    return out
+
+
+def _lookup(a: str, b: str, known: dict) -> list[tuple[float, float]]:
+    # A curated known point wins: today's street of that name may be a different street.
+    if pt := known.get(frozenset((osm.norm_street(a), osm.norm_street(b)))):
+        return [pt]
+    return osm.intersection(a, b)
+
+
 def cmd_gcps(args) -> None:
     sid = sheet_dir(args.area, args.edition, args.sheet).name
+    known = known_points(args.area)
     gcps = []
     if args.robust:
         cands = []
@@ -116,13 +140,13 @@ def cmd_gcps(args) -> None:
             streets, xy = spec.split("@")
             a, b = streets.split("/")
             px, py = (float(v) for v in xy.split(","))
-            cands.append((f"{a} & {b}", px, py, osm.intersection(a, b)))
+            cands.append((f"{a} & {b}", px, py, _lookup(a, b, known)))
         gcps = _robust(cands, args.scale_ft)
     for spec in [] if args.robust else args.points:
         streets, xy = spec.split("@")
         a, b = streets.split("/")
         px, py = (float(v) for v in xy.split(","))
-        hits = osm.intersection(a, b)
+        hits = _lookup(a, b, known)
         if len(hits) != 1:
             msg = f"{a} & {b}: {len(hits)} intersections in OpenStreetMap"
             # Streets renamed, closed or rerouted since the map was drawn (common for 1908).

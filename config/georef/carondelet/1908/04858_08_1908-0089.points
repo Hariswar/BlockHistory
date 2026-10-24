@@ -1,0 +1,17 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Primm St & Alaska Av
+#NAME 1 Primm St & Alabama Av
+#NAME 2 Tesson St & Alaska Av
+#NAME 3 Tesson St & Idaho Av
+#NAME 4 Tesson St & Alabama Av
+#NAME 5 Poepping St & Alaska Av
+#NAME 6 Davis St & Idaho Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2682668,38.5500951,1066.0,-379.0,1,0,0,0
+-90.2662854,38.5489310,3175.0,-391.0,1,0,0,0
+-90.2690872,38.5493684,952.0,-1451.0,1,0,0,0
+-90.2680687,38.5487503,2090.0,-1456.0,1,0,0,0
+-90.2671245,38.5482175,3080.0,-1460.0,1,0,0,0
+-90.2699654,38.5485756,837.0,-2527.0,1,0,0,0
+-90.2697766,38.5473404,1872.0,-3578.0,1,0,0,0

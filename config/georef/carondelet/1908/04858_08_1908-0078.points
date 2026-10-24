@@ -1,0 +1,15 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Robert Av & Alabama Av
+#NAME 1 Robert Av & Vermont Av
+#NAME 2 Koeln Av & Alabama Av
+#NAME 3 Koeln Av & Vermont Av
+#NAME 4 Steins St & Alabama Av
+#NAME 5 Steins St & Vermont Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2608522,38.5534889,2124.0,-119.0,1,0,0,0
+-90.2598754,38.5529753,3220.0,-91.0,1,0,0,0
+-90.2630050,38.5518111,1868.0,-2725.0,1,0,0,0
+-90.2620153,38.5512219,2965.0,-2722.0,1,0,0,0
+-90.2638049,38.5511133,1763.0,-3798.0,1,0,0,0
+-90.2628119,38.5505168,2861.0,-3795.0,1,0,0,0

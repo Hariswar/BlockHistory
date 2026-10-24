@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { streets } from "@/lib/streets";
+import { AREA, yearsText } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Streets · BlockHistory",
   description:
-    "Past uses along each Carondelet street on the 1938 and 1950 fire insurance maps: gas stations, garages, foundries and other businesses that sometimes left soil contamination.",
+    `Past uses along each ${AREA.name} street on the ${yearsText()} fire insurance maps: gas stations, garages, foundries and other businesses that sometimes left soil contamination.`,
 };
 
 export default async function Streets() {

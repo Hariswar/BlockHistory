@@ -17,6 +17,8 @@ from pathlib import Path
 
 from georef_sheet import load_panels
 
+from blockhistory import area as areas
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "web" / "public" / "overlays"
 
@@ -63,11 +65,24 @@ def panels(area: str) -> list[dict]:
 
 
 def write(area: str) -> Path:
+    """The overlay panels, and web/lib/area.json: the area's name, center and map years
+    (only years with placed sheets) for the website."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     path = OUT_DIR / f"{area}.json"
-    path.write_text(
-        json.dumps({"area": area, "panels": panels(area)}, separators=(",", ":")) + "\n"
-    )
+    found = panels(area)
+    path.write_text(json.dumps({"area": area, "panels": found}, separators=(",", ":")) + "\n")
+    site = areas.site(area)
+    placed = {p["year"] for p in found}
+    meta = {
+        "area": area,
+        "name": site["name"],
+        "place": site["place"],
+        "center": site["center"],
+        "years": [y for y in site["years"] if y in placed],
+        "defaultYear": site["default_year"],
+        "volumes": site["volumes"],
+    }
+    (ROOT / "web" / "lib" / "area.json").write_text(json.dumps(meta, indent=1) + "\n")
     return path
 
 

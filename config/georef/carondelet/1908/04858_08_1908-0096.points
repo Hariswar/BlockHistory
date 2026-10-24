@@ -1,0 +1,13 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Davis St & Virginia Av
+#NAME 1 Hurck St & Alabama Av
+#NAME 2 Hurck St & Virginia Av
+#NAME 3 Marceau St & Alabama Av
+#NAME 4 Marceau St & Virginia Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2666186,38.5456856,2892.0,-139.0,1,0,0,0
+-90.2695255,38.5463744,518.0,-1224.0,1,0,0,0
+-90.2674232,38.5449802,2899.0,-1183.0,1,0,0,0
+-90.2703009,38.5457214,411.0,-2290.0,1,0,0,0
+-90.2681893,38.5443086,2905.0,-2156.0,1,0,0,0

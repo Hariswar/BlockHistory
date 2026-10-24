@@ -1,0 +1,17 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Steins St & Alabama Av
+#NAME 1 Schirmer St & Alaska Av
+#NAME 2 Schirmer St & Alabama Av
+#NAME 3 Courtois St & Alaska Av
+#NAME 4 Courtois St & Alabama Av
+#NAME 5 Primm St & Alaska Av
+#NAME 6 Primm St & Alabama Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2638049,38.5511133,2532.0,-431.0,1,0,0,0
+-90.2666305,38.5515367,381.0,-1731.0,1,0,0,0
+-90.2646439,38.5503721,2535.0,-1503.0,1,0,0,0
+-90.2674575,38.5508086,383.0,-2809.0,1,0,0,0
+-90.2654619,38.5496547,2537.0,-2582.0,1,0,0,0
+-90.2682668,38.5500951,385.0,-3816.0,1,0,0,0
+-90.2662854,38.5489310,2540.0,-3750.0,1,0,0,0

@@ -7,8 +7,8 @@
 For each sheet: fit the named streets' center lines (georef_preview.py lines), cross them to
 get corners, match the corners to today's intersections with --robust (one match per corner by
 consensus; corners that don't agree are set aside), and fit. Unless the line gives OPTS, both
-the affine and the similarity fit are tried and the one with the lower median left-out error
-is kept. Writes the .points files (free: OpenStreetMap is cached, no API calls).
+the affine and the similarity fit are tried and the one with the lower median + worst/2
+left-out error is kept (affine only with 5+ points). Writes the .points files (free: OpenStreetMap is cached, no API calls).
 
 streets.txt, one sheet (or panel) per line:
     <sheet> [OPTS=<georef_sheet.py gcps options>] [SKIP=a/b|c/d] [THIN=8] | H:<street>@<y> V:<street>@<x> ...
@@ -32,6 +32,7 @@ from blockhistory.georef.transform import leave_one_out, read_model, read_points
 
 ROOT = Path(__file__).resolve().parent.parent
 PY = sys.executable
+AFFINE_MIN = 5  # fewer points than this: similarity only
 SCALE_FT = {"1908": 0.33}  # expected feet per pixel on the 50% image, for --robust
 
 
@@ -111,7 +112,10 @@ def place(area: str, edition: str, e: dict) -> str:
             return float("inf"), (r.stdout + r.stderr).strip().splitlines()[-1]
         n, med, worst = fit_report(path)
         aside = len([l for l in r.stdout.splitlines() if "set aside" in l])
-        return med, f"{n} points, median {med:.1f} m, worst {worst:.1f} m" + (
+        # Affine needs spare points: with 4 nearly in line it can swing wildly.
+        if "--similarity" not in extra + e["opts"] and n < AFFINE_MIN:
+            return float("inf"), f"{n} points: too few for affine"
+        return med + worst / 2, f"{n} points, median {med:.1f} m, worst {worst:.1f} m" + (
             f" ({aside} set aside)" if aside else ""
         )
 

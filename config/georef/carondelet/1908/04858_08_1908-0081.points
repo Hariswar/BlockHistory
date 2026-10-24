@@ -1,0 +1,16 @@
+#CRS: EPSG:4326
+#NAME 0 Robert Av & S. Broadway
+#NAME 1 Upton St & S. Broadway
+#NAME 2 Upton St & Vulcan St
+#NAME 3 Koeln Av & S. Broadway
+#NAME 4 Koeln Av & Vulcan St
+#NAME 5 Steins St & S. Broadway
+#NAME 6 Steins St & Vulcan St
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2554717,38.5496102,594.0,-395.0,1,0,0,0
+-90.2562857,38.5488902,587.0,-1473.0,1,0,0,0
+-90.2543675,38.5476299,2842.0,-1415.0,1,0,0,0
+-90.2571031,38.5481675,580.0,-2550.0,1,0,0,0
+-90.2552069,38.5469031,2845.0,-2492.0,1,0,0,0
+-90.2579400,38.5474459,574.0,-3582.0,1,0,0,0
+-90.2559734,38.5461455,2848.0,-3596.0,1,0,0,0

@@ -1,0 +1,9 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Robert Av & Grand Blvd
+#NAME 1 Koeln Av & Grand Blvd
+#NAME 2 Koeln Av & Alaska Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2652708,38.5558038,487.0,-336.0,1,0,0,0
+-90.2671239,38.5541954,229.0,-2715.0,1,0,0,0
+-90.2649979,38.5529710,2560.0,-2741.0,1,0,0,0

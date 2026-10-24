@@ -1,0 +1,200 @@
+{
+ "sheet_id": "04858_08_1908-0067",
+ "edition": "1908",
+ "volume": "St. Louis Vol. 8",
+ "labeled_by": "Draft by Claude from the full-resolution scan (quarter-sheet crops), 2026-10-24",
+ "labeled_on": "2026-10-24",
+ "scope": "Industrial, fuel, tank, vehicle and horse-service uses (liveries, carriage houses, wagon makers, blacksmiths), laundries, tin and plumbing shops, and every G.T. symbol. Excludes dwellings, flats, plain stores, saloons, halls and offices.",
+ "definitions": {
+  "gasoline_tank_count": "Number of G.T. / G.T.S. symbols drawn for this site. 0 means none drawn."
+ },
+ "verification": {
+  "status": "draft",
+  "method": "Read from quarter-sheet crops of the 1908 scan; not yet reviewed by a person.",
+  "date": "2026-10-24"
+ },
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 8 (1908), sheet 67, image 04858_08_1908-0067",
+ "total_gasoline_tanks": 0,
+ "buildings": [
+  {
+   "label": "ENGINE CO. No. 23 & H. & L. No. 11",
+   "use": "fire engine house",
+   "street_number": "",
+   "street_name": "Pennsylvania Av",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "One hose wagon, one 3rd class engine (Ahrens), H.&L. truck, fuel wagon, 21 men, 7 horses.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "TIN SHOP",
+   "use": "tin shop",
+   "street_number": "6725",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "LIVERY",
+   "use": "livery stable",
+   "street_number": "6729",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "With CARRIAGE HO. (from plans).",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "CARRIAGE HO.",
+   "use": "carriage house",
+   "street_number": "6729",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "LIVERY",
+   "use": "livery stable",
+   "street_number": "6807",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "Rear of lot, with CARRIAGE HO. 1st / FEED 2nd.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "CARRIAGE HO. 1st FEED 2nd",
+   "use": "carriage house and feed store",
+   "street_number": "6807-6809",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "WAGON MAKER",
+   "use": "wagon maker's shop",
+   "street_number": "6811-6813",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "GAS. ENG. 3 H.P. noted.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "PLUMBER",
+   "use": "plumbing shop",
+   "street_number": "6819",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "CHINE LAUNDRY",
+   "use": "Chinese laundry",
+   "street_number": "6821",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  }
+ ]
+}

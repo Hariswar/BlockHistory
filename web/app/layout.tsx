@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
+import { yearsText } from "@/lib/site";
 
 // Absolute base for link previews (og:image needs a full URL).
 const SITE = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: "BlockHistory",
   description:
-    "See what stood on a St. Louis block in 1938, from fire insurance maps, with plain notes on past uses that sometimes left soil contamination.",
+    `See what stood on a St. Louis block in ${yearsText()}, from fire insurance maps, with plain notes on past uses that sometimes left soil contamination.`,
 };
 
 const REPORT_URL = "https://github.com/Hariswar/BlockHistory/issues/new";
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               professional or the Missouri Department of Natural Resources.
             </p>
             <p>
-              Maps: Sanborn Map Company, 1938 and 1950, from the{" "}
+              Maps: Sanborn Map Company, {yearsText()}, from the{" "}
               <a href="https://www.loc.gov/collections/sanborn-maps/">Library of Congress</a>. Base
               map: <a href="https://openfreemap.org">OpenFreeMap</a> ©{" "}
               <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. A problem

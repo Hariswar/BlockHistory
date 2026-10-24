@@ -1,0 +1,23 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Davis St & Virginia Av
+#NAME 1 Davis St & Michigan Av
+#NAME 2 Davis St & Minnesota Av
+#NAME 3 Hurck St & Virginia Av
+#NAME 4 Hurck St & Michigan Av
+#NAME 5 Hurck St & Minnesota Av
+#NAME 6 Marceau St & Virginia Av
+#NAME 7 Marceau St & Minnesota Av
+#NAME 8 Espenschied St & Michigan Av
+#NAME 9 Espenschied St & Minnesota Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2666186,38.5456856,367.0,-410.0,1,0,0,0
+-90.2656851,38.5450417,1415.0,-437.0,1,0,0,0
+-90.2647387,38.5444038,2529.0,-465.0,1,0,0,0
+-90.2674232,38.5449802,361.0,-1499.0,1,0,0,0
+-90.2664441,38.5443292,1408.0,-1499.0,1,0,0,0
+-90.2655156,38.5437119,2531.0,-1498.0,1,0,0,0
+-90.2681893,38.5443086,354.0,-2534.0,1,0,0,0
+-90.2663153,38.5430140,2532.0,-2534.0,1,0,0,0
+-90.2679524,38.5428915,1395.0,-3578.0,1,0,0,0
+-90.2670941,38.5423209,2533.0,-3574.0,1,0,0,0

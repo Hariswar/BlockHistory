@@ -1,0 +1,24 @@
+#CRS: EPSG:4326
+#NAME 0 Robert Av & Virginia Av
+#NAME 1 Robert Av & Michigan Av
+#NAME 2 Robert Av & Minnesota Av
+#NAME 3 Upton St & Michigan Av
+#NAME 4 Upton St & Minnesota Av
+#NAME 5 Koeln Av & Virginia Av
+#NAME 6 Koeln Av & Michigan Av
+#NAME 7 Koeln Av & Minnesota Av
+#NAME 8 Steins St & Virginia Av
+#NAME 9 Steins St & Michigan Av
+#NAME 10 Steins St & Minnesota Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2592928,38.5521614,1192.0,-514.0,1,0,0,0
+-90.2583514,38.5515237,2243.0,-494.0,1,0,0,0
+-90.2573912,38.5508881,3271.0,-475.0,1,0,0,0
+-90.2591641,38.5507937,2249.0,-1569.0,1,0,0,0
+-90.2581985,38.5501665,3272.0,-1551.0,1,0,0,0
+-90.2610066,38.5506415,1190.0,-2747.0,1,0,0,0
+-90.2599983,38.5500763,2255.0,-2631.0,1,0,0,0
+-90.2590300,38.5494407,3273.0,-2520.0,1,0,0,0
+-90.2618168,38.5499358,1189.0,-3755.0,1,0,0,0
+-90.2608482,38.5493734,2260.0,-3729.0,1,0,0,0
+-90.2598588,38.5487170,3274.0,-3706.0,1,0,0,0

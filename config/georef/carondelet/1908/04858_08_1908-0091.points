@@ -1,0 +1,20 @@
+#CRS: EPSG:4326
+#NAME 0 Primm St & Virginia Av
+#NAME 1 Primm St & Michigan Av
+#NAME 2 Primm St & Minnesota Av
+#NAME 3 Poepping St & Virginia Av
+#NAME 4 Poepping St & Michigan Av
+#NAME 5 Poepping St & Minnesota Av
+#NAME 6 Davis St & Virginia Av
+#NAME 7 Davis St & Michigan Av
+#NAME 8 Davis St & Minnesota Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2641852,38.5478182,472.0,-337.0,1,0,0,0
+-90.2632464,38.5471909,1544.0,-338.0,1,0,0,0
+-90.2622969,38.5465574,2641.0,-339.0,1,0,0,0
+-90.2658231,38.5463829,415.0,-2488.0,1,0,0,0
+-90.2648621,38.5457590,1500.0,-2487.0,1,0,0,0
+-90.2639153,38.5451338,2579.0,-2486.0,1,0,0,0
+-90.2666186,38.5456856,387.0,-3559.0,1,0,0,0
+-90.2656851,38.5450417,1477.0,-3561.0,1,0,0,0
+-90.2647387,38.5444038,2547.0,-3563.0,1,0,0,0

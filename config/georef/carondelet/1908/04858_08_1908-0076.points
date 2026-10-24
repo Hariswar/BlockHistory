@@ -1,0 +1,11 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Schirmer St & Tennessee Av
+#NAME 1 Schirmer St & Alaska Av
+#NAME 2 Courtois St & Alaska Av
+#NAME 3 Primm St & Alaska Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2676989,38.5521383,1977.0,-1433.0,1,0,0,0
+-90.2666305,38.5515367,3130.0,-1441.0,1,0,0,0
+-90.2674575,38.5508086,3017.0,-2513.0,1,0,0,0
+-90.2682668,38.5500951,2906.0,-3560.0,1,0,0,0

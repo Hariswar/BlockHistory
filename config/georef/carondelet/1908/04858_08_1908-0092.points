@@ -1,0 +1,21 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Primm St & Pennsylvania Av
+#NAME 1 Primm St & S. Broadway
+#NAME 2 Primm St & Water St
+#NAME 3 Poepping St & Pennsylvania Av
+#NAME 4 Poepping St & S. Broadway
+#NAME 5 Poepping St & Water St
+#NAME 6 Davis St & Pennsylvania Av
+#NAME 7 Davis St & S. Broadway
+#NAME 8 Davis St & Water St
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2613475,38.5459265,816.0,-347.0,1,0,0,0
+-90.2603795,38.5452889,1944.0,-343.0,1,0,0,0
+-90.2594140,38.5446463,3047.0,-339.0,1,0,0,0
+-90.2629760,38.5444940,804.0,-2484.0,1,0,0,0
+-90.2620096,38.5438508,1896.0,-2479.0,1,0,0,0
+-90.2610028,38.5431820,3008.0,-2474.0,1,0,0,0
+-90.2638017,38.5437762,798.0,-3576.0,1,0,0,0
+-90.2628223,38.5431302,1872.0,-3558.0,1,0,0,0
+-90.2618396,38.5424761,2988.0,-3541.0,1,0,0,0

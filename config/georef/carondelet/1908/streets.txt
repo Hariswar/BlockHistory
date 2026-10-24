@@ -28,3 +28,30 @@
 67 SKIP=Haven St/Minnesota Av | H:Haven St@429 H:Kraus St@1502 H:Loughborough Av@2567 H:Quincy St@3651 V:Minnesota Av@560 V:Pennsylvania Av@1649 V:S. Broadway@2758
 68 OPTS=--similarity | H:Haven St@374 H:Kraus St@1435 H:Loughborough Av@2490/0-800 H:Quincy St@3592 V:S. Broadway@281
 71 OPTS=--similarity SKIP=Robert Av/Idaho Av|Robert Av/Alabama Av|Robert Av/Vermont Av|Blow St/Vermont Av|Loughborough Av/Vermont Av | H:Loughborough Av@124 H:Blow St@1959 H:Robert Av@3801 V:Idaho Av@1304 V:Alabama Av@2209
+72 | H:Quincy St@454/1120-3345 H:Blow St@1505/1120-3345 H:Nagel Av@2592/1120-3345 H:Robert Av@3655/1120-3345 V:Virginia Av@1087 V:Michigan Av@2138 V:Minnesota Av@3153
+73 | H:Quincy St@406 H:Blow St@1457 H:Nagel Av@2508 H:Robert Av@3596 V:Minnesota Av@311 V:Pennsylvania Av@1398 V:S. Broadway@2508
+74 | H:Quincy St@330/600-1500 H:Blow St@1410/600-1500 H:Nagel Av@2490/600-1700 H:Robert Av@3560/600-1700 V:Water St@690
+76 SKIP=Primm St/Tennessee Av|Primm St/Grand Blvd|Courtois St/Grand Blvd|Courtois St/Tennessee Av | H:Steins St@346 H:Schirmer St@1429 H:Courtois St@2504/2390-3345 H:Primm St@3576/2440-3345 V:Grand Blvd@824/0-1450 V:Tennessee Av@2019/0-1450 V:Alaska Av@3070
+77 SKIP=Koeln Av/Tennessee Av | H:Robert Av@310/600-3345 H:Koeln Av@2724 H:Steins St@3800 V:Grand Blvd@310/1672-3775 V:Alaska Av@2545/1672-3775
+78 | H:Robert Av@180 H:Koeln Av@2724 H:Steins St@3787 V:Idaho Av@860 V:Alabama Av@1983 V:Vermont Av@2975
+79 | H:Robert Av@514/1250-3345 H:Upton St@1553/2300-3345 H:Koeln Av@2652 H:Steins St@3740 V:Virginia Av@1183 V:Michigan Av@2234 V:Minnesota Av@3237
+81 | H:Robert Av@358 H:Upton St@1433 H:Koeln Av@2508 H:Steins St@3584 V:S. Broadway@573 V:Vulcan St@2819
+82 | H:Upton St@1398/0-1300 H:Koeln Av@2461/0-2300 H:Steins St@3524 V:Vulcan St@203 V:Reilly Av@1271/1400-3500 V:Polk St@2353/2450-3500
+83 | H:Steins St@514 H:Schirmer St@1589 H:Courtois St@2664 H:Primm St@3727 V:Alaska Av@382 V:Idaho Av@1469 V:Alabama Av@2533
+84 SKIP=Schirmer St/Michigan Av|Courtois St/Michigan Av | H:Steins St@346/0-2200 H:Schirmer St@1421/0-1880 H:Courtois St@2556/0-1700 H:Primm St@3440/1950-3345 V:Vermont Av@776 V:Virginia Av@1887 V:Michigan Av@2962
+85 | H:Steins St@394 H:Schirmer St@1445 H:Courtois St@2520 H:Primm St@3596 V:Michigan Av@358 V:Minnesota Av@1457 V:Pennsylvania Av@2532
+86 | H:Steins St@382 H:Schirmer St@1445 H:Courtois St@2508 H:Primm St@3596 V:S. Broadway@824 V:Water St@1911 V:Vulcan St@2974
+87 | H:Steins St@394 H:Schirmer St@1457 H:Courtois St@2520 H:Primm St@3596 V:Vulcan St@131 V:Reilly Av@1183 V:Polk St@2258 V:Van Buren St@3249
+# 88 (not placed, see NOTES.md) OPTS=--similarity SKIP=Tesson St/Tennessee Av | H:Poepping St@2134/2050-3345 H:Tesson St@1047/2850-3345 V:Tennessee Av@2473/1150-2100 V:Alaska Av@3082/1100-2100
+89 | H:Primm St@382 H:Tesson St@1445 H:Poepping St@2520 H:Davis St@3596 V:Alaska Av@920 V:Idaho Av@2007 V:Alabama Av@3082/1500-2300
+90 | H:Primm St@262/2400-3345 H:Poepping St@2335/1000-2700 H:Davis St@3417/1000-2700 V:Virginia Av@2866/1450-3500
+91 | H:Primm St@335 H:Poepping St@2484 H:Davis St@3560 V:Virginia Av@406 V:Michigan Av@1505 V:Minnesota Av@2580
+92 | H:Primm St@335 H:Poepping St@2472 H:Davis St@3560 V:Pennsylvania Av@789 V:S. Broadway@1911 V:Water St@3010
+93 | H:Primm St@358 H:Poepping St@2484 H:Davis St@3560 V:Water St@370 V:Vulcan St@1457 V:Reilly Av@2544
+# 95 (not placed: re-platted with the river channel, see NOTES.md) | H:Davis St@547/1800-3345 H:Marceau St@2245/1900-2700 V:Idaho Av@1935/100-2400 V:Alabama Av@2795/250-2400
+96 | H:Davis St@180/1000-2900 H:Hurck St@1194/1000-2900 H:Marceau St@2210/1000-2900 V:Alabama Av@490/1200-2400 V:Virginia Av@2950/300-2400
+97 | H:Davis St@454 H:Hurck St@1505 H:Marceau St@2532 H:Espenschied St@3584 V:Virginia Av@335 V:Michigan Av@1433 V:Minnesota Av@2508
+98 | H:Davis St@410 H:Hurck St@1505 H:Marceau St@2556 H:Espenschied St@3584 V:Pennsylvania Av@335 V:S. Broadway@1440 V:Water St@2580
+100 | H:Espenschied St@386 H:Catalan St@1457 H:Lorentz Av@3584/0-1500 V:Pennsylvania Av@335 V:S. Broadway@1440 V:Water St@2580
+102 | H:Water St@373 H:Vulcan St@1458 H:Reilly Av@2547 H:Polk St@3632 V:Marceau St@1161 V:Davis St@3168
+# 104 (not placed: Polk and Van Buren today are different streets) | H:Polk St@277 H:Van Buren St@1367/0-3000 V:Espenschied St@110/0-2700 V:Marceau St@1161/0-2700 V:Hurck St@2093/0-2700 V:Davis St@3168/0-2700

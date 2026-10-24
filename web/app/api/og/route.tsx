@@ -1,6 +1,7 @@
 // Preview image for shared links (1200x630): the address or street and its counts.
 import { ImageResponse } from "next/og";
 import { lookup, lookupSummary } from "@/lib/lookup";
+import { AREA, yearsText } from "@/lib/site";
 
 export const runtime = "nodejs";
 
@@ -9,7 +10,7 @@ export async function GET(req: Request) {
   const q = params.get("q")?.trim() ?? "";
   const street = params.get("street")?.trim() ?? "";
   let heading = "What stood on your block?";
-  let line = "Past uses from the 1938 and 1950 fire insurance maps of Carondelet, St. Louis.";
+  let line = `Past uses from the ${yearsText()} fire insurance maps of ${AREA.place}.`;
   if (street) {
     heading = `${street.slice(0, 60)}, past uses`;
     line = params.get("line")?.slice(0, 160) ?? line;

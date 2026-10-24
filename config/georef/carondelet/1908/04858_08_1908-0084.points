@@ -1,0 +1,21 @@
+#CRS: EPSG:4326
+#MODEL similarity
+#NAME 0 Steins St & Vermont Av
+#NAME 1 Steins St & Virginia Av
+#NAME 2 Steins St & Michigan Av
+#NAME 3 Schirmer St & Vermont Av
+#NAME 4 Schirmer St & Virginia Av
+#NAME 5 Courtois St & Vermont Av
+#NAME 6 Courtois St & Virginia Av
+#NAME 7 Primm St & Virginia Av
+#NAME 8 Primm St & Michigan Av
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2628119,38.5505168,788.0,-435.0,1,0,0,0
+-90.2618168,38.5499358,1861.0,-317.0,1,0,0,0
+-90.2608482,38.5493734,2994.0,-193.0,1,0,0,0
+-90.2636598,38.5498096,780.0,-1510.0,1,0,0,0
+-90.2626299,38.5492195,1869.0,-1395.0,1,0,0,0
+-90.2644641,38.5490757,772.0,-2597.0,1,0,0,0
+-90.2633770,38.5485443,1876.0,-2507.0,1,0,0,0
+-90.2641852,38.5478182,1883.0,-3459.0,1,0,0,0
+-90.2632464,38.5471909,3028.0,-3416.0,1,0,0,0

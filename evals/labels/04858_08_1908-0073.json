@@ -1,0 +1,217 @@
+{
+ "sheet_id": "04858_08_1908-0073",
+ "edition": "1908",
+ "volume": "St. Louis Vol. 8",
+ "labeled_by": "Draft by Claude from the full-resolution scan (quarter-sheet crops), 2026-10-24",
+ "labeled_on": "2026-10-24",
+ "scope": "Industrial, fuel, tank, vehicle and horse-service uses (liveries, carriage houses, wagon makers, blacksmiths), laundries, tin and plumbing shops, and every G.T. symbol. Excludes dwellings, flats, plain stores, saloons, halls and offices.",
+ "definitions": {
+  "gasoline_tank_count": "Number of G.T. / G.T.S. symbols drawn for this site. 0 means none drawn."
+ },
+ "verification": {
+  "status": "draft",
+  "method": "Read from quarter-sheet crops of the 1908 scan; not yet reviewed by a person.",
+  "date": "2026-10-24"
+ },
+ "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 8 (1908), sheet 73, image 04858_08_1908-0073",
+ "total_gasoline_tanks": 0,
+ "buildings": [
+  {
+   "label": "CARONDELET MILLING CO.",
+   "use": "flour mill",
+   "street_number": "7018-7026",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "Mill, elevator 16,000 bu., warehouse, engine 110 H.P. in basement; fuel coal. Lime shed behind 7010-7012.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "LIME SHED",
+   "use": "lime storage shed",
+   "street_number": "7010-7012",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "STANDARD STEAM LAUNDRY CO.",
+   "use": "steam laundry",
+   "street_number": "7110-7114",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "Ironing 2nd, steam dry box 1st, engine 60 H.P.; wagon shed. Fuel coal.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "MACHINE SHOP",
+   "use": "machine shop",
+   "street_number": "209",
+   "street_name": "Blow St",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "2 1/2 H.P. gas engine; engine room in the vacant building at 7019-7027 Pennsylvania.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "SLAUGHTER HO.",
+   "use": "slaughter house",
+   "street_number": "",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "Rear of 7101-7103 S Broadway.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "SLAUGHTER HO.",
+   "use": "slaughter house",
+   "street_number": "",
+   "street_name": "Blow St",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "Behind the grain warehouse, Pennsylvania-Broadway block, near 117-125 Blow.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [],
+   "needs_human_check": [
+    "street_number"
+   ]
+  },
+  {
+   "label": "GRAIN W. HO.",
+   "use": "grain and hay warehouse",
+   "street_number": "",
+   "street_name": "Blow St",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "Hay w. ho.; 14 H.P. gas engine.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [],
+   "needs_human_check": [
+    "street_number"
+   ]
+  },
+  {
+   "label": "OIL HO.",
+   "use": "oil house",
+   "street_number": "113",
+   "street_name": "Nagel Av",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "Rear of 7126-7130 S Broadway.",
+   "interpretation": "",
+   "contamination_relevance": "medium",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "COAL SHED",
+   "use": "coal shed",
+   "street_number": "7224",
+   "street_name": "S Broadway",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "With office at 7220.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [
+    "label",
+    "street_number"
+   ],
+   "needs_human_check": []
+  },
+  {
+   "label": "WAGON SHED",
+   "use": "wagon shed",
+   "street_number": "",
+   "street_name": "Pennsylvania Av",
+   "construction": "",
+   "stories": "",
+   "gasoline_tank_count": 0,
+   "other_tanks": [],
+   "partial": false,
+   "position": "",
+   "map_notes": "East side of Pennsylvania, north of 7014.",
+   "interpretation": "",
+   "contamination_relevance": "low",
+   "checked_against_map": [],
+   "needs_human_check": [
+    "street_number"
+   ]
+  }
+ ]
+}

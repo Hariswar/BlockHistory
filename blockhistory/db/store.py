@@ -18,6 +18,7 @@ import re
 import sqlite3
 from pathlib import Path
 
+from blockhistory import area as areas
 from blockhistory import explain_ai
 from blockhistory.explain import category
 from blockhistory.georef import osm
@@ -245,7 +246,7 @@ def load_sheet(
             area,
             edition,
             meta.get("sheet_number"),
-            "St. Louis Vol. 12",
+            "St. Louis " + areas.site(area)["volumes"][edition].split(" (")[0],
             _loc_page(area, sheet_id, meta["service"]),
             meta["service"],
             t.meters_per_pixel(),

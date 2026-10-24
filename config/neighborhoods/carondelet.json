@@ -1,5 +1,32 @@
 {
   "name": "Carondelet, St. Louis",
+  "site": {
+    "name": "Carondelet and Patch",
+    "place": "Carondelet, St. Louis",
+    "city": "St. Louis",
+    "state": "MO",
+    "bbox": {
+      "south": 38.525,
+      "west": -90.29,
+      "north": 38.575,
+      "east": -90.225
+    },
+    "center": [
+      -90.256,
+      38.552
+    ],
+    "years": [
+      "1908",
+      "1938",
+      "1950"
+    ],
+    "default_year": "1938",
+    "volumes": {
+      "1908": "Vol. 8",
+      "1938": "Vol. 12",
+      "1950": "Vol. 12 (1950 update)"
+    }
+  },
   "study_area": {
     "volume": "Sanborn St. Louis Vol. 12 (1938 edition and the 1938-Jun 1950 revision; same sheet numbers 1-74)",
     "boundaries_today": "Carondelet: Eichelberger St (NE), Mississippi River (SE), River Des Peres (SW), S. Grand Blvd / I-55 (NW). Patch: south of Robert Ave and east of Alabama Ave to the city limits; historically part of the town of Carondelet.",

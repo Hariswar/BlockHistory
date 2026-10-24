@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { PublicFinding } from "@/lib/present";
+import { AREA } from "@/lib/site";
 
 export type Coverage = {
   sheetId: string;
@@ -36,7 +37,7 @@ type Props = {
 
 // Free vector tiles, no key (OpenStreetMap data).
 const STYLE = "https://tiles.openfreemap.org/styles/positron";
-const CARONDELET: [number, number] = [-90.256, 38.552];
+const CENTER = AREA.center as [number, number];
 
 function circle(lat: number, lon: number, radiusM: number): GeoJSON.Polygon {
   const kx = 111_320 * Math.cos((lat * Math.PI) / 180);
@@ -105,7 +106,7 @@ export default function MapView({
     // dev/build copies it into public/ (see package.json).
     maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
     try {
-      m = new maplibregl.Map({ container: box.current, style: STYLE, center: CARONDELET, zoom: 14 });
+      m = new maplibregl.Map({ container: box.current, style: STYLE, center: CENTER, zoom: 14 });
     } catch {
       // No WebGL (some older devices): the list of findings still works without the map.
       setFailed(true);

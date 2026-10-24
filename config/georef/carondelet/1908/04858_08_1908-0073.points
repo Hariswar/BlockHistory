@@ -1,0 +1,26 @@
+#CRS: EPSG:4326
+#NAME 0 Quincy St & Minnesota Av
+#NAME 1 Quincy St & Pennsylvania Av
+#NAME 2 Quincy St & S. Broadway
+#NAME 3 Blow St & Minnesota Av
+#NAME 4 Blow St & Pennsylvania Av
+#NAME 5 Blow St & S. Broadway
+#NAME 6 Nagel Av & Minnesota Av
+#NAME 7 Nagel Av & Pennsylvania Av
+#NAME 8 Nagel Av & S. Broadway
+#NAME 9 Robert Av & Minnesota Av
+#NAME 10 Robert Av & Pennsylvania Av
+#NAME 11 Robert Av & S. Broadway
+mapX,mapY,sourceX,sourceY,enable,dX,dY,residual
+-90.2549369,38.5530591,279.0,-417.0,1,0,0,0
+-90.2539722,38.5524135,1390.0,-388.0,1,0,0,0
+-90.2530215,38.5517718,2508.0,-358.0,1,0,0,0
+-90.2557523,38.5523418,288.0,-1510.0,1,0,0,0
+-90.2547838,38.5516997,1398.0,-1471.0,1,0,0,0
+-90.2538362,38.5510513,2516.0,-1432.0,1,0,0,0
+-90.2565758,38.5516055,297.0,-2568.0,1,0,0,0
+-90.2556129,38.5509720,1407.0,-2538.0,1,0,0,0
+-90.2546496,38.5503344,2523.0,-2507.0,1,0,0,0
+-90.2573912,38.5508881,306.0,-3641.0,1,0,0,0
+-90.2564220,38.5502589,1415.0,-3613.0,1,0,0,0
+-90.2554717,38.5496102,2530.0,-3585.0,1,0,0,0
