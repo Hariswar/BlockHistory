@@ -1,4 +1,4 @@
-"""Score the map reader against the hand labels in evals/labels/ (week 7 baseline).
+"""Score the map reader against the hand labels in evals/labels/.
 
     python scripts/evaluate.py carondelet 1938
 

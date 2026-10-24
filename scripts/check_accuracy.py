@@ -1,4 +1,4 @@
-"""One command for every accuracy number, compared with the saved baseline (Phase 2 eval suite).
+"""One command for every accuracy number, compared with the saved baseline.
 
     python scripts/check_accuracy.py            # print the scores; exit 1 if any got worse
     python scripts/check_accuracy.py --update   # accept the current scores as the new baseline

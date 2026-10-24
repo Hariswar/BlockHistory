@@ -1,7 +1,7 @@
 """Run the same labeled tiles through several models and compare accuracy against cost.
 
 Rough scoring: the share of hand-labeled labels in each tile the model also found, and
-how many gas-tank (G.T.) sites it put on the right building. The full precision/recall eval comes in week 7.
+how many gas-tank (G.T.) sites it put on the right building.
 
     python scripts/compare_models.py                     # 3 default tiles, Haiku and Sonnet
     python scripts/compare_models.py --models claude-haiku-5-5 --effort medium -v

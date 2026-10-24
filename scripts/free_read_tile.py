@@ -1,4 +1,4 @@
-"""Day 7: run one tile through the free readers and compare with the hand labels. Costs $0.
+"""Run one tile through the free readers and compare with the hand labels. Costs $0.
 
     python scripts/free_read_tile.py data/tiles/carondelet/1938/04858_12_1938-0050/04858_12_1938-0050_r3_c0.jpg
     python scripts/free_read_tile.py <tile> --vision     # also ask the Ollama vision model

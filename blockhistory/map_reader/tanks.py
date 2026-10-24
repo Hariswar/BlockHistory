@@ -1,11 +1,9 @@
 """Gas-tank second pass: count G.T. circles at fuel and vehicle sites at full resolution.
 
-The first pass names buildings well but misses about half the gasoline tanks (week 7:
-12 of 25 on the checked sheets). Tank circles are a few pixels wide on our 50% tiles, so
-this pass re-downloads only the tiles with a fuel or vehicle finding at full resolution,
-splits each into four crops, and asks one narrow question: which tank groups are here,
-how many circles each, and which building they serve. apply() then puts those counts on
-the first pass's findings and adds tank sites the first pass missed.
+Tank circles are only a few pixels wide on the 50% tiles, so the first pass misses many.
+This pass re-reads tiles with a fuel or vehicle finding at full resolution, in four
+crops, and asks only which tank groups are there, how many circles, and which building
+they serve. apply() merges the counts into the first pass's findings.
 """
 
 from __future__ import annotations

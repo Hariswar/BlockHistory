@@ -10,10 +10,8 @@ from __future__ import annotations
 
 import re
 
-# Words in many company names, so matching on them alone proves nothing (the first Colab
-# run "found" SEMI-STEEL CASTING CO. MFG. because the ice plant's name also had MFG).
-# REP, SHOP, YARD, FOUND, ELEC and the rest were added in week 7: "FURNE REP." matched
-# "AUTO REP.", and "FR. FOUND." (a frame building on a foundation) matched "FOUNDRY".
+# Words common to many labels, so matching on them alone proves nothing
+# ("FURNE REP." is not "AUTO REP.", "FR. FOUND." is not "FOUNDRY").
 GENERIC_WORDS = {"MFG", "THE", "AND", "SUPPLY", "BLDG", "STGE", "STA", "STEEL", "PLANT"} | {
     "REP", "REPG", "SHOP", "YARD", "CONC", "NOT", "USED", "FACTY", "WORKS", "WKS", "FOUND",
     "ELEC",

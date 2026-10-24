@@ -1,4 +1,4 @@
-"""Load every georeferenced sheet's findings into the database (week 10).
+"""Load every georeferenced sheet's findings into the database.
 
     python scripts/build_db.py carondelet 1938            # -> data/blockhistory.sqlite
     python scripts/build_db.py carondelet 1938 --export   # + data/export/load_postgis_N.sql

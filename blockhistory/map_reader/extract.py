@@ -18,11 +18,10 @@ from pydantic import BaseModel, Field
 
 from blockhistory import costs
 
-# Main map reader (Day 7: Haiku found 9 of 10 hand labels and 3 of 3 gas-tank sites; the
-# free vision model found 3 and 0). Haiku by default; Sonnet only for tiles Haiku is
-# unsure about. Override in .env (BLOCKHISTORY_MODEL / BLOCKHISTORY_EFFORT).
+# Haiku by default; Sonnet only for tiles Haiku is unsure about.
+# Override in .env (BLOCKHISTORY_MODEL / BLOCKHISTORY_EFFORT).
 DEFAULT_MODEL = "claude-haiku-5-5"
-DEFAULT_EFFORT = "low"  # medium scored worse at ~2x cost on the Day 7 tiles
+DEFAULT_EFFORT = "low"  # medium scored no better at ~2x the cost
 # Models that accept server-side refusal fallbacks (Haiku 5.5 has none).
 FALLBACK_MODELS = {"claude-sonnet-5-5"}
 # Bump whenever SYSTEM_PROMPT or the schema changes so the cache doesn't serve stale output.
@@ -121,8 +120,7 @@ class TileExtraction(BaseModel):
 SCHEMA = TileExtraction
 USER_TEXT = "Transcribe every labeled building in this tile."
 MAX_TOKENS = 16000
-# Measured on the Day 7 tiles with prompt v1 at low effort: ~3,900 input and ~1,700 output
-# tokens per tile. Used only to refuse a batch that could break the budget.
+# Typical tokens per tile at low effort; only used for the budget check.
 EST_TOKENS = (3_900, 2_500)
 
 

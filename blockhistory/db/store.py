@@ -415,8 +415,7 @@ def export_postgis_sql(con: sqlite3.Connection, out: Path) -> tuple[int, list[Pa
     for i, body in enumerate(parts, 1):
         path = out.with_name(f"{out.stem}_{i}{out.suffix}")
         head = [
-            f"-- BlockHistory data, part {i} of {len(parts)}. Run parts in order, after",
-            "-- blockhistory/db/schema_postgis.sql. Part 1 clears the tables first.",
+            f"-- BlockHistory data, part {i} of {len(parts)}.",
             "SET search_path = public, extensions;",
             "BEGIN;",
         ]

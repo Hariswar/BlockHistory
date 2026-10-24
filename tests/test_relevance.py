@@ -10,7 +10,7 @@ from blockhistory.map_reader.relevance import construction_note, relevance
         ("ST. LOUIS SULPHUR & CHEM. CO.", "chemical works", "high"),
         ("PRTG. & BINDING", "printing and binding", "medium"),
         ("ST. LOUIS SHIP BUILDING & STEEL CO.", "shipyard", "medium"),
-        # Found in the week 4-5 spot check: these were flagged high or medium.
+        # Not uses: these used to be flagged high or medium.
         ("3-CARS", "auto house, 3 cars (footprint labeled A)", "low"),
         ("A. A-CARS", "auto house (garage) for 4 cars", "low"),
         ("3 CARS", "garage for three cars", "low"),
@@ -19,7 +19,7 @@ from blockhistory.map_reader.relevance import construction_note, relevance
         ("FR. FOUND.", "frame foundry", "low"),
         # A truck garage is a fleet garage, not a home garage.
         ("PRIV. GARAGE", "private garage (capacity 10 trucks)", "high"),
-        # Construction notes read as uses (Oct 14 listing review).
+        # Construction notes read as uses.
         ("ASB. CL.", "asbestos clothing or cleaning-related note on dwelling", "low"),
         ("(ASB. CL.)", "asbestos cleaning (as printed)", "low"),
         ("CONC.", "concrete (construction note on garage footprint)", "low"),
@@ -34,7 +34,7 @@ from blockhistory.map_reader.relevance import construction_note, relevance
         ("UNDERTAKER CHAPEL", "undertaker chapel with 4 cars garage, cinder block", "low"),
         ("3 CARS A.", "garage (3 cars, auto house)", "low"),
         # ...without hiding real uses that share those words.
-        # Found by scoring every scan-checked listing (Oct 19): markers, car counts, FR. FOUND'N.
+        # Map markers, car counts, FR. FOUND'N.
         ("D'", "dwelling", "low"),
         ("AS", "automatic sprinkler", "low"),
         ("15 - CARS A.", "private garage", "low"),

@@ -1,4 +1,4 @@
-"""Find past uses within 100 m of an address (week 10's "done when").
+"""Find past uses within 100 m of an address.
 
     python scripts/search_address.py "7313 S Broadway"
     python scripts/search_address.py "7313 S Broadway" --radius 150 --all

@@ -19,8 +19,6 @@ DEFAULT_MONTHLY_CAP_USD = 3.0
 DEFAULT_TOTAL_CAP_USD = 10.0
 
 # USD per million tokens (input, output), standard rates for prompts under 100K tokens.
-# Checked against platform.claude.com/docs/en/about-claude/pricing on 2026-10-10.
-# Only the models the plan allows: Haiku for hard tiles, Sonnet for tiles Haiku is unsure of.
 PRICES = {
     "claude-haiku-5-5": (0.10, 0.50),
     "claude-sonnet-5-5": (2.00, 10.00),
