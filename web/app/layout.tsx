@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
+import HeaderNav from "@/components/HeaderNav";
 import { yearsText } from "@/lib/site";
 
 // Absolute base for link previews (og:image needs a full URL).
@@ -30,12 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="brand">
               Block<span>History</span>
             </Link>
-            <nav>
-              <Link href="/">Search</Link>
-              <Link href="/streets">Streets</Link>
-              <Link href="/about">About</Link>
-              <Link href="/limits">Limits</Link>
-            </nav>
+            <HeaderNav />
           </div>
         </header>
         <main className="wrap">{children}</main>

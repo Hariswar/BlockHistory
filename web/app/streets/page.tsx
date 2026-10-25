@@ -18,7 +18,7 @@ export default async function Streets() {
     <article className="prose">
       <h1>Browse by street</h1>
       <p>
-        Past uses on the {years.join(" and ")} fire insurance maps, by the street they face today.
+        Past uses on the {yearsText(years)} fire insurance maps, by the street they face today.
         Each street page lists them in order along the street. They are historical uses, not test
         results.
       </p>

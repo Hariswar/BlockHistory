@@ -119,7 +119,7 @@ export default function Search() {
           id="address"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Street address, e.g. 7313 S Broadway"
+          placeholder="e.g. 7313 S Broadway"
           autoComplete="street-address"
         />
         <button disabled={loading}>{loading ? "Looking…" : "Look up"}</button>
@@ -158,20 +158,22 @@ export default function Search() {
       )}
 
       <div className={`results${shown ? "" : " empty"}`}>
-        <div className="map">
-          <MapView
-            coverage={coverage.filter((c) => c.year === year)}
-            overlays={panels}
-            overlayOpacity={oldMap}
-            point={shown?.point ?? null}
-            radiusM={shown?.radiusM ?? 100}
-            findings={shown?.findings ?? []}
-            active={active}
-            onSelect={(id) => {
-              setActive(id);
-              document.getElementById(`f-${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-            }}
-          />
+        <div className="map-wrap">
+          <div className="map">
+            <MapView
+              coverage={coverage.filter((c) => c.year === year)}
+              overlays={panels}
+              overlayOpacity={oldMap}
+              point={shown?.point ?? null}
+              radiusM={shown?.radiusM ?? 100}
+              findings={shown?.findings ?? []}
+              active={active}
+              onSelect={(id) => {
+                setActive(id);
+                document.getElementById(`f-${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+              }}
+            />
+          </div>
           <MapLegend searched={!!shown} />
           {panels.length > 0 && (
             <div className="fade">
@@ -216,8 +218,8 @@ export default function Search() {
         )}
         {!shown && (
           <p className="small">
-            The outlined areas on the map are the parts of {AREA.place} processed so far. More are
-            being added.
+            The outlined areas on the map are the parts of {AREA.place} these maps cover. Search an
+            address inside them.
           </p>
         )}
       </div>
