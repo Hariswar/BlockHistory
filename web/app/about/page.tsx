@@ -1,9 +1,14 @@
 import Link from "next/link";
 import InfoTabs from "@/components/InfoTabs";
+import { SCORES, percent, rate } from "@/lib/accuracy";
 
 export const metadata = { title: "About · BlockHistory" };
 
 export default function About() {
+  const found = rate("1938", "sites found") ?? [0, 1];
+  const asRead38 = rate("1938", "listings right as read") ?? [0, 1];
+  const asRead50 = rate("1950", "listings right as read") ?? [0, 1];
+  const tanks = rate("1938", "tank sites found") ?? [0, 1];
   return (
     <article className="prose">
       <InfoTabs active="about" />
@@ -63,23 +68,28 @@ export default function About() {
       <h2>How accurate it is</h2>
       <div className="stats">
         <div>
-          <strong>87%</strong>
-          <span>of hand-checked sites found</span>
+          <strong>{percent(found)}</strong>
+          <span>of hand-checked sites found (1938)</span>
         </div>
         <div>
-          <strong>92% / 89%</strong>
-          <span>of AI flags right as read (1938 / 1950)</span>
+          <strong>
+            {percent(asRead38)} / {percent(asRead50)}
+          </strong>
+          <span>of listings right as read (1938 / 1950)</span>
         </div>
         <div>
-          <strong>14 of 15</strong>
-          <span>gasoline-tank sites found</span>
+          <strong>
+            {tanks[0]} of {tanks[1]}
+          </strong>
+          <span>gasoline-tank sites found (1938)</span>
         </div>
       </div>
       <p className="small">
-        &ldquo;Found&rdquo; and tank sites: 10 sheets annotated by hand (119 sites, 1938).
-        &ldquo;Right as read&rdquo;: every listing on all 46 sheets, before the scan check fixed
-        the rest. The AI misses some past uses, and a check can miss an error, so every listing
-        links to the map image for you to check.
+        &ldquo;Found&rdquo; and tank sites: {SCORES["1938"].key_sheets} sheets annotated by hand (
+        {found[1]} sites). &ldquo;Right as read&rdquo;: every listing on all 46 sheets, before the
+        scan check fixed the rest. The AI misses some past uses, and a check can miss an error, so
+        every listing links to the map image for you to check.{" "}
+        <Link href="/accuracy">All the numbers, by map year</Link>.
       </p>
     </article>
   );

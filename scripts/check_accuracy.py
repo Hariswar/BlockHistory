@@ -2,6 +2,7 @@
 
     python scripts/check_accuracy.py            # print the scores; exit 1 if any got worse
     python scripts/check_accuracy.py --update   # accept the current scores as the new baseline
+    python scripts/check_accuracy.py --export   # rewrite the website's copy of the baseline only
 
 Run it after any change to the reader, the rules, the tank pass, the corrections or the
 control points. It uses only cached results ($0) and checks, for 1938 and 1950:
@@ -18,7 +19,8 @@ control points. It uses only cached results ($0) and checks, for 1938 and 1950:
 
 A rate may not fall more than RATE_TOLERANCE below the baseline, a count of errors may not
 rise, and a stale correction or a bad panel always fails. The baseline is
-evals/baseline.json; commit it with the change that moved it.
+evals/baseline.json; commit it with the change that moved it. --update also writes
+web/lib/accuracy.json, the numbers the website's accuracy page shows.
 """
 
 import argparse
@@ -39,6 +41,7 @@ from blockhistory.georef.transform import leave_one_out, read_model, read_points
 
 ROOT = Path(__file__).resolve().parent.parent
 BASELINE = ROOT / "evals" / "baseline.json"
+WEB = ROOT / "web" / "lib" / "accuracy.json"
 AREA = "carondelet"
 # Years with hand-made answer keys; add one here when its keys exist.
 EDITIONS = ("1908", "1938", "1950")
@@ -94,6 +97,7 @@ def measure(edition: str) -> dict:
     worst.sort(reverse=True)
     out["georef"] = {
         "panels": len(worst),
+        "typical median m": round(median(m for m, _ in worst), 1),
         "worst median m": round(worst[0][0], 1),
         "worst panel": worst[0][1],
         "over limit": [f"{n} ({m:.1f} m)" for m, n in worst if m > GEOREF_MAX_M],
@@ -159,17 +163,43 @@ def show(now: dict, base: dict | None) -> None:
         print(f"  new listings since baseline  {len(new):>4}")
         g = m["georef"]
         print(
-            f"  georeferencing               {g['panels']} panels, worst median {g['worst median m']} m ({g['worst panel']})"
+            f"  georeferencing               {g['panels']} panels, median {g['typical median m']} m,"
+            f" worst {g['worst median m']} m ({g['worst panel']})"
         )
         print(f"  reading cost                 ${m['usd_per_sheet']:.4f} per sheet")
         for s in m["stale"]:
             print(f"    stale: {s}")
 
 
+def export(saved: dict) -> None:
+    """The accepted scores, without the per-listing keys, for the website."""
+    years = {}
+    for ed, m in saved["editions"].items():
+        n, status = m["keys"].split(" sheets, ")
+        years[ed] = {
+            "key_sheets": int(n),
+            "keys_verified": status == "human-verified",
+            "rates": m["rates"],
+            "tanks_on_sites_with_none": m["errors"]["tanks on sites with none"],
+            "checked_listings": len(m["shown"]),
+            "panels": m["georef"]["panels"],
+            "typical_median_m": m["georef"]["typical median m"],
+            "worst_median_m": m["georef"]["worst median m"],
+            "usd_per_sheet": m["usd_per_sheet"],
+        }
+    out = {"date": saved["date"], "areas": {AREA: years}}
+    WEB.write_text(json.dumps(out, indent=1) + "\n")
+    print(f"website copy saved: {WEB.relative_to(ROOT)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--update", action="store_true", help="save these scores as the baseline")
+    parser.add_argument("--export", action="store_true", help="only rewrite " + str(WEB.name))
     args = parser.parse_args()
+    if args.export:
+        export(json.loads(BASELINE.read_text()))
+        return
     start = time.time()
     now = {ed: measure(ed) for ed in EDITIONS}
     base = json.loads(BASELINE.read_text())["editions"] if BASELINE.exists() else None
@@ -185,10 +215,10 @@ def main() -> None:
             "Saving also marks every listing shown now as checked: run this only after the new"
             " ones were compared with the scans."
         )
-        BASELINE.write_text(
-            json.dumps({"date": str(date.today()), "editions": clean}, indent=1) + "\n"
-        )
+        saved = {"date": str(date.today()), "editions": clean}
+        BASELINE.write_text(json.dumps(saved, indent=1) + "\n")
         print(f"baseline saved: {BASELINE.relative_to(ROOT)}")
+        export(saved)
         return
     if problems:
         print("WORSE THAN BASELINE:\n  " + "\n  ".join(problems))

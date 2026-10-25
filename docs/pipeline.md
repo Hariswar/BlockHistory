@@ -109,10 +109,12 @@ Human-verified and draft label files are reported separately. A draft becomes ve
 ```
 .venv/bin/python scripts/check_accuracy.py            # scores vs evals/baseline.json; exit 1 if worse
 .venv/bin/python scripts/check_accuracy.py --update   # accept the current scores
+.venv/bin/python scripts/check_accuracy.py --export   # rewrite web/lib/accuracy.json only
 git config core.hooksPath .githooks                   # once per clone: run it before each commit
 ```
 - Both map years: the answer keys (sites found, high-concern sites, real flags, tank sites, exact counts, tanks on sites with none), every shown listing on the scan-checked sheets (right as read, and any listing that is new since the baseline), stale hand corrections, and each panel's georeferencing error (fails over 8 m). Cost per sheet is shown, never a failure.
 - A rate may fall at most 1 point; error counts may not rise. New listings fail the check until they are compared with the scans (add fixes to `config/corrections/`) and accepted with `--update`, which also records them as checked. Commit `evals/baseline.json` with the change.
+- `--update` also writes `web/lib/accuracy.json`, which the website's `/accuracy` page and the About page's numbers are built from, so the site shows the accepted scores, not hand-copied ones. Commit it with the baseline.
 - The pre-commit hook (`.githooks/pre-commit`) runs lint, tests and this check when a commit touches `blockhistory/`, `scripts/`, `config/`, `evals/labels/` or `tests/`.
 
 ## 6e. Old-map overlay (free)

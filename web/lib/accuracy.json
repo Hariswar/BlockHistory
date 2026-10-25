@@ -1,0 +1,99 @@
+{
+ "date": "2026-10-25",
+ "areas": {
+  "carondelet": {
+   "1908": {
+    "key_sheets": 2,
+    "keys_verified": false,
+    "rates": {
+     "sites found": [
+      19,
+      19
+     ],
+     "flags that are real sites": [
+      8,
+      9
+     ]
+    },
+    "tanks_on_sites_with_none": 0,
+    "checked_listings": 0,
+    "panels": 49,
+    "typical_median_m": 2.8,
+    "worst_median_m": 7.3,
+    "usd_per_sheet": 0.007
+   },
+   "1938": {
+    "key_sheets": 10,
+    "keys_verified": true,
+    "rates": {
+     "sites found": [
+      103,
+      119
+     ],
+     "high-concern sites found": [
+      47,
+      53
+     ],
+     "flags that are real sites": [
+      140,
+      154
+     ],
+     "tank sites found": [
+      14,
+      15
+     ],
+     "exact tank counts": [
+      13,
+      15
+     ],
+     "listings right as read": [
+      232,
+      253
+     ]
+    },
+    "tanks_on_sites_with_none": 5,
+    "checked_listings": 253,
+    "panels": 50,
+    "typical_median_m": 2.0,
+    "worst_median_m": 7.8,
+    "usd_per_sheet": 0.0124
+   },
+   "1950": {
+    "key_sheets": 10,
+    "keys_verified": true,
+    "rates": {
+     "sites found": [
+      81,
+      101
+     ],
+     "high-concern sites found": [
+      40,
+      46
+     ],
+     "flags that are real sites": [
+      127,
+      160
+     ],
+     "tank sites found": [
+      8,
+      8
+     ],
+     "exact tank counts": [
+      6,
+      8
+     ],
+     "listings right as read": [
+      213,
+      238
+     ]
+    },
+    "tanks_on_sites_with_none": 4,
+    "checked_listings": 238,
+    "panels": 49,
+    "typical_median_m": 2.2,
+    "worst_median_m": 6.8,
+    "usd_per_sheet": 0.0117
+   }
+  }
+ }
+}

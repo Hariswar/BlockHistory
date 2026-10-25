@@ -597,6 +597,41 @@ footer.site {
   text-align: left;
 }
 
+.table-scroll {
+  overflow-x: auto;
+}
+
+.scores {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.scores caption {
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding-bottom: 4px;
+}
+
+.scores th span,
+.scores td span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.scores tbody th {
+  font-weight: 600;
+  min-width: 11em;
+}
+
+.scores td strong {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+}
+
 .marker {
   width: 26px;
   height: 26px;

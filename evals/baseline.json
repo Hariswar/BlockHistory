@@ -1,5 +1,5 @@
 {
- "date": "2026-10-24",
+ "date": "2026-10-25",
  "editions": {
   "1908": {
    "keys": "2 sheets, includes drafts",
@@ -21,6 +21,7 @@
    "shown": [],
    "georef": {
     "panels": 49,
+    "typical median m": 2.8,
     "worst median m": 7.3,
     "worst panel": "04858_08_1908-0052",
     "over limit": []
@@ -316,6 +317,7 @@
    ],
    "georef": {
     "panels": 50,
+    "typical median m": 2.0,
     "worst median m": 7.8,
     "worst panel": "04858_12_1938-0069",
     "over limit": []
@@ -596,6 +598,7 @@
    ],
    "georef": {
     "panels": 49,
+    "typical median m": 2.2,
     "worst median m": 6.8,
     "worst panel": "04858_12_1950-0069",
     "over limit": []

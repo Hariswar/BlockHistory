@@ -377,3 +377,8 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 - Lighthouse (mobile) before, on the live site: home 35/100/96/100, search 24/96/96/91 (performance / accessibility / best practices / SEO).
 - Fixes: a site icon (the favicon was a 404); the map loads after the page text, so listings show first on phones; map markers are 32 px on touch screens.
 - After, on a local production build: home 39/100/100/100, search 67/96/100/91. The search page's remaining accessibility flag is two markers for neighboring sites overlapping; the same listings are full-size buttons in the list. The SEO flag is a false positive: the description is in the page, streamed after the head.
+
+## Phase 4: public accuracy page (Oct 25, 2026)
+- New `/accuracy` page (an "Accuracy" tab between About and Limits): for each map year, past uses found, higher-concern uses found, flags that are real, listings right as read, tank sites and exact counts, tanks put on sites with none, which answer keys were used (and whether they are drafts), and how precisely the maps are placed (typical 2.0-2.8 m, least precise sheet 6.8-7.8 m). Below that, what the numbers don't show.
+- The numbers come from `web/lib/accuracy.json`, written by `check_accuracy.py --update` (or `--export`), so the page and the About page's three numbers change only when a new baseline is accepted. The baseline now also records each year's typical placement error.
+- Lighthouse (mobile, local build): 99 / 100 / 100 / 100. Tests 107; accuracy check OK.
