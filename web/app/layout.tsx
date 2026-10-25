@@ -51,6 +51,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               with the website? <a href={REPORT_URL}>Report it on GitHub</a>, or see its{" "}
               <Link href="/status">status</Link>.
             </p>
+            <p className="copyright">
+              © {new Date().getFullYear()} Hariswar. Code under the{" "}
+              <a href="https://github.com/Hariswar/BlockHistory/blob/main/LICENSE">MIT License</a>.
+            </p>
           </div>
         </footer>
         {UMAMI_ID && (

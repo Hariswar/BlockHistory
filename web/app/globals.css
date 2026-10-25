@@ -887,3 +887,10 @@ footer.site {
 .note-error {
   color: var(--brick);
 }
+
+footer.site .copyright {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+}

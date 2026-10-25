@@ -53,8 +53,10 @@ export default function About() {
             </li>
             <li>Sheets are matched to today&apos;s streets, typically within 1–7 m.</li>
             <li>
-              Every listing was then compared with the full-resolution scan, and wrong ones were
-              fixed or removed. Listings the project&apos;s author also checked say so.
+              Every 1938 and 1950 listing, and the doubtful 1908 ones, was then compared with the
+              full-resolution scan (AI-assisted), and wrong ones were fixed or removed. Listings the
+              project&apos;s author also checked say &ldquo;Checked against the map by a
+              person&rdquo;.
             </li>
             <li>
               The note on each listing explains that kind of business in plain words. The middle

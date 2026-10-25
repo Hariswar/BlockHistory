@@ -13,6 +13,7 @@ const MapView = dynamic(() => import("./MapView"), {
 });
 import type { PublicFinding, PublicRecord } from "@/lib/present";
 import { AREA } from "@/lib/site";
+import { SCORES } from "@/lib/accuracy";
 
 type Result = {
   query: string;
@@ -272,6 +273,11 @@ function Summary({ result, year }: { result: Result; year: string }) {
   );
 }
 
+// Years whose every shown listing was compared with the scan (AI-assisted), from the accuracy check.
+function scanChecked(year: string): boolean {
+  return (SCORES[year]?.checked_listings ?? 0) > 0;
+}
+
 function FindingCard({
   f,
   n,
@@ -311,7 +317,9 @@ function FindingCard({
           ) : f.reviewStatus === "partly_checked" ? (
             <span className="tag">Partly checked by a person</span>
           ) : (
-            <span className="tag">Not yet checked by a person</span>
+            <span className="tag">
+              {scanChecked(f.year) ? "Checked against the scan (AI-assisted)" : "Read by AI from the scan"}
+            </span>
           )}
         </div>
         <p style={{ margin: "6px 0" }}>{f.explanation}</p>
@@ -332,8 +340,9 @@ function FindingCard({
         )}
         {f.reviewStatus !== "checked_ok" && (
           <p className="small" style={{ margin: "4px 0" }}>
-            Read from the map scan by an AI model{f.readerConfidence ? ` (${f.readerConfidence} confidence)` : ""};
-            it may be wrong. Compare with the map image.
+            Read from the map scan by an AI model{f.readerConfidence ? ` (${f.readerConfidence} confidence)` : ""}
+            {scanChecked(f.year) ? " and checked against the scan with AI help" : ""}; it may still be
+            wrong. Compare with the map image.
           </p>
         )}
         <div className="source">

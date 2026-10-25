@@ -390,3 +390,9 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 - **Packaging:** `docs/demo-script.md` (2-minute shot list, searches only businesses on public maps) and `docs/outreach.md` (who to ask and a draft email) for the partnership item.
 - **1908 answer keys reviewed** (sheets 67 and 73) and approved with no changes; now human-verified, scores unchanged (19 of 19 sites found, 8 of 9 flags real). Three street numbers on sheet 73 can't be read on the scan and stay flagged. The accuracy page still notes 1908's sample is too small for firm numbers (under 50 sites).
 - Still to do, by hand: record the demo, send the outreach emails, and see the weekly check run for a month untouched.
+
+## Phase 4: design check (Oct 25, 2026)
+- Checked every page at phone (390 px) and desktop (960, 1280 px) widths, light and dark, from screenshots of a local production build.
+- Fixed: the header ran off phone screens and made every page scroll sideways (links now wrap under the name); the old-map slider covered the map credit (on phones the slider and key now sit under the map, on desktop above the credit); the "Remember what used to be here?" arrow sat outside its box; the search box hint was cut off; "1908 and 1938 and 1950" on street pages; an out-of-date "more are being added" note; low-contrast card numbers in dark mode (now the map marker colors).
+- Added: the header marks the current page.
+- Review labels: listings not ticked by the author no longer say "Not yet checked by a person". 1938 and 1950 listings (all compared with the scan) say "Checked against the scan (AI-assisted)"; 1908 listings (only doubtful ones scan-checked) say "Read by AI from the scan", taken from the accuracy data so it changes if 1908 is fully checked. The author's 95 keep "Checked against the map by a person". A copyright line is in the footer.
