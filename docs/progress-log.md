@@ -372,3 +372,8 @@ Checked at desktop and phone width, light and dark, with no console errors; prod
 - **Website:** three year buttons; each listing compared with the map before and after it (the tin shop at 6725 S. Broadway is on all three). About and Limits updated.
 - **Neighborhoods as config:** `config/neighborhoods/carondelet.json` now has a `site` block (name, bounding box, map center, years, volumes) read by `blockhistory/area.py`, `load_records.py`, `store.py` and, through `web/lib/area.json`, by the website. A new neighborhood needs that file, control points and the usual runs, no code.
 - **Cost:** `docs/cost.md`: $1.60 for 1938+1950 vs $3.18 without Batch and $63.51 with Sonnet one call at a time. Project total $1.89 of $10.
+
+## Phase 4: accessibility and phones (Oct 24, 2026)
+- Lighthouse (mobile) before, on the live site: home 35/100/96/100, search 24/96/96/91 (performance / accessibility / best practices / SEO).
+- Fixes: a site icon (the favicon was a 404); the map loads after the page text, so listings show first on phones; map markers are 32 px on touch screens.
+- After, on a local production build: home 39/100/100/100, search 67/96/100/91. The search page's remaining accessibility flag is two markers for neighboring sites overlapping; the same listings are full-size buttons in the list. The SEO flag is a false positive: the description is in the page, streamed after the head.

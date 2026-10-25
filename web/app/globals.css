@@ -616,6 +616,23 @@ footer.site {
   background: #9a6a00;
 }
 
+/* Bigger markers on touch screens; nearby sites are also reachable from the cards. */
+@media (pointer: coarse) {
+  .marker {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+.map-loading {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .marker.home {
   background: #1f1d1a;
   width: 16px;

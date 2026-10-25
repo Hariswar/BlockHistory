@@ -3,7 +3,14 @@
 import { useEffect, useState } from "react";
 import MapLegend from "./MapLegend";
 import { CorrectionForm, MemoryForm, NeighborNotes, type PublicNote } from "./Notes";
-import MapView, { type Coverage, type Overlay } from "./MapView";
+import dynamic from "next/dynamic";
+import type { Coverage, Overlay } from "./MapView";
+
+// The map library is large; load it after the page text so listings show first on phones.
+const MapView = dynamic(() => import("./MapView"), {
+  ssr: false,
+  loading: () => <div className="map-loading">Loading map…</div>,
+});
 import type { PublicFinding, PublicRecord } from "@/lib/present";
 import { AREA } from "@/lib/site";
 
