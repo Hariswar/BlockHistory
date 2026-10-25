@@ -42,6 +42,13 @@ const ROWS: { name: string; label: string; note: string }[] = [
   },
 ];
 
+// Fewer hand-marked sites than this and a year's rates move a lot with one site.
+const FIRM_SITES = 50;
+
+function keySites(year: string): number {
+  return rate(year, "sites found")?.[1] ?? 0;
+}
+
 function longDate(iso: string): string {
   return new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", {
     year: "numeric",
@@ -194,11 +201,12 @@ export default function Accuracy() {
           missed elsewhere don&apos;t show at all, so an empty search isn&apos;t proof of nothing.
         </li>
         {years
-          .filter((y) => !SCORES[y].keys_verified)
+          .filter((y) => !SCORES[y].keys_verified || keySites(y) < FIRM_SITES)
           .map((y) => (
             <li key={y}>
-              {y} is measured on {SCORES[y].key_sheets} draft answer keys (
-              {rate(y, "sites found")?.[1] ?? 0} sites), too few for firm numbers
+              {y} is measured on {SCORES[y].key_sheets}
+              {SCORES[y].keys_verified ? "" : " draft"} answer keys ({keySites(y)} sites), too few
+              for firm numbers
               {SCORES[y].checked_listings === 0 &&
                 ", and only its doubtful listings were compared with the scan"}
               .

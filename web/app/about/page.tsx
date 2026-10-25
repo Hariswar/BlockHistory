@@ -18,7 +18,11 @@ export default function About() {
         what each building was used for, what it was made of, and where gasoline tanks were buried.
         BlockHistory reads those maps for Carondelet, St. Louis, and lists past uses near an address
         that sometimes left soil or groundwater contamination.{" "}
-        <Link href="/limits">What it can&apos;t tell you</Link>.
+        <Link href="/limits">What it can&apos;t tell you</Link>.{" "}
+        <a href="https://github.com/Hariswar/BlockHistory/blob/main/docs/writeup.md">
+          How it was built
+        </a>
+        .
       </p>
 
       <div className="info-grid">

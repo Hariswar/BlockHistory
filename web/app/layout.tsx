@@ -52,7 +52,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="https://www.loc.gov/collections/sanborn-maps/">Library of Congress</a>. Base
               map: <a href="https://openfreemap.org">OpenFreeMap</a> ©{" "}
               <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors. A problem
-              with the website? <a href={REPORT_URL}>Report it on GitHub</a>.
+              with the website? <a href={REPORT_URL}>Report it on GitHub</a>, or see its{" "}
+              <Link href="/status">status</Link>.
             </p>
           </div>
         </footer>

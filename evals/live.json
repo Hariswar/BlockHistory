@@ -1,0 +1,110 @@
+{
+ "date": "2026-10-25",
+ "pages": {
+  "/": 200,
+  "/streets": 200,
+  "/streets/south-broadway": 200,
+  "/about": 200,
+  "/accuracy": 200,
+  "/limits": 200,
+  "/status": 200
+ },
+ "searches": {
+  "6532 S Broadway": {
+   "located by": "parcel",
+   "map years": [
+    "1908",
+    "1938",
+    "1950"
+   ],
+   "past uses": {
+    "1908": 0,
+    "1938": 7,
+    "1950": 5
+   },
+   "uses": [
+    "1938 Coke shed",
+    "1938 Filling station",
+    "1938 Oil house",
+    "1938 Steel foundry",
+    "1938 Transformer house",
+    "1938 Welding equipment",
+    "1950 Auto repair",
+    "1950 Filling station",
+    "1950 Steel casting foundry",
+    "1950 Transformer room"
+   ],
+   "state records": 4
+  },
+  "7313 S Broadway": {
+   "located by": "parcel",
+   "map years": [
+    "1908",
+    "1938",
+    "1950"
+   ],
+   "past uses": {
+    "1908": 1,
+    "1938": 4,
+    "1950": 5
+   },
+   "uses": [
+    "1908 Coal shed",
+    "1938 Auto repair",
+    "1938 Auto sales and service",
+    "1938 Coal yard",
+    "1938 Filling station",
+    "1950 Auto repair",
+    "1950 Auto sales and service",
+    "1950 Battery service",
+    "1950 Iron oil tanks",
+    "1950 Used auto sales"
+   ],
+   "state records": 2
+  },
+  "6725 S Broadway": {
+   "located by": "parcel",
+   "map years": [
+    "1908",
+    "1938",
+    "1950"
+   ],
+   "past uses": {
+    "1908": 3,
+    "1938": 6,
+    "1950": 5
+   },
+   "uses": [
+    "1908 Plumbing business",
+    "1908 Tin shop",
+    "1908 Wagon maker",
+    "1938 Auto repair garage",
+    "1938 Bulk oil station with gasoline storage tanks",
+    "1938 Junk yard",
+    "1938 Paint spraying and benzol washing",
+    "1938 Printing and binding",
+    "1938 Tin shop",
+    "1950 Coal bin",
+    "1950 Filling station",
+    "1950 Paint spraying and benzol washing",
+    "1950 Printing and binding",
+    "1950 Tin shop"
+   ],
+   "state records": 2
+  },
+  "1200 Market St": {
+   "located by": "parcel",
+   "map years": [],
+   "past uses": {},
+   "uses": [],
+   "state records": 0
+  }
+ },
+ "map sections": {
+  "1908": 49,
+  "1938": 50,
+  "1950": 49
+ },
+ "bad input": 400,
+ "map image": "200 image/jpeg"
+}

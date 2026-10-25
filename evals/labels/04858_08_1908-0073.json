@@ -9,9 +9,9 @@
   "gasoline_tank_count": "Number of G.T. / G.T.S. symbols drawn for this site. 0 means none drawn."
  },
  "verification": {
-  "status": "draft",
-  "method": "Read from quarter-sheet crops of the 1908 scan; not yet reviewed by a person.",
-  "date": "2026-10-24"
+  "status": "human_verified",
+  "date": "2026-10-25",
+  "method": "AI-assisted draft from quarter-sheet crops of the full-resolution 1908 scan, reviewed and approved by Baburaj on 2026-10-25 with no changes. The street numbers of 3 sites (slaughter house, grain warehouse, wagon shed) can't be read on the scan and stay flagged."
  },
  "source": "Library of Congress, Sanborn Fire Insurance Map, St. Louis Vol. 8 (1908), sheet 73, image 04858_08_1908-0073",
  "total_gasoline_tanks": 0,

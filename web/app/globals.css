@@ -597,6 +597,56 @@ footer.site {
   text-align: left;
 }
 
+.status-summary {
+  background: var(--green-soft);
+  border-left: 4px solid var(--green);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.status-summary.down {
+  background: var(--brick-soft);
+  border-left-color: var(--brick);
+}
+
+.status-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.status-list li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  display: grid;
+}
+
+.status-list li.ok strong > span[aria-hidden] {
+  color: var(--green);
+}
+
+.status-list li.down strong > span[aria-hidden] {
+  color: var(--brick);
+}
+
+.status-list li > span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .table-scroll {
   overflow-x: auto;
 }

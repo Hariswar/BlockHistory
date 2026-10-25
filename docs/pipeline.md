@@ -153,6 +153,16 @@ The data reload (`load_postgis_*.sql`) never touches this table.
 3. Download and tile (`download_sheet.py`, `tile_sheet.py`), read (`run_batch.py submit/collect`, then `--tanks`, `--points`), place (`georef_preview.py` + `config/georef/<slug>/<year>/streets.txt` + `place_sheets.py`), records (`load_records.py <slug>`), build and export (`build_db.py`).
 4. Still per neighborhood: the notes bounding box in `submit_note()` (schema_postgis.sql) and, for a second neighborhood on the same site, a way to choose between them on the website.
 
+## 6j. Watching the live site (free)
+```
+.venv/bin/python scripts/check_live.py             # live site vs evals/live.json
+.venv/bin/python scripts/check_live.py --update    # after reloading Supabase: save the new answers
+```
+- Loads every page, runs four saved searches (counts per map year, use titles, state records), counts map sections per year, checks bad input is refused and fetches one Library of Congress map crop. The data changes only on a reload, so any difference means something broke.
+- `.github/workflows/weekly.yml` runs lint, tests, the website typecheck and this check every Monday. A failure opens an issue labeled `weekly-check` (or comments on the open one), which GitHub emails. Run it by hand from the Actions tab; GitHub pauses scheduled runs after 60 days without a commit.
+- `/status` on the site checks the address service, the database, map data and map images when opened (results reused for 5 minutes), and shows the last weekly run.
+- After any Supabase reload, run `--update` and commit `evals/live.json`, or the next weekly run fails.
+
 ## 7. Build the database (free)
 ```
 .venv/bin/python scripts/build_db.py carondelet 1938 [--export]
